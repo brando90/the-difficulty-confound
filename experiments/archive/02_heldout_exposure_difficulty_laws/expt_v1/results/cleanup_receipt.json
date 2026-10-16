@@ -1,0 +1,15 @@
+{
+  "status": "REMOVED",
+  "removed_path": "/dfs/scratch0/brando9/.worktrees/the-difficulty-confound/laws-10-16-2026",
+  "removed_utc": "2026-10-16T20:06:47.259523+00:00",
+  "preserved_files": 1520,
+  "preserved_bytes": 63114829,
+  "worker_processes_absent": true,
+  "owned_session_absent": true,
+  "canonical_experiment": "experiments/archive/02_heldout_exposure_difficulty_laws",
+  "landed_commit": "330f3555312b0780327c0e77cd60599c6e40b525",
+  "pull_request": "https://github.com/brando90/the-difficulty-confound/pull/1",
+  "audit_active_consumers": 0,
+  "audit_unique_unpreserved_files": 0,
+  "audit_unpublished_commits": 0
+}
