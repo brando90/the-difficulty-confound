@@ -50,7 +50,15 @@ On 24 actual mathematics observations from Varun's alignment-law repository, a t
 
 **Predictive counterevidence:** adding independently probed starting difficulty to the positive log-linear law raises joint held-out root mean squared error from **0.4727 [0.3212, 0.5990] to 292.7941 [0.3588, 507.0797] bits/answer**, over 192 targets per law. Relative error reduction is **-61835.64% [-140226.76, 27.71]**; the frozen predictive gate fails. One seed dominates the extrapolation failure; no seed or forecast was removed. Merely adding exposure also worsens joint prediction by **9.58% [7.86, 14.25]**. All intervals use the same eight paired seed blocks; p-val=n/a.
 
-[Complete results, plot and failure diagnosis](experiments/archive/03_answer_matched_alignment/RESULTS_matched_alignment.md). Training changes observed difficulty without changing the addition task, evaluation items or their formal description complexity. Answer matching still leaves substantial input-digit differences; this establishes a training-distribution effect in controlled addition, not that complexity is irrelevant or that data dominates across language models. All three studies are complete and archived, including their failed criteria.
+[Complete results, plot and failure diagnosis](experiments/archive/03_answer_matched_alignment/RESULTS_matched_alignment.md). Training changes observed difficulty without changing the addition task, evaluation items or their formal description complexity. Answer matching still leaves substantial input-digit differences; this establishes a training-distribution effect in controlled addition, not that complexity is irrelevant or that data dominates across language models.
+
+## Extrapolation-repair and feature-value experiment
+
+[experiments/archive/04_monotone_ridge_heldout_addition/](experiments/archive/04_monotone_ridge_heldout_addition/) completed 200 fresh trajectories and 40 shared warm starts across eight new seeds (`3101`–`3808`), unseen evaluation splits disjoint from Experiment 03, held-out mixtures `.2/.8`, and held-out widths `96/384`. It freezes a constrained monotone ridge law (`stable_difficulty`, with nonpositive slopes on log parameters, updates, and exposure, and starting-difficulty elasticity in `[0,1]`) and separates the extrapolation-repair gate (`stable_difficulty` vs `legacy_difficulty`) from the incremental feature-value gate (`stable_difficulty` vs `stable_base`).
+
+**Extrapolation repair:** **SUPPORTED**. `stable_difficulty` lowers joint held-out root mean squared error from **1,935,297,769,746.72 [619.43, 3,352,033,360,529.69] to 0.4835 [0.3760, 0.5780] bits/answer** (**100.00% [99.90, 100.00]** reduction; 0/192 invalid predictions), improving at both width 96 (`3.2963 → 0.6801`) and width 384 (`2.737e12 → 0.0718`).
+
+**Feature value under shared warmup:** **NOT_ESTABLISHED**. Relative to `stable_base` (**0.5010 [0.3894, 0.5972]** bits/answer), `stable_difficulty` reduces joint RMSE by **3.48% [1.12, 6.24]** (improving at both held-out widths: 3.45% at width 96 and 6.04% at width 384), which is statistically positive but below the predeclared 10% practical threshold because all warm starts share the same balanced (`q=0.50`) warmup history. The secondary answer-matched ranking reversal is replicated (**SUPPORTED**: **24.07 [22.80, 25.46]** and **24.48 [22.77, 26.06]** percentage points). [Complete results and diagnostics](experiments/archive/04_monotone_ridge_heldout_addition/RESULTS_stable.md).
 
 ## Proposed approach
 
@@ -91,7 +99,7 @@ Claims will be limited to the models, task families, and training interventions 
 
 ## Status
 
-Three controlled experiments are complete and archived with full artifacts. The third passes its prespecified difficulty-ranking reversal after exact answer matching, but its starting-difficulty predictive extension fails; the first two studies retain their mixed and negative findings.
+Four controlled experiments are complete and archived with full artifacts. Experiments 03 and 04 support the prespecified difficulty-ranking reversal after exact answer matching, and Experiment 04 repairs the predictive extrapolation failure across held-out widths, while showing that starting difficulty adds only a 3.48% gain when all starting models share an identical balanced warmup history.
 
 ## What stays fixed—and what does not
 

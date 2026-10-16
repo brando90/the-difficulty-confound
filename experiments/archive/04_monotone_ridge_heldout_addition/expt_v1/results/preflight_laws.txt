@@ -1,0 +1,1 @@
+PASS: all five independent fits, coefficient bounds, inverse-difficulty failure case and monotonic extrapolation stress.
