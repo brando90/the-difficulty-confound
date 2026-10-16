@@ -30,7 +30,7 @@ This is a hypothesis to test, not an assumed conclusion.
 - Exact integer answers, with an independent addition implementation checked exhaustively.
 - A prospective criterion for whether exposure recovers most of the initial accuracy gap, without materially hurting no-carry performance.
 
-**Status:** protocol and implementation prepared; measured results pending. [Live results](experiments/01_fixed_width_addition_exposure/results.md) · [Locked protocol](experiments/01_fixed_width_addition_exposure/PROTOCOL.md).
+**Status:** running on the Stanford cluster; measured results pending. [Live results](experiments/01_fixed_width_addition_exposure/results.md) · [Locked protocol](experiments/01_fixed_width_addition_exposure/PROTOCOL.md).
 
 ## Proposed approach
 
@@ -71,7 +71,7 @@ Claims will be limited to the models, task families, and training interventions 
 
 ## Status
 
-Protocol and implementation prepared; training results pending.
+Training is running on the Stanford cluster; aggregate results are pending.
 
 ## What stays fixed—and what does not
 
