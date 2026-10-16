@@ -1,0 +1,52 @@
+{
+  "digits": 3,
+  "seeds": [
+    2101,
+    2202,
+    2303,
+    2404,
+    2505,
+    2606,
+    2707,
+    2808
+  ],
+  "split_seed": 20261019,
+  "train_widths": [
+    32,
+    64,
+    128
+  ],
+  "heldout_widths": [
+    96,
+    256
+  ],
+  "train_mixtures": [
+    0.1,
+    0.5,
+    0.9
+  ],
+  "heldout_mixtures": [
+    0.3,
+    0.7
+  ],
+  "minimum_pairs_per_answer_stratum": 60,
+  "train_per_answer": 40,
+  "test_per_answer_stratum": 8,
+  "calibration_per_answer_stratum": 4,
+  "probe_per_answer_stratum": 4,
+  "warmup_steps": 500,
+  "checkpoints": [
+    300,
+    1000,
+    3000
+  ],
+  "batch_size": 256,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "threads": 2,
+  "bootstrap_draws": 20000,
+  "analysis_seed": 19102026,
+  "crossover_min_gap": 0.1,
+  "predictive_min_relative_rmse_gain": 0.1,
+  "max_wall_seconds": 5400
+}
