@@ -61,13 +61,26 @@ def main():
         coefficient_rows.append({'seed':fit['seed'],'law':fit['law'],**dict(zip(fit['columns'],fit['coefficients']))})
     for r in coefficient_rows:r.setdefault('log_starting_bits','')
     write(OUT/'coefficient_table.csv',coefficient_rows)
+    unions=[]
+    for seed in c['seeds']:
+        trains=np.load(OUT/f'train_{seed}.npz');warm=set(trains['q0.50'].tolist())
+        for q in c['train_mixtures']+c['heldout_mixtures']:
+            ids=set(trains[f'q{q:.2f}'].tolist());unions.append(dict(seed=seed,mixture=q,intervention_unique=len(ids),warmup_unique=len(warm),combined_unique=len(ids|warm),intersection=len(ids&warm)))
+        endpoints=[r['combined_unique'] for r in unions if r['seed']==seed and r['mixture'] in [.1,.9]];assert endpoints==[6552,6552]
+    write(OUT/'warmup_union_counts.csv',unions)
+    marginals=read(OUT/'input_digit_marginals.csv');tv=[]
+    for seed in c['seeds']:
+        for col in range(6):
+            def hist(q):return np.array([int(r['count'])/int(r['n']) for r in marginals if int(r['seed'])==seed and int(r['column'])==col and float(r['mixture'])==q])
+            tv.append(dict(seed=seed,column=col,total_variation=float(abs(hist(.1)-hist(.9)).sum()/2)))
+    write(OUT/'input_marginal_total_variation.csv',tv)
     main=p['primary_secondary_comparison'];repair=p['repair_comparison'];joint=[r for r in p['metrics'] if r['axis']=='joint']
     lines=['# Fresh held-out addition: extrapolation repair and feature value','',f'**Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/04_monotone_ridge_heldout_addition/RESULTS_stable.md>','',f"**TLDR:** Repair criterion: **{p['repair_status']}**. Starting-difficulty feature criterion: **{p['status']}**. All 200 trajectories completed; all 3,840 forecasts and failed criteria are retained.",'','## Setup and decisions','',
     'Canonical experiment: `experiments/04_monotone_ridge_heldout_addition/`. Exact three-digit addition and the byte-identical arithmetic reference remain fixed. New seeds, mixtures .2/.8, widths 96/384, and evaluation items exclude every experiment-03 evaluation/probe item. Training still matches 117 answer frequencies exactly, 4,680 pairs per intervention. There are 1,872 final-test questions (936 per carry stratum), 936 calibration questions and 936 separate probe questions. Input-digit marginals remain unmatched. This is supervised learning, not reinforcement learning.', '',
     'All five laws use model size, updates, carry group and exposure. The three difficulty laws add independently probed starting loss. The old laws use unregularized least squares on log loss; ridge adds a fixed 0.01 standardized-slope penalty. Stable laws also constrain size/updates/exposure slopes to be nonpositive and the difficulty exponent to [0,1]. Those settings were frozen before training. Fit only 54 calibration rows per seed; freeze predictions before opening final-test outcomes.', '',
     'Primary feature-value gate: stable difficulty versus stable base. Separate repair gate: stable difficulty versus legacy difficulty. Each requires at least 10% relative joint root mean squared error reduction, a positive 95% lower interval, improvement at both held-out widths, and no invalid predictions. The 10% threshold and coefficient bounds are project choices. A repair success does not substitute for feature-value success.', '',
     'All intervals below are 95% percentile intervals from 20,000 paired bootstrap draws over eight complete seed blocks, conditional on this fixed test set; p-val=n/a. The 192 joint targets per law are correlated observations, not 192 independent replicates. Scores are bits per answer under the factorized model. Mean bias is forecast minus observed; positive means overprediction. No trained model or seed was discarded.', '',
-    '## Joint held-out prediction','', '| Law | Root mean squared error [95% interval] | Mean absolute error | Mean bias | Forecast mean | Observed mean | Invalid / targets |','|---|---:|---:|---:|---:|---:|---:|']
+    f"Endpoint warmup-plus-intervention unions are exactly 6,552 unique pairs per seed in both conditions ([counts](expt_v1/results/warmup_union_counts.csv)); intermediate unions differ. Across six operand-digit columns and eight seeds, endpoint input-marginal total variation ranges from {min(r['total_variation'] for r in tv):.3f} to {max(r['total_variation'] for r in tv):.3f} ([all values](expt_v1/results/input_marginal_total_variation.csv)); zero would mean matching.", '', '## Joint held-out prediction','', '| Law | Root mean squared error [95% interval] | Mean absolute error | Mean bias | Forecast mean | Observed mean | Invalid / targets |','|---|---:|---:|---:|---:|---:|---:|']
     for r in joint:lines.append(f"| {r['law']} | {ci(r)} | {fmt(r['mae'])} | {float(r['bias']):+.4f} | {fmt(r['prediction_mean'])} | {fmt(r['outcome_mean'])} | {r['invalid_predictions']}/{r['n_targets']} |")
     lines+=['','Relative error reduction is 100 × (1 − extended error / baseline error); positive is better.','', '| Baseline → extended | Reduction %, 95% interval |','|---|---:|']
     for r in p['comparisons']:
