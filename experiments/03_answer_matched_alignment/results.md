@@ -8,6 +8,7 @@ Source freeze: `fd284d4`. Execution: skampere2, persistent session `codex-diffic
 
 200 planned trajectories; exact-answer histogram matched across training interventions and evaluation strata. [Protocol](PROTOCOL.md).
 
-**TLDR-end:** [the-difficulty-confound: 03_answer_matched_alignment] The next study tests a prespecified difficulty-rank reversal and starting-difficulty forecasts. The full run is executing; no scientific verdict is available yet.
 
 START notification sent through Gmail, message `1a14670035f2ac4f`; sent headers verified all four addresses in BCC, including sender brandojazz and To recipient brando.science.
+
+**TLDR-end:** [the-difficulty-confound: 03_answer_matched_alignment] The next study tests a prespecified difficulty-rank reversal and starting-difficulty forecasts. The full run is executing; no scientific verdict is available yet.

@@ -1,6 +1,6 @@
 # Matched-answer experiment checkpoint
 Created: 10-16-2026 13:21 PDT
-Last updated: 10-16-2026 13:21 PDT
+Last updated: 10-16-2026 13:41 PDT
 
 ## Goal
 Test alignment versus carry demand with identical answer distributions, plus prospective held-out prediction.
