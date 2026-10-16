@@ -1,0 +1,26 @@
+[
+  {
+    "step": 500,
+    "batch_loss_nats_per_digit": 0.467362642288208
+  },
+  {
+    "step": 1000,
+    "batch_loss_nats_per_digit": 0.1202072724699974
+  },
+  {
+    "step": 1500,
+    "batch_loss_nats_per_digit": 0.07326880097389221
+  },
+  {
+    "step": 2000,
+    "batch_loss_nats_per_digit": 0.015524548478424549
+  },
+  {
+    "step": 2500,
+    "batch_loss_nats_per_digit": 0.03282954543828964
+  },
+  {
+    "step": 3000,
+    "batch_loss_nats_per_digit": 0.016613876447081566
+  }
+]

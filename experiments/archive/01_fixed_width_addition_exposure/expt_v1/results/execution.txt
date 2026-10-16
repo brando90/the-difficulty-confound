@@ -1,0 +1,83 @@
+{"checks": {"oracle_pairs_checked": 500500, "test_pairs": 4000, "validation_pairs": 1000, "split_overlap": 0, "population_per_stratum": [83250, 225250, 123875, 68125]}}
+{"seed": 101, "condition": "scarce_long_carry", "status": "complete", "started_elapsed_seconds": 0.469101132825017, "steps": 3000, "train_counts": [15520, 160, 160, 160], "elapsed_seconds": 8.643638392910361}
+{"seed": 101, "condition": "balanced", "status": "complete", "started_elapsed_seconds": 9.153344128280878, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.96068168990314}
+{"seed": 101, "condition": "rich_long_carry", "status": "complete", "started_elapsed_seconds": 14.157570725306869, "steps": 3000, "train_counts": [160, 160, 160, 15520], "elapsed_seconds": 4.7853447292000055}
+{"seed": 101, "condition": "shuffled_labels", "status": "complete", "started_elapsed_seconds": 19.010615058243275, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.677913891151547}
+{"seed": 202, "condition": "scarce_long_carry", "status": "complete", "started_elapsed_seconds": 23.768087718635798, "steps": 3000, "train_counts": [15520, 160, 160, 160], "elapsed_seconds": 4.170170729979873}
+{"seed": 202, "condition": "balanced", "status": "complete", "started_elapsed_seconds": 27.973650876432657, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.342097038403153}
+{"seed": 202, "condition": "rich_long_carry", "status": "complete", "started_elapsed_seconds": 32.37928808480501, "steps": 3000, "train_counts": [160, 160, 160, 15520], "elapsed_seconds": 4.761806819587946}
+{"seed": 202, "condition": "shuffled_labels", "status": "complete", "started_elapsed_seconds": 37.25633496418595, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 5.463625276461244}
+{"seed": 303, "condition": "scarce_long_carry", "status": "complete", "started_elapsed_seconds": 42.75303091481328, "steps": 3000, "train_counts": [15520, 160, 160, 160], "elapsed_seconds": 4.495682930573821}
+{"seed": 303, "condition": "balanced", "status": "complete", "started_elapsed_seconds": 47.28640384413302, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.424586307257414}
+{"seed": 303, "condition": "rich_long_carry", "status": "complete", "started_elapsed_seconds": 51.74139098264277, "steps": 3000, "train_counts": [160, 160, 160, 15520], "elapsed_seconds": 4.389580845832825}
+{"seed": 303, "condition": "shuffled_labels", "status": "complete", "started_elapsed_seconds": 56.1892081964761, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.007322201505303}
+{"seed": 404, "condition": "scarce_long_carry", "status": "complete", "started_elapsed_seconds": 60.248584769666195, "steps": 3000, "train_counts": [15520, 160, 160, 160], "elapsed_seconds": 4.578328771516681}
+{"seed": 404, "condition": "balanced", "status": "complete", "started_elapsed_seconds": 64.88530921190977, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 5.614812521263957}
+{"seed": 404, "condition": "rich_long_carry", "status": "complete", "started_elapsed_seconds": 70.53670946881175, "steps": 3000, "train_counts": [160, 160, 160, 15520], "elapsed_seconds": 5.264452440664172}
+{"seed": 404, "condition": "shuffled_labels", "status": "complete", "started_elapsed_seconds": 75.87330726534128, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.526597771793604}
+{"seed": 505, "condition": "scarce_long_carry", "status": "complete", "started_elapsed_seconds": 80.43814579769969, "steps": 3000, "train_counts": [15520, 160, 160, 160], "elapsed_seconds": 4.760180113837123}
+{"seed": 505, "condition": "balanced", "status": "complete", "started_elapsed_seconds": 85.34383620880544, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.113855987787247}
+{"seed": 505, "condition": "rich_long_carry", "status": "complete", "started_elapsed_seconds": 89.49278567358851, "steps": 3000, "train_counts": [160, 160, 160, 15520], "elapsed_seconds": 4.27457457408309}
+{"seed": 505, "condition": "shuffled_labels", "status": "complete", "started_elapsed_seconds": 93.81980825215578, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.249236209318042}
+{"seed": 606, "condition": "scarce_long_carry", "status": "complete", "started_elapsed_seconds": 98.10750861652195, "steps": 3000, "train_counts": [15520, 160, 160, 160], "elapsed_seconds": 4.277499923482537}
+{"seed": 606, "condition": "balanced", "status": "complete", "started_elapsed_seconds": 102.41443014331162, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.449671106413007}
+{"seed": 606, "condition": "rich_long_carry", "status": "complete", "started_elapsed_seconds": 106.91451178118587, "steps": 3000, "train_counts": [160, 160, 160, 15520], "elapsed_seconds": 4.795052105560899}
+{"seed": 606, "condition": "shuffled_labels", "status": "complete", "started_elapsed_seconds": 111.74358901754022, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.6038067899644375}
+{"seed": 707, "condition": "scarce_long_carry", "status": "complete", "started_elapsed_seconds": 116.38396787270904, "steps": 3000, "train_counts": [15520, 160, 160, 160], "elapsed_seconds": 4.828957092016935}
+{"seed": 707, "condition": "balanced", "status": "complete", "started_elapsed_seconds": 121.29774140939116, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 5.208851123228669}
+{"seed": 707, "condition": "rich_long_carry", "status": "complete", "started_elapsed_seconds": 126.56782671622932, "steps": 3000, "train_counts": [160, 160, 160, 15520], "elapsed_seconds": 5.207446122542024}
+{"seed": 707, "condition": "shuffled_labels", "status": "complete", "started_elapsed_seconds": 131.8156841136515, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 4.920112870633602}
+{"seed": 808, "condition": "scarce_long_carry", "status": "complete", "started_elapsed_seconds": 136.79686041735113, "steps": 3000, "train_counts": [15520, 160, 160, 160], "elapsed_seconds": 4.990399207919836}
+{"seed": 808, "condition": "balanced", "status": "complete", "started_elapsed_seconds": 141.8272244334221, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 5.264156244695187}
+{"seed": 808, "condition": "rich_long_carry", "status": "complete", "started_elapsed_seconds": 147.1318548731506, "steps": 3000, "train_counts": [160, 160, 160, 15520], "elapsed_seconds": 5.007376896217465}
+{"seed": 808, "condition": "shuffled_labels", "status": "complete", "started_elapsed_seconds": 152.18261612020433, "steps": 3000, "train_counts": [4000, 4000, 4000, 4000], "elapsed_seconds": 6.79305125400424}
+{"status": "complete", "elapsed_seconds": 159.0214796680957}
+{
+  "complete_cells": 32,
+  "expected_cells": 32,
+  "test_predictions": 128000,
+  "unique_test_items": 4000,
+  "independent_training_seeds": 8,
+  "uncertainty": "Paired percentile bootstrap over eight training/data-sampling seeds; 20000 draws. Conditional on this fixed test set, architecture, split and optimizer.",
+  "baseline_gap": {
+    "mean": 0.9039999999999999,
+    "lo": 0.88775,
+    "hi": 0.9215,
+    "seed_sd": 0.026452113067093233
+  },
+  "long_carry_gain": {
+    "mean": 0.852875,
+    "lo": 0.83275,
+    "hi": 0.8756249999999999,
+    "seed_sd": 0.033051637089344166
+  },
+  "no_carry_change": {
+    "mean": -0.06075,
+    "lo": -0.08387499999999999,
+    "hi": -0.04112500000000002,
+    "seed_sd": 0.03335416016031582
+  },
+  "recovered_fraction": {
+    "mean": 0.9434457964601771,
+    "lo": 0.9273867595818817,
+    "hi": 0.9585661714597247
+  },
+  "primary_half_gap_contrast": {
+    "mean": 0.400875,
+    "lo": 0.3849375,
+    "hi": 0.416875,
+    "seed_sd": 0.024728164971488296
+  },
+  "primary_p_value": 0.00390625,
+  "primary_test": "One-sided exhaustive paired sign-flip test of gain minus 0.5*baseline-gap; null mean <= 0 at boundary, assumes symmetric paired differences. 256 sign assignments. Supporting diagnostic; prespecified verdict uses bootstrap interval.",
+  "gates": {
+    "baseline_gap_at_least_20_percentage_points": true,
+    "baseline_no_carry_accuracy_at_least_90_percent": true,
+    "balanced_long_carry_accuracy_at_least_90_percent": true,
+    "no_carry_accuracy_drop_at_most_5_percentage_points": false,
+    "recovery_95_percent_lower_bound_above_half": true,
+    "shuffled_label_overall_accuracy_below_5_percent": true
+  },
+  "verdict": "NOT_ESTABLISHED_IN_THIS_SETUP"
+}
+FINAL_EXIT_CODE=0

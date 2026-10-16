@@ -1,0 +1,30 @@
+{
+  "hostname": "skampere2.stanford.edu",
+  "python": "3.11.12",
+  "torch": "2.7.0+cu126",
+  "numpy": "2.2.6",
+  "device": "cpu",
+  "threads": 2,
+  "git_revision": "db2dc6d46186193cc07f13153b3a36848afc8d74",
+  "config_sha256": "e233d9910d34d8da1f9dac367211fbe2eb131b24fae05a14a01be115633f01ab",
+  "code_sha256": "d3b1463cb357e72f0297ef5132d99fc56315d7a38f377c375b74f23b3c906b07",
+  "started_utc": "2026-10-16T18:37:55Z",
+  "pid": 877391,
+  "checks": {
+    "oracle_pairs_checked": 500500,
+    "test_pairs": 4000,
+    "validation_pairs": 1000,
+    "split_overlap": 0,
+    "population_per_stratum": [
+      83250,
+      225250,
+      123875,
+      68125
+    ]
+  },
+  "expected_cells": 32,
+  "parameter_count": 29480,
+  "completed_cells": 32,
+  "elapsed_seconds": 159.0214796680957,
+  "finished_utc": "2026-10-16T18:40:34Z"
+}

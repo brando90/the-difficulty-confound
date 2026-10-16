@@ -1,0 +1,450 @@
+[
+  {
+    "seed": 101,
+    "condition": "scarce_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 0.469101132825017,
+    "steps": 3000,
+    "train_counts": [
+      15520,
+      160,
+      160,
+      160
+    ],
+    "elapsed_seconds": 8.643638392910361
+  },
+  {
+    "seed": 101,
+    "condition": "balanced",
+    "status": "complete",
+    "started_elapsed_seconds": 9.153344128280878,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.96068168990314
+  },
+  {
+    "seed": 101,
+    "condition": "rich_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 14.157570725306869,
+    "steps": 3000,
+    "train_counts": [
+      160,
+      160,
+      160,
+      15520
+    ],
+    "elapsed_seconds": 4.7853447292000055
+  },
+  {
+    "seed": 101,
+    "condition": "shuffled_labels",
+    "status": "complete",
+    "started_elapsed_seconds": 19.010615058243275,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.677913891151547
+  },
+  {
+    "seed": 202,
+    "condition": "scarce_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 23.768087718635798,
+    "steps": 3000,
+    "train_counts": [
+      15520,
+      160,
+      160,
+      160
+    ],
+    "elapsed_seconds": 4.170170729979873
+  },
+  {
+    "seed": 202,
+    "condition": "balanced",
+    "status": "complete",
+    "started_elapsed_seconds": 27.973650876432657,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.342097038403153
+  },
+  {
+    "seed": 202,
+    "condition": "rich_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 32.37928808480501,
+    "steps": 3000,
+    "train_counts": [
+      160,
+      160,
+      160,
+      15520
+    ],
+    "elapsed_seconds": 4.761806819587946
+  },
+  {
+    "seed": 202,
+    "condition": "shuffled_labels",
+    "status": "complete",
+    "started_elapsed_seconds": 37.25633496418595,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 5.463625276461244
+  },
+  {
+    "seed": 303,
+    "condition": "scarce_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 42.75303091481328,
+    "steps": 3000,
+    "train_counts": [
+      15520,
+      160,
+      160,
+      160
+    ],
+    "elapsed_seconds": 4.495682930573821
+  },
+  {
+    "seed": 303,
+    "condition": "balanced",
+    "status": "complete",
+    "started_elapsed_seconds": 47.28640384413302,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.424586307257414
+  },
+  {
+    "seed": 303,
+    "condition": "rich_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 51.74139098264277,
+    "steps": 3000,
+    "train_counts": [
+      160,
+      160,
+      160,
+      15520
+    ],
+    "elapsed_seconds": 4.389580845832825
+  },
+  {
+    "seed": 303,
+    "condition": "shuffled_labels",
+    "status": "complete",
+    "started_elapsed_seconds": 56.1892081964761,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.007322201505303
+  },
+  {
+    "seed": 404,
+    "condition": "scarce_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 60.248584769666195,
+    "steps": 3000,
+    "train_counts": [
+      15520,
+      160,
+      160,
+      160
+    ],
+    "elapsed_seconds": 4.578328771516681
+  },
+  {
+    "seed": 404,
+    "condition": "balanced",
+    "status": "complete",
+    "started_elapsed_seconds": 64.88530921190977,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 5.614812521263957
+  },
+  {
+    "seed": 404,
+    "condition": "rich_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 70.53670946881175,
+    "steps": 3000,
+    "train_counts": [
+      160,
+      160,
+      160,
+      15520
+    ],
+    "elapsed_seconds": 5.264452440664172
+  },
+  {
+    "seed": 404,
+    "condition": "shuffled_labels",
+    "status": "complete",
+    "started_elapsed_seconds": 75.87330726534128,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.526597771793604
+  },
+  {
+    "seed": 505,
+    "condition": "scarce_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 80.43814579769969,
+    "steps": 3000,
+    "train_counts": [
+      15520,
+      160,
+      160,
+      160
+    ],
+    "elapsed_seconds": 4.760180113837123
+  },
+  {
+    "seed": 505,
+    "condition": "balanced",
+    "status": "complete",
+    "started_elapsed_seconds": 85.34383620880544,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.113855987787247
+  },
+  {
+    "seed": 505,
+    "condition": "rich_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 89.49278567358851,
+    "steps": 3000,
+    "train_counts": [
+      160,
+      160,
+      160,
+      15520
+    ],
+    "elapsed_seconds": 4.27457457408309
+  },
+  {
+    "seed": 505,
+    "condition": "shuffled_labels",
+    "status": "complete",
+    "started_elapsed_seconds": 93.81980825215578,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.249236209318042
+  },
+  {
+    "seed": 606,
+    "condition": "scarce_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 98.10750861652195,
+    "steps": 3000,
+    "train_counts": [
+      15520,
+      160,
+      160,
+      160
+    ],
+    "elapsed_seconds": 4.277499923482537
+  },
+  {
+    "seed": 606,
+    "condition": "balanced",
+    "status": "complete",
+    "started_elapsed_seconds": 102.41443014331162,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.449671106413007
+  },
+  {
+    "seed": 606,
+    "condition": "rich_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 106.91451178118587,
+    "steps": 3000,
+    "train_counts": [
+      160,
+      160,
+      160,
+      15520
+    ],
+    "elapsed_seconds": 4.795052105560899
+  },
+  {
+    "seed": 606,
+    "condition": "shuffled_labels",
+    "status": "complete",
+    "started_elapsed_seconds": 111.74358901754022,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.6038067899644375
+  },
+  {
+    "seed": 707,
+    "condition": "scarce_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 116.38396787270904,
+    "steps": 3000,
+    "train_counts": [
+      15520,
+      160,
+      160,
+      160
+    ],
+    "elapsed_seconds": 4.828957092016935
+  },
+  {
+    "seed": 707,
+    "condition": "balanced",
+    "status": "complete",
+    "started_elapsed_seconds": 121.29774140939116,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 5.208851123228669
+  },
+  {
+    "seed": 707,
+    "condition": "rich_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 126.56782671622932,
+    "steps": 3000,
+    "train_counts": [
+      160,
+      160,
+      160,
+      15520
+    ],
+    "elapsed_seconds": 5.207446122542024
+  },
+  {
+    "seed": 707,
+    "condition": "shuffled_labels",
+    "status": "complete",
+    "started_elapsed_seconds": 131.8156841136515,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 4.920112870633602
+  },
+  {
+    "seed": 808,
+    "condition": "scarce_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 136.79686041735113,
+    "steps": 3000,
+    "train_counts": [
+      15520,
+      160,
+      160,
+      160
+    ],
+    "elapsed_seconds": 4.990399207919836
+  },
+  {
+    "seed": 808,
+    "condition": "balanced",
+    "status": "complete",
+    "started_elapsed_seconds": 141.8272244334221,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 5.264156244695187
+  },
+  {
+    "seed": 808,
+    "condition": "rich_long_carry",
+    "status": "complete",
+    "started_elapsed_seconds": 147.1318548731506,
+    "steps": 3000,
+    "train_counts": [
+      160,
+      160,
+      160,
+      15520
+    ],
+    "elapsed_seconds": 5.007376896217465
+  },
+  {
+    "seed": 808,
+    "condition": "shuffled_labels",
+    "status": "complete",
+    "started_elapsed_seconds": 152.18261612020433,
+    "steps": 3000,
+    "train_counts": [
+      4000,
+      4000,
+      4000,
+      4000
+    ],
+    "elapsed_seconds": 6.79305125400424
+  }
+]

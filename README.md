@@ -22,7 +22,7 @@ This is a hypothesis to test, not an assumed conclusion.
 
 ## First experiment
 
-[experiments/01_fixed_width_addition_exposure/](experiments/01_fixed_width_addition_exposure/) trains small neural networks from scratch to add two three-digit numbers. Every condition answers exactly the same held-out questions. Only the training distribution over carry-chain lengths changes.
+[experiments/archive/01_fixed_width_addition_exposure/](experiments/archive/01_fixed_width_addition_exposure/) trains small neural networks from scratch to add two three-digit numbers. Every condition answers exactly the same held-out questions. Only the training distribution over carry-chain lengths changes.
 
 - Same 29,480-parameter network, initial parameters within each seed, 16,000 distinct training pairs, 3,000 updates, and 256 examples per update.
 - Eight paired seeds and four conditions: scarce long carries, balanced coverage, abundant long carries, and shuffled training labels.
@@ -30,7 +30,9 @@ This is a hypothesis to test, not an assumed conclusion.
 - Exact integer answers, with an independent addition implementation checked exhaustively.
 - A prospective criterion for whether exposure recovers most of the initial accuracy gap, without materially hurting no-carry performance.
 
-**Status:** running on the Stanford cluster; measured results pending. [Live results](experiments/01_fixed_width_addition_exposure/results.md) · [Locked protocol](experiments/01_fixed_width_addition_exposure/PROTOCOL.md).
+**Result:** Length-three-carry accuracy rose from 9.60% to 94.89% with balanced training, recovering 94.34% [92.74, 95.86] of the predefined gap across eight seeds. The stricter criterion did not pass: no-carry accuracy fell 6.08 points, exceeding the allowed five-point decline. [Full results](experiments/archive/01_fixed_width_addition_exposure/RESULTS_addition_exposure.md).
+
+**Status:** all 32 runs completed and verified. [Live results](experiments/archive/01_fixed_width_addition_exposure/results.md) · [Locked protocol](experiments/archive/01_fixed_width_addition_exposure/PROTOCOL.md).
 
 ## Proposed approach
 
@@ -71,7 +73,7 @@ Claims will be limited to the models, task families, and training interventions 
 
 ## Status
 
-Training is running on the Stanford cluster; aggregate results are pending.
+The first experiment is complete and archived with full artifacts. It shows a large exposure effect and a reversal of apparent difficulty, while missing the predeclared control-performance retention criterion.
 
 ## What stays fixed—and what does not
 
@@ -83,16 +85,23 @@ A positive result would establish a causal effect of the specified training-dist
 
 Kolmogorov complexity is the length of the shortest program producing an object, relative to a fixed universal machine. It is not generally computable. For an unchanged question, answer, and task specification, its formal conditional complexity stays unchanged across our training conditions, even when model accuracy changes.
 
-We measure **conditional predictive code length**: how many bits the trained model would need to encode the correct answer given the input. This is a computable model-dependent quantity; it excludes the cost of encoding the model and training data, so it is neither exact Kolmogorov complexity nor a complete minimum-description-length analysis. [Theory and reviewer-facing limitations](experiments/01_fixed_width_addition_exposure/COMPLEXITY.md).
+We measure **conditional predictive code length**: how many bits the trained model would need to encode the correct answer given the input. This is a computable model-dependent quantity; it excludes the cost of encoding the model and training data, so it is neither exact Kolmogorov complexity nor a complete minimum-description-length analysis. [Theory and reviewer-facing limitations](experiments/archive/01_fixed_width_addition_exposure/COMPLEXITY.md).
 
 ## Reproduce
 
-Use Python with the [pinned numerical dependencies](experiments/01_fixed_width_addition_exposure/expt_v1/requirements.txt). Run from the repository root:
+Use Python with the [pinned numerical dependencies](experiments/archive/01_fixed_width_addition_exposure/expt_v1/requirements.txt). Recompute and verify the published results from the repository root:
 
 ```bash
-python experiments/01_fixed_width_addition_exposure/expt_v1/run.py --check-only
-python experiments/01_fixed_width_addition_exposure/expt_v1/run.py
-python experiments/01_fixed_width_addition_exposure/expt_v1/analyze.py
+python experiments/archive/01_fixed_width_addition_exposure/expt_v1/analyze.py
+python experiments/archive/01_fixed_width_addition_exposure/expt_v1/verify_artifacts.py
+```
+
+To train a fresh reproduction, choose a new output directory:
+
+```bash
+python experiments/archive/01_fixed_width_addition_exposure/expt_v1/run.py --check-only
+python experiments/archive/01_fixed_width_addition_exposure/expt_v1/run.py --output /tmp/difficulty-reproduction
+python experiments/archive/01_fixed_width_addition_exposure/expt_v1/analyze.py --output /tmp/difficulty-reproduction
 ```
 
 The training script refuses to overwrite an existing run. Configuration, split seeds, per-item predictions, training manifests, source hashes, and runtime versions support reproduction. The analysis reads the per-item tables, independently recomputes accuracy, and rejects incomplete runs.

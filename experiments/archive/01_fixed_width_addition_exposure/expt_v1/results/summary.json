@@ -1,0 +1,322 @@
+{
+  "complete_cells": 32,
+  "expected_cells": 32,
+  "test_predictions": 128000,
+  "unique_test_items": 4000,
+  "independent_training_seeds": 8,
+  "uncertainty": "Paired percentile bootstrap over eight training/data-sampling seeds; 20000 draws. Conditional on this fixed test set, architecture, split and optimizer.",
+  "table": [
+    {
+      "condition": "scarce_long_carry",
+      "carry_chain": 0,
+      "mean": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seed_sd": 0.0,
+      "correct": 8000,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 0.0207654890416743,
+        "lo": 0.01844029185201143,
+        "hi": 0.02356189529750554,
+        "seed_sd": 0.004035515881978723
+      }
+    },
+    {
+      "condition": "scarce_long_carry",
+      "carry_chain": 1,
+      "mean": 0.08875,
+      "lo": 0.08075,
+      "hi": 0.0965,
+      "seed_sd": 0.01208008987667606,
+      "correct": 710,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 10.24133343129931,
+        "lo": 9.446253170533234,
+        "hi": 11.048060491863637,
+        "seed_sd": 1.2314717471991934
+      }
+    },
+    {
+      "condition": "scarce_long_carry",
+      "carry_chain": 2,
+      "mean": 0.086875,
+      "lo": 0.075,
+      "hi": 0.098375,
+      "seed_sd": 0.01801140511691729,
+      "correct": 695,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 7.939615423012524,
+        "lo": 7.45427145400215,
+        "hi": 8.443212465420366,
+        "seed_sd": 0.7632608337293518
+      }
+    },
+    {
+      "condition": "scarce_long_carry",
+      "carry_chain": 3,
+      "mean": 0.096,
+      "lo": 0.0785,
+      "hi": 0.11225,
+      "seed_sd": 0.026452113067093254,
+      "correct": 768,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 6.564003118079156,
+        "lo": 6.1042092210816215,
+        "hi": 6.996513768807054,
+        "seed_sd": 0.6906561969973383
+      }
+    },
+    {
+      "condition": "balanced",
+      "carry_chain": 0,
+      "mean": 0.9392499999999999,
+      "lo": 0.9161250000000001,
+      "hi": 0.9588749999999999,
+      "seed_sd": 0.03335416016031582,
+      "correct": 7514,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 0.5403792910429184,
+        "lo": 0.43825877656019296,
+        "hi": 0.681437285456323,
+        "seed_sd": 0.1946921367581077
+      }
+    },
+    {
+      "condition": "balanced",
+      "carry_chain": 1,
+      "mean": 0.73925,
+      "lo": 0.70825,
+      "hi": 0.7751281249999998,
+      "seed_sd": 0.052635539324680604,
+      "correct": 5914,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 0.9578870804565958,
+        "lo": 0.8525187300657853,
+        "hi": 1.0878870700267145,
+        "seed_sd": 0.18315526126485926
+      }
+    },
+    {
+      "condition": "balanced",
+      "carry_chain": 2,
+      "mean": 0.8645,
+      "lo": 0.8414999999999999,
+      "hi": 0.885,
+      "seed_sd": 0.033903223614113326,
+      "correct": 6916,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 0.6787793759112246,
+        "lo": 0.5914199311202625,
+        "hi": 0.7986786829126067,
+        "seed_sd": 0.16401811093447352
+      }
+    },
+    {
+      "condition": "balanced",
+      "carry_chain": 3,
+      "mean": 0.948875,
+      "lo": 0.9345,
+      "hi": 0.9625,
+      "seed_sd": 0.021918273524292757,
+      "correct": 7591,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 0.47511535249277953,
+        "lo": 0.4048929377929308,
+        "hi": 0.5738311813145525,
+        "seed_sd": 0.13418615491957842
+      }
+    },
+    {
+      "condition": "rich_long_carry",
+      "carry_chain": 0,
+      "mean": 0.068375,
+      "lo": 0.057875,
+      "hi": 0.077875,
+      "seed_sd": 0.015371007030863564,
+      "correct": 547,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 7.5378864702209825,
+        "lo": 7.170671561528369,
+        "hi": 7.9720361318290225,
+        "seed_sd": 0.623100258387239
+      }
+    },
+    {
+      "condition": "rich_long_carry",
+      "carry_chain": 1,
+      "mean": 0.039375,
+      "lo": 0.028625,
+      "hi": 0.05225,
+      "seed_sd": 0.01836096402697854,
+      "correct": 315,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 11.203197324652223,
+        "lo": 10.27731061703991,
+        "hi": 11.997675535496324,
+        "seed_sd": 1.3382278535135854
+      }
+    },
+    {
+      "condition": "rich_long_carry",
+      "carry_chain": 2,
+      "mean": 0.18512499999999998,
+      "lo": 0.164875,
+      "hi": 0.20725,
+      "seed_sd": 0.03293906712184094,
+      "correct": 1481,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 7.117717505072476,
+        "lo": 6.595148389577976,
+        "hi": 7.5681104362977205,
+        "seed_sd": 0.7553998003095215
+      }
+    },
+    {
+      "condition": "rich_long_carry",
+      "carry_chain": 3,
+      "mean": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seed_sd": 0.0,
+      "correct": 8000,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 0.016831495492848264,
+        "lo": 0.01550831174358791,
+        "hi": 0.018185605456598433,
+        "seed_sd": 0.0020764154629245328
+      }
+    },
+    {
+      "condition": "shuffled_labels",
+      "carry_chain": 0,
+      "mean": 0.000625,
+      "lo": 0.00025,
+      "hi": 0.000875,
+      "seed_sd": 0.0005175491695067657,
+      "correct": 5,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 11.793061707794667,
+        "lo": 11.676444749116897,
+        "hi": 11.907978356957436,
+        "seed_sd": 0.17954530760890317
+      }
+    },
+    {
+      "condition": "shuffled_labels",
+      "carry_chain": 1,
+      "mean": 0.000625,
+      "lo": 0.000125,
+      "hi": 0.0011250000000000001,
+      "seed_sd": 0.000744023809142845,
+      "correct": 5,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 11.638730633497238,
+        "lo": 11.589691902771593,
+        "hi": 11.679670741003752,
+        "seed_sd": 0.07014490310088406
+      }
+    },
+    {
+      "condition": "shuffled_labels",
+      "carry_chain": 2,
+      "mean": 0.000625,
+      "lo": 0.00025,
+      "hi": 0.001,
+      "seed_sd": 0.0005175491695067657,
+      "correct": 5,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 11.50731939959526,
+        "lo": 11.42493928349018,
+        "hi": 11.579892693142593,
+        "seed_sd": 0.12092186273225698
+      }
+    },
+    {
+      "condition": "shuffled_labels",
+      "carry_chain": 3,
+      "mean": 0.000875,
+      "lo": 0.0005,
+      "hi": 0.00125,
+      "seed_sd": 0.0006408699444616558,
+      "correct": 7,
+      "n_predictions": 8000,
+      "unique_test_items": 1000,
+      "bits": {
+        "mean": 11.434341423511505,
+        "lo": 11.312383694656193,
+        "hi": 11.572586189448835,
+        "seed_sd": 0.2042439460304191
+      }
+    }
+  ],
+  "baseline_gap": {
+    "mean": 0.9039999999999999,
+    "lo": 0.88775,
+    "hi": 0.9215,
+    "seed_sd": 0.026452113067093233
+  },
+  "long_carry_gain": {
+    "mean": 0.852875,
+    "lo": 0.83275,
+    "hi": 0.8756249999999999,
+    "seed_sd": 0.033051637089344166
+  },
+  "no_carry_change": {
+    "mean": -0.06075,
+    "lo": -0.08387499999999999,
+    "hi": -0.04112500000000002,
+    "seed_sd": 0.03335416016031582
+  },
+  "recovered_fraction": {
+    "mean": 0.9434457964601771,
+    "lo": 0.9273867595818817,
+    "hi": 0.9585661714597247
+  },
+  "primary_half_gap_contrast": {
+    "mean": 0.400875,
+    "lo": 0.3849375,
+    "hi": 0.416875,
+    "seed_sd": 0.024728164971488296
+  },
+  "primary_p_value": 0.00390625,
+  "primary_test": "One-sided exhaustive paired sign-flip test of gain minus 0.5*baseline-gap; null mean <= 0 at boundary, assumes symmetric paired differences. 256 sign assignments. Supporting diagnostic; prespecified verdict uses bootstrap interval.",
+  "gates": {
+    "baseline_gap_at_least_20_percentage_points": true,
+    "baseline_no_carry_accuracy_at_least_90_percent": true,
+    "balanced_long_carry_accuracy_at_least_90_percent": true,
+    "no_carry_accuracy_drop_at_most_5_percentage_points": false,
+    "recovery_95_percent_lower_bound_above_half": true,
+    "shuffled_label_overall_accuracy_below_5_percent": true
+  },
+  "verdict": "NOT_ESTABLISHED_IN_THIS_SETUP"
+}

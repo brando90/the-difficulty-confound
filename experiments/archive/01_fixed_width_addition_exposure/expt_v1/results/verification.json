@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "complete_cells": 32,
+  "training_rows_checked": 512000,
+  "prediction_rows_checked": 160000,
+  "unique_heldout_pairs": 5000,
+  "train_heldout_overlap": 0,
+  "oracle_checks_at_launch": 500500,
+  "independent_carry_labels_checked": 500500,
+  "saved_model_parameters_each": 29480,
+  "local_summary_matches_remote_exactly": true,
+  "original_run_and_config_hashes_match": true
+}

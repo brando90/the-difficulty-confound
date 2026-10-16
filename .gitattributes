@@ -1,0 +1,2 @@
+# Preserve frozen comma-separated tables byte-for-byte, including CSV CRLF endings.
+*.csv -text whitespace=cr-at-eol
