@@ -42,7 +42,15 @@ This is a hypothesis to test, not an assumed conclusion.
 
 On 24 actual mathematics observations from Varun's alignment-law repository, a training-breadth proxy worsened joint held-out error by 1.14% (relative reduction **-1.14% [-9.58, 0.57]**, descriptive 95% interval over four size blocks; p-val=n/a). Independently measured starting difficulty was unavailable there. [Companion report, authorized observations, and predictions](experiments/archive/02_heldout_exposure_difficulty_laws/RESULTS_actual_math.md).
 
-Both experiments are complete and archived. These results support exposure dependence and a candidate starting-difficulty covariate in controlled addition; they do not establish that difficulty is mostly data across language models.
+## Answer-matched ranking-reversal experiment
+
+[experiments/archive/03_answer_matched_alignment/](experiments/archive/03_answer_matched_alignment/) completed 200 trajectories with eight fresh seeds, five widths and five exposure mixtures. Every intervention has 4,680 pairs with exactly the same answer histogram, and both evaluation carry strata have 936 questions with matching answer histograms.
+
+**Primary result:** the difficulty ranking reverses at every width. No-carry questions lead by **25.30 [23.14, 27.26] percentage points** when they receive 90% of intervention exposure; two-carry questions lead by **24.58 [22.88, 26.19] points** when they receive 90%. Both pass the frozen 10-point and uncertainty criteria. The alignment contrast is **24.94 [23.27, 26.40] points**, versus a residual carry main effect of **0.36 [-0.60, 1.40] points**, for this particular 9:1 intervention and accuracy scale. Intervals resample eight paired seed blocks, averaging widths within seed, conditional on the fixed test set; p-val=n/a.
+
+**Predictive counterevidence:** adding independently probed starting difficulty to the positive log-linear law raises joint held-out root mean squared error from **0.4727 [0.3212, 0.5990] to 292.7941 [0.3588, 507.0797] bits/answer**, over 192 targets per law. Relative error reduction is **-61835.64% [-140226.76, 27.71]**; the frozen predictive gate fails. One seed dominates the extrapolation failure; no seed or forecast was removed. Merely adding exposure also worsens joint prediction by **9.58% [7.86, 14.25]**. All intervals use the same eight paired seed blocks; p-val=n/a.
+
+[Complete results, plot and failure diagnosis](experiments/archive/03_answer_matched_alignment/RESULTS_matched_alignment.md). Training changes observed difficulty without changing the addition task, evaluation items or their formal description complexity. Answer matching still leaves substantial input-digit differences; this establishes a training-distribution effect in controlled addition, not that complexity is irrelevant or that data dominates across language models. All three studies are complete and archived, including their failed criteria.
 
 ## Proposed approach
 
@@ -83,7 +91,7 @@ Claims will be limited to the models, task families, and training interventions 
 
 ## Status
 
-Both controlled experiments are complete and archived with full artifacts. The first shows a large exposure effect while missing its control-performance retention criterion; the second misses its primary predictive-improvement criterion, with a promising secondary difficulty-only result.
+Three controlled experiments are complete and archived with full artifacts. The third passes its prespecified difficulty-ranking reversal after exact answer matching, but its starting-difficulty predictive extension fails; the first two studies retain their mixed and negative findings.
 
 ## What stays fixed—and what does not
 
@@ -99,7 +107,7 @@ We measure **conditional predictive code length**: how many bits the trained mod
 
 ## Connection to predictive scaling laws
 
-Difficulty can enter a predictive law as a property of the task, starting model, and training history. Our [connection to the projects with Varun](experiments/ideas/predictability_bridge/README.md) separates structural demand, known training exposure, and difficulty measured at a particular checkpoint. It specifies extensions to the existing environment-utility model, leakage controls, and held-out-scale comparisons. The first experiment supplies separate feature and outcome tables but cannot identify scale exponents. The second prospectively tests an adaptation of the alignment-law form on unseen widths and exposure mixtures. The actual-data companion tests a breadth proxy; neither result validates the distinct reinforcement-learning utility law.
+Difficulty can enter a predictive law as a property of the task, starting model, and training history. Our [connection to the projects with Varun](experiments/ideas/predictability_bridge/README.md) separates structural demand, known training exposure, and difficulty measured at a particular checkpoint. It specifies extensions to the existing environment-utility model, leakage controls, and held-out-scale comparisons. The first experiment supplies separate feature and outcome tables but cannot identify scale exponents. The second prospectively tests an adaptation of the alignment-law form on unseen widths and exposure mixtures. The actual-data companion tests a breadth proxy. The third study tests a positive log-linear form on fresh answer-matched data and finds a severe extrapolation failure when adding starting difficulty. None of these studies validates the distinct reinforcement-learning utility law.
 
 ## Publication authorization
 

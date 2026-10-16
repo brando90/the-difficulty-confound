@@ -1,0 +1,8 @@
+{
+  "phase": "verification",
+  "supervisor_pid": 1365655,
+  "child_pid": 3018765,
+  "elapsed_seconds": 15.201276250183582,
+  "exit_code": 0,
+  "state": "complete"
+}
