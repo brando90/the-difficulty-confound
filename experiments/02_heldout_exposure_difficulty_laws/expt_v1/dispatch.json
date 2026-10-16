@@ -1,0 +1,22 @@
+{
+  "host": "skampere2",
+  "path": "/dfs/scratch0/brando9/.worktrees/the-difficulty-confound/laws-10-16-2026",
+  "session": "codex-the-difficulty-confound-laws-heldouts",
+  "interpreter": "/lfs/skampere2/0/brando9/uv_envs/veribench/bin/python",
+  "command": "python experiments/02_heldout_exposure_difficulty_laws/expt_v1/supervise.py",
+  "worker_kind": "ordinary Python process supervisor",
+  "effective_access": "full operating-system permissions; no prompt mechanism",
+  "provider_calls": 0,
+  "estimated_wall_minutes": [
+    15,
+    30
+  ],
+  "max_training_seconds": 5400,
+  "estimated_disk_gib": 1,
+  "preflight": "Reachable through official whale gateway; valid tickets and keepalive; numerical dependencies available. 188 GiB local and 1437 GiB distributed free, sufficient for this bounded <1 GiB task despite percentage-health warning. Claude path checks irrelevant to pure numerical worker.",
+  "actual_source_revision": "7dfebb15fa4211a4784231e33e4976c6f86e65f6",
+  "private_source_hashes": {
+    "math_grid.csv": "394d874d5d0a048d3fa8511e5191b9d9bedd312b696a71bc5f1a8ff31b5698ea",
+    "E5_decontam_verification.json": "6adc98ac13461011a6f189ada158362d7e8795e91408f17456eb9a32a39b4933"
+  }
+}

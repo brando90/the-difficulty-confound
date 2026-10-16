@@ -7,5 +7,6 @@
 | Experiment | Setup | Status |
 |---|---|---|
 | [experiments/archive/01_fixed_width_addition_exposure/](archive/01_fixed_width_addition_exposure/) | Fixed three-digit addition; eight paired seeds, four training distributions | COMPLETE; strict criterion not established |
+| [experiments/02_heldout_exposure_difficulty_laws/](02_heldout_exposure_difficulty_laws/) | Fixed addition; held-out widths, mixtures and questions; 200 trajectories | READY TO LAUNCH |
 
 [Archive index](archive/README.md).
