@@ -87,6 +87,10 @@ Kolmogorov complexity is the length of the shortest program producing an object,
 
 We measure **conditional predictive code length**: how many bits the trained model would need to encode the correct answer given the input. This is a computable model-dependent quantity; it excludes the cost of encoding the model and training data, so it is neither exact Kolmogorov complexity nor a complete minimum-description-length analysis. [Theory and reviewer-facing limitations](experiments/archive/01_fixed_width_addition_exposure/COMPLEXITY.md).
 
+## Connection to predictive scaling laws
+
+Difficulty can enter a predictive law as a property of the task, starting model, and training history. Our [connection to the projects with Varun](experiments/ideas/predictability_bridge/README.md) separates structural demand, known training exposure, and difficulty measured at a particular checkpoint. It specifies extensions to the existing environment-utility model, leakage controls, and held-out-scale comparisons. A reproducible export of the completed addition runs supplies separate feature and outcome tables; no scaling exponent can be estimated from this single-size, fixed-budget experiment.
+
 ## Reproduce
 
 Use Python with the [pinned numerical dependencies](experiments/archive/01_fixed_width_addition_exposure/expt_v1/requirements.txt). Recompute and verify the published results from the repository root:
