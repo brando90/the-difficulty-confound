@@ -1,0 +1,15 @@
+{
+  "completed_at": "10-16-2026 11:48 PDT",
+  "execution": "COMPLETE",
+  "training_cells": 32,
+  "expected_cells": 32,
+  "scientific_verdict": "NOT_ESTABLISHED_IN_THIS_SETUP",
+  "result_commit": "2d17170904832239917f4e908f2a6f9158bdd3f6",
+  "remote_temporary_checkout_removed": true,
+  "original_remote_outputs_preserved": 137,
+  "active_experiment_processes": 0,
+  "start_email_message_id": "1a14601c3b7a6bfa",
+  "done_email_message_id": "1a1460b3f0922fe6",
+  "verification": "expt_v1/results/verification.json",
+  "report": "RESULTS_addition_exposure.md"
+}
