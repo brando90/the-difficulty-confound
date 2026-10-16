@@ -1,0 +1,12 @@
+[
+  {
+    "axis": "joint_width_384",
+    "law": "legacy_difficulty",
+    "metric": "rmse",
+    "stored": 2736924353206.2124,
+    "recomputed": 2736924353206.213,
+    "absolute_difference": 0.00048828125,
+    "relative_difference": 1.7840509527711108e-16,
+    "representable_float_steps": 1.0
+  }
+]

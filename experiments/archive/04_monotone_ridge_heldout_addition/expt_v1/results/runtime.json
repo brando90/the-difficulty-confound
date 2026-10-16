@@ -1,0 +1,38 @@
+{
+  "host": "skampere2.stanford.edu",
+  "pid": 1982704,
+  "device": "cpu",
+  "threads": 2,
+  "python": "3.11.12",
+  "torch": "2.7.0+cu126",
+  "numpy": "2.2.6",
+  "git_revision": "39cd0b78eea437f38b89cbf36928b8e0e9947613",
+  "source_sha256": {
+    "independent_fit.py": "7e0da6486693b8cc669ad868239627e4d5d04700693695f75c7cda80fde3041c",
+    "addition.py": "766123242a12da2ee6973f03ade252880983720ed9c65db88932c01decef2289",
+    "test_laws.py": "2a91d809a821878d77b98836aa7279fa70e6063af0e574ac78ba6255a6190d2b",
+    "run.py": "db1fd05424b4384807aeb50c6e136c53422cfb17af185a69c22dc6c895f71842",
+    "supervise.py": "0831540c157b3582f08103f86230bdf1c9cd6016efa5c75af264a3a3ca159f7b",
+    "laws.py": "6ff0d749706effa91994f479583d279360b1b26e21c5ba9b7a72b5014f033864",
+    "analyze.py": "610365f2920e714f3c82e83f76ff686a426b4b417135f41c0cb11809fd47ee71",
+    "verify.py": "faacf33c5c79c553a944522ac8d13d3aed2e489ee8d9663065e36a3eb631c7ae"
+  },
+  "config_sha256": "19ae0b94312f730e1e74a50a716a866b5c9960ee20f12d12bd55f13aa4a80229",
+  "started_utc": "2026-10-16T22:43:15Z",
+  "checks": {
+    "oracle_pairs": 500500,
+    "eligible_answers": 117,
+    "train_size": 4680,
+    "test": 1872,
+    "calibration": 936,
+    "probe": 936,
+    "split_overlap": 0,
+    "previous_evaluation_overlap": 0,
+    "exact_answer_matching": true
+  },
+  "expected_cells": 200,
+  "previous_split_sha256": "580ca9e3f0570a1feae806b6a360ae74d0c251d33df56674bb7785036b97914e",
+  "completed_cells": 200,
+  "elapsed_seconds": 952.9610023554415,
+  "finished_utc": "2026-10-16T22:59:08Z"
+}

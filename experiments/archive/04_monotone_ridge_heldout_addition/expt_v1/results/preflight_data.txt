@@ -1,0 +1,1 @@
+{"oracle_pairs": 500500, "eligible_answers": 117, "train_size": 4680, "test": 1872, "calibration": 936, "probe": 936, "split_overlap": 0, "previous_evaluation_overlap": 0, "exact_answer_matching": true}

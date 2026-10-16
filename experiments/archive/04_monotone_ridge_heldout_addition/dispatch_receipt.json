@@ -1,0 +1,40 @@
+{
+  "source_revision": "39cd0b78eea437f38b89cbf36928b8e0e9947613",
+  "master_thread": "01a145f4-cf3d-7731-b577-26d521344e29",
+  "host": "skampere2",
+  "checkout": "/lfs/skampere2/0/brando9/difficulty-owned/stable-10-16-2026",
+  "session": "codex-difficulty-e04-numerical",
+  "supervisor_pid": 1982690,
+  "training_pid": 1982704,
+  "numerical_interpreter": "/lfs/skampere2/0/brando9/uv_envs/veribench/bin/python",
+  "owner": "master adopted fixed numerical supervision after both executor sessions exited",
+  "scope": "200 trajectories, 40 warm starts; no scientific retries; 5400-second training cap",
+  "attempts": [
+    {
+      "client": "Codex 0.154.0",
+      "requested_model": "gpt-5.6-terra",
+      "requested_effort": "high",
+      "approval": "never",
+      "sandbox": "danger-full-access",
+      "outcome": "AUTH_REQUIRED; exited before scientific work"
+    },
+    {
+      "client": "personal clauded",
+      "requested_model": "claude-sonnet-5",
+      "requested_effort": "high",
+      "permission": "--dangerously-skip-permissions",
+      "outcome": "WEEKLY_LIMIT; exited before scientific work"
+    }
+  ],
+  "billing": "ordinary PyTorch CPU training; no provider calls for measured models; no purchased credits",
+  "watch": "supervise.py polls child every five seconds; detects nonzero exit and timeout; then analysis and verification; no reboot recovery",
+  "config_sha256": "19ae0b94312f730e1e74a50a716a866b5c9960ee20f12d12bd55f13aa4a80229",
+  "start_email_id": "1a146e35e41a2f5b",
+  "bcc_verified": [
+    "brando.science@gmail.com",
+    "brando9@stanford.edu",
+    "brandojazz@gmail.com",
+    "brando@vals.ai"
+  ],
+  "pull_request": "https://github.com/brando90/the-difficulty-confound/pull/3"
+}
