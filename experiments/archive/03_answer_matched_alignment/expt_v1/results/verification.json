@@ -1,0 +1,22 @@
+{
+  "oracle_pairs": 500500,
+  "eligible_answers": 117,
+  "train_size": 4680,
+  "test": 1872,
+  "calibration": 936,
+  "probe": 936,
+  "split_overlap": 0,
+  "exact_answer_matching": true,
+  "status": "PASS",
+  "source_hashes_match": true,
+  "unchanged_reference_sha256": "766123242a12da2ee6973f03ade252880983720ed9c65db88932c01decef2289",
+  "completed_trajectories": 200,
+  "aggregate_rows": 2400,
+  "item_rows": 1684800,
+  "final_models_replayed": 200,
+  "warm_models_replayed": 40,
+  "max_replay_bits_difference": 0.0,
+  "independent_bootstrap_match": true,
+  "forecasts_reconstructed": 3840,
+  "max_forecast_difference": 0.0
+}
