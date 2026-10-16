@@ -2,7 +2,7 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/README.md>
 
-**TLDR:** How much of apparent task difficulty comes from training exposure? We test this with controlled interventions on training data while holding the task, test items, model architecture, and training budget fixed.
+**TLDR:** How much of apparent task difficulty comes from training exposure? We test this with controlled interventions on training data while holding the task and test items fixed. Exposure comparisons match architecture and budget; a second study varies model size to test held-out forecasts.
 
 **Is a task hard—or has a model simply not learned it yet?**
 
@@ -33,6 +33,16 @@ This is a hypothesis to test, not an assumed conclusion.
 **Result:** Length-three-carry accuracy rose from 9.60% to 94.89% with balanced training, recovering 94.34% [92.74, 95.86] of the predefined gap across eight seeds. The stricter criterion did not pass: no-carry accuracy fell 6.08 points, exceeding the allowed five-point decline. [Full results](experiments/archive/01_fixed_width_addition_exposure/RESULTS_addition_exposure.md).
 
 **Status:** all 32 runs completed and verified. [Live results](experiments/archive/01_fixed_width_addition_exposure/results.md) · [Locked protocol](experiments/archive/01_fixed_width_addition_exposure/PROTOCOL.md).
+
+## Held-out predictive-law experiment
+
+[experiments/archive/02_heldout_exposure_difficulty_laws/](experiments/archive/02_heldout_exposure_difficulty_laws/) completed 200 training trajectories across eight seeds, five network widths, and five exposure mixtures. The same exact addition task and questions are retained; two widths and two mixtures are withheld from law fitting. The baseline adapts the additive form from the alignment-scaling project with Varun.
+
+**Primary result:** adding both log exposure and independently probed starting difficulty reduced joint held-out root mean squared error by **6.80% [-3.52, 14.80]**, missing the prospective 10% and positive-lower-bound requirements. The predeclared difficulty-only ablation improved **15.80% [10.27, 20.52]**; this secondary result needs fresh replication. Intervals are 95% paired bootstrap intervals over eight seed blocks, with 384 joint aggregate targets per law; p-val=n/a. The difficulty-only law still made 52/384 invalid negative-loss forecasts. [Full results and all ablations](experiments/archive/02_heldout_exposure_difficulty_laws/RESULTS_heldout_laws.md).
+
+On 24 actual mathematics observations from Varun's alignment-law repository, a training-breadth proxy worsened joint held-out error by 1.14% (relative reduction **-1.14% [-9.58, 0.57]**, descriptive 95% interval over four size blocks; p-val=n/a). Independently measured starting difficulty was unavailable there. [Companion report, authorized observations, and predictions](experiments/archive/02_heldout_exposure_difficulty_laws/RESULTS_actual_math.md).
+
+Both experiments are complete and archived. These results support exposure dependence and a candidate starting-difficulty covariate in controlled addition; they do not establish that difficulty is mostly data across language models.
 
 ## Proposed approach
 
@@ -73,11 +83,11 @@ Claims will be limited to the models, task families, and training interventions 
 
 ## Status
 
-The first experiment is complete and archived with full artifacts. It shows a large exposure effect and a reversal of apparent difficulty, while missing the predeclared control-performance retention criterion.
+Both controlled experiments are complete and archived with full artifacts. The first shows a large exposure effect while missing its control-performance retention criterion; the second misses its primary predictive-improvement criterion, with a promising secondary difficulty-only result.
 
 ## What stays fixed—and what does not
 
-The operational construct is exact fixed-width addition. Input/output lengths, notation, target function, evaluator, test items, architecture, optimizer, and training budget stay fixed. The learned model changes: changing what it knows is the intervention. This does not prove that latent psychological skills or strategies are identical across conditions.
+The operational construct is exact fixed-width addition. Input/output lengths, notation, target function, evaluator, and test items stay fixed within each experiment. Exposure comparisons at each width and checkpoint hold architecture, optimizer, and training budget fixed. The predictive-law study deliberately varies widths and budgets to measure transfer. The learned model changes: changing what it knows is the intervention. This does not prove that latent psychological skills or strategies are identical across conditions.
 
 A positive result would establish a causal effect of the specified training-distribution intervention in this synthetic setting. It would not establish that most difficulty across language-model benchmarks is caused by data, nor that training exposure is the only explanation for a particular proprietary model's failures.
 
@@ -89,7 +99,7 @@ We measure **conditional predictive code length**: how many bits the trained mod
 
 ## Connection to predictive scaling laws
 
-Difficulty can enter a predictive law as a property of the task, starting model, and training history. Our [connection to the projects with Varun](experiments/ideas/predictability_bridge/README.md) separates structural demand, known training exposure, and difficulty measured at a particular checkpoint. It specifies extensions to the existing environment-utility model, leakage controls, and held-out-scale comparisons. A reproducible export of the completed addition runs supplies separate feature and outcome tables; no scaling exponent can be estimated from this single-size, fixed-budget experiment.
+Difficulty can enter a predictive law as a property of the task, starting model, and training history. Our [connection to the projects with Varun](experiments/ideas/predictability_bridge/README.md) separates structural demand, known training exposure, and difficulty measured at a particular checkpoint. It specifies extensions to the existing environment-utility model, leakage controls, and held-out-scale comparisons. The first experiment supplies separate feature and outcome tables but cannot identify scale exponents. The second prospectively tests an adaptation of the alignment-law form on unseen widths and exposure mixtures. The actual-data companion tests a breadth proxy; neither result validates the distinct reinforcement-learning utility law.
 
 ## Reproduce
 

@@ -1,0 +1,22 @@
+{
+  "subsets": {
+    "Q10": {
+      "n_examples": 57413
+    },
+    "Q30": {
+      "n_examples": 57644
+    },
+    "Q50": {
+      "n_examples": 61244
+    },
+    "Q70": {
+      "n_examples": 68171
+    },
+    "Q90": {
+      "n_examples": 74933
+    },
+    "random": {
+      "n_examples": 57063
+    }
+  }
+}

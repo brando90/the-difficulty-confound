@@ -1,0 +1,8 @@
+{
+  "phase": "analysis",
+  "supervisor_pid": 2901902,
+  "child_pid": 529639,
+  "elapsed_seconds": 5.033656552433968,
+  "exit_code": 0,
+  "state": "complete"
+}
