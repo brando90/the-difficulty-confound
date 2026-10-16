@@ -1,0 +1,23 @@
+{
+  "digits": 3,
+  "seeds": [101, 202, 303, 404, 505, 606, 707, 808],
+  "split_seed": 20261016,
+  "train_size": 16000,
+  "test_per_stratum": 1000,
+  "validation_per_stratum": 250,
+  "steps": 3000,
+  "batch_size": 256,
+  "hidden_width": 128,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "threads": 2,
+  "conditions": {
+    "scarce_long_carry": [0.97, 0.01, 0.01, 0.01],
+    "balanced": [0.25, 0.25, 0.25, 0.25],
+    "rich_long_carry": [0.01, 0.01, 0.01, 0.97],
+    "shuffled_labels": [0.25, 0.25, 0.25, 0.25]
+  },
+  "bootstrap_draws": 20000,
+  "analysis_seed": 16102026,
+  "max_wall_seconds": 5400
+}
