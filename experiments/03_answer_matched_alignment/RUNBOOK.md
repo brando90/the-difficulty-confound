@@ -26,3 +26,7 @@ Email coordination: master sends START and DONE through the connected Gmail acco
 Keep working to completion; do not end at planning, source freeze, launch, or a healthy intermediate checkpoint. If a tool wait is bounded, use ordinary-code supervision and resume inspection rather than abandoning the run. On unexpected failure, preserve state and emit a specific recovery record; do not silently retrain or alter frozen settings.
 
 TL;DR: Run the complete frozen matched-answer intervention and prospective predictive tests on SNAP, verify all artifacts, and land the full result with its limitations and recovery receipts.
+
+## Execution recovery, 10-16-2026
+
+All three installed remote Codex profiles (personal, Stanford and Vals) rejected token refresh before any useful agent action or scientific training. Their terminal logs are preserved. The failed owners exited. The authenticated master now implements the frozen design and directly owns a named ordinary-Python supervisor on SNAP; no numerical work runs on the laptop. This is verified continuation through the existing master, not a claim that all other provider accounts are exhausted. The master retains full-access tools, publication, notifications and cleanup. The numerical child, heartbeat and exit/timeout checks require no language-model login. Scientific configuration and budgets are unchanged.

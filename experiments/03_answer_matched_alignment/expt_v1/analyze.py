@@ -1,0 +1,111 @@
+"""Prespecified paired contrasts and positive held-out forecasts."""
+import csv
+import json
+from pathlib import Path
+import numpy as np
+from addition import save_json, sha, write_csv
+ROOT=Path(__file__).resolve().parent
+LAWS=['resources','structure','exposure','structure_exposure','starting_difficulty']
+KEYS=['seed','width','mixture','steps','carry_chain']
+
+
+def read(path):
+    with Path(path).open() as f:return [{k:float(v) for k,v in row.items()} for row in csv.DictReader(f)]
+
+def key(r):return tuple(r[k] for k in KEYS)
+
+def axis(r,c):
+    w=r['width'] in c['heldout_widths'];q=r['mixture'] in c['heldout_mixtures']
+    return 'joint' if w and q else 'model_only' if w else 'mixture_only' if q else 'fit'
+
+def design(rows,law):
+    cols=[np.ones(len(rows)),np.log([r['parameter_count'] for r in rows]),np.log([r['steps'] for r in rows])]
+    names=['intercept','log_parameters','log_updates']
+    if law in ['structure','structure_exposure','starting_difficulty']:
+        cols.append(np.array([r['carry_chain']==2 for r in rows],float));names.append('two_carry')
+    if law in ['exposure','structure_exposure','starting_difficulty']:
+        cols.append(np.log([r['stratum_fraction'] for r in rows]));names.append('log_exposure')
+    if law=='starting_difficulty':
+        cols.append(np.log([r['starting_bits'] for r in rows]));names.append('log_starting_bits')
+    return np.column_stack(cols),names
+
+def boot_draws(c):return np.random.default_rng(c['analysis_seed']).integers(0,len(c['seeds']),(c['bootstrap_draws'],len(c['seeds'])))
+
+def interval(value,samples):
+    lo,hi=np.quantile(samples,[.025,.975]);return dict(estimate=float(value),lo=float(lo),hi=float(hi))
+
+def freeze(out,c):
+    cal=read(out/'calibration_metrics.csv');assert len(cal)==1200 and len(set(map(key,cal)))==1200
+    features=[{k:v for k,v in r.items() if k not in ('mean_bits','correct','n')} for r in cal]
+    assert all(not {'mean_bits','correct','n'} & r.keys() for r in features)
+    fits=[];predictions=[]
+    for seed in c['seeds']:
+        training=[r for r in cal if r['seed']==seed and axis(r,c)=='fit']
+        targets=[r for r in features if r['seed']==seed and axis(r,c)!='fit']
+        assert len(training)==54 and len(targets)==96
+        y=np.log([r['mean_bits'] for r in training]);assert np.isfinite(y).all()
+        sses={}
+        for law in LAWS:
+            x,names=design(training,law);beta,residual,rank,singular=np.linalg.lstsq(x,y,rcond=None)
+            sses[law]=float(np.sum((x@beta-y)**2));z,_=design(targets,law)
+            pred=np.exp(z@beta);assert np.isfinite(pred).all() and (pred>0).all()
+            fits.append(dict(seed=seed,law=law,columns=names,coefficients=beta.tolist(),rank=int(rank),training_log_sse=sses[law],training_keys=[key(r) for r in training]))
+            predictions.extend({**{k:r[k] for k in KEYS},'axis':axis(r,c),'law':law,'predicted_bits':float(v)} for r,v in zip(targets,pred))
+        assert sses['starting_difficulty']<=sses['structure_exposure']+1e-8
+        assert sses['structure_exposure']<=min(sses['structure'],sses['exposure'])+1e-8
+    frozen=dict(config_sha256=sha(ROOT/'config.json'),analysis_sha256=sha(__file__),calibration_sha256=sha(out/'calibration_metrics.csv'),fits=fits)
+    target=out/'frozen_forecasts.json'
+    if target.exists():assert json.loads(target.read_text())==frozen,'Frozen forecasts changed'
+    else:save_json(target,frozen)
+    write_csv(out/'forecasts.csv',predictions)
+    return predictions
+
+def intervention(out,c,test,draws):
+    table={key(r):r['correct']/r['n'] for r in test};rows=[]
+    widths=c['train_widths']+c['heldout_widths'];step=max(c['checkpoints'])
+    for seed in c['seeds']:
+        for w in widths:
+            def acc(q,s):return table[seed,w,q,step,s]
+            low=acc(.1,0)-acc(.1,2);high=acc(.9,2)-acc(.9,0)
+            rows.append(dict(seed=seed,width=w,e_low=low,e_high=high,alignment=(low+high)/2,structure=(low-high)/2,balanced_gap=acc(.5,0)-acc(.5,2)))
+    write_csv(out/'intervention_seed_width.csv',rows)
+    seedrows=[{name:float(np.mean([r[name] for r in rows if r['seed']==s])) for name in ['e_low','e_high','alignment','structure','balanced_gap']} for s in c['seeds']]
+    summaries={}
+    for name in seedrows[0]:
+        values=np.array([r[name] for r in seedrows]);summaries[name]=interval(values.mean(),values[draws].mean(1))
+    aa=np.array([r['alignment'] for r in seedrows]);ss=np.array([r['structure'] for r in seedrows])
+    summaries['alignment_minus_abs_structure']=interval(aa.mean()-abs(ss.mean()),aa[draws].mean(1)-abs(ss[draws].mean(1)))
+    bywidth={str(w):{n:float(np.mean([r[n] for r in rows if r['width']==w])) for n in ['e_low','e_high','alignment','structure','balanced_gap']} for w in widths}
+    supported=all(summaries[n]['estimate']>=c['crossover_min_gap'] and summaries[n]['lo']>0 for n in ['e_low','e_high']) and all(bywidth[str(w)][n]>0 for w in widths for n in ['e_low','e_high'])
+    obj=dict(status='SUPPORTED' if supported else 'NOT_ESTABLISHED',n_seed_blocks=8,n_widths=5,test_items_per_stratum=936,interval='95% percentile bootstrap of complete seed blocks; fixed test set',p_value=None,threshold=c['crossover_min_gap'],statistics=summaries,by_width=bywidth)
+    save_json(out/'intervention_summary.json',obj);return obj
+
+def prediction(out,c,test,forecasts,draws):
+    target={key(r):r for r in test};scored=[{**r,'observed_bits':target[key(r)]['mean_bits'],'error':r['predicted_bits']-target[key(r)]['mean_bits']} for r in forecasts]
+    write_csv(out/'scored_forecasts.csv',scored)
+    metrics=[];comparisons=[]
+    for group in ['joint','model_only','mixture_only','joint_width_96','joint_width_256']:
+        rr=[r for r in scored if r['axis']==group] if group in ['joint','model_only','mixture_only'] else [r for r in scored if r['axis']=='joint' and r['width']==int(group.rsplit('_',1)[1])]
+        mses={}
+        for law in LAWS:
+            rows=[r for r in rr if r['law']==law];err=np.array([r['error'] for r in rows]);obs=np.array([r['observed_bits'] for r in rows]);pred=np.array([r['predicted_bits'] for r in rows])
+            mses[law]=np.array([np.mean([r['error']**2 for r in rows if r['seed']==s]) for s in c['seeds']])
+            ci=interval(np.sqrt(mses[law].mean()),np.sqrt(mses[law][draws].mean(1)))
+            metrics.append(dict(axis=group,law=law,n_targets=len(rows),n_seeds=8,rmse=ci['estimate'],rmse_lo=ci['lo'],rmse_hi=ci['hi'],mae=float(abs(err).mean()),bias=float(err.mean()),prediction_mean=float(pred.mean()),outcome_mean=float(obs.mean()),invalid_predictions=int((~np.isfinite(pred)|(pred<=0)).sum())))
+        for base,extra in [('structure_exposure','starting_difficulty'),('structure','structure_exposure'),('exposure','structure_exposure')]:
+            point=1-np.sqrt(mses[extra].mean()/mses[base].mean());boot=1-np.sqrt(mses[extra][draws].mean(1)/mses[base][draws].mean(1));ci=interval(point,boot)
+            comparisons.append(dict(axis=group,baseline=base,extended=extra,n_targets=len(rr)//len(LAWS),relative_rmse_reduction=ci['estimate'],lo=ci['lo'],hi=ci['hi']))
+    write_csv(out/'prediction_metrics.csv',metrics);write_csv(out/'prediction_comparisons.csv',comparisons)
+    chosen=[r for r in comparisons if r['extended']=='starting_difficulty'];main=next(r for r in chosen if r['axis']=='joint')
+    gate=main['relative_rmse_reduction']>=c['predictive_min_relative_rmse_gain'] and main['lo']>0 and all(r['relative_rmse_reduction']>0 for r in chosen if r['axis'].startswith('joint_width_'))
+    obj=dict(status='SUPPORTED' if gate else 'NOT_ESTABLISHED',primary_secondary_comparison=main,criterion='>=10% joint gain, lower interval >0, both held-out widths improve',n_seed_blocks=8,p_value=None,all_forecasts_positive=all(r['invalid_predictions']==0 for r in metrics),metrics=metrics,comparisons=comparisons)
+    save_json(out/'prediction_summary.json',obj);return obj
+
+def main():
+    c=json.loads((ROOT/'config.json').read_text());out=ROOT/'results'
+    forecasts=freeze(out,c)  # Final-test outcomes are opened only after all predictions are frozen.
+    test=read(out/'test_metrics.csv');assert len(test)==1200 and len(set(map(key,test)))==1200
+    draws=boot_draws(c);a=intervention(out,c,test,draws);b=prediction(out,c,test,forecasts,draws)
+    print(json.dumps(dict(intervention=a['status'],prediction=b['status'])),flush=True)
+
+if __name__=='__main__':main()
