@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "verified_on": "10-16-2026",
+  "python": "3.11.6",
+  "numpy": "2.2.6",
+  "scipy": "1.16.3",
+  "relative_tolerance": 1e-08,
+  "absolute_tolerance": 1e-08,
+  "analysis_sha256": "ff2f293cb87d3d0a5e2aabdede3deac78966391591f350b6628d5e8a26d37b04",
+  "config_sha256": "df0fc3382f3487f8127e77d37edf18afa9f66f2faf4f2b6f23a578f059dcb3a5",
+  "wrapper_sha256": "7db24eaf189fb225804d993be2f10ec7ead99d52cd23982880747f1aa8d79f3b",
+  "private_originals_checked_this_run": true,
+  "row_order_keys_labels_and_counts": "exact",
+  "alignment_vs_log_breadth": {
+    "n_unique_conditions": 6,
+    "unit": "six designed training conditions, each counted once",
+    "pearson": 0.977968882025704,
+    "spearman": 1.0,
+    "kendall_tau_b": 0.9999999999999999,
+    "p_value": "n/a",
+    "interpretation": "descriptive correlation on the fixed six-condition design; no population inference"
+  },
+  "comparisons": {
+    "actual_math_predictions.csv": {
+      "rows": 144,
+      "published_sha256": "6b7a5decb01f10f7e389551d9ae38b191cadc30b376bba866e9e8df13a47cf48",
+      "reproduced_sha256": "481f6930e7e50c88bb0e94c0eeffec8109bfbc18d01f52c087615cd5c2ea6e73"
+    },
+    "actual_math_comparisons.csv": {
+      "rows": 3,
+      "published_sha256": "78a69d91c02cc970bf40e9ea8b871150d2097bcc6419375409d517c091f4705d",
+      "reproduced_sha256": "0bd25b6289bfe954ee70e3c9b202f67c3beab8724f9231604fe54dc91cb49b1b"
+    },
+    "actual_math_fits.json": {
+      "rows": 144,
+      "published_sha256": "38776cc4e501a2bac258565bdbb1aa9a53656b24324d0446daf19d60080a12c5",
+      "reproduced_sha256": "ff90bf57fdabc2b52a51abf562c71d25b331f56b9ebf5d7837957ed9ae007ec1"
+    }
+  },
+  "numeric_leaves": 1679,
+  "exact_label_leaves": 1159,
+  "max_absolute_difference": 9.703349235223868e-14,
+  "additional_checks": {
+    "public_result_files_equal_private_originals_byte_for_byte": true,
+    "standalone_with_private_source_files_absent": "PASS",
+    "standalone_method": "Reproduce from a temporary copy of public_math and original config/analysis, with no source_data private directory; original metadata preserved."
+  }
+}

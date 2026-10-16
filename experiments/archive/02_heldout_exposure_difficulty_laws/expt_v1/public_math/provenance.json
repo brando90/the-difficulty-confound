@@ -1,0 +1,17 @@
+{
+  "publication_scope": "24 used iso-token mathematics observations, required subset counts, summary, predictions and fitted parameters; unused source observations excluded",
+  "selection": "math_grid.csv rows with T == 21000000, preserving original order and every selected CSV field; verification metadata reduced to six condition n_examples values",
+  "n_observations": 24,
+  "public_subset_sha256": {
+    "math_grid.csv": "62af2fd995fc9f1e49c9752f560634c2eb2c9062f927768e889002d44476ccbd",
+    "E5_decontam_verification.json": "7a911bd9ab70203081e145c2465190bbb61bf4ec70f0e14b3d579d26b2245292"
+  },
+  "original_full_source_sha256": {
+    "E5_decontam_verification.json": "6adc98ac13461011a6f189ada158362d7e8795e91408f17456eb9a32a39b4933",
+    "math_grid.csv": "394d874d5d0a048d3fa8511e5191b9d9bedd312b696a71bc5f1a8ff31b5698ea"
+  },
+  "original_metadata_sha256": "337c6c2281dda1545c43304432a82e232d5ac15856262284d5c1496aab11e514",
+  "original_receipt_note": "results/actual_math_metadata.json is preserved byte-for-byte; its source hashes describe the original full private inputs, not these deliberately reduced public inputs",
+  "subset_matches_original_selected_rows": true,
+  "subset_counts_match_original": true
+}

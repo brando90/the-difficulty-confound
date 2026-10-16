@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "complete_trajectories": 200,
+  "warm_starts": 40,
+  "seed_blocks": 8,
+  "unique_training_manifests": 40,
+  "split_overlap": 0,
+  "per_item_prediction_rows_verified": 3000000,
+  "aggregate_outcomes_verified": 4800,
+  "law_forecasts_verified": 10752,
+  "joint_targets_per_law": 384,
+  "weights_replayed": 240,
+  "max_cross_platform_bits_delta": 0.0,
+  "bootstrap_reproduced": true,
+  "private_files_excluded": true
+}

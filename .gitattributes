@@ -1,2 +1,5 @@
 # Preserve frozen comma-separated tables byte-for-byte, including CSV CRLF endings.
 *.csv -text whitespace=cr-at-eol
+
+# Preserve byte-exact Matplotlib output; path-data whitespace is valid SVG.
+experiments/archive/02_heldout_exposure_difficulty_laws/heldout_laws.svg whitespace=-blank-at-eol

@@ -2,9 +2,9 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/ideas/predictability_bridge/README.md>
 
-**TLDR:** Connect training exposure to checkpoint-relative difficulty, then ask whether it improves forecasts beyond the existing scale, budget, signal-density and coverage coordinates. Keep structural complexity separate. Existing addition runs provide controlled exposure evidence and a verified feature table; they do not identify a scaling law.
+**TLDR:** Connect training exposure to checkpoint-relative difficulty, then ask whether it improves forecasts beyond the existing scale, budget, signal-density and coverage coordinates. Keep structural complexity separate. The completed held-out study tests an alignment-law adaptation: its combined extension misses the primary criterion, while starting difficulty alone improves forecasts in a predeclared secondary analysis.
 
-Created: 10-16-2026. Status: grounded proposal and deterministic export of existing data; no new training or fitted-law result.
+Created: 10-16-2026. Status: original feature export complete; independent held-out predictive-law follow-up complete and archived.
 
 ## Where this connects to the work with Varun
 
@@ -69,7 +69,7 @@ The exporter verifies training counts, labels in valid-label conditions, unchang
 
 **Not identifiable here:** effects or exponents for model size, total training-set size or optimizer budget; all were held fixed. These are final addition accuracies, not RL improvements from an independently measured starting policy, so they must not be pooled as observations of $U$ in the existing RL fit. The exposure counts are compositional and sum to 16,000. Start with categorical carry strata: the observed accuracies are not monotonic in chain length, so an ordinal linear effect is an additional assumption. Any fit after seeing these published outcomes is exploratory. A held-out-seed check alone would not demonstrate extrapolation to a new exposure distribution or model scale.
 
-The next controlled experiment would cross the original task with several model sizes, budgets and milder exposure mixtures while matching nuisance marginals where feasible. Freeze one scale and exposure mixture for forecasting; preserve the original retention criterion or prospectively justify a changed one. This is a proposed follow-up, not a currently running job.
+The follow-up is now complete in [experiments/archive/02_heldout_exposure_difficulty_laws/](../../archive/02_heldout_exposure_difficulty_laws/). It crosses five widths, five mixtures and three checkpoints, withholding entire widths and mixtures from forecasting fits. The full extension reduced joint error 6.80% [-3.52, 14.80], missing its prospective criterion; starting difficulty alone reduced it 15.80% [10.27, 20.52] in a predeclared secondary comparison (95% paired seed bootstrap, eight seeds, 384 aggregate targets; p-val=n/a). It retains fixed addition questions but does not match all nuisance marginals. [Report and limitations](../../archive/02_heldout_exposure_difficulty_laws/RESULTS_heldout_laws.md).
 
 ## Where Kolmogorov complexity belongs
 
@@ -79,4 +79,4 @@ For addition, the common algorithm is short even when its execution requires mor
 
 ## Practical claim
 
-The defensible bridge is: **apparent difficulty is a state of a task–model–training-history combination, and exposure-aware coordinates may improve predictive laws**. The addition result motivates testing that claim while keeping the task fixed. It does not establish that most benchmark difficulty is caused by data, that complexity disappears, or that this covariate has already improved Varun's forecasts.
+The defensible bridge is: **apparent difficulty is a state of a task–model–training-history combination, and exposure-aware coordinates may improve predictive laws**. The addition result motivates testing that claim while keeping the task fixed. It does not establish that most benchmark difficulty is caused by data, that complexity disappears, or that the controlled result validates Varun's original language-model forecasts. The [actual-data companion](../../archive/02_heldout_exposure_difficulty_laws/RESULTS_actual_math.md) finds no improvement from its available breadth proxy; actual starting-difficulty and repeated-exposure measurements were unavailable.
