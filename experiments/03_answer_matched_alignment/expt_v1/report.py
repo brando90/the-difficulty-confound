@@ -45,6 +45,13 @@ def main():
             n=len(np.union1d(warm,z[f'q{q:.2f}']));expected={.1:6552,.3:5616,.5:4680,.7:5616,.9:6552}[q];assert n==expected
             unionrows.append(dict(seed=seed,mixture=q,intervention_pairs=4680,warmup_pairs=4680,union_pairs=n))
     write_csv(out/'warmup_union_counts.csv',unionrows)
+    marginal=read(out/'input_digit_marginals.csv');tvrows=[]
+    for seed in c['seeds']:
+        for col in range(6):
+            def freq(q):return np.array([r['count']/r['n'] for r in sorted([r for r in marginal if (r['seed'],r['column'],r['mixture'])==(seed,col,q)],key=lambda r:r['digit'])])
+            tvrows.append(dict(seed=seed,column=col,total_variation=float(.5*np.sum(abs(freq(.1)-freq(.9))))))
+    write_csv(out/'input_marginal_distances.csv',tvrows)
+    tvmeans=[float(np.mean([r['total_variation'] for r in tvrows if r['column']==col])) for col in range(6)]
     def pp(z):return f"{100*z['estimate']:.2f} [{100*z['lo']:.2f}, {100*z['hi']:.2f}]"
     stats=it['statistics'];gain=pr['primary_secondary_comparison'];gaintext=f"{100*gain['relative_rmse_reduction']:.2f}% [{100*gain['lo']:.2f}, {100*gain['hi']:.2f}]"
     url='https://github.com/brando90/the-difficulty-confound/blob/main/experiments/archive/03_answer_matched_alignment'
@@ -75,6 +82,7 @@ def main():
         lines.append(f"| {r['axis']} | {feature} | {100*r['relative_rmse_reduction']:.2f} [{100*r['lo']:.2f}, {100*r['hi']:.2f}] | {r['n_targets']} |")
     lines += ['', 'All splits and laws: [metrics](expt_v1/results/prediction_metrics.csv), [comparisons](expt_v1/results/prediction_comparisons.csv), [scored forecasts](expt_v1/results/scored_forecasts.csv), [fit coefficients and training IDs](expt_v1/results/frozen_forecasts.json). The incremental exposure and structure contrasts are secondary; no multiple-comparison-adjusted claim is made.','',
     '## Complexity and construct limits','',
+    'Input marginal audit: total variation distance (half the absolute differences summed over ten digits) between endpoint training distributions, averaged across eight seeds, is '+', '.join(f'{x:.4f}' for x in tvmeans)+' for the six input positions (little-endian digits of the first operand, then the second). Zero would mean identical digit marginals; these values quantify the remaining mismatch. [All seed/position distances](expt_v1/results/input_marginal_distances.csv).','',
     'Carry-chain length describes a structural demand of standard column addition; it is not Kolmogorov complexity or an asymptotic runtime lower bound. For an identical evaluation item and fixed reference machine, changing training data does not change the shortest-program description of its answer conditional on the input and task. This invariance requires no computation of that uncomputable quantity. [Detailed distinction and sources](../01_fixed_width_addition_exposure/COMPLEXITY.md).','',
     'A ranking reversal would show that carry structure alone does not determine this learner’s observed difficulty. It would not show that complexity is irrelevant or that data explains most real-world language-model performance. Exact answer matching leaves input-digit marginals and operand distributions unmatched; the intervention changes a whole distribution, not an isolated carry mechanism. The fixed task and evaluator do not establish identical internal strategies. Starting difficulty can encode capacity, optimization and structure as well as familiarity; predictive usefulness is not proof of a data-only mechanism. Conditional answer bits omit model/data transmission costs and are not a full minimum-description-length score.','',
     '## Verification and reproduction','',
