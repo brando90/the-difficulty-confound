@@ -2,7 +2,7 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/03_answer_matched_alignment/results.md>
 
-Status: RUNNING — all 200 declared trajectories admitted; first live check verified 7 complete.
+Status: RUNNING — all 200 declared trajectories admitted; latest milestone verified 105 complete after 766 seconds.
 
 Source freeze: `fd284d4`. Execution: skampere2, persistent session `codex-difficulty-e03-numerical`, numerical child process 1365659, two CPU threads. Three remote Codex profiles failed login before any training; the authenticated master adopted execution through an ordinary-code supervisor.
 

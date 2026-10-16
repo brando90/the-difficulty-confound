@@ -1,11 +1,11 @@
 # Matched-answer experiment checkpoint
 Created: 10-16-2026 13:21 PDT
-Last updated: 10-16-2026 13:41 PDT
+Last updated: 10-16-2026 13:50 PDT
 
 ## Goal
 Test alignment versus carry demand with identical answer distributions, plus prospective held-out prediction.
 ## What ran
-Source fd284d4; skampere2 session codex-difficulty-e03-numerical, child 1365659. Preflight and synthetic supervisor failure detection passed. First heartbeat: 7/200 complete.
+Source fd284d4; skampere2 session codex-difficulty-e03-numerical, child 1365659. Preflight and synthetic supervisor failure detection passed. Latest progress: 105/200 complete after 766 seconds; supervisor healthy.
 ## Results
 Scientific results pending. 117 matched sums; 4,680 intervention examples; 1,872 test, 936 calibration, 936 probe; zero split overlap.
 ## Stuck / blocked
@@ -18,3 +18,4 @@ None.
 ## Log
 - 10-16-2026 13:21 PDT: protocol frozen; new seeds and sampling, same arithmetic reference. Canonical Mac /Users/brandomiranda/the-difficulty-confound; owned remote /dfs/scratch0/brando9/.worktrees/the-difficulty-confound/matched-10-16-2026; cleanup owner master.
 - 10-16-2026 13:39 PDT: three remote Codex profiles failed refresh without scientific work; master adopted numerical supervisor. START sent 1a14670035f2ac4f with all-four BCC verified.
+- 10-16-2026 13:50 PDT: halfway progress verified, 105/200 complete; no outcome inspection or protocol changes.
