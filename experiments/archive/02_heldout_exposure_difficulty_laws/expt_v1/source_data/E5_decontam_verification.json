@@ -1,0 +1,140 @@
+{
+  "config": {
+    "n_gram": 13,
+    "min_overlap": 10,
+    "target_tokens": 21000000,
+    "seed": 42
+  },
+  "dev": {
+    "n_examples": 747,
+    "unique_shingles": 65149
+  },
+  "pool": {
+    "total": 1003160,
+    "kept_after_dedup": 995838,
+    "excluded_pct": 0.73
+  },
+  "thresholds": {
+    "P10": 0.4613174521816489,
+    "P30": 0.5036994660876312,
+    "P50": 0.5423466453171802,
+    "P70": 0.60911686241855,
+    "P90": 0.7101284536374428
+  },
+  "subsets": {
+    "Q10": {
+      "n_examples": 57413,
+      "tokens_est": 21000276.75,
+      "composite_score": {
+        "min": 0.46133599100947736,
+        "max": 0.8241600219696266,
+        "mean": 0.5795511938752249,
+        "median": 0.554265939919046
+      },
+      "top_sources": {
+        "numina_math": 49120,
+        "orca_math": 2667,
+        "math_instruct": 2512,
+        "metamath": 1565,
+        "aqua_rat": 733
+      },
+      "residual_contamination_pct": 0.233,
+      "max_shared_shingles": 9
+    },
+    "Q30": {
+      "n_examples": 57644,
+      "tokens_est": 21000183.75,
+      "composite_score": {
+        "min": 0.5037008654523872,
+        "max": 0.8283974029064767,
+        "mean": 0.6069158642168252,
+        "median": 0.5862496025317329
+      },
+      "top_sources": {
+        "numina_math": 47417,
+        "orca_math": 3384,
+        "math_instruct": 3014,
+        "metamath": 2039,
+        "aqua_rat": 916
+      },
+      "residual_contamination_pct": 0.302,
+      "max_shared_shingles": 9
+    },
+    "Q50": {
+      "n_examples": 61244,
+      "tokens_est": 21000084.0,
+      "composite_score": {
+        "min": 0.5423521020972759,
+        "max": 0.8233555331988031,
+        "mean": 0.6408429863115878,
+        "median": 0.6367296266008023
+      },
+      "top_sources": {
+        "numina_math": 46700,
+        "orca_math": 5198,
+        "math_instruct": 4185,
+        "metamath": 2911,
+        "aqua_rat": 1283
+      },
+      "residual_contamination_pct": 0.376,
+      "max_shared_shingles": 9
+    },
+    "Q70": {
+      "n_examples": 68171,
+      "tokens_est": 21000065.25,
+      "composite_score": {
+        "min": 0.6091182473472182,
+        "max": 0.8295903117339104,
+        "mean": 0.6872025306068643,
+        "median": 0.6871437811898239
+      },
+      "top_sources": {
+        "numina_math": 45046,
+        "orca_math": 9172,
+        "math_instruct": 6113,
+        "metamath": 5154,
+        "aqua_rat": 1690
+      },
+      "residual_contamination_pct": 0.644,
+      "max_shared_shingles": 9
+    },
+    "Q90": {
+      "n_examples": 74933,
+      "tokens_est": 21009427.0,
+      "composite_score": {
+        "min": 0.7101291878502098,
+        "max": 0.8403018383795324,
+        "mean": 0.738359714404497,
+        "median": 0.7347087331641993
+      },
+      "top_sources": {
+        "numina_math": 35148,
+        "orca_math": 18457,
+        "metamath": 13641,
+        "math_instruct": 6304,
+        "aqua_rat": 619
+      },
+      "residual_contamination_pct": 1.448,
+      "max_shared_shingles": 9
+    },
+    "random": {
+      "n_examples": 57063,
+      "tokens_est": 21000005.25,
+      "composite_score": {
+        "min": 0.21982012822795208,
+        "max": 0.823821879595615,
+        "mean": 0.5653476423141088,
+        "median": 0.5428717569192301
+      },
+      "top_sources": {
+        "numina_math": 49045,
+        "orca_math": 2396,
+        "math_instruct": 2358,
+        "metamath": 1446,
+        "open_web_math": 863
+      },
+      "residual_contamination_pct": 0.193,
+      "max_shared_shingles": 9
+    }
+  }
+}

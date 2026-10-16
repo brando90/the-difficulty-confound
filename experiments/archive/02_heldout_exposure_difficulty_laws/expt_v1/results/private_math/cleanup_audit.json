@@ -1,0 +1,13 @@
+{
+  "status": "PRESERVED_AND_IDLE",
+  "files_verified": 1520,
+  "bytes_verified": 63114829,
+  "active_consumers": [],
+  "tracked_changes": 0,
+  "unreachable_objects": 0,
+  "refs": [
+    "337149b051256420e82f746712cf00a79316b682 refs/heads/main",
+    "337149b051256420e82f746712cf00a79316b682 refs/remotes/origin/HEAD",
+    "337149b051256420e82f746712cf00a79316b682 refs/remotes/origin/main"
+  ]
+}

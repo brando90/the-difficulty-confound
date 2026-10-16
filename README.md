@@ -101,6 +101,10 @@ We measure **conditional predictive code length**: how many bits the trained mod
 
 Difficulty can enter a predictive law as a property of the task, starting model, and training history. Our [connection to the projects with Varun](experiments/ideas/predictability_bridge/README.md) separates structural demand, known training exposure, and difficulty measured at a particular checkpoint. It specifies extensions to the existing environment-utility model, leakage controls, and held-out-scale comparisons. The first experiment supplies separate feature and outcome tables but cannot identify scale exponents. The second prospectively tests an adaptation of the alignment-law form on unseen widths and exposure mixtures. The actual-data companion tests a breadth proxy; neither result validates the distinct reinforcement-learning utility law.
 
+## Publication authorization
+
+On 10-16-2026, Brando authorized publication of all code, experiment data, results, and supporting artifacts for this project, including the original companion inputs copied from the alignment-scaling repository: “feel free to publish everything, no need to ask me again.” Treat this as standing project authorization; do not ask again merely because these project artifacts originated in a private source repository. Credentials and unrelated personal material remain outside this research release.
+
 ## Reproduce
 
 Use Python with the [pinned numerical dependencies](experiments/archive/01_fixed_width_addition_exposure/expt_v1/requirements.txt). Recompute and verify the published results from the repository root:

@@ -1,0 +1,9 @@
+{
+  "n_observations": 24,
+  "alpha_log_breadth_correlation": 0.9779688820257039,
+  "sources": {
+    "E5_decontam_verification.json": "6adc98ac13461011a6f189ada158362d7e8795e91408f17456eb9a32a39b4933",
+    "math_grid.csv": "394d874d5d0a048d3fa8511e5191b9d9bedd312b696a71bc5f1a8ff31b5698ea"
+  },
+  "limitation": "Retrospective breadth proxy; four sizes; overlapping training folds; no independent starting difficulty or repeated exposure."
+}

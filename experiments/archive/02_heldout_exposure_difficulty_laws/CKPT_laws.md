@@ -13,8 +13,8 @@ Last updated: 10-16-2026
 - Execution: skampere2; 2 processor threads; 1,532.72 training seconds; no provider calls.
 - Remote checkout: removed after all 1,520 files were preserved; see expt_v1/results/cleanup_receipt.json.
 - Session: codex-the-difficulty-confound-laws-heldouts; training and postprocess complete.
-- Transfer: all 1,520 original files copied and hash-verified; public transfer manifest under results; private original inputs retained locally and ignored.
-- Publication authorization: Brando explicitly approved summary, observations and predictions on 10-16-2026; publish only 24 used rows and six counts plus outputs.
+- Transfer: all 1,520 original files copied and hash-verified; public transfer manifest under results; complete original inputs and transfer receipts now published under expanded authorization.
+- Publication authorization: Brando explicitly authorized all project research artifacts on 10-16-2026 without further publication confirmation; see project README.
 - Continuation: no retraining/refitting or selection; preserve original receipts, coefficients, forecasts, and all declared outcomes.
 ## Log
 - 10-16-2026: Located original laws/data, froze new independent holdouts; verified private/public repository visibility before staging copied data.
@@ -27,3 +27,4 @@ Last updated: 10-16-2026
 - 10-16-2026: LANDED 330f3555312b0780327c0e77cd60599c6e40b525 https://github.com/brando90/the-difficulty-confound/pull/1 2026-10-16T20:06:47.259523+00:00; exact verified result tree matches main; complete artifact audit passed and owned checkout/branch removed.
 - 10-16-2026: Matching RUN DONE email sent after verified publication and cleanup; receipt 1a146536e3e19607, explicitly distinguishing successful execution from the unsuccessful primary hypothesis.
 - 10-16-2026: On explicit user request, emailed the positive predeclared difficulty-only result to the six verified scaling-law collaborators, alongside the failed primary gate and negative original-data result; sent-message receipt 1a14655cc6d692d9 verified in Gmail.
+- 10-16-2026: Expanded standing authorization received: publish everything for this project without asking again. Released complete 51-row source grid, original metadata, original companion outputs, transfer/audit receipts, and historical report; the 24-row fit and all numerical outcomes are unchanged.

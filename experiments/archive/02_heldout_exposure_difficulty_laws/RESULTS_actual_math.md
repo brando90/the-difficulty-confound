@@ -27,7 +27,7 @@ Alignment versus log breadth correlations are Pearson 0.977969, Spearman 1.00000
 | mixture_only | additive | 0.005567 | 0.000068 | 0.745004 | 0.744936 |
 | mixture_only | breadth | 0.005744 | -0.000358 | 0.744578 | 0.744936 |
 
-Brando explicitly authorized publication of this summary, the observations, and the predictions on 10-16-2026. The public input subset contains all 24 used observations and the six required example counts; unused rows and unrelated source metadata remain in the private source copy. [Inputs](expt_v1/public_math/source_data/) · [All predictions](expt_v1/public_math/results/actual_math_predictions.csv) · [Fitted coefficients](expt_v1/public_math/results/actual_math_fits.json).
+Brando explicitly authorized publication of this summary, the observations, and the predictions on 10-16-2026. The public input subset contains all 24 used observations and the six required example counts; the subsequent standing publication authorization also releases the [full original 51-row grid and metadata](expt_v1/source_data/). The additional 27 rows remain outside this fixed-budget analysis. [Inputs](expt_v1/public_math/source_data/) · [All predictions](expt_v1/public_math/results/actual_math_predictions.csv) · [Fitted coefficients](expt_v1/public_math/results/actual_math_fits.json).
 
 Reproduce with `python experiments/archive/02_heldout_exposure_difficulty_laws/expt_v1/reproduce_math.py`. This invokes the frozen fitting/holdout implementation on the published input subset and checks its predictions against the archived original run. The original source-file hashes are recorded in dispatch.json and the original metadata receipt; the public subset has separate hashes. No prediction or outcome is omitted.
 

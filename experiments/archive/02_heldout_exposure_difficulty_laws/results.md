@@ -29,3 +29,5 @@ Controlled intervals are 95% paired seed bootstrap intervals over eight blocks, 
 Brando authorized publication of the companion summary, used observations, and predictions on 10-16-2026. All fitting and forecasting code and configurations remain unchanged from the pre-outcome freeze; reporting and verification were added afterward.
 
 Published in [pull request #1](https://github.com/brando90/the-difficulty-confound/pull/1), merged commit `330f3555312b0780327c0e77cd60599c6e40b525`. All 1,520 original files were preserved and checked before removing the completed remote checkout; [cleanup receipt](expt_v1/results/cleanup_receipt.json).
+
+Expanded publication authorization on 10-16-2026 covers all project research artifacts without further confirmation. [Complete original inputs](expt_v1/source_data/) and [original companion outputs and transfer receipts](expt_v1/results/private_math/) are now public; the 27 source-grid observations outside the 24-row fixed-budget analysis remain unused, and all reported results are unchanged.
