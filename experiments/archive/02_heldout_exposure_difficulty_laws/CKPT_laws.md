@@ -26,3 +26,4 @@ Last updated: 10-16-2026
 - 10-16-2026: Public-subset reproduction passed with max difference 9.70e-14 and no private-input dependency; archived completed folder after checking consumers.
 - 10-16-2026: LANDED 330f3555312b0780327c0e77cd60599c6e40b525 https://github.com/brando90/the-difficulty-confound/pull/1 2026-10-16T20:06:47.259523+00:00; exact verified result tree matches main; complete artifact audit passed and owned checkout/branch removed.
 - 10-16-2026: Matching RUN DONE email sent after verified publication and cleanup; receipt 1a146536e3e19607, explicitly distinguishing successful execution from the unsuccessful primary hypothesis.
+- 10-16-2026: On explicit user request, emailed the positive predeclared difficulty-only result to the six verified scaling-law collaborators, alongside the failed primary gate and negative original-data result; sent-message receipt 1a14655cc6d692d9 verified in Gmail.
