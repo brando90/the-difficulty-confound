@@ -1,0 +1,184 @@
+{
+  "status": "SUPPORTED",
+  "n_seed_blocks": 8,
+  "n_widths": 5,
+  "statistics": {
+    "control_pre": {
+      "estimate": 0.778125,
+      "lo": 0.7557274305555556,
+      "hi": 0.8079166666666666
+    },
+    "target_pre": {
+      "estimate": 0.3241145833333333,
+      "lo": 0.29484375,
+      "hi": 0.3526046006944444
+    },
+    "control_post": {
+      "estimate": 0.8426041666666666,
+      "lo": 0.8288190104166666,
+      "hi": 0.8571701388888888
+    },
+    "target_post": {
+      "estimate": 0.6793402777777777,
+      "lo": 0.6385937500000001,
+      "hi": 0.7220490451388889
+    },
+    "initial_gap": {
+      "estimate": 0.45401041666666664,
+      "lo": 0.43572916666666667,
+      "hi": 0.4721180555555556
+    },
+    "target_gain": {
+      "estimate": 0.3552256944444444,
+      "lo": 0.3375694444444444,
+      "hi": 0.3734201388888889
+    },
+    "recovery_fraction": {
+      "estimate": 0.7824174983748231,
+      "lo": 0.7364511289201157,
+      "hi": 0.830864833565662
+    },
+    "control_change": {
+      "estimate": 0.06447916666666667,
+      "lo": 0.04692664930555556,
+      "hi": 0.07914930555555556
+    },
+    "pure_control_pre": {
+      "estimate": 0.778125,
+      "lo": 0.7557274305555556,
+      "hi": 0.8079166666666666
+    },
+    "pure_target_pre": {
+      "estimate": 0.3244444444444444,
+      "lo": 0.2945130208333333,
+      "hi": 0.3560763888888889
+    },
+    "pure_control_post": {
+      "estimate": 0.8426041666666666,
+      "lo": 0.8288190104166666,
+      "hi": 0.8571701388888888
+    },
+    "pure_target_post": {
+      "estimate": 0.6793402777777778,
+      "lo": 0.6328090277777778,
+      "hi": 0.7288541666666668
+    },
+    "pure_initial_gap": {
+      "estimate": 0.45368055555555553,
+      "lo": 0.43881944444444443,
+      "hi": 0.4690798611111111
+    },
+    "pure_target_gain": {
+      "estimate": 0.35489583333333335,
+      "lo": 0.33274305555555556,
+      "hi": 0.3768402777777778
+    },
+    "pure_recovery_fraction": {
+      "estimate": 0.7822592989438237,
+      "lo": 0.7258194813577518,
+      "hi": 0.8422665798245279
+    },
+    "pure_control_change": {
+      "estimate": 0.06447916666666667,
+      "lo": 0.04692664930555556,
+      "hi": 0.07914930555555556
+    }
+  },
+  "by_width": {
+    "32": {
+      "control_pre": 0.32421875,
+      "target_pre": 0.05390625,
+      "control_post": 0.4512152777777778,
+      "target_post": 0.29314236111111114,
+      "initial_gap": 0.2703125,
+      "target_gain": 0.2392361111111111,
+      "recovery_fraction": 0.894150154819098,
+      "control_change": 0.12699652777777778,
+      "pure_control_pre": 0.32421875,
+      "pure_target_pre": 0.057118055555555554,
+      "pure_control_post": 0.4512152777777778,
+      "pure_target_post": 0.29184027777777777,
+      "pure_initial_gap": 0.26710069444444445,
+      "pure_target_gain": 0.23472222222222222,
+      "pure_recovery_fraction": 0.8928141869972364,
+      "pure_control_change": 0.12699652777777778
+    },
+    "64": {
+      "control_pre": 0.6150173611111112,
+      "target_pre": 0.10763888888888887,
+      "control_post": 0.7934027777777778,
+      "target_post": 0.4744791666666667,
+      "initial_gap": 0.5073784722222222,
+      "target_gain": 0.36684027777777783,
+      "recovery_fraction": 0.7274100631746216,
+      "control_change": 0.17838541666666669,
+      "pure_control_pre": 0.6150173611111112,
+      "pure_target_pre": 0.10781249999999999,
+      "pure_control_post": 0.7934027777777777,
+      "pure_target_post": 0.44947916666666665,
+      "pure_initial_gap": 0.5072048611111111,
+      "pure_target_gain": 0.3416666666666667,
+      "pure_recovery_fraction": 0.6758153445113588,
+      "pure_control_change": 0.17838541666666666
+    },
+    "128": {
+      "control_pre": 0.9923611111111111,
+      "target_pre": 0.45546875,
+      "control_post": 0.9952256944444444,
+      "target_post": 0.89296875,
+      "initial_gap": 0.5368923611111112,
+      "target_gain": 0.4375,
+      "recovery_fraction": 0.8173720453857198,
+      "control_change": 0.002864583333333323,
+      "pure_control_pre": 0.9923611111111111,
+      "pure_target_pre": 0.44947916666666665,
+      "pure_control_post": 0.9952256944444444,
+      "pure_target_post": 0.9026041666666667,
+      "pure_initial_gap": 0.5428819444444444,
+      "pure_target_gain": 0.453125,
+      "pure_recovery_fraction": 0.8324797759967812,
+      "pure_control_change": 0.002864583333333323
+    },
+    "96": {
+      "control_pre": 0.9603298611111111,
+      "target_pre": 0.23541666666666666,
+      "control_post": 0.9754340277777778,
+      "target_post": 0.7462673611111111,
+      "initial_gap": 0.7249131944444445,
+      "target_gain": 0.5108506944444444,
+      "recovery_fraction": 0.7090471630015865,
+      "control_change": 0.015104166666666696,
+      "pure_control_pre": 0.9603298611111111,
+      "pure_target_pre": 0.23072916666666668,
+      "pure_control_post": 0.9754340277777778,
+      "pure_target_post": 0.7673611111111112,
+      "pure_initial_gap": 0.7296006944444444,
+      "pure_target_gain": 0.5366319444444444,
+      "pure_recovery_fraction": 0.7419094433417207,
+      "pure_control_change": 0.015104166666666724
+    },
+    "384": {
+      "control_pre": 0.9986979166666667,
+      "target_pre": 0.7681423611111111,
+      "control_post": 0.9977430555555555,
+      "target_post": 0.98984375,
+      "initial_gap": 0.23055555555555557,
+      "target_gain": 0.22170138888888893,
+      "recovery_fraction": 0.9612633099681669,
+      "control_change": -0.0009548611111111077,
+      "pure_control_pre": 0.9986979166666667,
+      "pure_target_pre": 0.7770833333333333,
+      "pure_control_post": 0.9977430555555555,
+      "pure_target_post": 0.9854166666666667,
+      "pure_initial_gap": 0.22161458333333336,
+      "pure_target_gain": 0.20833333333333337,
+      "pure_recovery_fraction": 0.9397379691412381,
+      "pure_control_change": -0.0009548611111111077
+    }
+  },
+  "criteria": {
+    "min_initial_gap": 0.15,
+    "min_recovery_fraction": 0.5,
+    "max_control_drop": 0.05
+  }
+}
