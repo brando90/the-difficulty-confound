@@ -1,4 +1,4 @@
-"""Carry-marginal matched heterogeneous pretraining, balanced remediation, and prequential MDL code length."""
+"""Carry-marginal matched heterogeneous pretraining, balanced remediation, and stratum-resolved prequential MDL code length."""
 import argparse
 from concurrent.futures import ProcessPoolExecutor
 import json
@@ -126,27 +126,46 @@ def evaluate(net, x, y, ids):
     return np.concatenate(preds), np.concatenate(bits)
 
 
-def advance(net, x, y, ids, c, generator, steps, on_step=None):
+def advance(net, x, y, ids, stratum_ids, cell_ids, c, generator, steps, on_step=None):
     opt = torch.optim.AdamW(net.parameters(), lr=c['learning_rate'], weight_decay=c['weight_decay'])
     tx, ty = x[ids], y[ids]
-    cum_bits = 0.0
+    s_arr = stratum_ids[ids]
+    c_arr = cell_ids[ids]
+    cum_s_bits = {1: 0.0, 2: 0.0}
+    cum_s_n = {1: 0, 2: 0}
+    cum_c_bits = {cid: 0.0 for cid in range(4)}
+    cum_c_n = {cid: 0 for cid in range(4)}
     for step in range(1, steps + 1):
         batch = torch.randint(len(tx), (c['batch_size'],), generator=generator)
         logits = net(tx[batch])
-        # Prequential online MDL code length (in bits per 4-digit answer before weight update)
-        step_bits = float(
-            F.cross_entropy(logits.reshape(-1, 10), ty[batch].reshape(-1), reduction='sum').item()
-            / (c['batch_size'] * math.log(2))
-        )
-        cum_bits += step_bits
+        if on_step is not None:
+            b_np = batch.numpy()
+            item_bits = (
+                F.cross_entropy(logits.reshape(-1, 10), ty[batch].reshape(-1), reduction='none')
+                .detach()
+                .reshape(-1, 4)
+                .sum(1)
+                .numpy()
+                / math.log(2)
+            )
+            bs = s_arr[b_np]
+            bc = c_arr[b_np]
+            for s in (1, 2):
+                m = bs == s
+                cum_s_bits[s] += float(item_bits[m].sum())
+                cum_s_n[s] += int(m.sum())
+            for cid in range(4):
+                mc = bc == cid
+                cum_c_bits[cid] += float(item_bits[mc].sum())
+                cum_c_n[cid] += int(mc.sum())
         loss = F.cross_entropy(logits.reshape(-1, 10), ty[batch].reshape(-1))
         if not torch.isfinite(loss):
             raise FloatingPointError('Nonfinite training loss')
         opt.zero_grad(set_to_none=True)
         loss.backward()
         opt.step()
-        if on_step:
-            on_step(step, cum_bits / step, cum_bits * c['batch_size'])
+        if on_step is not None:
+            on_step(step, cum_s_bits, cum_s_n, cum_c_bits, cum_c_n)
 
 
 def run_seed(seed):
@@ -191,6 +210,8 @@ def run_seed(seed):
                 x,
                 y,
                 trains[q_pre],
+                stratum,
+                cell_arr,
                 c,
                 torch.Generator().manual_seed(seed + int(round(q_pre * 1000)) + 20000),
                 c['pretrain_steps'],
@@ -209,7 +230,7 @@ def run_seed(seed):
                     dict(seed=seed, width=width, mixture=q_pre, carry_chain=s, starting_bits=difficulty[s], n=720)
                 )
 
-            def record_eval(step, mean_preq_bits=0.0, total_preq_bits=0.0):
+            def record_eval(step, cum_s_bits=None, cum_s_n=None, cum_c_bits=None, cum_c_n=None):
                 target_dict = pre_metrics if step == 0 else metrics
                 for name in target_dict:
                     ids = splits[name]
@@ -222,6 +243,8 @@ def run_seed(seed):
                     )
                     for s in (1, 2):
                         mask = stratum[ids] == s
+                        preq_mean = float(cum_s_bits[s] / cum_s_n[s]) if (cum_s_bits and cum_s_n[s] > 0) else 0.0
+                        preq_tot = float(cum_s_bits[s]) if cum_s_bits else 0.0
                         target_dict[name].append(
                             dict(
                                 seed=seed,
@@ -234,8 +257,8 @@ def run_seed(seed):
                                 stratum_fraction=q_post if s == 2 else 1 - q_post,
                                 pretrain_stratum_fraction=q_pre if s == 2 else 1 - q_pre,
                                 starting_bits=difficulty[s],
-                                prequential_mean_bits=mean_preq_bits,
-                                prequential_total_bits=total_preq_bits,
+                                prequential_mean_bits=preq_mean,
+                                prequential_total_bits=preq_tot,
                                 mean_bits=float(loss[mask].mean()),
                                 correct=int(np.sum(prediction[mask] == (a + b)[ids[mask]])),
                                 n=int(mask.sum()),
@@ -244,6 +267,9 @@ def run_seed(seed):
                     if name == 'test':
                         for cid in range(4):
                             cmask = cell_arr[ids] == cid
+                            c_preq_mean = (
+                                float(cum_c_bits[cid] / cum_c_n[cid]) if (cum_c_bits and cum_c_n[cid] > 0) else 0.0
+                            )
                             cell_metrics.append(
                                 dict(
                                     seed=seed,
@@ -251,24 +277,26 @@ def run_seed(seed):
                                     mixture=q_pre,
                                     steps=step,
                                     cell_id=cid,
-                                    prequential_mean_bits=mean_preq_bits,
+                                    prequential_mean_bits=c_preq_mean,
                                     mean_bits=float(loss[cmask].mean()),
                                     correct=int(np.sum(prediction[cmask] == (a + b)[ids[cmask]])),
                                     n=int(cmask.sum()),
                                 )
                             )
 
-            record_eval(0, 0.0, 0.0)
+            record_eval(0)
 
-            def on_step(step, mean_preq_bits, total_preq_bits):
+            def on_step(step, cum_s_bits, cum_s_n, cum_c_bits, cum_c_n):
                 if step in c['checkpoints']:
-                    record_eval(step, mean_preq_bits, total_preq_bits)
+                    record_eval(step, cum_s_bits, cum_s_n, cum_c_bits, cum_c_n)
 
             advance(
                 net,
                 x,
                 y,
                 post_ids,
+                stratum,
+                cell_arr,
                 c,
                 torch.Generator().manual_seed(seed + 10000),
                 max(c['checkpoints']),

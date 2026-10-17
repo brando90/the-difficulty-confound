@@ -48,8 +48,9 @@ def interval(value, samples):
 def freeze(out, c):
     cal = read(out / 'calibration_metrics.csv')
     assert len(cal) == 1200 and len(set(map(key, cal))) == 1200
-    features = [{k: v for k, v in r.items() if k not in ('mean_bits', 'correct', 'n')} for r in cal]
-    assert all(not {'mean_bits', 'correct', 'n'} & r.keys() for r in features)
+    outcome_cols = {'mean_bits', 'correct', 'n', 'prequential_mean_bits', 'prequential_total_bits'}
+    features = [{k: v for k, v in r.items() if k not in outcome_cols} for r in cal]
+    assert all(not outcome_cols & r.keys() for r in features)
     fits = []
     predictions = []
     for seed in c['seeds']:
@@ -163,10 +164,124 @@ def intervention(out, c, pre_test, cell_test, draws):
     return obj
 
 
-def retention(out, c, pre_test, post_test, draws):
+def prequential_mdl(out, c, post_test, cell_test, draws):
+    step = max(c['checkpoints'])
+    table = {
+        (r['seed'], r['width'], r['mixture'], r['carry_chain']): r['prequential_mean_bits']
+        for r in post_test
+        if r['steps'] == step
+    }
+    ctable = {
+        (r['seed'], r['width'], r['mixture'], int(r['cell_id'])): r['prequential_mean_bits']
+        for r in cell_test
+        if r['steps'] == step
+    }
+    widths = c['train_widths'] + c['heldout_widths']
+    rows = []
+    for seed in c['seeds']:
+        for w in widths:
+            # At q_pre=0.1, s=2 (paired zero/double carry) was scarce so online adaptation bits on s=2 > s=1
+            mdl_low = table[seed, w, 0.1, 2] - table[seed, w, 0.1, 1]
+            # At q_pre=0.9, s=1 (isolated single carry) was scarce so online adaptation bits on s=1 > s=2
+            mdl_high = table[seed, w, 0.9, 1] - table[seed, w, 0.9, 2]
+            pure_mdl_low = ctable[seed, w, 0.1, 3] - 0.5 * (ctable[seed, w, 0.1, 1] + ctable[seed, w, 0.1, 2])
+            pure_mdl_high = 0.5 * (ctable[seed, w, 0.9, 1] + ctable[seed, w, 0.9, 2]) - ctable[seed, w, 0.9, 3]
+            rows.append(
+                dict(
+                    seed=seed,
+                    width=w,
+                    mdl_low=mdl_low,
+                    mdl_high=mdl_high,
+                    mdl_alignment=(mdl_low + mdl_high) / 2,
+                    pure_mdl_low=pure_mdl_low,
+                    pure_mdl_high=pure_mdl_high,
+                    pure_mdl_alignment=(pure_mdl_low + pure_mdl_high) / 2,
+                    preq_s1_q01=table[seed, w, 0.1, 1],
+                    preq_s2_q01=table[seed, w, 0.1, 2],
+                    preq_s1_q05=table[seed, w, 0.5, 1],
+                    preq_s2_q05=table[seed, w, 0.5, 2],
+                    preq_s1_q09=table[seed, w, 0.9, 1],
+                    preq_s2_q09=table[seed, w, 0.9, 2],
+                )
+            )
+    write_csv(out / 'prequential_mdl_seed_width.csv', rows)
+    stat_names = [k for k in rows[0] if k not in ('seed', 'width')]
+    seedrows = [
+        {name: float(np.mean([r[name] for r in rows if r['seed'] == s])) for name in stat_names}
+        for s in c['seeds']
+    ]
+    summaries = {}
+    for name in stat_names:
+        values = np.array([r[name] for r in seedrows])
+        summaries[name] = interval(values.mean(), values[draws].mean(1))
+    bywidth = {
+        str(w): {n: float(np.mean([r[n] for r in rows if r['width'] == w])) for n in stat_names}
+        for w in widths
+    }
+    supported = (
+        all(summaries[n]['estimate'] > 0 and summaries[n]['lo'] > 0 for n in ['mdl_low', 'mdl_high', 'pure_mdl_low', 'pure_mdl_high'])
+        and all(bywidth[str(w)][n] > 0 for w in widths for n in ['mdl_low', 'mdl_high', 'pure_mdl_low', 'pure_mdl_high'])
+    )
+    # Also evaluate how well stable_difficulty vs stable_base predicts online prequential_mean_bits
+    cal = read(out / 'calibration_metrics.csv')
+    test = post_test
+    preq_cal = [{**r, 'mean_bits': r['prequential_mean_bits']} for r in cal]
+    preq_preds = []
+    for seed in c['seeds']:
+        training = [r for r in preq_cal if r['seed'] == seed and axis(r, c) == 'fit']
+        targets = [r for r in preq_cal if r['seed'] == seed and axis(r, c) != 'fit']
+        for law in ('stable_base', 'stable_difficulty', 'stable_oracle_history'):
+            fit = fit_law(training, law, c)
+            z, _ = design(targets, law)
+            pred = np.exp(z @ np.array(fit['coefficients']))
+            for r, v in zip(targets, pred):
+                preq_preds.append(
+                    dict(
+                        seed=seed,
+                        width=r['width'],
+                        mixture=r['mixture'],
+                        steps=r['steps'],
+                        carry_chain=r['carry_chain'],
+                        axis=axis(r, c),
+                        law=law,
+                        predicted_preq_bits=float(v),
+                        observed_preq_bits=float(r['prequential_mean_bits']),
+                        error=float(v - r['prequential_mean_bits']),
+                    )
+                )
+    joint_rows = [r for r in preq_preds if r['axis'] == 'joint']
+    mses = {
+        law: np.array([np.mean([r['error'] ** 2 for r in joint_rows if r['law'] == law and r['seed'] == s]) for s in c['seeds']])
+        for law in ('stable_base', 'stable_difficulty', 'stable_oracle_history')
+    }
+    gain_pt = 1 - np.sqrt(mses['stable_difficulty'].mean() / mses['stable_base'].mean())
+    gain_boot = 1 - np.sqrt(mses['stable_difficulty'][draws].mean(1) / mses['stable_base'][draws].mean(1))
+    gain_ci = interval(gain_pt, gain_boot)
+    rmse_base = interval(np.sqrt(mses['stable_base'].mean()), np.sqrt(mses['stable_base'][draws].mean(1)))
+    rmse_diff = interval(np.sqrt(mses['stable_difficulty'].mean()), np.sqrt(mses['stable_difficulty'][draws].mean(1)))
+    rmse_orac = interval(np.sqrt(mses['stable_oracle_history'].mean()), np.sqrt(mses['stable_oracle_history'][draws].mean(1)))
+    obj = dict(
+        status='SUPPORTED' if supported else 'NOT_ESTABLISHED',
+        predictive_mdl_status='SUPPORTED' if (gain_ci['estimate'] >= c['predictive_min_relative_rmse_gain'] and gain_ci['lo'] > 0) else 'NOT_ESTABLISHED',
+        statistics=summaries,
+        by_width=bywidth,
+        prequential_predictive_law=dict(
+            stable_base_rmse=rmse_base,
+            stable_difficulty_rmse=rmse_diff,
+            stable_oracle_history_rmse=rmse_orac,
+            relative_rmse_reduction=gain_ci,
+        ),
+    )
+    save_json(out / 'prequential_mdl_summary.json', obj)
+    return obj
+
+
+def retention(out, c, pre_test, post_test, cell_test, draws):
     pre = {(r['seed'], r['width'], r['mixture'], r['carry_chain']): r['correct'] / r['n'] for r in pre_test}
     step = max(c['checkpoints'])
     post = {(r['seed'], r['width'], r['mixture'], r['carry_chain']): r['correct'] / r['n'] for r in post_test if r['steps'] == step}
+    cpre = {(r['seed'], r['width'], r['mixture'], int(r['cell_id'])): r['correct'] / r['n'] for r in cell_test if r['steps'] == 0}
+    cpost = {(r['seed'], r['width'], r['mixture'], int(r['cell_id'])): r['correct'] / r['n'] for r in cell_test if r['steps'] == step}
     widths = c['train_widths'] + c['heldout_widths']
     rows = []
     for seed in c['seeds']:
@@ -176,6 +291,14 @@ def retention(out, c, pre_test, post_test, draws):
             gap0 = c1_pre - t2_pre
             gain2 = t2_post - t2_pre
             drop1 = c1_post - c1_pre
+            # Pure carry-cell retention: single-carry (1,0)+(0,1) control vs cascading two-carry (1,1) target
+            pc_pre = 0.5 * (cpre[seed, w, 0.1, 1] + cpre[seed, w, 0.1, 2])
+            pt_pre = cpre[seed, w, 0.1, 3]
+            pc_post = 0.5 * (cpost[seed, w, 0.1, 1] + cpost[seed, w, 0.1, 2])
+            pt_post = cpost[seed, w, 0.1, 3]
+            pgap0 = pc_pre - pt_pre
+            pgain = pt_post - pt_pre
+            pdrop = pc_post - pc_pre
             rows.append(
                 dict(
                     seed=seed,
@@ -188,6 +311,14 @@ def retention(out, c, pre_test, post_test, draws):
                     target_gain=gain2,
                     recovery_fraction=gain2 / gap0 if gap0 > 0 else 0.0,
                     control_change=drop1,
+                    pure_control_pre=pc_pre,
+                    pure_target_pre=pt_pre,
+                    pure_control_post=pc_post,
+                    pure_target_post=pt_post,
+                    pure_initial_gap=pgap0,
+                    pure_target_gain=pgain,
+                    pure_recovery_fraction=pgain / pgap0 if pgap0 > 0 else 0.0,
+                    pure_control_change=pdrop,
                 )
             )
     write_csv(out / 'retention_seed_width.csv', rows)
@@ -196,6 +327,8 @@ def retention(out, c, pre_test, post_test, draws):
         sr = [r for r in rows if r['seed'] == s]
         ig = float(np.mean([r['initial_gap'] for r in sr]))
         tg = float(np.mean([r['target_gain'] for r in sr]))
+        pig = float(np.mean([r['pure_initial_gap'] for r in sr]))
+        ptg = float(np.mean([r['pure_target_gain'] for r in sr]))
         seed_stats.append(
             dict(
                 seed=s,
@@ -207,6 +340,14 @@ def retention(out, c, pre_test, post_test, draws):
                 target_gain=tg,
                 recovery_fraction=tg / ig,
                 control_change=float(np.mean([r['control_change'] for r in sr])),
+                pure_control_pre=float(np.mean([r['pure_control_pre'] for r in sr])),
+                pure_target_pre=float(np.mean([r['pure_target_pre'] for r in sr])),
+                pure_control_post=float(np.mean([r['pure_control_post'] for r in sr])),
+                pure_target_post=float(np.mean([r['pure_target_post'] for r in sr])),
+                pure_initial_gap=pig,
+                pure_target_gain=ptg,
+                pure_recovery_fraction=ptg / pig,
+                pure_control_change=float(np.mean([r['pure_control_change'] for r in sr])),
             )
         )
     summaries = {}
@@ -216,18 +357,46 @@ def retention(out, c, pre_test, post_test, draws):
     ig_v = np.array([r['initial_gap'] for r in seed_stats])
     tg_v = np.array([r['target_gain'] for r in seed_stats])
     summaries['recovery_fraction'] = interval(tg_v.mean() / ig_v.mean(), tg_v[draws].mean(1) / ig_v[draws].mean(1))
+    pig_v = np.array([r['pure_initial_gap'] for r in seed_stats])
+    ptg_v = np.array([r['pure_target_gain'] for r in seed_stats])
+    summaries['pure_recovery_fraction'] = interval(ptg_v.mean() / pig_v.mean(), ptg_v[draws].mean(1) / pig_v[draws].mean(1))
+    by_width = {
+        str(w): {
+            n: float(np.mean([r[n] for r in rows if r['width'] == w]))
+            for n in [
+                'control_pre',
+                'target_pre',
+                'control_post',
+                'target_post',
+                'initial_gap',
+                'target_gain',
+                'recovery_fraction',
+                'control_change',
+                'pure_control_pre',
+                'pure_target_pre',
+                'pure_control_post',
+                'pure_target_post',
+                'pure_initial_gap',
+                'pure_target_gain',
+                'pure_recovery_fraction',
+                'pure_control_change',
+            ]
+        }
+        for w in widths
+    }
     passed = (
-        summaries['initial_gap']['lo'] >= c['retention_min_initial_gap']
-        and summaries['recovery_fraction']['lo'] >= c['retention_min_recovery_fraction']
-        and summaries['target_post']['estimate'] >= c['retention_min_target_accuracy']
-        and summaries['control_change']['estimate'] >= -c['retention_max_control_drop']
-        and summaries['control_change']['lo'] >= -c['retention_max_control_drop']
+        summaries['pure_initial_gap']['lo'] >= c['retention_min_initial_gap']
+        and summaries['pure_recovery_fraction']['lo'] >= c['retention_min_recovery_fraction']
+        and summaries['pure_target_post']['estimate'] >= c['retention_min_target_accuracy']
+        and summaries['pure_control_change']['estimate'] >= -c['retention_max_control_drop']
+        and summaries['pure_control_change']['lo'] >= -c['retention_max_control_drop']
     )
     obj = dict(
         status='SUPPORTED' if passed else 'NOT_ESTABLISHED',
         n_seed_blocks=8,
         n_widths=5,
         statistics=summaries,
+        by_width=by_width,
         criteria=dict(
             min_initial_gap=c['retention_min_initial_gap'],
             min_recovery_fraction=c['retention_min_recovery_fraction'],
@@ -339,13 +508,16 @@ def main():
     assert len(pre_test) == 400 and len(test) == 1200 and len(set(map(key, test))) == 1200
     draws = boot_draws(c)
     a = intervention(out, c, pre_test, cell_test, draws)
-    ret = retention(out, c, pre_test, test, draws)
+    mdl = prequential_mdl(out, c, test, cell_test, draws)
+    ret = retention(out, c, pre_test, test, cell_test, draws)
     b = prediction(out, c, test, forecasts, draws)
     print(
         json.dumps(
             dict(
                 intervention=a['status'],
                 pure_carry_intervention=a['pure_carry_status'],
+                prequential_mdl_reversal=mdl['status'],
+                prequential_mdl_prediction=mdl['predictive_mdl_status'],
                 retention=ret['status'],
                 prediction=b['status'],
                 repair=b['repair_status'],
