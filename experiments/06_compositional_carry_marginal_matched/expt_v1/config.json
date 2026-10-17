@@ -1,0 +1,56 @@
+{
+  "digits": 3,
+  "seeds": [
+    6101,
+    6202,
+    6303,
+    6404,
+    6505,
+    6606,
+    6707,
+    6808
+  ],
+  "split_seed": 20261026,
+  "train_widths": [
+    32,
+    64,
+    128
+  ],
+  "heldout_widths": [
+    96,
+    384
+  ],
+  "train_mixtures": [
+    0.1,
+    0.5,
+    0.9
+  ],
+  "heldout_mixtures": [
+    0.2,
+    0.8
+  ],
+  "minimum_pairs_per_answer_cell": 28,
+  "train_per_answer": 40,
+  "test_per_answer_cell": 4,
+  "calibration_per_answer_cell": 2,
+  "probe_per_answer_cell": 2,
+  "warmup_steps": 500,
+  "checkpoints": [
+    300,
+    1000,
+    3000
+  ],
+  "batch_size": 256,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "threads": 2,
+  "workers": 8,
+  "bootstrap_draws": 20000,
+  "analysis_seed": 26102026,
+  "crossover_min_gap": 0.05,
+  "pure_carry_crossover_min_gap": 0.1,
+  "predictive_min_relative_rmse_gain": 0.1,
+  "max_wall_seconds": 5400,
+  "ridge_lambda": 0.01,
+  "difficulty_elasticity_max": 1.0
+}
