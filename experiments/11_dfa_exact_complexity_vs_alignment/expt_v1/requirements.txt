@@ -1,0 +1,6 @@
+# torch from https://download.pytorch.org/whl/cpu
+torch==2.14.1+cpu
+numpy==2.5.4
+scipy==1.18.1
+matplotlib==3.11.2
+pytest==9.1.1

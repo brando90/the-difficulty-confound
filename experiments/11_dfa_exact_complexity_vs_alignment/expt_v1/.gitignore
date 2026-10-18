@@ -1,0 +1,8 @@
+results/checkpoints/
+results_pilot/checkpoints/
+results/lstm_arm/checkpoints/
+*.tar
+*.tar.zst
+__pycache__/
+.pytest_cache/
+*.tmp

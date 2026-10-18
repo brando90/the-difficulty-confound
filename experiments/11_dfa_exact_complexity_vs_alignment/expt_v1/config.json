@@ -1,0 +1,89 @@
+{
+  "experiment": "11_dfa_exact_complexity_vs_alignment",
+  "seeds": [11101, 11202, 11303, 11404, 11505, 11606, 11707, 11808],
+  "pilot_seed": 11909,
+  "task_seed": 20261011,
+  "analysis_seed": 29101126,
+  "bootstrap_draws": 20000,
+
+  "n_levels": [4, 8, 16, 32],
+  "targets_per_level": 4,
+  "distractors_per_level": 4,
+  "candidates_per_level": 64,
+  "sampler_overprovision": 1.25,
+  "accept_range": [0.35, 0.65],
+  "per_length_accept_range": [0.10, 0.90],
+
+  "alphabet": ["a", "b"],
+  "length_min": 8,
+  "length_max": 24,
+  "test_hash_byte_below": 32,
+  "test_size": 4096,
+  "pool_per_length": 4096,
+
+  "alphas": [0.05, 0.15, 0.4, 1.0],
+  "fit_n": [4, 8, 32],
+  "heldout_n": [16],
+  "fit_alphas": [0.05, 0.4, 1.0],
+  "heldout_alphas": [0.15],
+  "T_checkpoints": [512, 1024, 2048, 4096, 8192, 16384, 32768, 65536],
+  "fit_T_max": 32768,
+  "pilot_T_checkpoints": [512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072],
+
+  "batch_size": 64,
+  "lr": 0.001,
+  "weight_decay": 0.01,
+  "betas": [0.9, 0.999],
+  "grad_clip": 1.0,
+  "warmup_steps": 8,
+
+  "d_model": 64,
+  "n_layers": 2,
+  "n_heads": 4,
+  "d_mlp": 256,
+  "max_positions": 25,
+  "expected_parameters": 104002,
+
+  "eps_star_primary": 0.1,
+  "eps_star_levels": [0.3, 0.1, 0.03],
+  "eps_res": 0.001,
+  "eps_curve": [0.001, 1.0, 61],
+  "K_bits_center": 86.8,
+  "plateau_ratio": 0.8,
+  "plateau_min_bits": 0.1,
+  "plateau_reference_T": 16384,
+  "gap_reference_T": 4096,
+
+  "gates": {
+    "g1_min_multiplier": 2.0,
+    "g1_lb_above": 1.0,
+    "g2_min_rel_gain": 0.10,
+    "g3b_min_rel_gain": 0.05,
+    "g4_min_E": 1.0,
+    "g4_mf_censor_fallback": 0.5,
+    "g4_mf_fallback_eps": 0.3,
+    "g5_max_ratio": 0.5,
+    "g5_ub_below": 1.0,
+    "g6_min_rel_gain": 0.10,
+    "g7_min_spearman": 0.5
+  },
+
+  "workers": 4,
+  "threads": 1,
+  "max_wall_seconds": 18000,
+
+  "lstm": {"embed": 32, "hidden": 128, "expected_parameters": 84290, "min_minutes_left": 45},
+
+  "fit": {
+    "gamma_bounds": [0.001, 3.0],
+    "eta_bounds": [0.0, 3.0],
+    "kappa_bounds": [-5.0, 5.0],
+    "gamma_starts": [0.1, 0.3, 0.6, 1.2],
+    "eta_starts": [0.25, 0.75, 1.25, 2.0],
+    "kappa_starts": [-0.5, 0.5, 1.0, 2.0],
+    "gamma1_starts": [-0.15, -0.05, 0.0, 0.05],
+    "both_starts": [[0.0, 0.0], [1.0, 0.0], [0.0, -0.1], [1.0, -0.1]],
+    "floor_a1_starts": [0.0, 0.001, 0.01, 0.1],
+    "agreement_rel_tol": 0.0001
+  }
+}
