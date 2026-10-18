@@ -139,10 +139,12 @@ Claims will be limited to the models, task families, and training interventions 
 
 ## Status
 
-Nine controlled experiments are complete and archived with full artifacts:
+Ten controlled experiments are complete and archived with full artifacts:
 - **Experiments 03, 04, 05, 06, 07, and 08** support the prespecified difficulty-ranking reversal under exact answer matching—including **Experiments 06, 07, and 08**, which hold exact per-column carry rates fixed at 50% ones / 50% tens and reduce input-digit marginal TV distance to `0.0398`, isolating a pure compositional exposure reversal across final accuracy, prequential online MDL code length, and verifiable-reward RL utility ($U = \text{Acc}_T - \text{Acc}_0$).
 - **Experiments 05, 07, and 08** demonstrate that under heterogeneous pretraining histories ($q_{\text{pre}}$), probed starting difficulty reduces joint held-out conditional loss RMSE by **47.20%** (Expt 05), **36.22%** (Expt 07), and **39.87%** (Expt 08 under RLVR)—plus **56.93%** on prequential online MDL (Expt 07)—compared with 3.48% (Expt 04) and 1.94% (Expt 06) when starting models share a constant warmup. Control accuracy on previously mastered strata rises after supervised balanced post-training (**+1.09 pp** in Expt 05, **+5.13 pp** in Expt 07) and pure 0/1 verifiable-reward RL (**+6.45 pp** in Expt 08). The full remediation gate passes in Expts 05 and 08 but is `NOT_ESTABLISHED` in Expt 07 (pooled target accuracy 81.09%, below 85%). Experiment 05's extrapolation-repair gate is also `NOT_ESTABLISHED` (-0.82% [-1.11, -0.57]); its unconstrained law did not blow up, so there was nothing to repair.
 - **Experiment 09** shows that bounding the RL utility law by remaining headroom repairs its near-ceiling extrapolation failure (**73.72% [70.43, 77.26]** RMSE reduction; 128 → 0 impossible forecasts), while probe features inside the bound (**8.10% [2.52, 14.39]**) and signal density beyond group size (**0.96% [0.44, 1.54]**) do not reach the 10% gate (`NOT_ESTABLISHED`).
+- **Experiment 10** replicates the heterogeneous pretraining and remediation design on **autoregressive causal transformers** (2 layers, 4 attention heads, digit-by-digit causal generation; 200 checkpoints $\times$ 5 widths). At width 32, the compositional reversal (**11.77 pp** gap) and remediation (**94.52%** recovery, **+0.23 pp** retention) replicate cleanly. But transformers exhibit vastly higher sample-efficiency than MLPs on arithmetic tokens: at widths 64–384, models saturate at ceiling accuracy (>99.8% to 100.0%, loss < 0.005 bits) after 1,500 pretraining steps, leaving no residual headroom to forecast. Under the frozen criteria, all 5 prospective gates are recorded as `NOT_ESTABLISHED`.
+
 
 ## What stays fixed—and what does not
 

@@ -82,18 +82,27 @@ Finally, in [experiments/archive/08_rlvr_verifiable_reward_utility_laws/](../../
 2. **Pure 0/1 RLVR achieves natural no-harm retention:** Pure 0/1 exact-sum RLVR recovered **$78.23\%$ $[72.58, 84.23]$** of the initial pure compositional gap (`+35.49 pp` on cascading two-carry `(1,1)`), while single-carry control accuracy *improved* by **$+6.45$ $[+4.69, +7.91]$ percentage points** (`77.81% → 84.26%`), because group-relative RL assigns zero advantage ($\hat{A}_{b,g}=0$) whenever all $G=16$ rollouts on an already-mastered item succeed.
 3. **Why additive linear RL utility laws need a headroom ceiling:** At interpolated held-out width 96, adding stochastic rollout signal density $\log \rho_{m_0}$, headroom $H_{m_0}$, and $\log D_{m_0}$ cut RL utility RMSE by **$48.56\%$ $[41.65, 57.30]$** (`14.59 → 7.50` pp, beating oracle history by **$12.01\%$**). At extrapolated near-ceiling width 384 (where $\text{Acc}_0$ is already $78\%\text{–}99.8\%$), however, the *additive linear* utility form from `rl-4-code-verification` overshot remaining headroom $1 - \text{Acc}_0$ (`19.71 → 27.38` pp), pinpointing the need for a headroom-bounded RL utility law.
 
+## Headroom-bounded RLVR utility laws and autoregressive transformers
+
+In [experiments/archive/09_headroom_bounded_rlvr_utility_law/](../../experiments/archive/09_headroom_bounded_rlvr_utility_law/RESULTS_headroom_bounded.md), we tested the headroom-bounded RLVR utility model ($\widehat{U} = (1 - \text{Acc}_0)(1 - e^{-r_\theta})$) across 800 RLVR trajectories and four group sizes ($G \in \{4, 8, 16, 64\}$). The bounded form resolved Experiment 08's width-384 overshoot, delivering a **$73.72\%$ $[70.43, 77.26]$** joint RMSE reduction over the additive linear model and cutting impossible out-of-bounds forecasts from 128 to 0.
+
+In [experiments/archive/10_autoregressive_transformer_replication/](../../experiments/archive/10_autoregressive_transformer_replication/RESULTS_transformer_history.md), we tested whether the thesis transfers from feedforward MLPs to **autoregressive causal transformers** (2 layers, 4 attention heads, token-by-token causal generation; 200 checkpoints $\times$ 5 widths). The transformer architecture showed a dramatic difference in sample-efficiency:
+- At width 32, the compositional ranking reversal replicated clearly: single-carry accuracy led by **$+11.77$ pp** ($99.50\%$ vs $87.73\%$) at $q_{\text{pre}}=0.10$, and reversed at $q_{\text{pre}}=0.90$ ($97.50\%$ vs $99.88\%$), with balanced remediation recovering **$94.52\%$** of the gap with **$+0.23$ pp** retention.
+- At widths 64, 96, 128, and 384, however, the causal autoregressive transformer saturated at ceiling accuracy (>99.8% to 100.0%, loss < 0.005 bits) after 1,500 pretraining steps, leaving virtually zero error to predict across both carry strata. This established that transformers learn arithmetic far more efficiently than MLPs, compressing the headroom into smaller model scales and shorter pretraining horizons.
+
 ## The claim I would defend
 
 Training alignment can reverse an apparent difficulty ranking—across final accuracy, prequential online MDL code length, and verifiable-reward RL improvement utility—while the measured task, exact answer distribution, and even per-column carry frequencies stay fixed. Moreover, when models arrive with different prior training histories, an independent starting-difficulty probe substantially improves held-out post-training forecasts ($36.22\%\text{–}47.20\%$ loss RMSE reduction; $56.93\%$ prequential MDL RMSE reduction) and targeted supervised or RLVR remediation narrows the difficulty gap while control accuracy rises rather than falls. The full remediation gate still failed in Experiment 07, where the smallest network reached only 27.80% on cascading carries.
 
 I would like to know whether data alignment explains more variation than structural complexity across a broader range of models and tasks. This addition series does not settle that broader claim for general language models.
 
-The negative results along the way sharpen the conclusion. Experiment 01 showed that naive distribution shifts can hurt unpracticed strata; Experiment 03 showed that unconstrained log-linear difficulty laws can blow up out of range; Experiments 04 and 06 showed that probing starting difficulty adds little when all checkpoints share the exact same warmup history; and Experiment 08 showed that additive linear RL utility laws overshoot remaining headroom on near-ceiling larger models even when multiplicative log-loss laws succeed.
+The negative results along the way sharpen the conclusion. Experiment 01 showed that naive distribution shifts can hurt unpracticed strata; Experiment 03 showed that unconstrained log-linear difficulty laws can blow up out of range; Experiments 04 and 06 showed that probing starting difficulty adds little when all checkpoints share the exact same warmup history; Experiment 08 showed that additive linear RL utility laws overshoot remaining headroom on near-ceiling larger models even when multiplicative log-loss laws succeed; and Experiment 10 showed that causal transformers shift the saturation boundary, achieving ceiling performance at much smaller parameter scales.
 
-Together, the eight experiments give concrete empirical meaning to the thesis: **difficulty needs a training history**.
+Together, the ten experiments give concrete empirical meaning to the thesis: **difficulty needs a training history**.
 
 ## Evidence and provenance
 
 [Project results index](../../experiments/README.md) · [Sanmi argument and wording provenance](sanmi-argument-provenance.md) · [Detailed complexity note](../../experiments/archive/01_fixed_width_addition_exposure/COMPLEXITY.md).
 
-The numerical claims above come from committed, SHA-256-verified experimental artifacts across Experiments 01–08, not the cited external papers.
+The numerical claims above come from committed, SHA-256-verified experimental artifacts across Experiments 01–10, not the cited external papers.
+
