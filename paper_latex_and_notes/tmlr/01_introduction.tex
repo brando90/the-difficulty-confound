@@ -1,0 +1,60 @@
+% !TEX root = main.tex
+\section{Introduction}
+% paragraph 1: problem motivation. Same claim as abstract sentence 1.
+Observed difficulty moves when training exposure moves, even if the scored skill stays fixed.
+A reported score then mixes the task with the learner's preparation.
+That mix matters when a low score is later read as a property of the task.
+We keep one skill fixed and change the training mixture on purpose.
+The skill is exact addition of two zero-padded three-digit integers, scored by exact equality of the sum.
+The addition algorithm and the test items stay fixed inside each comparison.
+The open question is how much of the measured ranking is exposure.
+
+% paragraph 2: prior assumption. Rankings are stated without the training history under test.
+A common assumption is that item structure fixes the ranking before any training history is named.
+Conditional description length, for a fixed machine, input, answer, and task, is one such structural quantity \citep{kolmogorov1968three,grunwald2008algorithmic}.
+It does not change across our exposure conditions, because those arguments do not change.
+Resource laws instead predict average loss from parameter count and data or compute \citep{kaplan2020scaling,hoffmann2022chinchilla}.
+They still do not name which items a particular network has practiced.
+Curriculum methods order examples by a chosen difficulty signal \citep{bengio2009curriculum}.
+Compositional benchmarks show that success depends on how primitives are recombined between training and test \citep{lake2018generalization,keysers2020measuring}.
+The shared gap is a ranking stated without the history being tested.
+
+% paragraph 3: contribution. The ranking follows the mixture; the probe helps only when histories differ.
+In these experiments the ranking follows the training mixture.
+The same items look hard under one mixture and easy under another, at a matched budget.
+A starting-loss probe, measured on held-out items before the later training stage, records how much of that history the network absorbed.
+The probe improves held-out forecasts when starting checkpoints have different histories.
+It adds little when every checkpoint shares one warmup.
+The probe is a measurement of a trained network, not an intrinsic label of an item.
+
+% paragraph 4: instantiation. Eight prespecified studies, monotone ridge, online code length, verifiable reward.
+We report eight studies that were frozen before their outcomes.
+The networks have two hidden rectified layers, six one-hot input digits, and four digit heads.
+Early studies vary carry exposure with a shared architecture and budget.
+Later studies match answer histograms, and then also match per-column carry rates.
+Forecasts use a constrained monotone ridge on log loss, fit on calibration outcomes and scored on held-out widths and mixtures.
+One study scores an online description length along the adaptation stream \citep{rissanen1978modeling,voita2020information}.
+The last study replaces supervised updates with a 0/1 exact-sum reward and a leave-one-out group-relative update \citep{shao2024deepseekmath}.
+Table~\ref{tab:gates} states every prespecified decision, including the ones that fail.
+
+% paragraph 5: evaluation. Supported results and failed gates, one claim per sentence.
+Answer-matched exposure reverses the no-carry versus two-carry ranking at every tested width.
+The two endpoint leads are 25.30 [23.14, 27.26] and 24.58 [22.88, 26.19] percentage points.
+After heterogeneous pretraining, adding the starting-loss probe cuts joint held-out root mean squared error by 47.20\% [42.88, 53.08].
+With per-column carry rates matched, the same comparison cuts loss error by 36.22\% [32.45, 40.51] and online description-length error by 56.93\% [55.01, 58.67].
+A verifiable-reward stage cuts post-training loss error by 39.87\% [36.20, 50.17], and the accuracy gain itself reverses with history.
+The failures are part of the same record.
+The first balanced-exposure study recovers most of a long-carry gap and still misses its retention gate, because no-carry accuracy falls by 6.08 points.
+A later remediation pool recovers its gap and still misses an 85\% accuracy line, at 81.09\% [79.51, 82.88].
+An additive utility law worsens pooled held-out error by 15.78\%, with interval [$-35.91$, $3.15$].
+Every interval above is a percentile interval over eight seed blocks, and the decision rule uses the interval rather than a separate test (p-val=n/a), except for one auxiliary sign-flip test named in Section~\ref{sec:ranking}.
+
+% paragraph 6: implications and contributions.
+A difficulty report for this task should name the learner, the training history, and the budget.
+We do not estimate what share of public-benchmark difficulty is data.
+We do not claim that these networks implement one shared internal algorithm.
+\begin{itemize}
+\item Exposure reverses observed addition difficulty on fixed items, including after answer matching and after per-column carry matching.
+\item A starting-loss probe improves held-out loss forecasts when pretraining histories differ, and it stays below a 10\% line when they do not.
+\item The reversal also appears in online description length and in verifiable-reward improvement, beside prespecified gates that fail.
+\end{itemize}

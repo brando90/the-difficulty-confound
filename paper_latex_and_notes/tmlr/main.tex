@@ -1,0 +1,50 @@
+% Style files vendored from https://github.com/JmlrOrg/tmlr-style-file
+% commit 7bf90efe3a0debbba703c05c43f3ff7e4d4a2992 (Apache-2.0; see TMLR_STYLE_LICENSE.txt).
+% Draft dated 10-18-2026. Default tmlr options hide authors, matching a TMLR submission.
+% Camera-ready would switch to \usepackage[accepted]{tmlr}. This PDF is not a submission.
+\documentclass[10pt]{article}
+
+\usepackage{tmlr}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{array}
+
+\providecommand{\todocite}[1]{\textcolor{red}{[CITE: #1]}}
+
+\title{Training History Reverses Observed Difficulty\\on a Fixed Addition Task}
+
+% Authors are hidden unless tmlr is loaded with the accepted or preprint option.
+% Affiliation and coauthors are unresolved. Do not treat this block as a submission list.
+\author{\name Brando Miranda \email brando9@stanford.edu \\
+      \addr Affiliation and coauthors not yet confirmed}
+
+\def\month{10}
+\def\year{2026}
+\def\openreview{\url{https://openreview.net/forum?id=XXXX}}
+
+\begin{document}
+
+\maketitle
+
+\input{00_abstract}
+\input{01_introduction}
+\input{02_related_work}
+\input{03_setup}
+\input{04_ranking_reversals}
+\input{05_forecasts}
+\input{06_description_length}
+\input{07_verifiable_rewards}
+\input{08_limitations}
+\input{09_conclusion}
+
+\bibliographystyle{tmlr}
+\bibliography{references}
+
+\appendix
+\input{990_appendix_gates}
+
+\end{document}
