@@ -95,8 +95,8 @@ def main():
     ax.grid(axis='y', alpha=0.25)
 
     fig.tight_layout()
-    fig.savefig(ROOT / 'transformer_history_results.png')
-    fig.savefig(ROOT / 'transformer_history_results.pdf')
+    fig.savefig(ROOT / 'transformer_calibrated_results.png')
+    fig.savefig(ROOT / 'transformer_calibrated_results.pdf')
     plt.close(fig)
 
     jm = {r['law']: r for r in pred['metrics'] if r['axis'] == 'joint'}
@@ -106,9 +106,9 @@ def main():
     mst = mdl['statistics']
     rst = ret['statistics']
 
-    report_md = f"""# Experiment 10 Results: Autoregressive Transformer Architecture Generalization (Heterogeneous Histories, Prequential Online MDL, and Pure Compositional Remediation)
+    report_md = f"""# Experiment 11 Results: Calibrated Pretraining Horizon for Causal Autoregressive Transformers ($T_{{\\text{{pre}}}}=300$)
 
-**Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/archive/10_autoregressive_transformer_replication/RESULTS_transformer_history.md>
+**Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/11_transformer_calibrated_pretraining_horizon/RESULTS_transformer_calibrated.md>
 
 **Frozen commit:** `{runtime['git_revision']}` · **Verification:** `{ver['status']}` (`max_replay_bits_difference = {ver['max_replay_bits_difference']:.3e}`, {ver['completed_trajectories']} trajectories, {ver['final_models_replayed']} final + {ver['warm_models_replayed']} warm checkpoints replayed).
 
@@ -153,7 +153,7 @@ Measuring cumulative online prequential description length $\\text{{MDL}}_{{\\te
 - **Pre-intervention (`step=0`):** Single-carry control `(1,0)+(0,1)` accuracy is **{fmt_pct(rst['pure_control_pre'])}** vs cascading two-carry target `(1,1)` accuracy **{fmt_pct(rst['pure_target_pre'])}** (initial gap **{fmt_pp(rst['pure_initial_gap'])} pp**).
 - **Post-remediation (`step=1000`):** Cascading two-carry `(1,1)` accuracy rises to **{fmt_pct(rst['pure_target_post'])}** (**{fmt_pp(rst['pure_target_gain'], signed=True)} pp**, recovering **{fmt_pct(rst['pure_recovery_fraction'])}** of the initial gap), while single-carry control `(1,0)+(0,1)` accuracy changes by **{fmt_pp(rst['pure_control_change'], signed=True)} pp** to **{fmt_pct(rst['pure_control_post'])}** (`{ret['status']}`).
 """
-    (ROOT / 'RESULTS_transformer_history.md').write_text(report_md)
+    (ROOT / 'RESULTS_transformer_calibrated.md').write_text(report_md)
     (ROOT / 'results.md').write_text(report_md)
 
     hashes = {}
