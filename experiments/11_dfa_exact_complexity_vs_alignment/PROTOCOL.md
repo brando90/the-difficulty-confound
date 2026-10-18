@@ -2,7 +2,7 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/11_dfa_exact_complexity_vs_alignment/PROTOCOL.md>
 
-Status: DRAFT design, 10-18-2026, from Brando Miranda's complexity-versus-alignment idea. The running agent may revise it, then must freeze it in its own commit before any gated run; after the freeze nothing in Sections 2–5 changes.
+Status: Frozen on 10-18-2026 before any gated Experiment 11 training. (Drafted 10-18-2026 from Brando Miranda's complexity-versus-alignment idea; the only pre-freeze changes are the pilot outcomes recorded in Section 2.6. After this freeze nothing in Sections 2–5 changes.)
 
 Notation follows the [program overview](../ideas/complexity_vs_alignment/README.md): $\varepsilon$ is held-out excess loss in bits, $T$ is training examples seen, $\alpha$ is the target's share of the training mix, $K$ is exact complexity in a stated description language, and the laws are `M0_scale`, `M_align_eff`, `M_align_add`, `M_K_coef`, `M_K_exp` and `M_K_both` with parameters $A, \eta, \kappa, \gamma, \gamma_0, \gamma_1$.
 
@@ -110,6 +110,15 @@ Run one seed at $\alpha = 1$ for all 16 targets to $T = 2^{17}$: 16 runs, about 
 - **P3.** Report the measured step time. If the projected full run exceeds 90% of the wall cap, stop and ask Brando. Do not cut seeds silently.
 
 The pilot also reports how many targets improve between $2^{16}$ and $2^{17}$. That shows what the budget leaves out. Pilot outcomes are never pooled with the gated runs.
+
+**Pilot disclosure (10-18-2026, before the freeze).** The pilot ran on the CPU box (Intel Xeon 2.20 GHz, 2 physical cores with 4 hardware threads, shared with other jobs) at learning rate $10^{-3}$ with seed 11909: 16 runs, 959 s, mean 237 s per 2,048-step run under 4 concurrent workers.
+
+- **Learning was slow.** At $\alpha = 1$ and $T = 2^{16}$ the held-out loss ranged from 0.31 to 0.99 bits (median 0.90). No target reached 0.1 bits even at $2^{17}$; at $2^{17}$ the best three were 0.14, 0.20 and 0.24 bits (`dfa_n04_t2`, `dfa_n08_t1`, `dfa_n04_t1`). The $n = 16$ and $n = 32$ targets stayed at 0.69–0.99 bits. Per-target losses are in `expt_v1/pilot_summary.json`.
+- **P1 fired** (median $T^\star(0.1) \gt 2^{14}$; it is right-censored at $2^{17}$). **P2 did not fire** (0 of 16 targets at or below 0.1 bits at $2^{10}$). **P3 did not fire**: projected grid 15,178 s, below 90% of the cap (16,200 s). 15 of 16 targets improved from $2^{16}$ to $2^{17}$, and 7 by more than 10%, so the $2^{16}$ budget leaves most of the learning curve out.
+- **Learning-rate calibration (added before the freeze, rule written down before its results).** Because the gated grid would have been right-censored almost everywhere, one calibration ran on a fresh seed, 11910 (never reused), at $\alpha = 1$ for all 16 targets over the gated window $2^9 … 2^{16}$, at learning rates $3 \times 10^{-3}$ and $10^{-2}$, with no checkpoints saved. Rule: keep the learning rate with the lowest median over targets of $\varepsilon(2^{16})$, with $10^{-3}$ read from the pilot. Medians were 0.899 bits ($10^{-3}$), 0.931 ($3 \times 10^{-3}$) and 0.977 ($10^{-2}$). **The learning rate stays $10^{-3}$.** Outputs are in `expt_v1/results_calib_lr0.003/` and `results_calib_lr0.01/`, never pooled.
+- **New rule P1b (written down before the calibration results).** If the median $T^\star(0.3\ \text{bits})$ is also above $2^{14}$, the primary $\varepsilon^\star$ becomes 0.5 bits and the levels become $\{0.5, 0.3, 0.1\}$. It fired: the median $T^\star(0.3)$ is right-censored at $2^{16}$ at every learning rate tried.
+- **Consequences, fixed now.** The primary $\varepsilon^\star$ is **0.5 bits** wherever Sections 4–5 say "0.1 bits (or the P1 level)", and the $\varepsilon^\star$ levels are $\{0.5, 0.3, 0.1\}$. G4's model-free fallback moves the same way: if more than 50% of (target, $\alpha$) pairs are censored at 0.5 bits in the median seed, $E_{\text{mf}}$ is evaluated at **0.7 bits**. The Section 4.6 regression uses the primary level (0.5 bits). The window stays $2^9 … 2^{16}$, and the seeds, grid, learning rate, model and gate thresholds are unchanged.
+- **What this predicts.** Many gated runs, especially at $n \ge 16$ and $\alpha \lt 1$, will not reach even 0.5 bits by $2^{16}$, so $T^\star$-based statistics (G1, $E_{\text{mf}}$, the Section 4.6 regression) will be heavily right-censored. Censored values enter as $T_{\max}$, which biases $M_K$ toward 1 (Section 4.4). The law fits on $\varepsilon$ (G2, G3, G5–G7) do not depend on $T^\star$.
 
 ## 3. Measurements
 
