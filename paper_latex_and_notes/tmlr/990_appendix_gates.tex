@@ -1,0 +1,54 @@
+% !TEX root = main.tex
+\section{Gate sources}
+\label{app:gates}
+
+Table~\ref{tab:gate-sources} gives the folder and the results file for every decision in Table~\ref{tab:gates}.
+\texttt{experiments/archive/09\_headroom\_bounded\_rlvr\_utility\_law/} supplies the last row.
+Its stored intervals were not redrawn for this draft.
+Intervals remain eight-seed block bootstraps with p-val=n/a unless the row names another test.
+The practical thresholds were frozen in each study's protocol before outcomes.
+
+\begin{table}[h]
+\centering
+\scriptsize
+\caption{\textbf{Each gate traces to one archived results file.} Paths are relative to the repository root.
+Status matches the results file, not a later summary that collapsed several gates into one verdict.}
+\label{tab:gate-sources}
+\begin{tabular}{@{}p{0.28\textwidth}p{0.40\textwidth}p{0.24\textwidth}@{}}
+\toprule
+Folder under \texttt{experiments/archive/} & Results file & Status \\
+\midrule
+01\_fixed\_width\_\allowbreak addition\_exposure/ &
+RESULTS\_addition\_exposure.md &
+Not established \\
+02\_heldout\_exposure\_\allowbreak difficulty\_laws/ &
+RESULTS\_heldout\_laws.md &
+Not established \\
+03\_answer\_matched\_\allowbreak alignment/ &
+RESULTS\_matched\_alignment.md &
+Ranking supported; forecast not established \\
+04\_monotone\_ridge\_\allowbreak heldout\_addition/ &
+RESULTS\_stable.md &
+Repair supported; probe not established; ranking supported \\
+05\_pretraining\_history\_\allowbreak and\_retention/ &
+RESULTS\_history\_retention.md &
+Probe, retention, and ranking supported; repair not established \\
+06\_compositional\_carry\_\allowbreak marginal\_matched/ &
+RESULTS\_compositional.md and results.md &
+Ranking supported; probe not established; repair not established \\
+07\_prequential\_mdl\_\allowbreak and\_length\_transfer/ &
+RESULTS\_mdl\_history.md &
+Loss, online-code reversal, and online-code law supported; remediation not established \\
+08\_rlvr\_verifiable\_\allowbreak reward\_utility\_laws/ &
+RESULTS\_rlvr\_utility.md &
+Loss, utility reversal, and remediation supported; additive utility law not established \\
+09\_headroom\_bounded\_\allowbreak rlvr\_utility\_law/ &
+RESULTS\_headroom\_bounded.md &
+Headroom bound, reversal, and remediation supported; probe features and group-size signal not established \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The by-width two-carry means in Section~\ref{sec:mdl} are eight-seed averages of \texttt{cell\_test\_metrics.csv} in \texttt{experiments/archive/07\_prequential\_mdl\_and\_length\_transfer/expt\_v1/results/}, cell identifier 3, mixture 0.1, step 1000, 720 items per seed.
+They were not given a new bootstrap for this draft.
+Unrounded joint RMSE values in \texttt{prediction\_metrics.csv} round to the percentages printed in Sections~\ref{sec:exp05} and~\ref{sec:mdl}.

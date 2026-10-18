@@ -1,0 +1,102 @@
+% !TEX root = main.tex
+\section{Task, models, and decision rules}
+\label{sec:setup}
+
+\paragraph{Task.}
+Every study scores exact addition of two integers from 000 to 999.
+Inputs are six one-hot decimal digits.
+The target is four output digits, including a possible thousands digit.
+Accuracy requires all four digits to match the integer sum.
+The loss we forecast is the sum of $-\log_2$ probabilities of the correct digits under a factorized head.
+That quantity is a conditional code length in bits per answer, given the trained network.
+It omits the cost of transmitting the network and the training data, except in the online code of Section~\ref{sec:mdl}.
+An independent column-addition checker agrees with integer addition on all 500{,}500 unordered pairs before training.
+Swapped operand pairs never cross a split.
+
+\paragraph{Networks and optimization.}
+The networks have two hidden rectified layers.
+Widths 32, 64, 96, 128, and 384 have 4{,}328, 10{,}664, 19{,}048, 29{,}480, and 186{,}664 parameters in the later studies.
+\texttt{experiments/archive/02\_heldout\_exposure\_difficulty\_laws/} and \texttt{experiments/archive/03\_answer\_matched\_alignment/} use width 256 (91{,}688 parameters) in place of width 384.
+Optimization is AdamW with learning rate $10^{-3}$, weight decay $10^{-4}$, and 256 examples per update, except where a protocol states a different budget.
+Seeds are the resampling unit.
+Eight seeds are paired across mixtures inside a study.
+Initialization and batch order are paired within a seed.
+No seed or cell was dropped.
+
+\paragraph{What is held fixed.}
+Inside a comparison, the test-item identities, the checker, the optimizer, and the scored update counts stay fixed.
+The training distribution changes.
+Early studies change the fraction of long carry chains and also change digit and answer frequencies.
+That identifies a distribution intervention, not a uniquely isolated effect of carrying.
+Later studies remove those mismatches in stages.
+Answer matching uses the same 117 sums, with the same count of training pairs per sum, in both strata.
+Carry-rate matching further forces every mixture to have a 50\% ones-column carry rate and a 50\% tens-column carry rate.
+Input-digit total variation is reported with those controls.
+Total variation is half the sum of absolute differences over the ten digits.
+
+\paragraph{Laws.}
+A forecast law is fit inside each seed on calibration outcomes only.
+Coefficients and forecasts are frozen before the analysis reads the final-test outcomes.
+The joint holdout uses widths and mixtures that never enter the fit.
+The primary score is root mean squared error (RMSE) on mean bits per answer, or on accuracy gain where the protocol says so.
+Relative reduction is $100 \times (1 - \mathrm{RMSE}_{\mathrm{extended}} / \mathrm{RMSE}_{\mathrm{baseline}})$.
+Positive means the extended law has lower error.
+Mean bias is the forecast minus the observation.
+A positive bias overpredicts loss or utility.
+The unconstrained difficulty law that fails in Section~\ref{sec:forecasts} has the form
+\begin{equation}
+\label{eq:legacy}
+\widehat{\mathrm{loss}}
+= e^{a}\, N^{b}\, T^{c}\, e^{d \cdot s}\, q^{e}\, D^{f},
+\end{equation}
+with parameter count $N$, updates $T$, carry indicator $s$, exposure $q$, and starting loss $D$.
+The stable laws replace unconstrained least squares with a ridge penalty of $0.01$ on standardized slopes.
+Size, update, and exposure slopes are constrained to be nonpositive, and the starting-difficulty exponent is constrained to $[0,1]$.
+Those bounds were frozen before the repair studies collected their trajectories.
+A repair success does not substitute for a feature-value success.
+The two gates are separate.
+
+\paragraph{Uncertainty and thresholds.}
+Intervals are 95\% percentile intervals from 20{,}000 paired bootstrap draws of eight complete seed blocks, unless a study states a different design.
+Items inside a test set are not resampled as independent trials.
+The intervals condition on the fixed items, architecture family, and holdout.
+They do not cover other tasks or optimizers.
+Where the protocol decides by the interval and a practical threshold, we report p-val=n/a.
+The practical thresholds are project choices frozen in the protocols: usually a 10\% relative RMSE reduction, or a 10 percentage-point accuracy lead, together with a positive lower endpoint and a required pattern across widths.
+They are not literature standards.
+Table~\ref{tab:gates} lists the decision for every frozen gate we rely on.
+Per-width means that were not given a fresh bootstrap are labeled as eight-seed means.
+
+\begin{table}[t]
+\centering
+\small
+\caption{\textbf{Prespecified gates both pass and fail.} Each row is one frozen decision from the named study under \texttt{experiments/archive/}.
+Estimates use the published rounding in that study's results file.
+Intervals are eight-seed block bootstraps with p-val=n/a.
+A supported ranking does not imply that every width has a 10-point gap.
+Full folder names and sources are in Appendix~\ref{app:gates}.}
+\label{tab:gates}
+\begin{tabular}{@{}p{0.20\textwidth}p{0.32\textwidth}p{0.27\textwidth}p{0.10\textwidth}@{}}
+\toprule
+Study & Decision & Estimate & Status \\
+\midrule
+01 fixed-width exposure & Gap recovery with retention & 94.34\% recovered; control $-6.08$ points & Not established \\
+02 held-out laws & Exposure plus starting loss & 6.80\% [$-3.52$, $14.80$] & Not established \\
+03 answer-matched & Ranking reversal & 25.30 and 24.58 points & Supported \\
+03 answer-matched & Starting-loss forecast & $0.4727 \to 292.7941$ bits & Not established \\
+04 monotone ridge & Repair versus unconstrained law & 100.00\% [$99.90$, $100.00$] & Supported \\
+04 monotone ridge & Probe versus constrained base & 3.48\% [$1.12$, $6.24$] & Not established \\
+05 history and retention & Probe versus constrained base & 47.20\% [$42.88$, $53.08$] & Supported \\
+05 history and retention & No-harm remediation & control $+1.09$ [$+0.33$, $+1.89$] & Supported \\
+05 history and retention & Repair versus legacy difficulty & $-0.82\%$ [$-1.11$, $-0.57$] & Not established \\
+06 carry marginals & Compositional reversal & 22.35 and 17.74 points & Supported \\
+06 carry marginals & Probe under a shared warmup & 1.94\% [$-3.10$, $6.50$] & Not established \\
+07 online code length & Loss law and online-code law & 36.22\% and 56.93\% & Supported \\
+07 online code length & Remediation accuracy line & 81.09\% [$79.51$, $82.88$] & Not established \\
+08 verifiable reward & Post-training loss law & 39.87\% [$36.20$, $50.17$] & Supported \\
+08 verifiable reward & Additive utility law & $-15.78\%$ [$-35.91$, $3.15$] & Not established \\
+09 headroom bound & Headroom-bounded repair & 73.72\% [70.43, 77.26] & Supported \\
+09 headroom bound & Probe features inside the bound & 8.10\% [2.52, 14.39] & Not established \\
+\bottomrule
+\end{tabular}
+\end{table}

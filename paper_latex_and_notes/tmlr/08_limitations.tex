@@ -1,0 +1,54 @@
+% !TEX root = main.tex
+\section{Limitations}
+\label{sec:limitations}
+
+The skill is exact three-digit addition under one family of two-hidden-layer networks.
+Nothing in the nine studies estimates language-model difficulty, public benchmarks, or the fraction of benchmark variance that data would explain.
+\texttt{experiments/archive/02\_heldout\_exposure\_difficulty\_laws/} states that limit in its own report, and the companion mathematics grid does not remove it.
+The grid has 24 observations, a breadth proxy, and no measured starting difficulty.
+
+The interventions identify specified training distributions.
+Where digit marginals and answer histograms are unmatched, carrying is not an isolated cause.
+Where they are matched, a residual input-digit total variation remains (mean 0.0398 in the carry-rate study).
+We did not establish that the networks use the same internal procedure.
+A fixed checker makes the scored skill stable.
+It does not make the learned representation stable.
+
+Several prespecified gates fail, and those failures constrain the claim.
+Retention fails in the first study.
+The starting-loss feature fails the 10\% line under shared warmups, and the unconstrained probe law in the answer-matched study diverges.
+The constrained probe in the heterogeneous-history study loses to the unconstrained difficulty law by 0.82\%.
+Online-code remediation misses the 85\% accuracy line because width 32 remains at a 27.80\% eight-seed mean.
+The additive utility law worsens pooled error even though the same study's loss law succeeds.
+\texttt{experiments/archive/09\_headroom\_bounded\_rlvr\_utility\_law/} caps that forecast by remaining headroom.
+The cap is supported, at a relative reduction of 73.72\% [70.43, 77.26].
+Probe features inside the cap are not established, at 8.10\% [2.52, 14.39], below the protocol's 10\% line.
+A group-size comparison in the same folder is not established, at 0.96\% [0.44, 1.54].
+Supported replications in that folder leave those two gates not established.
+Near-ceiling widths shrink the accuracy reversal to a fraction of a point in one answer-matched replication.
+A supported pooled gate can coexist with a small effect at large width.
+
+Conditional bits are not Kolmogorov complexity and, outside the online-code study, not a full minimum description length.
+The online code charges for labels along one adaptation stream.
+It does not charge for discovering the learning rule.
+No study computes a shortest program.
+
+Reproducibility has a numerical caveat that is separate from the scientific gates.
+Training receipts for the later studies before \texttt{experiments/archive/09\_headroom\_bounded\_rlvr\_utility\_law/} record PyTorch 2.5.1+cu124 and a maximum replay difference of 0.0 bits.
+A replay under PyTorch 2.7.0, reported on 10-17-2026 for the studies then in this draft, matched greedy predictions and produced bit differences on the order of $10^{-5}$.
+The frozen assertion at $10^{-6}$ therefore fails on that build.
+The first study's own receipt is PyTorch 2.7.0+cu126, with a maximum replay difference of 0.0 on its verification host.
+We treat the $10^{-5}$ figure as a portability limitation, not as a change to any gate.
+A 10-18-2026 replay of \texttt{experiments/archive/09\_headroom\_bounded\_rlvr\_utility\_law/} reproduced the written point estimates from the stored forecast table.
+Greedy actions had 0 prediction mismatches on 800 final checkpoints, covering test and calibration, and on 200 warm probe checkpoints.
+\texttt{test\_laws.py} passed.
+Under PyTorch 2.7.0, \texttt{verify.py} stopped at a maximum bit difference of $7.62939453125\times 10^{-5}$.
+That difference is above the frozen $10^{-6}$ line.
+The training writeup for this study records PyTorch 2.5.1+cpu.
+The frozen $10^{-6}$ assertion fails on that replay.
+The tolerance stays at $10^{-6}$.
+
+Coauthors and affiliation are unresolved.
+Related-work coverage of benchmark contamination is intentionally absent, because this draft does not make that claim.
+The verifiable-reward citation names the public phrase only.
+\todocite{any additional related-work papers Brando wants cited after checking them against the claims above}

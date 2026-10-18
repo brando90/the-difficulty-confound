@@ -1,0 +1,17 @@
+% !TEX root = main.tex
+\section{Conclusion}
+
+On this addition task, observed difficulty follows training history.
+Answer-matched exposure, and exposure that also matches per-column carry rates, reverses which items a small network gets right.
+A starting-loss probe earns its place when the checkpoints do not share one warmup: joint loss error falls by 47.20\% [42.88, 53.08] in \texttt{experiments/archive/05\_pretraining\_history\_and\_retention/}, and by 36.22\% [32.45, 40.51] in \texttt{experiments/archive/07\_prequential\_mdl\_and\_length\_transfer/}.
+The same probe stays under the 10\% line when the warmup is shared.
+Online code length and verifiable-reward gains reverse with history as well.
+The draft does not treat the program as a sweep of passed gates.
+\texttt{experiments/archive/01\_fixed\_width\_addition\_exposure/} misses retention.
+\texttt{experiments/archive/07\_prequential\_mdl\_and\_length\_transfer/} misses the 85\% accuracy line.
+\texttt{experiments/archive/08\_rlvr\_verifiable\_reward\_utility\_laws/} misses the pooled additive utility law, with relative change $-15.78\%$ [$-35.91$, $3.15$].
+\texttt{experiments/archive/09\_headroom\_bounded\_rlvr\_utility\_law/} supports the headroom-bounded repair of that miss, at 73.72\% [70.43, 77.26].
+Probe features inside the bound are not established, at 8.10\% [2.52, 14.39].
+A report of difficulty for this skill should name the learner, the history, and the budget.
+This manuscript is a draft dated 10-18-2026.
+It is not a submission, and it is not evidence about language models.
