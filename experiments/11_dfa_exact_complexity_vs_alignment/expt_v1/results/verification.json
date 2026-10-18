@@ -1,0 +1,27 @@
+{
+ "1_training_sources_match_manifest": true,
+ "analysis_source_sha256": {
+  "laws.py": "944335b82b4ec916eb0276b3f23140a79abf23b8465c95bbc5139085e9d56770",
+  "independent_fit.py": "cc9136c0053170f6678089d114cca8f0c797b8660c27e4ff41c5b1d549b45c0d",
+  "analyze.py": "89a6e49988f4dbef4d6cf641cdc811409b29e15fff6968e525f2b517c02f5da8",
+  "verify.py": "308ad627f0e73af96f00d63ab52a2b3511061c0112b07d74ea88859af082e5bf",
+  "report.py": "46e70a351d4ee0247886acb49f6e36be7e627855bda218ddfd2d5a5b3b71b51b"
+ },
+ "2_tasks_regenerated_identical": true,
+ "2_hopcroft_moore_n_match": "32/32",
+ "3_covariates_exact_and_monte_carlo": "32/32",
+ "4_data_regenerated_identical": "32/32",
+ "4_mixes_regenerated_identical": "512/512",
+ "5_checkpoints_replayed": 4096,
+ "5_max_abs_diff_excess_bits": 0.0,
+ "5_max_abs_diff_accuracy": 0.0,
+ "6_max_abs_diff_predictions": 0.0,
+ "5_metrics_rows": 4096,
+ "7_tstar_identical": true,
+ "8_forecasts_hash_identical": true,
+ "8_fitters_agree": true,
+ "9_gates_identical": true,
+ "9_key_numbers_identical": true,
+ "status": "PASS",
+ "seconds": 3737.8
+}
