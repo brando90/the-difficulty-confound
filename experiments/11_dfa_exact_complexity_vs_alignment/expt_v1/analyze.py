@@ -353,7 +353,7 @@ def stage2(c, res, tasks, two_stage_draws=None):
             n_c = 0
             for tid in tids:
                 for a in c['alphas']:
-                    v, fl = tstar[(s, tid, a, es)]
+                    v, fl = tstar.get((s, tid, a, es)) or t_star(Ts, [eps[(s, tid, a, T)] for T in Ts], es)
                     if fl:
                         n_c += 1
                         continue
