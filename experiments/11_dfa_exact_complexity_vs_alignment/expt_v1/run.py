@@ -103,8 +103,10 @@ def load_data(out):
 # ---------------------------------------------------------------- training
 
 def train_cell(c, tasks, target_id, alpha, seed, out_dir, n_task_tokens=32, arch='transformer', data=None,
-               T_checkpoints=None, save_checkpoints='all'):
+               T_checkpoints=None, save_checkpoints='all', lr=None):
     """Train one (target, alpha, seed) cell; write checkpoints, predictions and the cell record atomically."""
+    if lr is not None:  # pre-freeze learning-rate calibration only
+        c = dict(c, lr=lr)
     torch.set_num_threads(c['threads'])
     out_dir = Path(out_dir)
     T_checkpoints = list(T_checkpoints or c['T_checkpoints'])
@@ -414,6 +416,7 @@ def main():
     ap.add_argument('--check-only', action='store_true')
     ap.add_argument('--pilot', action='store_true')
     ap.add_argument('--lstm', action='store_true')
+    ap.add_argument('--calibrate-lr', type=float, help='pre-freeze lr calibration: calibration_seed, alpha = 1')
     ap.add_argument('--output', default=str(HERE / 'results'))
     ap.add_argument('--resume', action='store_true')
     ap.add_argument('--only')
@@ -443,6 +446,8 @@ def main():
         print(json.dumps(dict(cell=rec['cell'], wall_seconds=rec['wall_seconds'])))
         return 0
 
+    if args.calibrate_lr:
+        args.output = str(HERE / f'results_calib_lr{args.calibrate_lr:g}')
     out = Path(HERE / 'results_pilot' if args.pilot else args.output).resolve()
     if out.exists() and any(out.iterdir()) and not args.resume:
         sys.exit(f'{out} exists and is not empty; pass --resume')
@@ -464,6 +469,14 @@ def main():
             s = pilot_summary(c, out, None)
             atomic_write_text(HERE / 'pilot_summary.json', json.dumps(s, indent=1))
             print(json.dumps({k: v for k, v in s.items() if k != 'per_target'}, indent=1))
+        return 0
+
+    if args.calibrate_lr:
+        cells = [(t['task_id'], 1.0, c['calibration_seed']) for t in tasks if t['role'] == 'target']
+        missing, state = run_cells(c, out, cells, args.max_seconds,
+                                   dict(lr=args.calibrate_lr, save_checkpoints='none'), log)
+        aggregate(c, out, cells)
+        log(f'calibration lr {args.calibrate_lr:g}: {len(cells) - len(missing)}/{len(cells)} cells')
         return 0
 
     if args.lstm:

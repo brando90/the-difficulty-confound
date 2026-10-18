@@ -1,0 +1,30 @@
+{
+ "n04": {
+  "dfa_draws": 855,
+  "accepted_minimal": 161,
+  "rejected_overall_acceptance": 96,
+  "rejected_per_length_acceptance": 0,
+  "rejected_duplicate_or_complement": 1
+ },
+ "n08": {
+  "dfa_draws": 780,
+  "accepted_minimal": 131,
+  "rejected_overall_acceptance": 67,
+  "rejected_per_length_acceptance": 0,
+  "rejected_duplicate_or_complement": 0
+ },
+ "n16": {
+  "dfa_draws": 827,
+  "accepted_minimal": 95,
+  "rejected_overall_acceptance": 31,
+  "rejected_per_length_acceptance": 0,
+  "rejected_duplicate_or_complement": 0
+ },
+ "n32": {
+  "dfa_draws": 734,
+  "accepted_minimal": 87,
+  "rejected_overall_acceptance": 23,
+  "rejected_per_length_acceptance": 0,
+  "rejected_duplicate_or_complement": 0
+ }
+}

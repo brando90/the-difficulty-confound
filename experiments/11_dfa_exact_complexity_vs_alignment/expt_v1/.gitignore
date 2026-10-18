@@ -6,3 +6,5 @@ results/lstm_arm/checkpoints/
 __pycache__/
 .pytest_cache/
 *.tmp
+results_pilot/data/
+results_calib_*/data/
