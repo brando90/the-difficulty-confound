@@ -1,0 +1,9 @@
+# Experiment 13: GINC-style hidden Markov model mixtures, complexity versus alignment with an exact floor
+
+**Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/13_ginc_hmm_complexity_vs_alignment/README.md>
+
+Experiment 13 trains small decoder transformers on GINC-style data. GINC (Generative In-Context learning dataset) is the mixture of hidden Markov model (HMM) concepts used to explain in-context learning and in Brando's diversity paper. The experiment crosses two variables: the complexity of a target concept ($n$ = 4–32 hidden states on CPU, 8–128 on GPU) and that concept's share $\alpha$ of the training tokens. Each concept's minimal state count is certified exactly by process rank. Excess loss is measured against two exact references, the true concept and the Bayes mixture under the training prior. Their difference separates the cost of identifying the concept from the cost of learning it. The experiment tests C1 (complexity is real), C2 (alignment dominates) and C3 (coefficient or exponent), plus one new prediction: alignment acts early in a document and complexity acts late. It has a CPU (central processing unit) arm (13-small, about 2–3.5 h) and a GPU (graphics processing unit) arm (13-GPU, three model sizes, about 250 A100-hours, launched from [`launch/`](launch/README.md)).
+
+Status: DRAFT (10-18-2026), not run. Design: [PROTOCOL.md](PROTOCOL.md). Coding-agent prompt: [PROMPT.md](PROMPT.md). Program overview: [complexity versus alignment](../ideas/complexity_vs_alignment/README.md).
+
+**TLDR-end:** [tdc: Expt 13 readme] Cross exactly certified hidden Markov model complexity with target share on GINC-style mixtures, score excess loss against exact oracle and Bayes-mixture floors, and test with numeric gates whether complexity costs data, whether alignment dominates, and whether alignment acts early in a document and complexity late; CPU arm plus a three-size GPU arm.
