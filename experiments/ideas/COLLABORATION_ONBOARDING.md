@@ -2,7 +2,7 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/ideas/COLLABORATION_ONBOARDING.md>
 
-Welcome to the project, Laolu (`Laolu24`)! This guide summarizes what we have already established across Experiments 01–08 and how the reproducible experiment pipeline works. Pull requests #1–#7 are already merged. A second look is open in [issue #8](https://github.com/brando90/the-difficulty-confound/issues/8).
+Welcome to the project, Laolu (`Laolu24`)! This guide summarizes what we have already established across Experiments 01–09 and how the reproducible experiment pipeline works. Pull requests #1–#7 and #9–#11 are merged. A second look is open in [issue #8](https://github.com/brando90/the-difficulty-confound/issues/8).
 
 ---
 
@@ -13,7 +13,7 @@ When we evaluate a model on a fixed skill (here, exact 3-digit integer addition 
 
 ---
 
-## 2. Summary of Completed Experiments (01–08)
+## 2. Summary of Completed Experiments (01–09)
 
 All completed experiments live in [`experiments/archive/`](../archive/README.md) with every per-item prediction, saved weight `.pt`, manifest, SHA-256 receipt, and independent replay verifier committed:
 
@@ -27,6 +27,7 @@ All completed experiments live in [`experiments/archive/`](../archive/README.md)
 | **06** | [`06_compositional_carry_marginal_matched`](../archive/06_compositional_carry_marginal_matched/RESULTS_compositional.md) | Does the ranking reversal survive when **both exact answers and per-column carry rates (50% ones, 50% tens)** are held invariant across every mixture? | **Pure compositional reversal SUPPORTED:** input-digit TV mismatch cut $>11\times$ (`0.443 -> 0.0398`), yet isolated single carries lead by **22.35 [20.60, 24.00] pp** at $q=.1$ and cascading two-carry chains lead by **17.74 [14.62, 21.12] pp** at $q=.9$. Shared-warmup difficulty feature is **NOT_ESTABLISHED** (**1.94% [-3.10, 6.50]**), the contrast with Experiment 05's heterogeneous-history gain. |
 | **07** | [`07_prequential_mdl_and_length_transfer`](../archive/07_prequential_mdl_and_length_transfer/RESULTS_mdl_history.md) | Does **prequential (online) MDL code length** reverse across heterogeneous histories under $50\%/50\%$ carry-marginal invariance, and does `stable_difficulty` predict both final loss and online MDL? | **Loss law, MDL reversal, and MDL law SUPPORTED. Gate 4 NOT_ESTABLISHED.** `stable_difficulty` cuts loss RMSE by **36.22% [32.45, 40.51]** and online MDL RMSE by **56.93% [55.01, 58.67]**; online MDL reverses (`0.4423` vs `0.1773` bits/item). Gap recovery is **104.29% [101.45, 107.53]** with control **+5.13 [+4.13, +6.38] pp**, but pooled `(1,1)` accuracy is **81.09% [79.51, 82.88]** (prespecified line 85%). Width-32 eight-seed mean is **27.80%**; width 64 is **82.26%**. |
 | **08** | [`08_rlvr_verifiable_reward_utility_laws`](../archive/08_rlvr_verifiable_reward_utility_laws/RESULTS_rlvr_utility.md) | Does pure 0/1 verifiable-reward RL (RLVR / leave-one-out GRPO, $G=16$) exhibit history-dependent utility reversal, natural no-harm retention, and predictable RL improvement utility $U = \text{Acc}_T - \text{Acc}_0$? | **Post-RLVR loss (`39.87%`), utility reversal (`29.07` / `32.70` pp), and RLVR remediation (`78.23%` recovery, `+6.45 pp` retention) SUPPORTED.** Additive linear RL utility law cuts width-96 RMSE by **48.56%** (`14.59 -> 7.50` pp) but overshoots remaining headroom $1 - \text{Acc}_0$ at near-ceiling width 384 (`-15.78%` pooled). |
+| **09** | [`09_headroom_bounded_rlvr_utility_law`](../archive/09_headroom_bounded_rlvr_utility_law/RESULTS_headroom_bounded.md) | Does a **headroom-bounded** RL utility law $\widehat{U} = (1 - \text{Acc}_0)(1 - e^{-r})$ repair Experiment 08's overshoot at width 384, and do probe features and rollout signal density add predictive value across group sizes $G \in \{4, 8, 16, 64\}$ at a fixed rollout budget? | **Structural repair SUPPORTED** (**73.72%** [70.43, 77.26] joint RMSE reduction, 0 impossible forecasts). Probe features inside the bound (**8.10%** [2.52, 14.39]) and signal density beyond $G$ (**0.96%** [0.44, 1.54]) **NOT_ESTABLISHED**. Utility reversal (`29.86` / `34.49` pp) and remediation (`77.66%` recovery, `+5.92 pp` control) replicate Experiment 08. |
 
 ---
 
@@ -48,12 +49,14 @@ Every experiment follows a strict 5-step workflow so that neither human nor agen
 
 ---
 
-## 4. Next experiment
+## 4. From Experiment 08 to Experiment 09
 
-Pull requests #1–#7 are merged. The second-look notes are in [issue #8](https://github.com/brando90/the-difficulty-confound/issues/8).
+Pull requests #1–#7 and #9–#11 are merged. The second-look notes are in [issue #8](https://github.com/brando90/the-difficulty-confound/issues/8).
 
 Experiment 08 revealed a sharp, actionable finding for the RL environment scaling law (`rl-4-code-verification`):
 - At **interpolated held-out width 96**, adding stochastic rollout signal density $\log \rho_{m_0}$, headroom $H_{m_0}$, and $\log D_{m_0}$ reduced RL improvement utility RMSE by **48.56% [41.65, 57.30]** (`14.59 -> 7.50` pp), beating even oracle pretraining history (`8.53` pp) by **12.01%**.
 - At **extrapolated near-ceiling width 384**, where starting accuracy $\text{Acc}_0$ is already $78\%\text{–}99.8\%$, the **additive linear** utility formula $\widehat{U}_{\text{add}} = \text{clip}(b_0 + b_N x_N + s(C)(\dots), 0, 1)$ overshot remaining headroom $1 - \text{Acc}_0$ (`19.71 -> 27.38` pp), whereas the multiplicative log-loss law `stable_difficulty` succeeded at both widths (**39.87%** joint reduction).
 
-This directly motivates **Experiment 09 (`09_headroom_bounded_rlvr_utility_law`)**: replacing the additive linear RL utility formula with a **headroom-bounded fractional-recovery RL utility law** $\widehat{U}_{\text{bounded}} = (1 - \text{Acc}_0) \cdot (1 - \exp(-r_\theta(N, C, c, \rho_{m_0}, D_{m_0})))$ that structurally guarantees $0 \le \widehat{U} \le 1 - \text{Acc}_0$ across all model scales!
+This motivated **Experiment 09 (`09_headroom_bounded_rlvr_utility_law`)**: replacing the additive linear RL utility formula with a **headroom-bounded fractional-recovery RL utility law** $\widehat{U}_{\text{bounded}} = (1 - \text{Acc}_0) \cdot (1 - \exp(-r_\theta(N, C, c, \rho_{m_0}, D_{m_0})))$ that structurally guarantees $0 \le \widehat{U} \le 1 - \text{Acc}_0$ across all model scales!
+
+Experiment 09 is complete: the bound removed every impossible forecast and cut joint RMSE by **73.72%**, while probe features and signal density added little beyond it. See the [results](../archive/09_headroom_bounded_rlvr_utility_law/RESULTS_headroom_bounded.md) and the row above.
