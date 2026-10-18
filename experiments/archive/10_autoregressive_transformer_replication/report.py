@@ -108,7 +108,7 @@ def main():
 
     report_md = f"""# Experiment 10 Results: Autoregressive Transformer Architecture Generalization (Heterogeneous Histories, Prequential Online MDL, and Pure Compositional Remediation)
 
-**Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/10_autoregressive_transformer_replication/RESULTS_transformer_history.md>
+**Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/archive/10_autoregressive_transformer_replication/RESULTS_transformer_history.md>
 
 **Frozen commit:** `{runtime['git_revision']}` · **Verification:** `{ver['status']}` (`max_replay_bits_difference = {ver['max_replay_bits_difference']:.3e}`, {ver['completed_trajectories']} trajectories, {ver['final_models_replayed']} final + {ver['warm_models_replayed']} warm checkpoints replayed).
 
