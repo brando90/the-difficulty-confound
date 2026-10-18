@@ -1,0 +1,38 @@
+{
+  "oracle_pairs": 500500,
+  "eligible_answers": 180,
+  "train_size": 7200,
+  "test": 2880,
+  "calibration": 1440,
+  "probe": 1440,
+  "split_overlap": 0,
+  "exact_answer_matching": true,
+  "ones_carry_rate": 0.5,
+  "tens_carry_rate": 0.5,
+  "hundreds_carry_rate": 0.0,
+  "post_mixture": 0.5,
+  "group_sizes": [
+    4,
+    8,
+    16,
+    64
+  ],
+  "prompts_per_update": {
+    "4": 1024,
+    "8": 512,
+    "16": 256,
+    "64": 64
+  },
+  "verifiable_exact_sum_reward": true,
+  "status": "PASS",
+  "source_hashes_match": true,
+  "unchanged_reference_sha256": "766123242a12da2ee6973f03ade252880983720ed9c65db88932c01decef2289",
+  "completed_cells": 200,
+  "aggregate_rows": 10400,
+  "item_rows": 11232000,
+  "final_models_replayed": 800,
+  "warm_models_replayed": 200,
+  "max_replay_bits_difference": 0.0,
+  "frozen_forecasts_reproduced": true,
+  "independent_fit_max_objective_gap": 4.745266679595517e-12
+}

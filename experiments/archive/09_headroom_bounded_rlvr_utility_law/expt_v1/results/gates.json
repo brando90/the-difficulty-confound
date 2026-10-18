@@ -1,0 +1,170 @@
+{
+  "gates": {
+    "gate1_structural_repair": {
+      "status": "SUPPORTED",
+      "baseline": "additive_base",
+      "extended": "bounded_base",
+      "targets": "joint",
+      "relative_rmse_reduction": {
+        "estimate": 0.7372120580111765,
+        "lo": 0.7042625604099736,
+        "hi": 0.7725511008836561
+      },
+      "subgroup_rule": "improve",
+      "subgroups": {
+        "joint_width_96": {
+          "base_rmse": 0.1396666528827336,
+          "ext_rmse": 0.0653470162492859,
+          "noise_sigma": 0.013349579122270173,
+          "ok": true
+        },
+        "joint_width_384": {
+          "base_rmse": 0.20634419254165012,
+          "ext_rmse": 0.004145089968427068,
+          "noise_sigma": 0.004128831422278094,
+          "ok": true
+        }
+      },
+      "impossible_forecasts": 0
+    },
+    "gate2_probe_features": {
+      "status": "NOT_ESTABLISHED",
+      "baseline": "bounded_base",
+      "extended": "bounded_signal_difficulty",
+      "targets": "joint",
+      "relative_rmse_reduction": {
+        "estimate": 0.08097966173425564,
+        "lo": 0.02517020100878975,
+        "hi": 0.1438982595691034
+      },
+      "subgroup_rule": "noninferior",
+      "subgroups": {
+        "joint_width_96": {
+          "base_rmse": 0.0653470162492859,
+          "ext_rmse": 0.0599849996434492,
+          "noise_sigma": 0.013349579122270173,
+          "ok": true
+        },
+        "joint_width_384": {
+          "base_rmse": 0.004145089968427068,
+          "ext_rmse": 0.004789885398157399,
+          "noise_sigma": 0.004128831422278094,
+          "ok": true
+        }
+      },
+      "impossible_forecasts": 0
+    },
+    "gate3_group_size": {
+      "status": "NOT_ESTABLISHED",
+      "baseline": "bounded_base_g",
+      "extended": "bounded_signal_g",
+      "targets": "group",
+      "relative_rmse_reduction": {
+        "estimate": 0.009592719060730559,
+        "lo": 0.004382730985669103,
+        "hi": 0.015393106220516706
+      },
+      "subgroup_rule": "noninferior",
+      "subgroups": {
+        "group_g8": {
+          "base_rmse": 0.08792581533744846,
+          "ext_rmse": 0.0875640295365908,
+          "noise_sigma": 0.013955834987443542,
+          "ok": true
+        },
+        "group_g64": {
+          "base_rmse": 0.1073876931169989,
+          "ext_rmse": 0.10596135430224146,
+          "noise_sigma": 0.013936449456705982,
+          "ok": true
+        }
+      },
+      "impossible_forecasts": 0
+    },
+    "gate4_utility_reversal": {
+      "status": "SUPPORTED",
+      "statistics": {
+        "u_low": {
+          "estimate": 0.2985763888888889,
+          "lo": 0.2674652777777778,
+          "hi": 0.3258684895833333
+        },
+        "u_high": {
+          "estimate": 0.34487847222222223,
+          "lo": 0.3168229166666666,
+          "hi": 0.37088541666666663
+        }
+      },
+      "by_width": {
+        "32": {
+          "u_low": 0.11875,
+          "u_high": 0.1578125
+        },
+        "64": {
+          "u_low": 0.2637152777777778,
+          "u_high": 0.43871527777777775
+        },
+        "128": {
+          "u_low": 0.4480034722222222,
+          "u_high": 0.4748263888888889
+        },
+        "96": {
+          "u_low": 0.45052083333333326,
+          "u_high": 0.49496527777777777
+        },
+        "384": {
+          "u_low": 0.21189236111111115,
+          "u_high": 0.15807291666666667
+        }
+      }
+    },
+    "gate5_remediation_retention": {
+      "status": "SUPPORTED",
+      "statistics": {
+        "pure_control_pre": {
+          "estimate": 0.7857465277777778,
+          "lo": 0.7687847222222222,
+          "hi": 0.8022743055555556
+        },
+        "pure_target_pre": {
+          "estimate": 0.3306597222222222,
+          "lo": 0.31385416666666666,
+          "hi": 0.3477430555555555
+        },
+        "pure_control_post": {
+          "estimate": 0.8449826388888888,
+          "lo": 0.8350520833333333,
+          "hi": 0.8542881944444445
+        },
+        "pure_target_post": {
+          "estimate": 0.6840625,
+          "lo": 0.6517690972222222,
+          "hi": 0.7117361111111111
+        },
+        "pure_initial_gap": {
+          "estimate": 0.4550868055555556,
+          "lo": 0.4388194444444444,
+          "hi": 0.47248263888888886
+        },
+        "pure_target_gain": {
+          "estimate": 0.35340277777777773,
+          "lo": 0.32614583333333336,
+          "hi": 0.37631944444444443
+        },
+        "pure_control_change": {
+          "estimate": 0.05923611111111111,
+          "lo": 0.048715277777777774,
+          "hi": 0.07013932291666665
+        },
+        "pure_recovery_fraction": {
+          "estimate": 0.7765612482356081,
+          "lo": 0.7293652638921181,
+          "hi": 0.8220793548141668
+        }
+      }
+    }
+  },
+  "n_seed_blocks": 8,
+  "p_value": null,
+  "interval": "95% percentile bootstrap of complete seed blocks; fixed test set"
+}

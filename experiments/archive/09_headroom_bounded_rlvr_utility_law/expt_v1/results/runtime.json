@@ -1,0 +1,56 @@
+{
+  "host": "sh04-01n14.int",
+  "pid": 8845,
+  "slurm_job_id": "48325211",
+  "device": "cpu",
+  "threads": 2,
+  "workers": 8,
+  "python": "3.12.1",
+  "torch": "2.5.1+cpu",
+  "numpy": "1.26.4",
+  "git_revision": "d25e66919701464b9045dfca7b2c9e1126e2f55e",
+  "source_sha256": {
+    "verify.py": "87cf542e222f1809326b08b079fbf639e8f21e4a21cd5078f10f100303c04784",
+    "analyze.py": "33cbe5fdf2168236b43ac1abbf9e2973cf911f021cbd03711175ca4c9f202d7c",
+    "run.py": "3dff5369129080ad1160bcd71722ebce794e6af6360507cd88ef8ab2d8d4a78a",
+    "laws.py": "b372953e02641807c6e8838ce1bb1f3a10a0042fefc9254b4e645882f2937793",
+    "independent_fit.py": "7f584c5fa99f361c74f05100ab9a9e18f04e41a58f1a12e0e323def66031835f",
+    "addition.py": "766123242a12da2ee6973f03ade252880983720ed9c65db88932c01decef2289",
+    "test_laws.py": "675112bc3df0189bcee1d26a4870de4c53a27c01db442bafd793095e4e10b4fc"
+  },
+  "config_sha256": "c9b99808de491a2f14c43a5e91f70dc25d0a34781bb314cffc7157aa75fbd296",
+  "smoke": false,
+  "started_utc": "2026-10-18T09:47:59Z",
+  "checks": {
+    "oracle_pairs": 500500,
+    "eligible_answers": 180,
+    "train_size": 7200,
+    "test": 2880,
+    "calibration": 1440,
+    "probe": 1440,
+    "split_overlap": 0,
+    "exact_answer_matching": true,
+    "ones_carry_rate": 0.5,
+    "tens_carry_rate": 0.5,
+    "hundreds_carry_rate": 0.0,
+    "post_mixture": 0.5,
+    "group_sizes": [
+      4,
+      8,
+      16,
+      64
+    ],
+    "prompts_per_update": {
+      "4": 1024,
+      "8": 512,
+      "16": 256,
+      "64": 64
+    },
+    "verifiable_exact_sum_reward": true
+  },
+  "expected_cells": 200,
+  "expected_trajectories": 800,
+  "completed_cells": 200,
+  "elapsed_seconds": 406.28002284211107,
+  "finished_utc": "2026-10-18T09:54:45Z"
+}

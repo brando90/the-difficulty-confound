@@ -92,6 +92,14 @@ On 24 actual mathematics observations from Varun's alignment-law repository, a t
 
 **Additive RL utility law vs ceiling saturation:** **NOT_ESTABLISHED** pooled (**-15.78% [-35.91, 3.15]**). At interpolated held-out width 96, adding $\log \rho_{m_0}$, headroom $H_{m_0}$, and $\log D_{m_0}$ reduces RL utility RMSE by **48.56% [41.65, 57.30]** (`14.59 → 7.50` pp, beating oracle history `8.53` pp by **12.01%**). However, at extrapolated near-ceiling width 384 (where $\text{Acc}_0$ is already $78\%\text{–}99.8\%$), the *additive linear* utility formula from `rl-4-code-verification` overshoots remaining headroom $1 - \text{Acc}_0$ (`19.71 → 27.38` pp), diagnosing the exact need for a headroom-bounded RL utility law. [Complete results and plot](experiments/archive/08_rlvr_verifiable_reward_utility_laws/RESULTS_rlvr_utility.md).
 
+## Headroom-bounded RL utility-law experiment
+
+[experiments/archive/09_headroom_bounded_rlvr_utility_law/](experiments/archive/09_headroom_bounded_rlvr_utility_law/) replaces Experiment 08's additive RL utility law with a **headroom-bounded fractional-recovery law**, $`\widehat U = (1-\text{Acc}_0)(1-e^{-r_\theta})`$, which cannot forecast more improvement than the remaining headroom. It also RL-trains each of 200 fresh starting checkpoints (`9101`–`9808`) at four rollout group sizes $G \in \{4, 8, 16, 64\}$ under a fixed budget of 4,096 rollouts per update (800 trajectories).
+
+**Structural repair:** **SUPPORTED**. Bounding by headroom reduces joint held-out RL utility RMSE by **73.72% [70.43, 77.26]** (`17.62 → 4.63` pp; 128 → 0 impossible forecasts). At near-ceiling width 384, error falls from `20.63` to `0.41` pp, the binomial noise level of the observed outcome.
+
+**Probe features and signal density:** **NOT_ESTABLISHED**. Inside the bound, starting-checkpoint probe features improve forecasts by **8.10% [2.52, 14.39]**, below the 10% gate (an exploratory refit on Experiment 08 had suggested 16.53%). Larger groups raised probe signal density but lowered realized utility at fixed budget (`19.08` pp at $G=4$ vs `14.89` pp at $G=64$), and knowing $\rho(G)$ adds only **0.96% [0.44, 1.54]** beyond knowing $G$. Experiment 08's utility reversal (`29.86` / `34.49` pp) and RLVR remediation (**77.66%** recovery, **+5.92 pp** control) replicate. [Complete results](experiments/archive/09_headroom_bounded_rlvr_utility_law/RESULTS_headroom_bounded.md).
+
 ## Proposed approach
 
 1. **Define a narrow skill.** Specify what the task is intended to measure and which additional abilities it requires.
@@ -131,9 +139,10 @@ Claims will be limited to the models, task families, and training interventions 
 
 ## Status
 
-Eight controlled experiments are complete and archived with full artifacts:
+Nine controlled experiments are complete and archived with full artifacts:
 - **Experiments 03, 04, 05, 06, 07, and 08** support the prespecified difficulty-ranking reversal under exact answer matching—including **Experiments 06, 07, and 08**, which hold exact per-column carry rates fixed at 50% ones / 50% tens and reduce input-digit marginal TV distance to `0.0398`, isolating a pure compositional exposure reversal across final accuracy, prequential online MDL code length, and verifiable-reward RL utility ($U = \text{Acc}_T - \text{Acc}_0$).
 - **Experiments 05, 07, and 08** demonstrate that under heterogeneous pretraining histories ($q_{\text{pre}}$), probed starting difficulty reduces joint held-out conditional loss RMSE by **47.20%** (Expt 05), **36.22%** (Expt 07), and **39.87%** (Expt 08 under RLVR)—plus **56.93%** on prequential online MDL (Expt 07)—compared with 3.48% (Expt 04) and 1.94% (Expt 06) when starting models share a constant warmup. Both supervised balanced post-training (**+1.09 pp** in Expt 05, **+5.13 pp** in Expt 07) and pure 0/1 verifiable-reward RL (**+6.45 pp** in Expt 08) pass the strict no-harm retention gate on previously mastered strata.
+- **Experiment 09** shows that bounding the RL utility law by remaining headroom repairs its near-ceiling extrapolation failure (**73.72%** RMSE reduction), while probe features inside the bound (**8.10%**) and signal density beyond group size (**0.96%**) do not reach the 10% gate.
 
 ## What stays fixed—and what does not
 
