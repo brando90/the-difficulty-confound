@@ -84,7 +84,7 @@ Finally, in [experiments/archive/08_rlvr_verifiable_reward_utility_laws/](../../
 
 ## The claim I would defend
 
-Training alignment can reverse an apparent difficulty ranking—across final accuracy, prequential online MDL code length, and verifiable-reward RL improvement utility—while the measured task, exact answer distribution, and even per-column carry frequencies stay fixed. Moreover, when models arrive with different prior training histories, an independent starting-difficulty probe substantially improves held-out post-training forecasts ($36.22\%\text{–}47.20\%$ loss RMSE reduction; $56.93\%$ prequential MDL RMSE reduction) and guides targeted supervised or RLVR remediation that closes the difficulty gap without harming existing capabilities.
+Training alignment can reverse an apparent difficulty ranking—across final accuracy, prequential online MDL code length, and verifiable-reward RL improvement utility—while the measured task, exact answer distribution, and even per-column carry frequencies stay fixed. Moreover, when models arrive with different prior training histories, an independent starting-difficulty probe substantially improves held-out post-training forecasts ($36.22\%\text{–}47.20\%$ loss RMSE reduction; $56.93\%$ prequential MDL RMSE reduction) and targeted supervised or RLVR remediation narrows the difficulty gap while control accuracy rises rather than falls. The full remediation gate still failed in Experiment 07, where the smallest network reached only 27.80% on cascading carries.
 
 I would like to know whether data alignment explains more variation than structural complexity across a broader range of models and tasks. This addition series does not settle that broader claim for general language models.
 
