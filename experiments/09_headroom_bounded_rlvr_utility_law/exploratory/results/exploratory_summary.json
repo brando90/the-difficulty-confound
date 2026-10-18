@@ -1,0 +1,1036 @@
+{
+  "note": "EXPLORATORY refit on already-observed Experiment 08 outcomes; not prospective evidence.",
+  "fit_failures": [],
+  "rmse_pp": {
+    "joint": {
+      "utility_base": {
+        "estimate": 17.33929149360176,
+        "lo": 15.611522579030767,
+        "hi": 18.849935018054897
+      },
+      "utility_signal_difficulty": {
+        "estimate": 20.075732887109314,
+        "lo": 17.27191913997925,
+        "hi": 22.52301704008354
+      },
+      "gain_base": {
+        "estimate": 5.1175356411090505,
+        "lo": 3.7729916132583083,
+        "hi": 6.339222700556843
+      },
+      "gain_signal_difficulty": {
+        "estimate": 4.271844562609735,
+        "lo": 3.3283687115255414,
+        "hi": 5.10077684316157
+      },
+      "gain_rho": {
+        "estimate": 4.617309473775045,
+        "lo": 3.574393777074584,
+        "hi": 5.555316855562946
+      },
+      "gain_headroom": {
+        "estimate": 4.582114742059516,
+        "lo": 3.4364769235525614,
+        "hi": 5.6098416883644004
+      },
+      "gain_difficulty": {
+        "estimate": 4.78413766564219,
+        "lo": 3.6309711540607674,
+        "hi": 5.822049914951087
+      },
+      "twosided_base": {
+        "estimate": 5.1822212420345455,
+        "lo": 3.917807852714663,
+        "hi": 6.367236370558895
+      },
+      "twosided_signal_difficulty": {
+        "estimate": 4.317655152597731,
+        "lo": 3.4858282207889917,
+        "hi": 5.079748064101068
+      },
+      "logit_base": {
+        "estimate": 4.324458464047865,
+        "lo": 3.1306763886043463,
+        "hi": 5.377767468654556
+      },
+      "logit_signal_difficulty": {
+        "estimate": 4.60074207958104,
+        "lo": 3.431049936237666,
+        "hi": 5.618155786402632
+      }
+    },
+    "width_96": {
+      "utility_base": {
+        "estimate": 14.585694376977996,
+        "lo": 13.080576838335173,
+        "hi": 16.06626995541877
+      },
+      "utility_signal_difficulty": {
+        "estimate": 7.5030330036923445,
+        "lo": 5.697971396154689,
+        "hi": 9.208133922958991
+      },
+      "gain_base": {
+        "estimate": 7.219073807613039,
+        "lo": 5.295888947199826,
+        "hi": 8.953563298275812
+      },
+      "gain_signal_difficulty": {
+        "estimate": 6.017036981935148,
+        "lo": 4.675127324481633,
+        "hi": 7.198415886326114
+      },
+      "gain_rho": {
+        "estimate": 6.511284547816786,
+        "lo": 5.028466331104442,
+        "hi": 7.845355075833034
+      },
+      "gain_headroom": {
+        "estimate": 6.455975929341205,
+        "lo": 4.821379812054527,
+        "hi": 7.916634275871025
+      },
+      "gain_difficulty": {
+        "estimate": 6.742876151157176,
+        "lo": 5.0964993288470835,
+        "hi": 8.217057864884081
+      },
+      "twosided_base": {
+        "estimate": 7.253518974605512,
+        "lo": 5.40612570780704,
+        "hi": 8.974202653469
+      },
+      "twosided_signal_difficulty": {
+        "estimate": 5.877194301857084,
+        "lo": 4.667189971903884,
+        "hi": 6.978622353325541
+      },
+      "logit_base": {
+        "estimate": 6.101613588172022,
+        "lo": 4.396991231528469,
+        "hi": 7.595856455365967
+      },
+      "logit_signal_difficulty": {
+        "estimate": 6.494151242720673,
+        "lo": 4.828161814149382,
+        "hi": 7.937520043463437
+      }
+    },
+    "width_384": {
+      "utility_base": {
+        "estimate": 19.711914634088018,
+        "lo": 17.271019178488476,
+        "hi": 21.66389296857265
+      },
+      "utility_signal_difficulty": {
+        "estimate": 27.38201230104589,
+        "lo": 22.938139718172284,
+        "hi": 31.160727873901966
+      },
+      "gain_base": {
+        "estimate": 0.5131427055685357,
+        "lo": 0.3756316667280829,
+        "hi": 0.6661294128892004
+      },
+      "gain_signal_difficulty": {
+        "estimate": 0.5409046979103425,
+        "lo": 0.4739877233325451,
+        "hi": 0.6045435018602172
+      },
+      "gain_rho": {
+        "estimate": 0.4922063496013813,
+        "lo": 0.3357369550827378,
+        "hi": 0.6494328748268681
+      },
+      "gain_headroom": {
+        "estimate": 0.558503194767269,
+        "lo": 0.48860189772876517,
+        "hi": 0.6361519586356987
+      },
+      "gain_difficulty": {
+        "estimate": 0.5563880101047994,
+        "lo": 0.4568099031661504,
+        "hi": 0.6812603092352653
+      },
+      "twosided_base": {
+        "estimate": 1.0475192064234136,
+        "lo": 0.5928356636742687,
+        "hi": 1.4458783346575617
+      },
+      "twosided_signal_difficulty": {
+        "estimate": 1.656163993004954,
+        "lo": 1.3844633912400905,
+        "hi": 1.8855087559301866
+      },
+      "logit_base": {
+        "estimate": 0.4149622093455938,
+        "lo": 0.3098903191450381,
+        "hi": 0.5340850173481013
+      },
+      "logit_signal_difficulty": {
+        "estimate": 0.3995685201875534,
+        "lo": 0.3110489648227256,
+        "hi": 0.492659152233646
+      }
+    },
+    "step_100": {
+      "utility_base": {
+        "estimate": 10.470522430343204,
+        "lo": 8.944774449463232,
+        "hi": 11.880132143414212
+      },
+      "utility_signal_difficulty": {
+        "estimate": 23.809005964667048,
+        "lo": 20.13462235710581,
+        "hi": 26.827930943961356
+      },
+      "gain_base": {
+        "estimate": 4.8558291669117715,
+        "lo": 3.784993011680792,
+        "hi": 5.878003516810701
+      },
+      "gain_signal_difficulty": {
+        "estimate": 4.3945128791913595,
+        "lo": 3.5284080826513597,
+        "hi": 5.213069936151846
+      },
+      "gain_rho": {
+        "estimate": 4.5642536973765075,
+        "lo": 3.661183966276158,
+        "hi": 5.43147339609683
+      },
+      "gain_headroom": {
+        "estimate": 4.577923267183269,
+        "lo": 3.6014915840480852,
+        "hi": 5.517240561460828
+      },
+      "gain_difficulty": {
+        "estimate": 4.682700443878174,
+        "lo": 3.7094996603518497,
+        "hi": 5.621669004864337
+      },
+      "twosided_base": {
+        "estimate": 4.792835655527796,
+        "lo": 3.68679842176944,
+        "hi": 5.852415274710812
+      },
+      "twosided_signal_difficulty": {
+        "estimate": 4.14482371913689,
+        "lo": 3.2877479881700897,
+        "hi": 4.944741138322932
+      },
+      "logit_base": {
+        "estimate": 4.814985553307784,
+        "lo": 3.7359629937627403,
+        "hi": 5.833727419896971
+      },
+      "logit_signal_difficulty": {
+        "estimate": 4.979326615445368,
+        "lo": 3.9547925313066843,
+        "hi": 5.9571701134676776
+      }
+    },
+    "step_300": {
+      "utility_base": {
+        "estimate": 16.216215579316856,
+        "lo": 14.273652256045425,
+        "hi": 17.927350347604094
+      },
+      "utility_signal_difficulty": {
+        "estimate": 19.130482090172297,
+        "lo": 16.01936655228525,
+        "hi": 21.860874129525946
+      },
+      "gain_base": {
+        "estimate": 5.231321356499603,
+        "lo": 3.8543352201051393,
+        "hi": 6.530001669019955
+      },
+      "gain_signal_difficulty": {
+        "estimate": 4.40740670312453,
+        "lo": 3.4308566004374006,
+        "hi": 5.274062636570067
+      },
+      "gain_rho": {
+        "estimate": 4.730230988386239,
+        "lo": 3.644953432269312,
+        "hi": 5.719701493956698
+      },
+      "gain_headroom": {
+        "estimate": 4.710394791904986,
+        "lo": 3.5223829024396354,
+        "hi": 5.804519190143852
+      },
+      "gain_difficulty": {
+        "estimate": 4.907354677151635,
+        "lo": 3.7030304500823505,
+        "hi": 6.012384689615755
+      },
+      "twosided_base": {
+        "estimate": 5.234854214260378,
+        "lo": 3.8957249219641112,
+        "hi": 6.532740425666228
+      },
+      "twosided_signal_difficulty": {
+        "estimate": 4.248122285079656,
+        "lo": 3.340637758617531,
+        "hi": 5.049148216785954
+      },
+      "logit_base": {
+        "estimate": 4.535287301051114,
+        "lo": 3.2280012620693475,
+        "hi": 5.707014946066574
+      },
+      "logit_signal_difficulty": {
+        "estimate": 4.85232011084216,
+        "lo": 3.5426920144434684,
+        "hi": 5.984173742549002
+      }
+    },
+    "step_1000": {
+      "utility_base": {
+        "estimate": 23.007729153940257,
+        "lo": 20.967133000239123,
+        "hi": 24.633590371105008
+      },
+      "utility_signal_difficulty": {
+        "estimate": 16.62110233515616,
+        "lo": 14.372950911271873,
+        "hi": 18.588503720014362
+      },
+      "gain_base": {
+        "estimate": 5.255636315505891,
+        "lo": 3.5931961845374145,
+        "hi": 6.652699666772074
+      },
+      "gain_signal_difficulty": {
+        "estimate": 4.0011236683173514,
+        "lo": 2.8809379775603645,
+        "hi": 4.95510158915984
+      },
+      "gain_rho": {
+        "estimate": 4.555342282675777,
+        "lo": 3.303753817619978,
+        "hi": 5.633072976964972
+      },
+      "gain_headroom": {
+        "estimate": 4.454450133560131,
+        "lo": 3.0665108353061705,
+        "hi": 5.596818950923309
+      },
+      "gain_difficulty": {
+        "estimate": 4.759632993938715,
+        "lo": 3.3537016113713363,
+        "hi": 5.934666516419611
+      },
+      "twosided_base": {
+        "estimate": 5.494659110329231,
+        "lo": 4.0371727072888515,
+        "hi": 6.776890158862332
+      },
+      "twosided_signal_difficulty": {
+        "estimate": 4.549761690303247,
+        "lo": 3.5856726749257004,
+        "hi": 5.439244198758742
+      },
+      "logit_base": {
+        "estimate": 3.5142433382148535,
+        "lo": 2.1362597961435754,
+        "hi": 4.6135405865123325
+      },
+      "logit_signal_difficulty": {
+        "estimate": 3.893812918864635,
+        "lo": 2.518129870171711,
+        "hi": 4.973367515055427
+      }
+    }
+  },
+  "relative_rmse_reduction_pct": {
+    "joint": {
+      "utility_base->utility_signal_difficulty": {
+        "estimate": -15.781737071075286,
+        "lo": -35.91185100245979,
+        "hi": 3.1481922990280964
+      },
+      "utility_base->gain_base": {
+        "estimate": 70.48590109349374,
+        "lo": 65.69333972207035,
+        "hi": 76.7448953291684
+      },
+      "utility_base->twosided_base": {
+        "estimate": 70.11284316924484,
+        "lo": 65.52718120598648,
+        "hi": 75.86353836024342
+      },
+      "utility_base->logit_base": {
+        "estimate": 75.05977412258396,
+        "lo": 70.85764735134082,
+        "hi": 80.70947408142044
+      },
+      "gain_base->gain_signal_difficulty": {
+        "estimate": 16.52535786377133,
+        "lo": 7.443280242516259,
+        "hi": 22.207298191154578
+      },
+      "gain_base->gain_rho": {
+        "estimate": 9.774747112959991,
+        "lo": 1.9582693961149311,
+        "hi": 14.485587619468843
+      },
+      "gain_base->gain_headroom": {
+        "estimate": 10.462475234144152,
+        "lo": 7.162386504908413,
+        "hi": 12.593460176772641
+      },
+      "gain_base->gain_difficulty": {
+        "estimate": 6.514814919678946,
+        "lo": 2.4198246040208704,
+        "hi": 8.953882267691881
+      },
+      "twosided_base->twosided_signal_difficulty": {
+        "estimate": 16.68331105634897,
+        "lo": 7.2634210287507495,
+        "hi": 22.705915719554937
+      },
+      "logit_base->logit_signal_difficulty": {
+        "estimate": -6.388860427961274,
+        "lo": -12.033162852954504,
+        "hi": -3.016425332655892
+      },
+      "utility_signal_difficulty->logit_signal_difficulty": {
+        "estimate": 77.08306787377516,
+        "lo": 69.22759646586618,
+        "hi": 84.09108880096443
+      }
+    },
+    "width_96": {
+      "utility_base->utility_signal_difficulty": {
+        "estimate": 48.558959143315775,
+        "lo": 41.647519623055274,
+        "hi": 57.297378788991836
+      },
+      "utility_base->gain_base": {
+        "estimate": 50.50579272381026,
+        "lo": 42.879551014908955,
+        "hi": 60.70654863901432
+      },
+      "utility_base->twosided_base": {
+        "estimate": 50.269635526886944,
+        "lo": 42.66719012379572,
+        "hi": 60.20528944154767
+      },
+      "utility_base->logit_base": {
+        "estimate": 58.16713671306053,
+        "lo": 51.760051908380234,
+        "hi": 66.76033205407607
+      },
+      "gain_base->gain_signal_difficulty": {
+        "estimate": 16.65084549226047,
+        "lo": 7.464893101676228,
+        "hi": 22.355109206540938
+      },
+      "gain_base->gain_rho": {
+        "estimate": 9.804433070760943,
+        "lo": 1.9641203823932307,
+        "hi": 14.511713982135365
+      },
+      "gain_base->gain_headroom": {
+        "estimate": 10.570578700374178,
+        "lo": 7.23810230951365,
+        "hi": 12.738706760963902
+      },
+      "gain_base->gain_difficulty": {
+        "estimate": 6.59638160166306,
+        "lo": 2.4592913751351864,
+        "hi": 9.06368978639125
+      },
+      "twosided_base->twosided_signal_difficulty": {
+        "estimate": 18.97457878812927,
+        "lo": 9.675710452236139,
+        "hi": 24.937816715082658
+      },
+      "logit_base->logit_signal_difficulty": {
+        "estimate": -6.4333417525748615,
+        "lo": -12.174080915850372,
+        "hi": -3.030208712363436
+      },
+      "utility_signal_difficulty->logit_signal_difficulty": {
+        "estimate": 13.44631911488574,
+        "lo": 8.507751541949126,
+        "hi": 18.203708962491845
+      }
+    },
+    "width_384": {
+      "utility_base->utility_signal_difficulty": {
+        "estimate": -38.91097242118677,
+        "lo": -67.54117082191709,
+        "hi": -12.555481304753968
+      },
+      "utility_base->gain_base": {
+        "estimate": 97.39678912427333,
+        "lo": 96.19508214101133,
+        "hi": 98.24338373639416
+      },
+      "utility_base->twosided_base": {
+        "estimate": 94.68585763550372,
+        "lo": 92.04709294896377,
+        "hi": 97.14024453786244
+      },
+      "utility_base->logit_base": {
+        "estimate": 97.89486603889814,
+        "lo": 96.93605977673293,
+        "hi": 98.50612227893888
+      },
+      "gain_base->gain_signal_difficulty": {
+        "estimate": -5.4101894152520424,
+        "lo": -28.489154098294044,
+        "hi": 11.576374526497046
+      },
+      "gain_base->gain_rho": {
+        "estimate": 4.0800260317367165,
+        "lo": -0.06858209589692965,
+        "hi": 11.84556184156542
+      },
+      "gain_base->gain_headroom": {
+        "estimate": -8.83974159751062,
+        "lo": -33.63899930218128,
+        "hi": 5.365067385991262
+      },
+      "gain_base->gain_difficulty": {
+        "estimate": -8.427539564915044,
+        "lo": -25.870438570614507,
+        "hi": -1.0100627627849912
+      },
+      "twosided_base->twosided_signal_difficulty": {
+        "estimate": -58.1034488770531,
+        "lo": -179.34449897340588,
+        "hi": -20.510742496776913
+      },
+      "logit_base->logit_signal_difficulty": {
+        "estimate": 3.7096604971128877,
+        "lo": -5.538409109527979,
+        "hi": 9.908273946197731
+      },
+      "utility_signal_difficulty->logit_signal_difficulty": {
+        "estimate": 98.54076276135378,
+        "lo": 98.01561694756786,
+        "hi": 98.85995686182721
+      }
+    },
+    "step_100": {
+      "utility_base->utility_signal_difficulty": {
+        "estimate": -127.3908119013182,
+        "lo": -190.03285883551527,
+        "hi": -76.87507916759066
+      },
+      "utility_base->gain_base": {
+        "estimate": 53.623811999678736,
+        "lo": 49.19761750978423,
+        "hi": 58.96637294160606
+      },
+      "utility_base->twosided_base": {
+        "estimate": 54.22543920408091,
+        "lo": 49.50537330815017,
+        "hi": 59.611106128837235
+      },
+      "utility_base->logit_base": {
+        "estimate": 54.0138939070115,
+        "lo": 49.43707210882361,
+        "hi": 60.0846434079988
+      },
+      "gain_base->gain_signal_difficulty": {
+        "estimate": 9.500257769854814,
+        "lo": 4.054001435558718,
+        "hi": 13.47831148845884
+      },
+      "gain_base->gain_rho": {
+        "estimate": 6.004648423838632,
+        "lo": 1.3051910516121201,
+        "hi": 9.241284986824983
+      },
+      "gain_base->gain_headroom": {
+        "estimate": 5.723139965923618,
+        "lo": 3.748497000570904,
+        "hi": 7.354346555601299
+      },
+      "gain_base->gain_difficulty": {
+        "estimate": 3.565379198537677,
+        "lo": 1.3330109555965195,
+        "hi": 5.059686087055725
+      },
+      "twosided_base->twosided_signal_difficulty": {
+        "estimate": 13.520428885215862,
+        "lo": 7.524198208914165,
+        "hi": 17.72516635765401
+      },
+      "logit_base->logit_signal_difficulty": {
+        "estimate": -3.4131164116304458,
+        "lo": -6.195712536357145,
+        "hi": -1.8942546101886615
+      },
+      "utility_signal_difficulty->logit_signal_difficulty": {
+        "estimate": 79.08637335454168,
+        "lo": 71.38875928055975,
+        "hi": 84.8500786244317
+      }
+    },
+    "step_300": {
+      "utility_base->utility_signal_difficulty": {
+        "estimate": -17.971310856106726,
+        "lo": -44.548178637632205,
+        "hi": 6.303412717129008
+      },
+      "utility_base->gain_base": {
+        "estimate": 67.7401837012333,
+        "lo": 62.46459068122188,
+        "hi": 74.28402066772846
+      },
+      "utility_base->twosided_base": {
+        "estimate": 67.7183977441862,
+        "lo": 62.40557453192185,
+        "hi": 74.1235127773614
+      },
+      "utility_base->logit_base": {
+        "estimate": 72.03239387841084,
+        "lo": 67.33311755131022,
+        "hi": 78.17821270345743
+      },
+      "gain_base->gain_signal_difficulty": {
+        "estimate": 15.749647120252108,
+        "lo": 6.2962084610264535,
+        "hi": 21.407875653209512
+      },
+      "gain_base->gain_rho": {
+        "estimate": 9.578657741811048,
+        "lo": 1.3820110147383267,
+        "hi": 14.423112060221788
+      },
+      "gain_base->gain_headroom": {
+        "estimate": 9.95783912122693,
+        "lo": 6.678329207057477,
+        "hi": 11.906616660887071
+      },
+      "gain_base->gain_difficulty": {
+        "estimate": 6.192826960352161,
+        "lo": 2.034100397243021,
+        "hi": 8.626458657380077
+      },
+      "twosided_base->twosided_signal_difficulty": {
+        "estimate": 18.84927237310151,
+        "lo": 8.890060478058148,
+        "hi": 24.95406548573066
+      },
+      "logit_base->logit_signal_difficulty": {
+        "estimate": -6.990357804180758,
+        "lo": -13.503084732020554,
+        "hi": -2.94133407806203
+      },
+      "utility_signal_difficulty->logit_signal_difficulty": {
+        "estimate": 74.63566214395145,
+        "lo": 64.86584013670351,
+        "hi": 83.00360353135063
+      }
+    },
+    "step_1000": {
+      "utility_base->utility_signal_difficulty": {
+        "estimate": 27.758614403239946,
+        "lo": 18.803773352860958,
+        "hi": 36.81056706001715
+      },
+      "utility_base->gain_base": {
+        "estimate": 77.1570836898268,
+        "lo": 72.62803752080818,
+        "hi": 83.55054707889582
+      },
+      "utility_base->twosided_base": {
+        "estimate": 76.11820326306203,
+        "lo": 72.1378003858616,
+        "hi": 81.45348979781869
+      },
+      "utility_base->logit_base": {
+        "estimate": 84.72581403100787,
+        "lo": 81.04160020788153,
+        "hi": 90.21794038952619
+      },
+      "gain_base->gain_signal_difficulty": {
+        "estimate": 23.869852704368178,
+        "lo": 12.107227954750424,
+        "hi": 32.05189545654004
+      },
+      "gain_base->gain_rho": {
+        "estimate": 13.32462885158191,
+        "lo": 3.297499957893901,
+        "hi": 19.634592229241235
+      },
+      "gain_base->gain_headroom": {
+        "estimate": 15.244323119961544,
+        "lo": 10.944737834090512,
+        "hi": 18.638864133526468
+      },
+      "gain_base->gain_difficulty": {
+        "estimate": 9.43755031343776,
+        "lo": 3.9440840096673924,
+        "hi": 13.045013324014123
+      },
+      "twosided_base->twosided_signal_difficulty": {
+        "estimate": 17.19665225909469,
+        "lo": 5.061158282795208,
+        "hi": 25.860882625344228
+      },
+      "logit_base->logit_signal_difficulty": {
+        "estimate": -10.800890664634322,
+        "lo": -23.33019915397978,
+        "hi": -4.727443698027231
+      },
+      "utility_signal_difficulty->logit_signal_difficulty": {
+        "estimate": 76.57307656045997,
+        "lo": 69.23947768258745,
+        "hi": 85.01966933601514
+      }
+    }
+  },
+  "out_of_bounds": {
+    "joint": {
+      "utility_base": {
+        "n": 192,
+        "above_headroom": 127,
+        "below_floor": 0
+      },
+      "utility_signal_difficulty": {
+        "n": 192,
+        "above_headroom": 108,
+        "below_floor": 0
+      },
+      "gain_base": {
+        "n": 192,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_signal_difficulty": {
+        "n": 192,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_rho": {
+        "n": 192,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_headroom": {
+        "n": 192,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_difficulty": {
+        "n": 192,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_base": {
+        "n": 192,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_signal_difficulty": {
+        "n": 192,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_base": {
+        "n": 192,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_signal_difficulty": {
+        "n": 192,
+        "above_headroom": 0,
+        "below_floor": 0
+      }
+    },
+    "width_96": {
+      "utility_base": {
+        "n": 96,
+        "above_headroom": 35,
+        "below_floor": 0
+      },
+      "utility_signal_difficulty": {
+        "n": 96,
+        "above_headroom": 22,
+        "below_floor": 0
+      },
+      "gain_base": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_signal_difficulty": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_rho": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_headroom": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_difficulty": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_base": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_signal_difficulty": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_base": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_signal_difficulty": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      }
+    },
+    "width_384": {
+      "utility_base": {
+        "n": 96,
+        "above_headroom": 92,
+        "below_floor": 0
+      },
+      "utility_signal_difficulty": {
+        "n": 96,
+        "above_headroom": 86,
+        "below_floor": 0
+      },
+      "gain_base": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_signal_difficulty": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_rho": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_headroom": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_difficulty": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_base": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_signal_difficulty": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_base": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_signal_difficulty": {
+        "n": 96,
+        "above_headroom": 0,
+        "below_floor": 0
+      }
+    },
+    "step_100": {
+      "utility_base": {
+        "n": 64,
+        "above_headroom": 32,
+        "below_floor": 0
+      },
+      "utility_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 36,
+        "below_floor": 0
+      },
+      "gain_base": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_rho": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_headroom": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_base": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_base": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      }
+    },
+    "step_300": {
+      "utility_base": {
+        "n": 64,
+        "above_headroom": 47,
+        "below_floor": 0
+      },
+      "utility_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 36,
+        "below_floor": 0
+      },
+      "gain_base": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_rho": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_headroom": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_base": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_base": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      }
+    },
+    "step_1000": {
+      "utility_base": {
+        "n": 64,
+        "above_headroom": 48,
+        "below_floor": 0
+      },
+      "utility_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 36,
+        "below_floor": 0
+      },
+      "gain_base": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_rho": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_headroom": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "gain_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_base": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "twosided_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_base": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      },
+      "logit_signal_difficulty": {
+        "n": 64,
+        "above_headroom": 0,
+        "below_floor": 0
+      }
+    }
+  }
+}
