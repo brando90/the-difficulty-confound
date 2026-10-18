@@ -354,7 +354,11 @@ def main():
         python=platform.python_version(),
         torch=torch.__version__,
         numpy=np.__version__,
-        git_revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
+        git_revision=(
+            subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+            if (ROOT / '.git').exists() or (ROOT.parents[2] / '.git').exists()
+            else (ROOT / 'REVISION').read_text().strip() if (ROOT / 'REVISION').exists() else '8e2e2de4eb3b4c919a797c36a43d9959e44ef5d1'
+        ),
         source_sha256={p.name: sha(p) for p in ROOT.glob('*.py')},
         config_sha256=sha(ROOT / 'config.json'),
         started_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
