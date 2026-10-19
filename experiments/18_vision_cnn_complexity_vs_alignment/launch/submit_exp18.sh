@@ -16,8 +16,8 @@ PREP=$(sbatch --parsable --export=ALL,EXP18_DIR="$EXP18_DIR" launch/prep_sherloc
 IDS=""
 for ph in mnist_main mnist_H fashion_main kmnist_main fashion_H kmnist_H mis cifar10_main cifar10_H; do
   N=$(wc -l < "runs_$ph.txt")
-  case $ph in cifar10_*) T=08:00:00 ;; *) T=03:00:00 ;; esac
-  J=$(sbatch --parsable -t "$T" --mem=4G --dependency=afterok:$PREP --array=0-$((N-1))%150 \
+  case $ph in cifar10_*) T=08:00:00; M=6G ;; *) T=03:00:00; M=4G ;; esac
+  J=$(sbatch --parsable -t "$T" --mem=$M --dependency=afterok:$PREP --array=0-$((N-1))%150 \
       --export=ALL,RUNLIST="runs_$ph.txt",NSHARDS="$N",VISION_DATA="$SCRATCH/exp18_npz" -J "exp18-$ph" launch/sherlock_cpu.sbatch)
   echo "$ph=$J ($N runs, -t $T)"
   IDS="$IDS:$J"
