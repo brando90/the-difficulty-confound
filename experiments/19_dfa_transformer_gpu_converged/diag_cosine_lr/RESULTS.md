@@ -41,7 +41,7 @@ Median curves at 2^17 / 2^18 / 2^19 / 2^20:
 
 ## Verification
 
-`diag_verify.py --results results` printed **PASS** on a second machine (not Sherlock) from the fetched archive (`results/verify_second_machine.log`): sources match the manifest; all 1536 metrics rows recomputed from saved predictions and equal to the CSV, every lr on schedule; all 128 final checkpoints (64 cells x 2 arms) replayed on CPU in Experiment 11's model.py, max mean-bits difference 1.2e-7; test set identical to Experiment 11's and init hashes match; diag_summary.py rerun gives an identical summary.json. Archive sha256 66be5bc47d3cc94057ad80b8e77b1beb6b9dfda1b210ee9c0c22e866f29a882a. Per-string predictions and checkpoints stay out of git (they are in the archive on Sherlock, $SCRATCH/tdc_gpu/diag494_results.tgz).
+`diag_verify.py --results results` printed **PASS** on a second machine (not Sherlock) from the fetched archive (`results/verification.json`): sources match the manifest; all 1536 metrics rows recomputed from saved predictions and equal to the CSV, every lr on schedule; all 128 final checkpoints (64 cells x 2 arms) replayed on CPU in Experiment 11's model.py, max mean-bits difference 1.2e-7; test set identical to Experiment 11's and init hashes match; diag_summary.py rerun gives an identical summary.json. Archive sha256 66be5bc47d3cc94057ad80b8e77b1beb6b9dfda1b210ee9c0c22e866f29a882a. Per-string predictions and checkpoints stay out of git (they are in the archive on Sherlock, $SCRATCH/tdc_gpu/diag494_results.tgz).
 
 ## Next step
 
