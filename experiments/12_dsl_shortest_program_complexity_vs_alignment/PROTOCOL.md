@@ -45,7 +45,7 @@ The code is prefix-free, and $K_{\text{bits}}$ increases with $K$, so it is the 
 
 | Picture | Prediction here |
 |---|---|
-| MDL / Occam (Grünwald 2007, ch. 8; [Grünwald's MDL tutorial](https://arxiv.org/abs/math/0406077)) | Excess loss scales like $K_{\text{bits}}/T$: $\kappa \gt 0$, $\gamma_1 = 0$. The complexity data multiplier is the same at every accuracy. |
+| MDL / Occam ([Grünwald's MDL tutorial](https://arxiv.org/abs/math/0406077)) | Excess loss scales like $K_{\text{bits}}/T$: $\kappa \gt 0$, $\gamma_1 = 0$. The complexity data multiplier is the same at every accuracy. |
 | Quanta ([Hutter 2021](https://arxiv.org/abs/2102.04074); [Michaud et al. 2023](https://arxiv.org/abs/2303.13506)) | Longer programs that use `INC` or `NEG` split the inputs into more **local rules** (Section 2.3), some of them rare, such as long carry chains. A heavier tail of rare rules lowers the exponent: $\gamma_1 \lt 0$. Gate G7 checks the mechanism directly. |
 | Sensitivity and parity ([Hahn and Rofin 2024](https://arxiv.org/abs/2402.09963); [Barak et al. 2022](https://arxiv.org/abs/2207.08799)) | Transformers find high-sensitivity functions hard, and parities of high degree are hard for gradient descent. Here every program without `INC` or `NEG` is affine over GF(2), so each output bit is a parity of input bits. Both sensitivity and the affine share change with $K$ (Section 2.4), so a $K$ effect could be either of them. Both are controlled by design and regressed out. |
 | Simplicity bias toward compressible truth tables ([Valle-Pérez, Camargo and Louis 2018](https://arxiv.org/abs/1805.08522); [Bhattamishra et al. 2023](https://arxiv.org/abs/2211.12316)) | Learnability follows how compressible the truth table is, not program length. A prototype found that compressed size *falls* with $K$ here (Section 3.2), so this picture and C1 predict opposite signs for learning cost. |
@@ -67,15 +67,9 @@ The code is prefix-free, and $K_{\text{bits}}$ increases with $K$, so it is the 
 
 ### 2.2 Exact complexity and its correctness checks
 
-**Breadth-first search (BFS).** Level 0 is the identity. Level $L$ applies every primitive to every level $L-1$ function. Candidates are generated in the order (canonical program of the parent, then primitive index). Any candidate whose truth table equals an already-seen function is dropped. Equality is decided exactly: a 64-bit hash for sorting, then full-row comparison inside equal-hash groups, and a collision with unequal rows raises an error. The first occurrence is kept, which makes its program the lexicographically smallest shortest program (its **canonical program**). The search also accumulates $n_{\text{short}}(f)$, the number of distinct shortest programs. Measured on 10-18-2026 (numpy, one core): **12, 112, 988, 8,543, 73,146 and 622,876** new functions at lengths 1–6 (705,678 including the identity), in 49 s. An unchunked prototype peaked at 5.2 GB of RAM; candidate generation in chunks of 8,192 parents keeps the peak under 4 GB. Level 7 (about 5.3 million functions, estimated) is feasible but not needed.
+**Breadth-first search (BFS).** Primitive indices 0–11 are, in order, `NOT`, `REV`, `ROTL1`, `ROTR1`, `SHL1`, `SHR1`, `GRAY`, `PREFIX_XOR`, `SWAP_HALVES`, `SWAP_ADJ`, `INC`, `NEG`, and programs are compared lexicographically by index, starting from $p_1$. Level 0 is the identity. Level $L$ applies every primitive to every level $L-1$ function. Candidates are generated in the order (canonical program of the parent, then primitive index). Any candidate whose truth table equals an already-seen function is dropped. Equality is decided exactly: a 64-bit hash for sorting, then full-row comparison inside equal-hash groups, and a collision with unequal rows raises an error. The first occurrence is kept, which makes its program the lexicographically smallest shortest program (its **canonical program**). The search also accumulates $n_{\text{short}}(f)$, the number of distinct shortest programs. Measured on 10-18-2026 (numpy, one core): **12, 112, 988, 8,543, 73,146 and 622,876** new functions at lengths 1–6 (705,678 including the identity), in 49 s. An unchunked prototype peaked at 5.2 GB of RAM; candidate generation in chunks of 8,192 parents keeps the peak under 4 GB. Level 7 (about 5.3 million functions, estimated) is feasible but not needed.
 
-**Correctness checks (unit tests).**
-
-- Each primitive matches a plain per-bit Python loop on all 1,024 inputs.
-- `GRAY`∘`PREFIX_XOR` and `PREFIX_XOR`∘`GRAY` are the identity. `NEG` equals `INC`∘`NOT`, so `NEG` has $K = 1$, and the sequence (`NOT`, `INC`) is deduplicated into it. `REV`, `NOT`, `SWAP_HALVES` and `SWAP_ADJ` are involutions, and `ROTL1`∘`ROTR1` is the identity.
-- The level counts above are reproduced exactly.
-- **Brute force:** enumerating all $\sum_{L \le 5} 12^L = 271{,}453$ programs (including the empty one) gives the same set of functions, the same $K$, the same canonical programs and the same $n_{\text{short}}$ for every function with $K \le 5$. A prototype on 10-18-2026 confirmed this for $K \le 4$ (9,656 functions).
-- The canonical program of every selected task reproduces its stored truth table.
+**Correctness checks (unit tests).** Each primitive matches a plain per-bit Python loop on all 1,024 inputs. `GRAY`∘`PREFIX_XOR` and `PREFIX_XOR`∘`GRAY` are the identity; `NEG` equals `INC`∘`NOT`, so `NEG` has $K = 1$ and the sequence (`NOT`, `INC`) is deduplicated into it; `REV`, `NOT`, `SWAP_HALVES` and `SWAP_ADJ` are involutions; `ROTL1`∘`ROTR1` is the identity. The level counts above are reproduced exactly. **Brute force:** enumerating all $\sum_{L \le 5} 12^L = 271{,}453$ programs (including the empty one) gives the same functions, $K$, canonical programs and $n_{\text{short}}$ for every function with $K \le 5$; a prototype on 10-18-2026 confirmed this for $K \le 4$ (9,656 functions). The canonical program of every selected task reproduces its stored truth table.
 
 ### 2.3 Eligibility filters and covariates
 
@@ -83,7 +77,7 @@ The code is prefix-free, and $K_{\text{bits}}$ increases with $K$, so it is the 
 
 1. **Output balance:** the mean over inputs and the 10 output bits of $f_j(x)$ is in $[0.3, 0.7]$.
 2. **Dependence:** $f$ depends on at least 8 of the 10 input bits. Input bit $i$ counts if $f(x) \ne f(x \oplus 2^i)$ for some $x$.
-3. **Train-identifiability:** the restriction of $f$ to the 512 training inputs differs from the restriction of every other function with $K' \le K$. So the training data cannot tell $f$ apart from a shorter program, and an Occam learner that picks the shortest consistent program would recover $f$ exactly. This tightens the brief's rule (shorter programs only) to include equal-length rivals. On a prototype split (10-18-2026), eligible functions clashing with a shorter function numbered 0, 0, 4 of 8,492, 33 of 19,795 sampled and 54 of 19,750 sampled at $K = 2..6$; equal-length clashes numbered 0, 0, 6, 61 and 81. The filter rarely binds, but it is enforced and its counts are reported.
+3. **Train-identifiability:** the restriction of $f$ to the 512 training inputs differs from the restriction of every other function with $K' \le K$. So the training data separate $f$ from every program of equal or shorter length, and an Occam learner that picks the shortest consistent program would recover $f$ exactly. This tightens the brief's rule (shorter programs only) to include equal-length rivals. On a prototype split (10-18-2026), eligible functions clashing with a shorter function numbered 0, 0, 4 of 8,492, 33 of 19,795 sampled and 54 of 19,750 sampled at $K = 2..6$; equal-length clashes numbered 0, 0, 6, 61 and 81. The filter rarely binds, but it is enforced and its counts are reported.
 4. **Distinctness:** the truth table differs from, and is not the bitwise complement ($f \oplus 1023$) of, every task already chosen.
 
 **Covariates (exact).**
@@ -164,13 +158,7 @@ The pilot also reports how many targets improve between $2^{16}$ and $2^{17}$, a
 
 ### 3.1 Learning curves
 
-Per checkpoint, written to `metrics.csv` with one row per (arm, seed, target, $\alpha$, $T$):
-
-- `excess_bits` $= \varepsilon$: the mean over the 512 test inputs of $\sum_j -\log_2 p_\theta(y_j)$, computed in float32 and accumulated in float64.
-- `accuracy` (all 10 bits right under greedy decoding); `bit_accuracy`; `n_test` = 512 (256 in R768).
-- `excess_bits_by_output_bit` (10 values); `train_bits` and `train_accuracy` on the 512 training inputs.
-- `target_examples_seen`, `distractor_examples_seen`, `target_passes`; `step`, `T`, wall time.
-- Per-input bits for every checkpoint, saved to `predictions/<seed>_<target>_<alpha>.npz` (test: 7 × 512, train: 7 × 512, float32).
+Per checkpoint, `metrics.csv` gets one row per (arm, seed, target, $\alpha$, $T$) with `excess_bits` $= \varepsilon$ (the mean over the 512 test inputs of $\sum_j -\log_2 p_\theta(y_j)$, computed in float32 and accumulated in float64); `accuracy` (all 10 bits right under greedy decoding); `bit_accuracy`; `n_test` (512, or 256 in R768); `excess_bits_by_output_bit` (10 values); `train_bits` and `train_accuracy` on the training inputs; `target_examples_seen`, `distractor_examples_seen` and `target_passes`; `step`, `T` and wall time. Per-input bits for every checkpoint go to `predictions/<seed>_<target>_<alpha>.npz` (test and train, 7 × 512 each, float32).
 
 **Derived per run:** $T^\star(\varepsilon^\star)$ for $\varepsilon^\star \in \{3.0, 1.0, 0.3\}$ bits per example (the same per-output-bit levels as Experiment 11's 0.3, 0.1 and 0.03). Take the first checkpoint with $\varepsilon \le \varepsilon^\star$ and interpolate $\log_2 \varepsilon$ linearly in $\log_2 T$ from the checkpoint before it.
 
@@ -181,8 +169,7 @@ Per checkpoint, written to `metrics.csv` with one row per (arm, seed, target, $\
 
 ### 3.2 Complexity proxies (per task, all 200 tasks)
 
-- **BDM**, primary: pybdm's `BDM(ndim=1)` (pybdm 0.1.0, installed and checked on 10-18-2026 with numpy 2.5.4). It uses the CTM table for binary strings of length 12 with the default `PartitionIgnore`. Its input is the 10,240-bit **row-major** truth table: inputs $x = 0..1023$ in order, each output written bits 0..9. The last 4 bits are dropped by the partition. One evaluation takes about 15 ms.
-- **BDM, bit-plane order** (secondary): all 1,024 values of output bit 0, then bit 1, and so on.
+- **BDM**, primary: pybdm's `BDM(ndim=1)` (pybdm 0.1.0, installed and checked on 10-18-2026 with numpy 2.5.4). It uses the CTM table for binary strings of length 12 with the default `PartitionIgnore`. Its input is the 10,240-bit **row-major** truth table: inputs $x = 0..1023$ in order, each output written bits 0..9. The last 4 bits are dropped by the partition. One evaluation takes about 15 ms. A secondary **bit-plane** BDM uses all 1,024 values of output bit 0, then bit 1, and so on.
 - **Compressors:** `zlib` level 9 and `lzma` preset 9 byte lengths of the row-major table packed with `np.packbits` (1,280 bytes), and `zlib` length of the uint16 little-endian output array (2,048 bytes).
 - **Prototype (10-18-2026, same selection rules, prototype split, 200 tasks).** Spearman with $K$: BDM row-major −0.31, BDM bit-plane +0.21, zlib −0.40, lzma −0.28. Longer programs more often include `SHL1` or `SHR1`, which zero output bits and make the table compressible. The truth table of a bijection looks incompressible at the 12-bit-block and byte level, even when its program has length 2. So we **predict G8a and G8b `NOT_ESTABLISHED`**. Exact $K$ in a fixed language and block-level string complexity measure different things.
 - **Fallback.** If pybdm fails to install or import, record the error in `CKPT`, compute the 12-bit block Shannon entropy as a labelled substitute, and report G8 as `NOT_ESTABLISHED` (not evaluable). Never substitute silently.
@@ -234,8 +221,7 @@ All intervals are 95% percentile intervals from a seed-block bootstrap: 20,000 d
 - **Units.** In program length, $E_{\text{len}} = E_{\text{bits}} / 0.842$, where 0.842 is the least-squares slope of $\log K_{\text{bits}}$ on $\log K$ over the five levels. The gate requires both, so here the bits unit is the binding one, the opposite of Experiment 11.
 - **Model-free check.** $E_{\text{mf}}$: per seed, regress $\log_2 T^\star_{j,\alpha}$ on $\log_2(1/\alpha)$ and $\log_2 K_{\text{bits},j}$ over the uncensored (target, $\alpha$) pairs (of 80). The censored count is reported.
 - **Accuracy dependence.** $E$ is reported at $\varepsilon^\star \in \{3.0, 1.0, 0.3\}$ bits and as a curve over $[10^{-2}, 10]$ bits, with the flip point $\varepsilon_{\text{flip}}$ where $E = 1$ if it lies in that range.
-- **Range ratio** (the overview's wording of C2, reported, no gate): $R = [T^\star(\alpha{=}0.05)/T^\star(\alpha{=}1)] / M_K$. Because $\ln 20 = 3.00 \gt \ln(27/11) = 0.90$, $R \gt 1$ is a much weaker requirement than $E \gt 1$.
-- **Passes.** Every $T^\star$ table is also given in target passes, $\alpha T^\star / 512$.
+- **Range ratio** (the overview's wording of C2, reported, no gate): $R = [T^\star(\alpha{=}0.05)/T^\star(\alpha{=}1)] / M_K$. Because $\ln 20 = 3.00 \gt \ln(27/11) = 0.90$, $R \gt 1$ is a much weaker requirement than $E \gt 1$. Every $T^\star$ table is also given in target passes, $\alpha T^\star / 512$.
 
 ### 4.5 Alignment comparison (reported, no gate)
 
@@ -243,8 +229,7 @@ All intervals are 95% percentile intervals from a seed-block bootstrap: 20,000 d
 
 ### 4.6 Mechanism and confound analyses
 
-- **Per-target exponent.** For each target, fit $\varepsilon = A_j T^{-\gamma_j}$ to its $\alpha = 1$ curve, per seed, with the censored residual; $\gamma_j$ is the mean over seeds.
-- **Quanta test (G7).** Spearman correlation of $\gamma_j$ with $H_{\text{rule},j}$ across the 20 targets, and across the 10 non-affine targets alone. The quanta picture predicts a negative sign: more diverse local rules, with rare ones, mean a slower power law. The partial Spearman controlling for $\log K_{\text{bits}}$ is reported.
+- **Quanta test (G7).** For each target, fit $\varepsilon = A_j T^{-\gamma_j}$ to its $\alpha = 1$ curve, per seed, with the censored residual; $\gamma_j$ is the mean over seeds. Then take the Spearman correlation of $\gamma_j$ with $H_{\text{rule},j}$ across the 20 targets, and across the 10 non-affine targets alone. The quanta picture predicts a negative sign: more diverse local rules, with rare ones, mean a slower power law. The partial Spearman controlling for $\log K_{\text{bits}}$ is reported.
 - **$K$ versus sensitivity versus type (reported).** Regress per-target $\log_2 T^\star_j(\alpha{=}1, 1.0\ \text{bits})$, averaged over seeds, on standardized $\log K_{\text{bits}}$, standardized sensitivity and the affine indicator. Report all coefficients with seed-block and two-stage intervals, and variance inflation factors. Also report $M_K$ separately for affine and non-affine cells.
 - **Simplicity bias versus program length (reported).** Spearman of per-target $T^\star$ with $K$, BDM, zlib and lzma, and the partial Spearman of $T^\star$ with $K$ given zlib, and with zlib given $K$.
 - **Train-fit census.** Plateau, memorizing and not-fitting counts by level and type.
@@ -294,10 +279,7 @@ Every gate ends `SUPPORTED` or `NOT_ESTABLISHED`, and all are reported with equa
 
 The target is a CPU-only Linux box with 4 cores, 15 GB RAM and no GPU, running 4 worker processes with 1 torch thread each. Measured on 10-18-2026 on a comparable box (Intel Xeon 2.20 GHz, 2 physical cores with 4 hardware threads, 15 GB, torch 2.14.1+cpu, fused attention), with 4 concurrent processes:
 
-- **Per step:** about 65 ms for one training step of 64 examples of 11 tokens with 10 outputs each (30 ms when running alone). Using `torch.nn.MultiheadAttention` instead raised this to about 77 ms, so the fused call is specified.
-- **Per checkpoint evaluation:** about 0.4 s (512 test plus 512 train inputs).
-- **Per run:** 1,024 steps plus 7 evaluations plus saving, about 70 s.
-- **Main grid:** 640 runs / 4 workers × 70 s ≈ **3.1 h** (about 2 h on 4 physical cores).
+- **Training:** about 65 ms per step of 64 examples (30 ms when running alone; `torch.nn.MultiheadAttention` instead gave about 77 ms, so the fused call is specified), about 0.4 s per checkpoint evaluation (512 test plus 512 train inputs), so about 70 s per run of 1,024 steps. Main grid: 640 runs / 4 workers × 70 s ≈ **3.1 h** (about 2 h on 4 physical cores).
 - **Other costs:** BFS, selection, covariates and proxies take about 3 min; the pilot about 12 min; R768 (160 runs) about 47 min; the MLP arm (80 runs, about 10 ms per step) about 4 min; `verify.py` about 15 min.
 - **Wall cap:** `max_wall_seconds = 18000` (5 h) for the full run, including the secondary arms, which start only if their time margins remain. At the cap the run stops cleanly. Finished cells are atomic and are never retrained. A `--resume` into the same output directory is allowed only once, and it is logged in `CKPT`.
 - **Memory:** under 4 GB in the parent process during BFS, before workers start; under 0.5 GB per worker. Workers receive only the 40 trained truth tables, never the BFS table.
@@ -308,23 +290,13 @@ The target is a CPU-only Linux box with 4 cores, 15 GB RAM and no GPU, running 4
 Under `experiments/12_dsl_shortest_program_complexity_vs_alignment/expt_v1/results/`, following the shared output contract that Experiments 14 and 15 read:
 
 - `tasks.json`: all 200 tasks with `task_id`; `family: "dsl"`; `role` (`target`, `distractor`, `probe_pretrain`, `fresh`); `task_token` (null for probe and fresh tasks); `K`; `K_bits`; `definition` (`primitives`: the canonical program in application order, `word_bits: 10`, `order: "x -> p_K(...p_1(x))"`); `truth_table` (1,024 ints); `output_balance`; `output_bit_balance`; `n_depends`; `sensitivity`; `sensitivity_stratum`; `is_affine`; `local_rule_entropy`; `n_local_rules`; `rare_rule_mass`; `n_shortest_programs`; `bdm_rowmajor`; `bdm_bitplane`; `zlib_bytes`; `lzma_bytes`; `zlib_u16_bytes`; `max_agreement`; and `visit_tail_exponent: null`.
-- `data/<task_id>_{train,test}.npz` for all 200 tasks: `x` (uint16 inputs in split order: 512 train, 512 test), `y` (uint16 outputs), `bits_x` and `bits_y` (uint8, shape (n, 10), bit $i$ in column $i$). Every training input of every task is used by every mix, since even at $\alpha = 0.05$ the target makes 6.4 passes. A consumer that needs more than 512 examples per task, or examples no mix used, must sample with replacement from the train partition with `data.example_stream`, and content repeats. Experiment 14 uses 2,048 examples per task and Experiment 15 uses 4,096 scored units plus 2,048 references.
+- `data/<task_id>_{train,test}.npz` for all 200 tasks: `x` (uint16 inputs in split order: 512 train, 512 test), `y` (uint16 outputs), `bits_x` and `bits_y` (uint8, shape (n, 10), bit $i$ in column $i$). Every training input of every task is used by every mix, since even at $\alpha = 0.05$ the target makes 6.4 passes. A consumer that needs more than 512 examples per task, or examples no mix used, must draw from the train partition with `data.example_stream` (successive permutation passes) or `data.sample_inputs` (with replacement), and content repeats. Experiment 14 uses 2,048 examples per task and Experiment 15 uses 4,096 scored units plus 2,048 references.
 - `mixes.json`: for each (target, $\alpha$, seed), the per-task counts and target passes at every checkpoint, and the data-order seed.
 - `metrics.csv` (4,480 main rows plus the secondary-arm rows, labelled by `arm`), `predictions/*.npz`, `tstar.csv`, `fits.json`, `forecasts_frozen.json`, `analysis.json`, `bfs_counts.json` (level counts and timing).
 - `checkpoints/<seed>_<target_id>_<alpha>/T_<T>.npz`: float32 weights as plain numpy arrays, with no pickle, main grid only. They stay on the run box, out of git (experiment-local `.gitignore`), and each file's SHA-256 is listed in `ARTIFACT_SHA256.json`. Training is bitwise deterministic for a given seed, torch version and one thread, which a unit test checks.
 - `manifest.json`: source and config SHA-256 (Experiments 14 and 15 check the hashes of `dsl.py`, `data.py` and `model.py` against it), library versions including pybdm, host, wall time and the pilot record.
 
-**`verify.py`** must report PASS before any result is written up. It:
-
-- re-hashes the sources;
-- reruns the BFS from scratch, checks the level counts, and recomputes every task's $K$, canonical program and $n_{\text{short}}$;
-- regenerates every task from the task seed and recomputes every filter, covariate and proxy;
-- regenerates the split, data files and schedules, and compares them byte for byte;
-- reloads every main-grid checkpoint into a fresh model and recomputes every main `metrics.csv` loss (test and train) with `max_abs_diff < 1e-9` bits;
-- retrains 8 secondary-arm cells chosen with the analysis seed and checks bitwise-equal predictions;
-- recomputes $T^\star$;
-- refits all laws with both fitters (agreement within $10^{-4}$ relative);
-- recomputes every gate from scratch.
+**`verify.py`** must report PASS before any result is written up. It re-hashes the sources; reruns the BFS from scratch, checking the level counts and every task's $K$, canonical program and $n_{\text{short}}$; regenerates every task from the task seed and recomputes every filter, covariate and proxy; regenerates the split, data files and schedules byte for byte; reloads every main-grid checkpoint into a fresh model and recomputes every main `metrics.csv` loss (test and train) with `max_abs_diff < 1e-9` bits; retrains 8 secondary-arm cells chosen with the analysis seed and checks bitwise-equal predictions; recomputes $T^\star$; refits all laws with both fitters (agreement within $10^{-4}$ relative); and recomputes every gate from scratch.
 
 ## 9. Scope and limits
 
