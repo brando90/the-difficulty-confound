@@ -288,7 +288,11 @@
     "data_workers": 8,
     "eval_batch": 2000,
     "gpu_torch_version": "2.6.0",
-    "lr_selected": null,
-    "primary_format_final": null
+    "lr_selected": {
+      "1M": 0.001,
+      "6M": 0.001,
+      "25M": 0.00025
+    },
+    "primary_format_final": "plain"
   }
 }
