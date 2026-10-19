@@ -108,7 +108,7 @@ def main():
 
     report_md = f"""# Experiment 11 Results: Calibrated Pretraining Horizon for Causal Autoregressive Transformers ($T_{{\\text{{pre}}}}=300$)
 
-**Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/11_transformer_calibrated_pretraining_horizon/RESULTS_transformer_calibrated.md>
+**Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/archive/11_transformer_calibrated_pretraining_horizon/RESULTS_transformer_calibrated.md>
 
 **Frozen commit:** `{runtime['git_revision']}` · **Verification:** `{ver['status']}` (`max_replay_bits_difference = {ver['max_replay_bits_difference']:.3e}`, {ver['completed_trajectories']} trajectories, {ver['final_models_replayed']} final + {ver['warm_models_replayed']} warm checkpoints replayed).
 
