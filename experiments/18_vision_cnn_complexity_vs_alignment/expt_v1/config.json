@@ -1,0 +1,177 @@
+{
+ "experiment": "18_vision_cnn_complexity_vs_alignment",
+ "status": "DRAFT (pilot pending; frozen in its own commit before any gated run)",
+ "datasets": [
+  "mnist",
+  "fashion",
+  "kmnist",
+  "cifar10"
+ ],
+ "seeds": [
+  18101,
+  18202,
+  18303,
+  18404
+ ],
+ "pilot_seed": 18909,
+ "analysis_seed": 29101826,
+ "bootstrap_draws": 20000,
+ "alphas": [
+  0.05,
+  0.15,
+  0.4,
+  1.0
+ ],
+ "alpha_heldout": 0.15,
+ "level_heldout": "L3",
+ "primary_mismatch": "rot90",
+ "mismatch_sweep": {
+  "dataset": "mnist",
+  "types": [
+   "scale05",
+   "thick",
+   "thin",
+   "swapF",
+   "swapK"
+  ],
+  "alphas": [
+   0.05,
+   0.4
+  ],
+  "seeds": [
+   18101,
+   18202
+  ]
+ },
+ "T_checkpoints": {
+  "mnist": [
+   1024,
+   2048,
+   4096,
+   8192,
+   16384,
+   32768,
+   65536,
+   131072
+  ],
+  "fashion": [
+   1024,
+   2048,
+   4096,
+   8192,
+   16384,
+   32768,
+   65536,
+   131072
+  ],
+  "kmnist": [
+   1024,
+   2048,
+   4096,
+   8192,
+   16384,
+   32768,
+   65536,
+   131072
+  ],
+  "cifar10": [
+   4096,
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ]
+ },
+ "batch": 64,
+ "lr": 0.001,
+ "betas": [
+  0.9,
+  0.95
+ ],
+ "weight_decay": 0.1,
+ "warmup_steps": 32,
+ "grad_clip": 1.0,
+ "eps_star": {
+  "mnist": 0.1,
+  "fashion": 0.1,
+  "kmnist": 0.1,
+  "cifar10": 0.1
+ },
+ "eps_res": 0.005,
+ "H": {
+  "alpha_joint": 0.05,
+  "probe_l2": 0.001,
+  "probe_iters": 200,
+  "margin": 1.1
+ },
+ "workers": 4,
+ "fit": {
+  "gamma_bounds": [
+   0.001,
+   3.0
+  ],
+  "gamma1_bounds": [
+   -1.0,
+   1.0
+  ],
+  "eta_bounds": [
+   0.0,
+   3.0
+  ],
+  "kappa_bounds": [
+   -3.0,
+   3.0
+  ],
+  "gamma_starts": [
+   0.1,
+   0.3,
+   0.6,
+   1.2
+  ],
+  "eta_starts": [
+   0.25,
+   0.75,
+   1.25,
+   2.0
+  ],
+  "kappa_starts": [
+   -0.5,
+   0.5,
+   1.0,
+   2.0
+  ],
+  "gamma1_starts": [
+   -0.15,
+   -0.05,
+   0.0,
+   0.05
+  ],
+  "both_starts": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0
+   ],
+   [
+    0.0,
+    -0.1
+   ],
+   [
+    1.0,
+    -0.1
+   ]
+  ],
+  "independent_seed": 7
+ },
+ "learning_regime_max_eps": 0.8,
+ "independent_fit_tol": 0.001,
+ "g1_min_MK": 2.0,
+ "rmse_reduction_threshold": 0.1,
+ "pilot_cifar_extra_T": 1048576
+}

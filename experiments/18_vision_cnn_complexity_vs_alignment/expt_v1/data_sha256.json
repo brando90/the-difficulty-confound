@@ -1,0 +1,24 @@
+{
+ "raw": {
+  "mnist/train-images-idx3-ubyte.gz": "440fcabf73cc546fa21475e81ea370265605f56be210a4024d2ca8f203523609",
+  "mnist/train-labels-idx1-ubyte.gz": "3552534a0a558bbed6aed32b30c495cca23d567ec52cac8be1a0730e8010255c",
+  "mnist/t10k-images-idx3-ubyte.gz": "8d422c7b0a1c1c79245a5bcf07fe86e33eeafee792b84584aec276f5a2dbc4e6",
+  "mnist/t10k-labels-idx1-ubyte.gz": "f7ae60f92e00ec6debd23a6088c31dbd2371eca3ffa0defaefb259924204aec6",
+  "fashion/train-images-idx3-ubyte.gz": "3aede38d61863908ad78613f6a32ed271626dd12800ba2636569512369268a84",
+  "fashion/train-labels-idx1-ubyte.gz": "a04f17134ac03560a47e3764e11b92fc97de4d1bfaf8ba1a3aa29af54cc90845",
+  "fashion/t10k-images-idx3-ubyte.gz": "346e55b948d973a97e58d2351dde16a484bd415d4595297633bb08f03db6a073",
+  "fashion/t10k-labels-idx1-ubyte.gz": "67da17c76eaffca5446c3361aaab5c3cd6d1c2608764d35dfb1850b086bf8dd5",
+  "kmnist/train-images-idx3-ubyte.gz": "51467d22d8cc72929e2a028a0428f2086b092bb31cfb79c69cc0a90ce135fde4",
+  "kmnist/train-labels-idx1-ubyte.gz": "e38f9ebcd0f3ebcdec7fc8eabdcdaef93bb0df8ea12bee65224341c8183d8e17",
+  "kmnist/t10k-images-idx3-ubyte.gz": "edd7a857845ad6bb1d0ba43fe7e794d164fe2dce499a1694695a792adfac43c5",
+  "kmnist/t10k-labels-idx1-ubyte.gz": "20bb9a0ef54c7db3efc55a92eef5582c109615df22683c380526788f98e42a1c",
+  "cifar_hf/train-00000-of-00001.parquet": "8428b53a88a11ac374111006708df51469e315a22ac6d66470afd9c78d2ae883",
+  "cifar_hf/test-00000-of-00001.parquet": "841389e6f2d64f28bf17310e430aebac20ec3ba611a3c5e231dc93c645ce84de"
+ },
+ "npz": {
+  "cifar10.npz": "7402b38b8f00dc338348d092c1b3aa71e1cc24bd56f291e70ffba433e6ce8f8a",
+  "fashion.npz": "3d39b7e5020be6ac70d7da1023d50515798c70cc7119201f70c5ec6b3219b0dd",
+  "kmnist.npz": "08eb8f3a61ddb769f160f456e660637936bddb165e535928040b2264e7ff1890",
+  "mnist.npz": "51bf0fb8f0e953e111b2d0459cc33b4f6a26dec3640e930b4fe75fd5fb6b62e2"
+ }
+}
