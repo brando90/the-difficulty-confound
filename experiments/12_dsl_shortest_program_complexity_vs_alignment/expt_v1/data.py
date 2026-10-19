@@ -82,6 +82,7 @@ def assemble_mix(c, tasks, target_id, alpha, seed, n_train=None, T_checkpoints=N
     assert T_max % B == 0 and all(T % B == 0 for T in T_checkpoints)
     d_tokens = np.array([t['task_token'] for t in distractors], np.int64)
     slot_task = np.empty(T_max, np.int64)
+    cum = np.zeros(len(d_tokens), np.int64)  # running distractor counts, so cumulative counts also stay within +-1
     for a, b in octave_intervals(T_checkpoints):
         L = b - a
         k = int(np.floor(alpha * L + 0.5))
@@ -90,7 +91,9 @@ def assemble_mix(c, tasks, target_id, alpha, seed, n_train=None, T_checkpoints=N
         rest = L - k
         base, extra = divmod(rest, len(d_tokens))
         reps = np.full(len(d_tokens), base)
-        reps[rng.permutation(len(d_tokens))[:extra]] += 1
+        perm = rng.permutation(len(d_tokens))
+        reps[perm[np.argsort(cum[perm], kind='stable')][:extra]] += 1
+        cum += reps
         seg = np.full(L, target['task_token'], np.int64)
         seg[~is_target] = np.repeat(d_tokens, reps)[rng.permutation(rest)]
         slot_task[a:b] = seg

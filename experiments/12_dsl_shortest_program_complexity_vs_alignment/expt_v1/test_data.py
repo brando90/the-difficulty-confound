@@ -55,6 +55,9 @@ def test_assemble_mix(alpha):
         assert (seg == tok).sum() == int(np.floor(alpha * (b - a) + 0.5))
         dc = np.bincount(seg[seg != tok], minlength=40)[20:40]
         assert dc.max() - dc.min() <= 1
+        if alpha < 1.0:  # cumulative distractor counts at every checkpoint are also equal +-1
+            cc = np.bincount(m['task_token'][:b][m['task_token'][:b] != tok], minlength=40)[20:40]
+            assert cc.max() - cc.min() <= 1
     for T in C['T_checkpoints']:
         for k in [tok] + list(range(20, 40)):
             sel = np.flatnonzero(m['task_token'][:T] == k)
