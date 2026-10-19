@@ -1,0 +1,7 @@
+# Run log: Experiment 17
+
+- 10-18-2026 22:49 PT: task AT-437 started. Design from Brando's WhatsApp messages (22:47 Putnam/poetry; 22:49 Putnam vs GSM8K; 22:53 "let's do a equivalent putnam vs gms8k but in the synthetic setting", which makes arm H primary). Folder 17 because 16 already holds the carry-chain design.
+- 22:56–23:03: code written (copied from Experiment 13-small: hmm.py + regions, model.py, laws.py; new run.py, analyze.py, report.py, verify.py, tests). `run.py --check-only` passed: 50 concepts, entropy band 0.15 bits around h_ref 2.809, all process ranks = n, far = near shifted (identical entropy, disjoint tokens), α schedules exact, pools closed, 0 eval/train document collisions, 96 expected runs.
+- 23:03: pilot started (seed 17909, 9 runs, 3 workers). The box carried a background load of about 9–16 from other jobs, so throughput is lower than Experiment 13's.
+- 23:27: pilot done (9 runs, 1,429 s, no divergence). Median 5,611 train tokens/s per worker; 21 s per target-checkpoint evaluation; projected grid 3.83 h (primary, 7 checkpoints) under load ~10, so no fallback. ε* rule fired: n = 32 pilot learning term at near α = 0.4, T = 2^19 = 1.128 bits → ε* = 1.13 (Experiment 13 had 1.10). Pilot-informed change before the freeze: 2^14 and 2^15 sat in the initialization transient (excess 40–57 bits/token at 2^14), so the gated checkpoints are 2^16 … 2^20 as in Experiment 13 (fallback 2^16 … 2^19).
+- Freeze: PROTOCOL.md, config.json and code committed before any gated run (commit below).

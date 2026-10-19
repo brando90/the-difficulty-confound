@@ -1,0 +1,8 @@
+prep/
+results_pilot/
+results/data/
+results/*.npz
+__pycache__/
+*.log
+!grid.log
+!pilot.log
