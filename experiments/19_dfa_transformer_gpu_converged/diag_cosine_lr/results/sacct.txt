@@ -1,0 +1,3 @@
+JobID           JobName      State ExitCode ElapsedRaw    Elapsed  Partition        NodeList                                                    AllocTRES
+------------ -------------- ---------- -------- ---------- ---------- ---------- --------------- ------------------------------------------------------------
+48512967       tdc_diag494  COMPLETED      0:0        389   00:06:29        gpu      sh04-01n09     billing=23,cpu=4,energy=657222,gres/gpu=1,mem=16G,node=1

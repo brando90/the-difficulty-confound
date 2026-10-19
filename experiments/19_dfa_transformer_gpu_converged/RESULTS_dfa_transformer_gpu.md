@@ -14,6 +14,8 @@ Run on 10-19-2026 on one Sherlock GPU (NVIDIA GeForce RTX 2080 Ti, node sh03-12n
 
 **Next step:** one cheap diagnostic, before any more data: rerun the α = 1 cells only (16 targets x 4 seeds) to 2^20 with a decaying learning rate (cosine to 0). If n = 16 then learns, the stall is the optimizer and the grid is worth rerunning with that schedule; if not, the transformer arm is retired and the LSTM arm (which learned n = 4-16 on CPU in Experiment 11) carries the DFA question.
 
+**Diagnostic done (10-19-2026, AT-494, 0.108 GPU-h): retire the transformer arm.** With cosine decay the alpha = 1 cells ended at 0.851 bits (n = 16) and 1.127 (n = 32) at 2^20, slightly worse than a same-stream constant control; see `diag_cosine_lr/RESULTS.md`.
+
 ## Pre-registered predictions versus outcome
 
 | Prediction (PROTOCOL Section 2) | Outcome |
