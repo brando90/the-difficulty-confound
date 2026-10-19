@@ -1,0 +1,14 @@
+{
+ "experiment": "19_dfa_transformer_gpu_converged/diag_cosine_lr",
+ "task": "AT-494",
+ "seeds": [11101, 11202, 11303, 11404],
+ "alpha": 1.0,
+ "data_seed": 494019,
+ "T_log2_min": 9,
+ "T_log2_max": 20,
+ "control_drop_decision_log2T": 13,
+ "budget_minutes": 18,
+ "eps_bits": 0.5,
+ "decision_levels": [16, 32],
+ "exp19_constant_reference": {"note": "Experiment 19 results/metrics.csv, alpha=1, seeds 11101-11404, T=2^20: median excess bits / cells below 0.5 of 16", "n16": [0.849, 2], "n32": [1.036, 0]}
+}
