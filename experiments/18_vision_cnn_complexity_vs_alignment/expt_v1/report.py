@@ -9,6 +9,9 @@ import math
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+import sys  # noqa: E402
+sys.path.insert(0, HERE)
+import tasks as TK  # noqa: E402
 NAMES = {'mnist': 'MNIST', 'fashion': 'Fashion-MNIST', 'kmnist': 'KMNIST', 'cifar10': 'CIFAR-10'}
 COLORS = {'mnist': '#2a78d6', 'fashion': '#eb6834', 'kmnist': '#1baf7a', 'cifar10': '#eda100'}
 LEVEL_RAMP = ['#a9c9f0', '#6aa3e6', '#2a78d6', '#164a8a']
@@ -81,7 +84,7 @@ def figure(A, path):
     # (c) MNIST learning curves at alpha = 1 per level
     if 'mnist' in A['main']:
         cells = A['main']['mnist']['cells']
-        lv = [['par_a', 'b_ge5'], ['par_sum', 'ge5_xor'], ['id_a', 'id_b'], ['sum10', 'diff10']]
+        lv = [ts for _, ts in TK.MAIN_LEVELS]
         labs = ['L1, 1 bit', 'L2, 2 bits', 'L3, 3.32 bits', 'L4, 6.64 bits']
         for j, ts in enumerate(lv):
             pts = {}

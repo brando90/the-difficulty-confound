@@ -59,7 +59,7 @@ def h_specs(ds, seeds=None):
         for p in TK.POOLS:
             for t in tg:
                 out.append(dict(arm='H', dataset=ds, mode='joint', pool=p, target=t, alpha=CFG['H']['alpha_joint'], seed=s))
-        for t in tg:
+        for t in tg + TK.H_EXTRA_ANCHORS:
             out.append(dict(arm='H', dataset=ds, mode='anchor', target=t, alpha=1.0, seed=s))
     return out
 
@@ -96,6 +96,16 @@ def out_path(s):
 
 
 # ---------------------------------------------------------------- one run
+def cpu_model():
+    try:
+        for line in open('/proc/cpuinfo'):
+            if line.startswith('model name'):
+                return line.split(':', 1)[1].strip()
+    except OSError:
+        pass
+    return 'unknown'
+
+
 def probe_err(ztr, ytr, zte, yte, C, l2, iters):
     import torch
     ztr = torch.as_tensor(ztr, dtype=torch.float64)
@@ -261,7 +271,7 @@ def train(spec, verbose=False):
                n_params=n_params(model), n_params_trunk=n_params(model, True), rows=rows,
                aligned_count_at_T={str(T): int(aligned[:T].sum()) for T in Ts}, T_checkpoints=Ts,
                target_count_at_T={str(T): int((task_of[:T] == len(run_tasks) - 1).sum()) for T in Ts},
-               wall_s=time.time() - t0, train_s=train_time, pairs_per_s=n / train_time, host=socket.gethostname(),
+               wall_s=time.time() - t0, train_s=train_time, pairs_per_s=n / train_time, host=socket.gethostname(), cpu=cpu_model(),
                finished=time.strftime('%Y-%m-%dT%H:%M:%S%z'))
     res['_state'] = {k: v.clone() for k, v in model.state_dict().items()}
     return res

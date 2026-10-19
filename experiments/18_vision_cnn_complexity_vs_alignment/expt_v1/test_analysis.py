@@ -22,7 +22,7 @@ def fake(root, eta=0.5, kappa=1.0, gamma=0.5, noise=0.02):
         rows = []
         for T in Ts:
             r = {'T': T}
-            for t in TK.H_TARGETS['easy'] + TK.H_TARGETS['hard']:
+            for t in TK.H_TARGETS['easy'] + TK.H_TARGETS['hard'] + TK.H_EXTRA_ANCHORS:
                 base = 0.5 * (T / Ts[0]) ** -0.5
                 f = 1.0
                 if s.get('pool') == 'easy' and t in TK.H_TARGETS['hard']:
@@ -50,7 +50,8 @@ def test_recovery():
     H = AN.analyse_H(d, 'mnist')
     assert H['joint']['GH1'] == 'CARRIES' and H['joint']['GH2'] == 'SUPPORTED', H['joint']
     assert abs(H['joint']['S']['rho_EH']['ratio'] - 2.0) < 0.05
-    print('E', E, 'E_mf', A['G4']['E_mf'], 'M_K', A['G1']['M_K'], 'GH', H['joint']['GH1'], H['joint']['GH2'])
+    assert H['mod_anchor']['sum10'] and H['n_runs'] == H['n_runs_expected'], H['n_runs']
+    print('eps*', A['eps_star'], 'E', E, 'E_mf', A['G4']['E_mf'], 'M_K', A['G1']['M_K'], 'GH', H['joint']['GH1'], H['joint']['GH2'])
 
 
 if __name__ == '__main__':

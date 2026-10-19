@@ -19,6 +19,12 @@ FUNCS = {
     'id_b': lambda a, b: b,
     'sum10': lambda a, b: (a + b) % 10,
     'diff10': lambda a, b: (a - b) % 10,
+    # Section 6.1 (pilot 2): same K as the mod-10 targets, but each digit alone carries first-order signal
+    'sum19': lambda a, b: a + b,
+    'diff19': lambda a, b: a - b + 9,
+    'a3b': lambda a, b: a + 3 * b,
+    '3ab': lambda a, b: 3 * a + b,
+    'a7b': lambda a, b: a + 7 * b,
     # hard pool and hard-to-easy targets (arm H)
     'a3b10': lambda a, b: (a + 3 * b) % 10,
     '3ab10': lambda a, b: (3 * a + b) % 10,
@@ -29,13 +35,16 @@ FUNCS = {
 }
 
 MAIN_LEVELS = [('L1', ['par_a', 'b_ge5']), ('L2', ['par_sum', 'ge5_xor']), ('L3', ['id_a', 'id_b']),
-               ('L4', ['sum10', 'diff10'])]
+               ('L4', ['sum19', 'diff19'])]
 POOLS = {
     'easy': ['par_a', 'b_ge5', 'par_sum', 'ge5_xor'],
-    'hard': ['sum10', 'diff10', 'a3b10', '3ab10'],
-    'mixed': ['par_a', 'ge5_xor', 'sum10', 'a3b10'],
+    'hard': ['sum19', 'diff19', 'a3b', '3ab'],
+    'mixed': ['par_a', 'ge5_xor', 'sum19', 'a3b'],
+    # secondary (Section 6.1): the pre-pilot hard pool, same K, XOR-like (no first-order signal); descriptive only
+    'hard_mod': ['sum10', 'diff10', 'a3b10', '3ab10'],
 }
-H_TARGETS = {'easy': ['a_mod3', 'a7_xor_b2'], 'hard': ['a2b7_10', 'a_lt_b']}
+H_TARGETS = {'easy': ['a_mod3', 'a7_xor_b2'], 'hard': ['a7b', 'a_lt_b']}
+H_EXTRA_ANCHORS = ['sum10']  # mod-10 plateau: when does it end, per seed (descriptive)
 
 
 def table(name):

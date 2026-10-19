@@ -1,17 +1,10 @@
 # Running Experiment 18 on Sherlock (CPU partition)
 
-Ordinary batch jobs on the `normal` partition, one CPU each; no GPU hours, no interactive session. CIFAR-10 is the arm that needs this: about 15-25 min per run on one core, 204 runs (main grid 128 + hard-to-easy 76).
+Every phase runs as ordinary batch jobs on the `normal` partition, one CPU per run; no GPU hours, no interactive session beyond submitting (PROTOCOL Sections 6.1 and 7). About 700 core-hours: 844 MNIST-family runs of about 25 min and 228 CIFAR-10 runs of about 100 min on one core.
 
 ```bash
-cd experiments/18_vision_cnn_complexity_vs_alignment
-bash launch/setup_sherlock.sh                                  # once
-VISION_RAW=$SCRATCH/exp18_raw VISION_DATA=$SCRATCH/exp18_npz bash launch/fetch_data.sh   # once
-mkdir -p logs
-for ph in cifar10_main cifar10_H; do
-  $HOME/venvs/exp18/bin/python expt_v1/run.py --list $ph > runs_$ph.txt
-  N=$(wc -l < runs_$ph.txt)
-  sbatch --array=0-$((N-1))%200 --export=ALL,RUNLIST=runs_$ph.txt,NSHARDS=$N launch/sherlock_cpu.sbatch
-done
+mkdir -p $SCRATCH/exp18 && cd $SCRATCH/exp18       # put exp18_pkg.tar.xz here
+tar xJf exp18_pkg.tar.xz && bash exp18_pkg/submit_exp18.sh 2>&1 | tee submit_exp18.log
 ```
 
-Any other phase (`mnist_main`, `mnist_H`, `fashion_main`, `kmnist_main`, `fashion_H`, `kmnist_H`, `mis`) runs the same way with `-t 00:30:00`. Afterwards copy `expt_v1/results/` back (or commit it) and run `expt_v1/analyze.py`, `expt_v1/verify.py`, `expt_v1/report.py`.
+`submit_exp18.sh` checks the package against its SHA256SUMS, then submits: `prep_sherlock.sbatch` (venv with CPU torch, raw data download, raw-file and decoded-array hashes against `expt_v1/data_sha256.json`; nothing else starts unless it passes), one array per phase from the frozen run lists in `runs/` (`sherlock_cpu.sbatch`, `%150` concurrent per phase; MNIST family `-t 3:00:00`, CIFAR-10 `-t 8:00:00`), and `post_sherlock.sbatch` after all of them (`verify.py --stage remote`, then `$SCRATCH/exp18/exp18_results.tgz` and its `.sha256`). Job ids go to `$SCRATCH/exp18/jobs_exp18.txt`; it refuses to submit twice. Finished runs are skipped on resubmission of a phase. Afterwards unpack `exp18_results.tgz` into `expt_v1/` and run `analyze.py`, `report.py` and `verify.py` locally.

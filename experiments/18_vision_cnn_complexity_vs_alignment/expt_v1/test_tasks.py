@@ -8,7 +8,7 @@ def test_k():
     assert TK.slot_classes('par_a') == (2, 1) and TK.k_bits('par_a') == 1
     assert TK.slot_classes('ge5_xor') == (2, 2)
     assert TK.slot_classes('id_b') == (1, 10)
-    for t in ('sum10', 'diff10', 'a3b10', '3ab10', 'a2b7_10', 'a_lt_b'):
+    for t in ('sum10', 'diff10', 'a3b10', '3ab10', 'a2b7_10', 'a_lt_b', 'sum19', 'diff19', 'a3b', '3ab', 'a7b'):
         assert TK.slot_classes(t) == (10, 10), t
     assert TK.slot_classes('a_mod3') == (2, 1) and TK.slot_classes('a7_xor_b2') == (2, 2)
     for pool in TK.POOLS.values():

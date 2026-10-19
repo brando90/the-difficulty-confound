@@ -1,6 +1,6 @@
 {
  "experiment": "18_vision_cnn_complexity_vs_alignment",
- "status": "DRAFT (pilot pending; frozen in its own commit before any gated run)",
+ "status": "FROZEN 10-19-2026 after pilots 1-2 (PROTOCOL Sections 6, 6.1); no change after this commit",
  "datasets": [
   "mnist",
   "fashion",
@@ -52,7 +52,10 @@
    16384,
    32768,
    65536,
-   131072
+   131072,
+   262144,
+   524288,
+   1048576
   ],
   "fashion": [
    1024,
@@ -62,7 +65,10 @@
    16384,
    32768,
    65536,
-   131072
+   131072,
+   262144,
+   524288,
+   1048576
   ],
   "kmnist": [
    1024,
@@ -72,7 +78,10 @@
    16384,
    32768,
    65536,
-   131072
+   131072,
+   262144,
+   524288,
+   1048576
   ],
   "cifar10": [
    4096,
@@ -82,7 +91,9 @@
    65536,
    131072,
    262144,
-   524288
+   524288,
+   1048576,
+   2097152
   ]
  },
  "batch": 64,
@@ -95,10 +106,10 @@
  "warmup_steps": 32,
  "grad_clip": 1.0,
  "eps_star": {
-  "mnist": 0.1,
-  "fashion": 0.1,
-  "kmnist": 0.1,
-  "cifar10": 0.1
+  "mnist": null,
+  "fashion": null,
+  "kmnist": null,
+  "cifar10": null
  },
  "eps_res": 0.005,
  "H": {
@@ -173,5 +184,11 @@
  "independent_fit_tol": 0.001,
  "g1_min_MK": 2.0,
  "rmse_reduction_threshold": 0.1,
- "pilot_cifar_extra_T": 1048576
+ "pilot_cifar_extra_T": 1048576,
+ "eps_star_rule": {
+  "floor": 0.1,
+  "mult": 1.5,
+  "cap": 0.6
+ },
+ "eps_star_note": "set by analyze.eps_star_rule from the alpha=1 L4 cells (PROTOCOL Section 6.1)"
 }

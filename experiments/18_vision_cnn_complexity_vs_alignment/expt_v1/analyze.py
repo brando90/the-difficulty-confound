@@ -84,12 +84,25 @@ def regime(rows):
     return [r for r in rows if r['excess_bits'] <= CFG['learning_regime_max_eps']]
 
 
+def eps_star_rule(rows, Ts):
+    """Section 6.1: eps* = max(floor, 1.5 x mean eps of the L4 targets at alpha = 1 at the largest fit checkpoint),
+    rounded up to 0.01, capped. Uses alpha = 1 cells only, fixed before any gated run."""
+    rule = CFG['eps_star_rule']
+    Tfit = sorted(Ts)[-2]
+    L4 = dict(TK.MAIN_LEVELS)['L4']
+    v = [r['excess_bits'] for r in rows if r['task_id'] in L4 and r['alpha'] == 1.0 and r['T'] == Tfit]
+    m = float(np.mean(v))
+    e = min(rule['cap'], max(rule['floor'], math.ceil(rule['mult'] * m * 100 - 1e-9) / 100))
+    return e, dict(L4_eps_alpha1_at_Tfit=m, T_fit_max=Tfit, n_cells=len(v), **rule)
+
+
 def analyse_main(runs, ds):
     rows = main_rows(runs)
     seeds = sorted({r['seed'] for r in rows})
     Ts = sorted({r['T'] for r in rows})
     Tmax, T0 = max(Ts), min(Ts)
-    eps_star = CFG['eps_star'][ds]
+    eps_star, eps_star_info = eps_star_rule(rows, Ts)
+    CFG['eps_star'][ds] = eps_star  # in memory only, so the mismatch sweep uses the same value
     alphas = CFG['alphas']
     targets = [t for _, ts in TK.MAIN_LEVELS for t in ts]
     fit_levels = [lv for lv, _ in TK.MAIN_LEVELS if lv != CFG['level_heldout']]
@@ -97,7 +110,7 @@ def analyse_main(runs, ds):
     Kref = gm(Kfit)
     Kgrid = [TK.k_bits(ts[0]) for _, ts in TK.MAIN_LEVELS]
     A = dict(dataset=ds, n_runs=len(runs), n_runs_expected=len(seeds and CFG['seeds']) * len(targets) * len(alphas),
-             seeds=seeds, T_checkpoints=Ts, eps_star=eps_star, K_ref_bits=Kref)
+             seeds=seeds, T_checkpoints=Ts, eps_star=eps_star, eps_star_rule=eps_star_info, K_ref_bits=Kref)
     A['complete'] = A['n_runs'] == A['n_runs_expected']
     S = len(seeds)
     Bi = boot(S)
@@ -354,7 +367,8 @@ def analyse_H(res, ds):
     def last(v):
         return float(math.log2(max(v[-1], er)))
 
-    out = dict(dataset=ds, n_runs=len(runs), n_runs_expected=19 * len(CFG['seeds']), seeds=seeds)
+    out = dict(dataset=ds, n_runs=len(runs), n_runs_expected=(len(TK.POOLS) * (1 + len(easy + hard)) + len(easy + hard)
+                                                    + len(TK.H_EXTRA_ANCHORS)) * len(CFG['seeds']), seeds=seeds)
     for mode, tab in (('joint', joint), ('probe', probe)):
         M = {}
         for score_name, fn in (('S', S), ('last', last)):
@@ -376,6 +390,8 @@ def analyse_H(res, ds):
                 seeds_complete=ok,
                 rho_HE=ratio('hard', 'easy', easy), rho_EH=ratio('easy', 'hard', hard),
                 mixed_vs_easy_on_easy=ratio('mixed', 'easy', easy), mixed_vs_hard_on_hard=ratio('mixed', 'hard', hard),
+                rho_HE_mod=ratio('hard_mod', 'easy', easy), mod_vs_hard_on_easy=ratio('hard_mod', 'hard', easy),
+                mod_vs_hard_on_hard=ratio('hard_mod', 'hard', hard),
                 eps_mean={f'{p}|{t}': float(np.mean([2 ** sc[(p, t, s)] for s in ok])) for p in TK.POOLS
                           for t in easy + hard} if ok else {})
         mg = margin = CFG['H']['margin']
@@ -405,6 +421,18 @@ def analyse_H(res, ds):
             v.append(row)
         comp[t] = v
     out['anchor_comparison'] = comp
+    # mod-10 anchors (Section 6.1): first checkpoint with eps <= 0.5 (plateau end), per seed; None = never
+    mod = {}
+    for t in TK.H_EXTRA_ANCHORS:
+        per = []
+        for s in seeds:
+            if (t, s) in anchor:
+                a = anchor[(t, s)]
+                hit = [T for T, e in zip(a['T'], a['eps']) if e <= 0.5]
+                per.append(dict(seed=s, plateau_end_T=hit[0] if hit else None, eps_at_Tmax=float(a['eps'][-1]),
+                                eps=a['eps'], T=a['T']))
+        mod[t] = per
+    out['mod_anchor'] = mod
     return out
 
 
@@ -415,6 +443,8 @@ def main():
     ap.add_argument('--datasets', nargs='*', default=CFG['datasets'])
     a = ap.parse_args()
     out = a.out or os.path.join(a.results, 'analysis.json')
+    import copy
+    cfg_frozen = copy.deepcopy(CFG)
     A = dict(main={}, H={}, mismatch_sweep=None)
     for ds in a.datasets:
         runs = load_runs(a.results, 'main', ds)
@@ -428,7 +458,7 @@ def main():
             print(ds, 'H', h['n_runs'], 'runs', h.get('joint', {}).get('GH1'), flush=True)
     if glob.glob(os.path.join(a.results, 'mis', '*.json')):
         A['mismatch_sweep'] = analyse_mis(a.results)
-    A['config'] = CFG
+    A['config'] = cfg_frozen
     with open(out + '.tmp', 'w') as f:
         json.dump(A, f, indent=1, default=float)
     os.replace(out + '.tmp', out)
