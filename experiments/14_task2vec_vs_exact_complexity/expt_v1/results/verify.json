@@ -1,0 +1,19 @@
+{
+ "plan": {
+  "task_keys": 3712,
+  "task_keys_sampled": 372,
+  "task_groups": 492,
+  "task_groups_gate_only": 173,
+  "batch_keys": 0,
+  "batch_keys_checked": 0,
+  "jobs": 123
+ },
+ "probe_max_abs_diff_bits": 0.0,
+ "embeddings_checked": 1788,
+ "embedding_max_rel_diff": 0.0,
+ "stats": {
+  "n": 142352,
+  "max": 8.326672684688674e-16
+ },
+ "seconds_this_invocation": 1047.2
+}
