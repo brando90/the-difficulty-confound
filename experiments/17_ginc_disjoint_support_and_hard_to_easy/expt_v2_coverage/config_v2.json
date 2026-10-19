@@ -1,0 +1,9 @@
+{
+ "pool_order": ["cov32", "cov16"],
+ "pools": {
+  "cov32": {"code": 32, "n": 4, "emit_per_state": 8, "primary": true},
+  "cov16": {"code": 16, "n": 4, "emit_per_state": 4, "primary": false}
+ },
+ "reuse_from_v1": ["easy", "hard", "near", "none"],
+ "expected_runs": 30
+}

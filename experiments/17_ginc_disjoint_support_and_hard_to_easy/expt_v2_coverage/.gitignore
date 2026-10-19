@@ -1,0 +1,7 @@
+prep/
+results/data/
+results/*.npz
+__pycache__/
+*.log
+!grid_v2.log
+!check_v2.log

@@ -1,0 +1,323 @@
+{
+ "acceptance": {
+  "cov32": {
+   "band_bits": 0.5,
+   "h_ref": 2.809098040975505,
+   "accepted_indices": [
+    91,
+    136,
+    110,
+    103,
+    22,
+    10,
+    77,
+    65
+   ],
+   "checked": 7807,
+   "passed_checks_1_2": 7338
+  },
+  "cov16": {
+   "band_bits": 0.15,
+   "h_ref": 2.809098040975505,
+   "accepted_indices": [
+    0,
+    1,
+    3,
+    1,
+    0,
+    3,
+    0,
+    0
+   ],
+   "checked": 16,
+   "passed_checks_1_2": 16
+  }
+ },
+ "concepts": [
+  {
+   "task_id": "hmm_n004_cov32_1",
+   "cid": 38,
+   "K": 4,
+   "K_bits": 400,
+   "process_rank": 4,
+   "distinct_tokens": 32,
+   "entropy_rate": 3.0187
+  },
+  {
+   "task_id": "hmm_n004_cov32_2",
+   "cid": 39,
+   "K": 4,
+   "K_bits": 400,
+   "process_rank": 4,
+   "distinct_tokens": 32,
+   "entropy_rate": 3.2773
+  },
+  {
+   "task_id": "hmm_n004_cov32_3",
+   "cid": 40,
+   "K": 4,
+   "K_bits": 400,
+   "process_rank": 4,
+   "distinct_tokens": 32,
+   "entropy_rate": 3.1018
+  },
+  {
+   "task_id": "hmm_n004_cov32_4",
+   "cid": 41,
+   "K": 4,
+   "K_bits": 400,
+   "process_rank": 4,
+   "distinct_tokens": 32,
+   "entropy_rate": 3.24
+  },
+  {
+   "task_id": "hmm_n004_cov32_5",
+   "cid": 42,
+   "K": 4,
+   "K_bits": 400,
+   "process_rank": 4,
+   "distinct_tokens": 32,
+   "entropy_rate": 3.1914
+  },
+  {
+   "task_id": "hmm_n004_cov32_6",
+   "cid": 43,
+   "K": 4,
+   "K_bits": 400,
+   "process_rank": 4,
+   "distinct_tokens": 32,
+   "entropy_rate": 3.2434
+  },
+  {
+   "task_id": "hmm_n004_cov32_7",
+   "cid": 44,
+   "K": 4,
+   "K_bits": 400,
+   "process_rank": 4,
+   "distinct_tokens": 32,
+   "entropy_rate": 3.2869
+  },
+  {
+   "task_id": "hmm_n004_cov32_8",
+   "cid": 45,
+   "K": 4,
+   "K_bits": 400,
+   "process_rank": 4,
+   "distinct_tokens": 32,
+   "entropy_rate": 3.2119
+  },
+  {
+   "task_id": "hmm_n004_cov16_1",
+   "cid": 46,
+   "K": 4,
+   "K_bits": 224,
+   "process_rank": 4,
+   "distinct_tokens": 16,
+   "entropy_rate": 2.9024
+  },
+  {
+   "task_id": "hmm_n004_cov16_2",
+   "cid": 47,
+   "K": 4,
+   "K_bits": 224,
+   "process_rank": 4,
+   "distinct_tokens": 16,
+   "entropy_rate": 2.8481
+  },
+  {
+   "task_id": "hmm_n004_cov16_3",
+   "cid": 48,
+   "K": 4,
+   "K_bits": 224,
+   "process_rank": 4,
+   "distinct_tokens": 16,
+   "entropy_rate": 2.675
+  },
+  {
+   "task_id": "hmm_n004_cov16_4",
+   "cid": 49,
+   "K": 4,
+   "K_bits": 224,
+   "process_rank": 4,
+   "distinct_tokens": 16,
+   "entropy_rate": 2.9144
+  },
+  {
+   "task_id": "hmm_n004_cov16_5",
+   "cid": 50,
+   "K": 4,
+   "K_bits": 224,
+   "process_rank": 4,
+   "distinct_tokens": 16,
+   "entropy_rate": 2.6837
+  },
+  {
+   "task_id": "hmm_n004_cov16_6",
+   "cid": 51,
+   "K": 4,
+   "K_bits": 224,
+   "process_rank": 4,
+   "distinct_tokens": 16,
+   "entropy_rate": 2.9382
+  },
+  {
+   "task_id": "hmm_n004_cov16_7",
+   "cid": 52,
+   "K": 4,
+   "K_bits": 224,
+   "process_rank": 4,
+   "distinct_tokens": 16,
+   "entropy_rate": 2.9395
+  },
+  {
+   "task_id": "hmm_n004_cov16_8",
+   "cid": 53,
+   "K": 4,
+   "K_bits": 224,
+   "process_rank": 4,
+   "distinct_tokens": 16,
+   "entropy_rate": 2.8525
+  }
+ ],
+ "checks": {
+  "cov32_every_concept_all_32_tokens": true,
+  "cov16_every_token_in_exactly_4_concepts": true,
+  "v1_concepts_unchanged": true,
+  "alpha_schedule_exact_and_pools_closed": true,
+  "eval_train_disjoint": {
+   "hits": 0
+  },
+  "expected_runs": 30,
+  "smoke_cov32_2^13": {
+   "finite": true,
+   "seconds": 51.1,
+   "excess_all": [
+    76.793,
+    72.409,
+    83.988,
+    83.067
+   ]
+  }
+ },
+ "coverage": {
+  "cov16": {
+   "concepts": 8,
+   "distinct_tokens_per_concept": [
+    16,
+    16
+   ],
+   "union_tokens": 32,
+   "missing_tokens": [],
+   "min_token_share_of_pool": 0.009286405944311817,
+   "token_perplexity_of_pool": 29.390646550585366,
+   "mean_token_perplexity_per_concept": 10.872336623833172
+  },
+  "cov32": {
+   "concepts": 8,
+   "distinct_tokens_per_concept": [
+    32,
+    32
+   ],
+   "union_tokens": 32,
+   "missing_tokens": [],
+   "min_token_share_of_pool": 0.007452627032151635,
+   "token_perplexity_of_pool": 26.36097755694036,
+   "mean_token_perplexity_per_concept": 12.792642122589964
+  },
+  "easy": {
+   "concepts": 8,
+   "distinct_tokens_per_concept": [
+    11,
+    15
+   ],
+   "union_tokens": 31,
+   "missing_tokens": [
+    18
+   ],
+   "min_token_share_of_pool": 0.0,
+   "token_perplexity_of_pool": 25.228343348884067,
+   "mean_token_perplexity_per_concept": 9.271071771247707
+  },
+  "hard": {
+   "concepts": 8,
+   "distinct_tokens_per_concept": [
+    31,
+    32
+   ],
+   "union_tokens": 32,
+   "missing_tokens": [],
+   "min_token_share_of_pool": 0.016387915762763123,
+   "token_perplexity_of_pool": 30.82706629484365,
+   "mean_token_perplexity_per_concept": 23.916538584962186
+  },
+  "near": {
+   "concepts": 8,
+   "distinct_tokens_per_concept": [
+    12,
+    31
+   ],
+   "union_tokens": 32,
+   "missing_tokens": [],
+   "min_token_share_of_pool": 0.013147685282616905,
+   "token_perplexity_of_pool": 29.339205417874414,
+   "mean_token_perplexity_per_concept": 16.44809067457127
+  },
+  "target_n32": {
+   "concepts": 2,
+   "distinct_tokens_per_concept": [
+    32,
+    32
+   ],
+   "union_tokens": 32,
+   "missing_tokens": [],
+   "min_token_share_of_pool": 0.002942329848608617,
+   "token_perplexity_of_pool": 26.35128034162977,
+   "mean_token_perplexity_per_concept": 23.5913708795285
+  },
+  "target_n4": {
+   "concepts": 2,
+   "distinct_tokens_per_concept": [
+    12,
+    13
+   ],
+   "union_tokens": 18,
+   "missing_tokens": [
+    0,
+    3,
+    6,
+    8,
+    14,
+    16,
+    17,
+    19,
+    20,
+    21,
+    24,
+    26,
+    29,
+    31
+   ],
+   "min_token_share_of_pool": 0.0,
+   "token_perplexity_of_pool": 13.637602944214036,
+   "mean_token_perplexity_per_concept": 8.83533797662189
+  }
+ },
+ "eps_id_all_new": {
+  "hmm_n004_t1|cov16|0.05": 0.03376506324130797,
+  "hmm_n004_t1|cov32|0.05": 0.033765063241307985,
+  "hmm_n004_t2|cov16|0.05": 0.033765063241306556,
+  "hmm_n004_t2|cov32|0.05": 0.03376506324130656,
+  "hmm_n032_t1|cov16|0.05": 0.033765063241307514,
+  "hmm_n032_t1|cov32|0.05": 0.033765063241307514,
+  "hmm_n032_t2|cov16|0.05": 0.0337650632413079,
+  "hmm_n032_t2|cov32|0.05": 0.0337650632413079
+ },
+ "source_sha256": {
+  "config_v2.json": "30203930ec73418bad88158371e31cba1baa48dfc6eae7f1a43edc616c61dd72",
+  "run_v2.py": "590bd2154ec16ea93aaf13a407723693b7360f081b44512de20ba12854a202c6",
+  "expt_v1/config.json": "45f22de11ea916a7c99f16968d01f503b618ea3240dd60482e2982610b79b94d",
+  "expt_v1/hmm.py": "08d130cd50fb623234e45d2b95af1ffd838d0b7656b7548296b5ac6f915ff033",
+  "expt_v1/model.py": "9c982afa9c8c2284987c915da7bfb6035c0bed66517274cf90cec6550247ad1e",
+  "expt_v1/run.py": "e1d41aa9f99a600b89d10b04b86905805c6fa14097fea0e027f7f6bf95acbfc6"
+ }
+}
