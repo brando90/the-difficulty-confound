@@ -36,3 +36,4 @@ The freeze SHA for the GPU pilot is **19a77724** (branch `results/cpu-expts-11-1
 ### Deviations
 
 Listed in RESULTS_ginc_hmm.md (Deviations): wall cap raised before the freeze; 4 resume-safe chunks with chunk 1 killed by the command timeout (4 runs redone, run_state entry reconstructed); background CPU load; ε_res set at the freeze; report.py E panel changed after the analysis; 13-GPU not run and its code path not written; not pushed.
+- 10-19-2026 review fix: report.py Section 6 rows now state what this run found (η check for the G1/G4 row; G5 as a position split only, not evidence for identification), the takeaway glosses its symbols, and the TLDR matches. Reporting only; no number changed.

@@ -297,7 +297,11 @@ def section6(A):
     if g['G1'] and g['G2'] and g['G4']:
         rows.append('"G1, G2, G4 SUPPORTED": Brando\'s claim holds on GINC-style data.')
     if g['G1'] and not g['G4']:
-        rows.append('"G1 SUPPORTED, G4 fails": complexity rivals or beats alignment here.')
+        eta = A['alignment_comparison']['eta_align_eff']
+        rows.append(f'"G1 SUPPORTED, G4 fails": complexity rivals or beats alignment here. The row says to check η: '
+                    f'η = {eta["estimate"]:.2f} [{eta["ci95"][0]:.2f}, {eta["ci95"][1]:.2f}] (M_align_eff), and the K law '
+                    f'gives the same value, so alignment works here through effective data (each target token is worth '
+                    f'about α^{eta["estimate"]:.2f} of a fully aligned one), not through a prior-identification cost.')
     if g['G1'] and not g['G2']:
         rows.append('"G2 NOT_ESTABLISHED, G1 SUPPORTED": complexity matters but the K term does not generalize to the '
                     'held-out level.')
@@ -306,7 +310,18 @@ def section6(A):
     if g['G3b']:
         rows.append('"G3 exponent": complexity changes the learning rate itself.')
     if g['G5']:
-        rows.append('"G5 SUPPORTED": alignment pays for identification, complexity for modeling.')
+        pd = A['position_decomposition']
+        post = A['mechanism']['posterior_target_after_16']
+        rows.append(f'"G5 SUPPORTED" holds as a position split only: alignment explains more than complexity early '
+                    f'(r_α {pd["early|excess_bits"]["r_alpha"]:.2f}) and less late (r_α {pd["late|excess_bits"]["r_alpha"]:.2f}). '
+                    f'It is not evidence that alignment pays for identification. Identification is trivial in this run: '
+                    f'the oracle posterior on the true target after 16 tokens is {min(post.values()):.3f} or more (three decimals) in every '
+                    f'cell, and ε_id is at most {max(max(v["eps_id"].values()) for v in A["mechanism"]["eps_id_shape"]["per_target"].values()):.3f} bits/token. '
+                    f'Early-slice r_α of the learning term alone is {pd["early|learn_bits"]["r_alpha"]:.2f} '
+                    f'[{pd["early|learn_bits"]["ci95"][0]:.2f}, {pd["early|learn_bits"]["ci95"][1]:.2f}], so most of '
+                    f'alignment\'s early share is slower learning of early-position predictions, not identification. The '
+                    f'protocol\'s mechanism reading ("alignment pays for identification, complexity for modeling") is '
+                    f'therefore not supported here; testing it needs harder distractors or the 13-GPU arm.')
     elif A['gates']['G5'].get('named_failure') == 'K dominates everywhere':
         rows.append('"G5 K dominates everywhere": complex concepts are also harder to identify.')
     if not rows:
