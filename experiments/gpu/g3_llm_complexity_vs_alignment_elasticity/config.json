@@ -1,0 +1,282 @@
+{
+  "plan": "g3",
+  "title": "LLM complexity versus alignment: the real-model counterpart of Exp 13's elasticity ratio",
+  "alphas": [
+    0.03,
+    0.1,
+    0.3,
+    1.0
+  ],
+  "levels": [
+    "L1",
+    "L2",
+    "L3"
+  ],
+  "arms": {
+    "L1_a0.03": {
+      "mixture": {
+        "L1_gradeschool": 0.03,
+        "web": 0.97
+      },
+      "gen": false,
+      "level": "L1",
+      "alpha": 0.03,
+      "distractor": "web",
+      "about": "target L1 at share 0.03, rest educational web text"
+    },
+    "L1_a0.1": {
+      "mixture": {
+        "L1_gradeschool": 0.1,
+        "web": 0.9
+      },
+      "gen": false,
+      "level": "L1",
+      "alpha": 0.1,
+      "distractor": "web",
+      "about": "target L1 at share 0.1, rest educational web text"
+    },
+    "L1_a0.3": {
+      "mixture": {
+        "L1_gradeschool": 0.3,
+        "web": 0.7
+      },
+      "gen": false,
+      "level": "L1",
+      "alpha": 0.3,
+      "distractor": "web",
+      "about": "target L1 at share 0.3, rest educational web text"
+    },
+    "L1_a1": {
+      "mixture": {
+        "L1_gradeschool": 1.0
+      },
+      "gen": true,
+      "level": "L1",
+      "alpha": 1.0,
+      "distractor": "web",
+      "about": "target L1 at share 1, rest educational web text; generation evaluations on because this run is shared with g1 and g2 (arms E and H)"
+    },
+    "W_L1_a0.1": {
+      "mixture": {
+        "L1_gradeschool": 0.1,
+        "L2_competition": 0.45,
+        "L3_olympiad": 0.45
+      },
+      "gen": false,
+      "level": "L1",
+      "alpha": 0.1,
+      "distractor": "other_levels",
+      "about": "target L1 at share 0.1, rest split over the other two maths levels (within-family distractors, the Exp 13 analogue)"
+    },
+    "W_L1_a0.3": {
+      "mixture": {
+        "L1_gradeschool": 0.3,
+        "L2_competition": 0.35,
+        "L3_olympiad": 0.35
+      },
+      "gen": false,
+      "level": "L1",
+      "alpha": 0.3,
+      "distractor": "other_levels",
+      "about": "target L1 at share 0.3, rest split over the other two maths levels (within-family distractors, the Exp 13 analogue)"
+    },
+    "L2_a0.03": {
+      "mixture": {
+        "L2_competition": 0.03,
+        "web": 0.97
+      },
+      "gen": false,
+      "level": "L2",
+      "alpha": 0.03,
+      "distractor": "web",
+      "about": "target L2 at share 0.03, rest educational web text"
+    },
+    "L2_a0.1": {
+      "mixture": {
+        "L2_competition": 0.1,
+        "web": 0.9
+      },
+      "gen": false,
+      "level": "L2",
+      "alpha": 0.1,
+      "distractor": "web",
+      "about": "target L2 at share 0.1, rest educational web text"
+    },
+    "L2_a0.3": {
+      "mixture": {
+        "L2_competition": 0.3,
+        "web": 0.7
+      },
+      "gen": false,
+      "level": "L2",
+      "alpha": 0.3,
+      "distractor": "web",
+      "about": "target L2 at share 0.3, rest educational web text"
+    },
+    "L2_a1": {
+      "mixture": {
+        "L2_competition": 1.0
+      },
+      "gen": false,
+      "level": "L2",
+      "alpha": 1.0,
+      "distractor": "web",
+      "about": "target L2 at share 1, rest educational web text"
+    },
+    "W_L2_a0.1": {
+      "mixture": {
+        "L2_competition": 0.1,
+        "L1_gradeschool": 0.45,
+        "L3_olympiad": 0.45
+      },
+      "gen": false,
+      "level": "L2",
+      "alpha": 0.1,
+      "distractor": "other_levels",
+      "about": "target L2 at share 0.1, rest split over the other two maths levels (within-family distractors, the Exp 13 analogue)"
+    },
+    "W_L2_a0.3": {
+      "mixture": {
+        "L2_competition": 0.3,
+        "L1_gradeschool": 0.35,
+        "L3_olympiad": 0.35
+      },
+      "gen": false,
+      "level": "L2",
+      "alpha": 0.3,
+      "distractor": "other_levels",
+      "about": "target L2 at share 0.3, rest split over the other two maths levels (within-family distractors, the Exp 13 analogue)"
+    },
+    "L3_a0.03": {
+      "mixture": {
+        "L3_olympiad": 0.03,
+        "web": 0.97
+      },
+      "gen": false,
+      "level": "L3",
+      "alpha": 0.03,
+      "distractor": "web",
+      "about": "target L3 at share 0.03, rest educational web text"
+    },
+    "L3_a0.1": {
+      "mixture": {
+        "L3_olympiad": 0.1,
+        "web": 0.9
+      },
+      "gen": false,
+      "level": "L3",
+      "alpha": 0.1,
+      "distractor": "web",
+      "about": "target L3 at share 0.1, rest educational web text"
+    },
+    "L3_a0.3": {
+      "mixture": {
+        "L3_olympiad": 0.3,
+        "web": 0.7
+      },
+      "gen": false,
+      "level": "L3",
+      "alpha": 0.3,
+      "distractor": "web",
+      "about": "target L3 at share 0.3, rest educational web text"
+    },
+    "L3_a1": {
+      "mixture": {
+        "L3_olympiad": 1.0
+      },
+      "gen": true,
+      "level": "L3",
+      "alpha": 1.0,
+      "distractor": "web",
+      "about": "target L3 at share 1, rest educational web text; generation evaluations on because this run is shared with g1 and g2 (arms E and H)"
+    },
+    "W_L3_a0.1": {
+      "mixture": {
+        "L3_olympiad": 0.1,
+        "L1_gradeschool": 0.45,
+        "L2_competition": 0.45
+      },
+      "gen": false,
+      "level": "L3",
+      "alpha": 0.1,
+      "distractor": "other_levels",
+      "about": "target L3 at share 0.1, rest split over the other two maths levels (within-family distractors, the Exp 13 analogue)"
+    },
+    "W_L3_a0.3": {
+      "mixture": {
+        "L3_olympiad": 0.3,
+        "L1_gradeschool": 0.35,
+        "L2_competition": 0.35
+      },
+      "gen": false,
+      "level": "L3",
+      "alpha": 0.3,
+      "distractor": "other_levels",
+      "about": "target L3 at share 0.3, rest split over the other two maths levels (within-family distractors, the Exp 13 analogue)"
+    }
+  },
+  "tiers": {
+    "smoke": {
+      "arms": [
+        "L1_a0.1",
+        "L1_a1",
+        "L3_a0.1",
+        "L3_a1",
+        "W_L2_a0.1"
+      ]
+    },
+    "pilot": {
+      "arms": [
+        "L2_a0.1"
+      ]
+    },
+    "main": {
+      "arms": [
+        "L1_a0.03",
+        "L1_a0.1",
+        "L1_a0.3",
+        "L1_a1",
+        "L2_a0.03",
+        "L2_a0.1",
+        "L2_a0.3",
+        "L2_a1",
+        "L3_a0.03",
+        "L3_a0.1",
+        "L3_a0.3",
+        "L3_a1"
+      ],
+      "secondary": [
+        "W_L1_a0.1",
+        "W_L1_a0.3",
+        "W_L2_a0.1",
+        "W_L2_a0.3",
+        "W_L3_a0.1",
+        "W_L3_a0.3"
+      ]
+    },
+    "scale": {
+      "arms": [
+        "L1_a0.03",
+        "L1_a0.1",
+        "L1_a0.3",
+        "L1_a1",
+        "L2_a0.03",
+        "L2_a0.1",
+        "L2_a0.3",
+        "L2_a1",
+        "L3_a0.03",
+        "L3_a0.1",
+        "L3_a0.3",
+        "L3_a1"
+      ],
+      "secondary": [
+        "W_L1_a0.1",
+        "W_L1_a0.3",
+        "W_L2_a0.1",
+        "W_L2_a0.3",
+        "W_L3_a0.1",
+        "W_L3_a0.3"
+      ]
+    }
+  }
+}
