@@ -37,7 +37,7 @@ Active headroom is restored across all five model widths ($d_{\text{model}} \in 
 Pure compositional difficulty reversal is supported across all five widths (15.67 [12.13, 19.10] points at $q_{\text{pre}}=0.10$ vs 15.70 [12.89, 18.17] points at $q_{\text{pre}}=0.90$).
 Prequential online MDL prediction is supported: probed starting difficulty cuts held-out online adaptation MDL root mean squared error by 18.84\% [5.88, 34.16].
 However, final conditional loss prediction is not established (0.99\% [$-11.40$, $5.66$]), because 1{,}000 updates of balanced post-training compress final test loss to 0.02 bits across all widths, whereas the online prequential code integrates over the active trajectory.
-Additionally, while balanced remediation raises cascading two-carry accuracy from 68.32\% to 99.90\% (+31.58 points gain) and improves control accuracy by $+15.94$ points, the control confidence lower bound (12.13 points) falls just short of the protocol's 15.0-point gate line.
+Additionally, while balanced remediation raises cascading two-carry accuracy from 68.32\% to 99.90\% (+31.58 points gain) and improves control accuracy by $+15.94$ [$+14.18$, $+17.80$] points, which passes the no-harm line, the remediation gate is not established because the lower bound of the initial gap (12.13 points) falls short of the protocol's 15-point minimum gap.
 
 Conditional bits are not Kolmogorov complexity and, outside the online-code study, not a full minimum description length.
 The online code charges for labels along one adaptation stream.
