@@ -12,12 +12,13 @@ cd "$EXP18_DIR"
 # Sherlock is glibc 2.17: pip there may only take manylinux2014/linux_x86_64 wheels, never a source build (the first
 # submit, 48476434, built numpy from source and the old assembler rejected endbr64). torch 2.14.1 has no such wheel, so
 # the cluster runs torch 2.6.0+cpu / numpy 2.2.6 (PROTOCOL Section 6.2; cross-CPU verify covers the version change).
-ml python/3.12.1
+# under srun (AT-503) the submitting shell has already loaded the module
+{ ml python/3.12.1 || module load python/3.12.1; } 2>/dev/null || true
 VENV=${EXP18_VENV:?set EXP18_VENV}
 PIP="$VENV/bin/pip install -q --only-binary=:all: --no-cache-dir"
 if [ ! -e "$VENV/.ready" ]; then
   rm -rf "$VENV"
-  python3 -m venv "$VENV"
+  "$(command -v python3.12 || command -v python3)" -m venv "$VENV"
   $PIP --upgrade "pip==25.2"
   $PIP "torch==2.6.0+cpu" --index-url https://download.pytorch.org/whl/cpu || true
   "$VENV/bin/python" -c "import torch" || $PIP --force-reinstall "torch==2.6.0"
