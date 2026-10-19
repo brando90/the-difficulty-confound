@@ -1,0 +1,6 @@
+g1 pilot attempts on Sherlock 
+1. prep 48433204 failed at venv build: torch==2.14.1 not on any index (cu128 tops at 2.11.0; glibc 2.17). Pilot 48433207/report 48433209 cancelled. 0 GPU-h.
+2. prep 48435216 OK (10m20s CPU). Pilot array 48435220 0-6 all exit 1 in 24-37 s on L40S: transformers 4.57.3 module raises OfflineModeIsEnabled in tokenizer load. ~3.6 GPU-min. Runs/claims moved aside to runs_failed_attempt1_48435220 (repo procedure), nothing deleted. Fix: transformers 4.57.6 (the repo pin) in the venv; offline tokenizer load verified on login node, 4.57.3 control reproduces the failure.
+prep=48435216 pilot=48439388 report=48439393 (attempt 2; attempt 1 pilot 48435220 failed, see attempts_at441.txt)
+3. pilot 48439388: tasks 0,1 CUDA OOM on L40S 44.5 GB (micro_batch 8 x 2048 logits ~9.3 GiB, peak > 44 GB), 22-26 s each; tasks 2-6 and report 48439393 cancelled before start. Runs moved aside to runs_failed_attempt2_48439388. Fix: -C GPU_MEM:80GB (H100_SXM5; plan was costed on A100-80GB).
+prep=48435216 pilot=48440728 report=48440730 (attempt 3, -C GPU_MEM:80GB)

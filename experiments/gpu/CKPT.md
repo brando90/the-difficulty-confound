@@ -21,6 +21,8 @@ The pilot selects the learning rate and is not gated. Because it trains E and H 
 - Readout: paired difference E − H over the 1,319 GSM8K items (and over MATH-500 levels 4–5) with a 95% paired bootstrap interval (10,000 resamples, seed 0). The effect is "visible" only when the interval excludes 0. When it includes 0 the pilot is too small to say, and is reported that way, never as a null. The sign at the other two learning rates is reported as a descriptive robustness check. One seed only: a visible pilot difference is a reason to run the seed-0 first look, not a result.
 - Budget: capped at ~2 A100-hours expected; each run has a 40-minute wall limit.
 
+- 10-19-2026 07:45 result (read from `g1_hard_to_easy_putnam_style_vs_gsm8k/results_pilot/`): at the selected rate 5e-6, P1 E − H on GSM8K −2.58 points (95% CI −5.38, +0.30): not supported, too small to say. P2 H − E on MATH-500 levels 4–5 +1.91 (−3.05, +6.87): too small to say. P3 refuted: H − base on GSM8K +15.09 (+12.13, +17.97). E − H at 1e-5 +0.23 (−2.50, +3.03), at 2e-5 +4.70 (+1.67, +7.58): the sign depends on the learning rate. Cost 3.58 H100-hours, of which about 85% was generation for evaluation.
+
 ## Freeze
 
 - Freeze commit: `<sha>` (date, time). No GPU run existed before it.
