@@ -1,0 +1,380 @@
+{
+ "sources": {
+  "config.json": "33bc18776c44d18f715f9f265eff6ef2aff050553a1fb43dbc860bea8888faf0",
+  "dsl.py": "c48143258943cbd96ec12f42c922651fbf909a5801c189f6306b211ba43db354",
+  "proxies.py": "7ceecb135ea3f2c4a85f3fd1265abc656ad6625b9bfecb197ea707767ba4f827",
+  "data.py": "f67d509b71065995c6930d9ae9cb6a6a0610ea2f84cc24b6f3705bfefad04172",
+  "model.py": "5fd5f74d4814b16dc1599bcba17841d809f1359e6a30f7f4056c8c189504f43d",
+  "run.py": "932d63c82bbddec6220c9437768fa6f89631c79ce867c327ab516420258abeb3",
+  "laws.py": "c94494c411cdbe7379c7b07a423cada350f72abddc8592c66b7a48e3ca960f67",
+  "independent_fit.py": "b3142cb79aca9f690e5d02aa145a55c943e435de54d14f948edb040b4dcb50a0",
+  "analyze.py": "bcc1880b43df4b954163a073d2f8266895d6e8305ee9b20e82841d8bb63ce76f",
+  "verify.py": "0c102a1e061d35f92b8c694e82d7522b2739220c7c5d6cfa39c747a79bb230cc",
+  "report.py": "4ef70175ef680ab80b187205530bd788ccdb8cffcd7c24eeb8b5384791134a1e"
+ },
+ "versions": {
+  "python": "3.12.3",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "matplotlib": "3.11.2",
+  "pybdm": "0.1.0"
+ },
+ "pybdm_error": null,
+ "host": "agent-bf1193c2cobsq4.us-west1-b.c.ae-pool01.internal",
+ "cpu_model": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+ "cpu_count": 4,
+ "start_utc": "2026-10-19T06:28:41.075715+00:00",
+ "end_utc": "2026-10-19T09:21:41.590719+00:00",
+ "elapsed_seconds": 10189.0,
+ "chunks": [
+  {
+   "start_utc": "2026-10-19T06:28:41.076129+00:00",
+   "arm": "main",
+   "seconds": 6617.9,
+   "cells_completed": 383
+  },
+  {
+   "start_utc": "2026-10-19T08:20:56+00:00",
+   "arm": "main",
+   "seconds": 2044.0,
+   "cells_completed": 140,
+   "interrupted": true,
+   "note": "chunk 2 (--resume) killed when its host run ended ~01:55 PT; state not written by run.py; seconds = launch to kill (upper bound), recorded by hand before chunk 3"
+  },
+  {
+   "start_utc": "2026-10-19T08:56:13.312592+00:00",
+   "arm": "main",
+   "seconds": 1527.1,
+   "cells_completed": 117
+  }
+ ],
+ "cells_complete": 640,
+ "cells_missing": [],
+ "metrics_rows": {
+  "main": 4480,
+  "rep768": 0,
+  "mlp": 0
+ },
+ "split_attempts": 1,
+ "results_check": {
+  "date_utc": "2026-10-19T05:43:45.239281+00:00",
+  "selection_log": {
+   "rejections": {
+    "2": {
+     "balance": 0,
+     "depends": 0,
+     "identifiability": 0,
+     "distinctness": 0,
+     "no_stratum": 0
+    },
+    "3": {
+     "balance": 0,
+     "depends": 0,
+     "identifiability": 0,
+     "distinctness": 3,
+     "no_stratum": 2
+    },
+    "4": {
+     "balance": 0,
+     "depends": 0,
+     "identifiability": 0,
+     "distinctness": 0,
+     "no_stratum": 4
+    },
+    "5": {
+     "balance": 0,
+     "depends": 1,
+     "identifiability": 1,
+     "distinctness": 0,
+     "no_stratum": 12
+    },
+    "6": {
+     "balance": 0,
+     "depends": 3,
+     "identifiability": 2,
+     "distinctness": 0,
+     "no_stratum": 72
+    }
+   },
+   "eligible_by_cell": {
+    "2": {
+     "S1_affine": 21,
+     "S1_nonaffine": 0,
+     "S2_affine": 0,
+     "S2_nonaffine": 18,
+     "S3_affine": 8,
+     "S3_nonaffine": 2,
+     "S4_affine": 9,
+     "S4_nonaffine": 2
+    },
+    "3": {
+     "S1_affine": 10,
+     "S1_nonaffine": 0,
+     "S2_affine": 0,
+     "S2_nonaffine": 23,
+     "S3_affine": 9,
+     "S3_nonaffine": 5,
+     "S4_affine": 9,
+     "S4_nonaffine": 7
+    },
+    "4": {
+     "S1_affine": 10,
+     "S1_nonaffine": 0,
+     "S2_affine": 0,
+     "S2_nonaffine": 17,
+     "S3_affine": 16,
+     "S3_nonaffine": 18,
+     "S4_affine": 17,
+     "S4_nonaffine": 16
+    },
+    "5": {
+     "S1_affine": 9,
+     "S1_nonaffine": 1,
+     "S2_affine": 1,
+     "S2_nonaffine": 20,
+     "S3_affine": 18,
+     "S3_nonaffine": 56,
+     "S4_affine": 25,
+     "S4_nonaffine": 39
+    },
+    "6": {
+     "S1_affine": 8,
+     "S1_nonaffine": 2,
+     "S2_affine": 0,
+     "S2_nonaffine": 44,
+     "S3_affine": 34,
+     "S3_nonaffine": 144,
+     "S4_affine": 46,
+     "S4_nonaffine": 149
+    }
+   },
+   "scanned": {
+    "2": 60,
+    "3": 68,
+    "4": 98,
+    "5": 183,
+    "6": 504
+   },
+   "identifiability_clashes": {
+    "2": {
+     "shorter": 0,
+     "equal": 0
+    },
+    "3": {
+     "shorter": 0,
+     "equal": 0
+    },
+    "4": {
+     "shorter": 0,
+     "equal": 0
+    },
+    "5": {
+     "shorter": 0,
+     "equal": 1
+    },
+    "6": {
+     "shorter": 1,
+     "equal": 1
+    }
+   },
+   "bfs": {
+    "level_counts": [
+     12,
+     112,
+     988,
+     8543,
+     73146,
+     622876
+    ],
+    "seconds": 14.2,
+    "peak_rss_gb": 2.051,
+    "from_cache": false
+   }
+  },
+  "bfs": {
+   "level_counts": [
+    12,
+    112,
+    988,
+    8543,
+    73146,
+    622876
+   ],
+   "seconds": 14.2,
+   "peak_rss_gb": 2.051,
+   "from_cache": false
+  },
+  "brute_force_K_le_4": {
+   "functions": 9656,
+   "mismatches": 0,
+   "seconds": 1.5
+  },
+  "task_invariants": {
+   "program_reproduces_table": 200,
+   "exact_k_matches": 200,
+   "balance_ok": 200,
+   "depends_ok": 200,
+   "identifiable": 200,
+   "stratum_type_ok": 200
+  },
+  "role_counts": {
+   "target": 20,
+   "distractor": 20,
+   "probe_pretrain": 80,
+   "fresh": 80
+  },
+  "split": {
+   "attempts": 1,
+   "train_bit_counts": [
+    254,
+    256,
+    246,
+    266,
+    254,
+    251,
+    262,
+    271,
+    258,
+    258
+   ]
+  },
+  "schedule_check": {
+   "0.05": {
+    "target_counts": [
+     51,
+     102,
+     204,
+     409,
+     819,
+     1638,
+     3276
+    ],
+    "max_abs_dev_from_alpha_T": 0.8000000000001819,
+    "distractor_count_range": [
+     3113,
+     3113
+    ],
+    "target_passes_Tmax": 6.3984375
+   },
+   "0.15": {
+    "target_counts": [
+     154,
+     308,
+     615,
+     1229,
+     2458,
+     4916,
+     9831
+    ],
+    "max_abs_dev_from_alpha_T": 0.8000000000001819,
+    "distractor_count_range": [
+     2785,
+     2786
+    ],
+    "target_passes_Tmax": 19.201171875
+   },
+   "0.4": {
+    "target_counts": [
+     410,
+     820,
+     1639,
+     3277,
+     6554,
+     13108,
+     26215
+    ],
+    "max_abs_dev_from_alpha_T": 0.7999999999999545,
+    "distractor_count_range": [
+     1966,
+     1967
+    ],
+    "target_passes_Tmax": 51.201171875
+   },
+   "1.0": {
+    "target_counts": [
+     1024,
+     2048,
+     4096,
+     8192,
+     16384,
+     32768,
+     65536
+    ],
+    "max_abs_dev_from_alpha_T": 0.0,
+    "distractor_count_range": null,
+    "target_passes_Tmax": 128.0
+   }
+  },
+  "parameters": {
+   "transformer": 103618,
+   "transformer_null_token": 103682,
+   "mlp": 83988
+  },
+  "G8a": {
+   "statistic": "Spearman(bdm_rowmajor, K) over 200 tasks",
+   "estimate": -0.31213013212518353,
+   "ci_task": [
+    -0.4354840313936468,
+    -0.18133263942166866
+   ],
+   "threshold": ">= 0.5 with task-bootstrap lower bound > 0",
+   "bdm_source": "pybdm",
+   "verdict": "NOT_ESTABLISHED",
+   "others_spearman_with_K": {
+    "bdm_bitplane": 0.21163887674148188,
+    "zlib_bytes": -0.3985891160776232,
+    "lzma_bytes": -0.28087631236961774,
+    "zlib_u16_bytes": -0.42136286476668483
+   }
+  },
+  "bdm_source": "pybdm",
+  "pybdm_error": null,
+  "other_expt_processes_during_probe": [],
+  "timing_probe": {
+   "concurrent_workers": 4,
+   "step_seconds": 0.0403,
+   "eval_seconds": 0.252,
+   "projected_cell_seconds": 43.0,
+   "projected_grid_hours": 1.91,
+   "projected_checkpoint_gb": 1.857
+  },
+  "checks": {
+   "bfs_level_counts": true,
+   "bfs_peak_rss_under_limit": true,
+   "brute_force_K_le_4": true,
+   "task_invariants": true,
+   "role_counts": true,
+   "pairwise_distinct_and_not_complement": true,
+   "split_bit_counts": true,
+   "split_disjoint_cover": true,
+   "schedule_within_4": true,
+   "distractors_equal_pm1": true,
+   "parameter_counts": true
+  },
+  "all_checks_pass": true,
+  "seconds": 502.6
+ },
+ "pilot_summary": {
+  "seed": 12909,
+  "median_tstar_1bit": 5904.329243129234,
+  "P1_fires": false,
+  "targets_at_or_below_1bit_at_T2048": 0,
+  "P2_fires": false,
+  "mean_pilot_cell_seconds": 238.6,
+  "step_seconds_4_workers": 0.1165,
+  "checkpoint_bytes": 422454,
+  "projected_grid_seconds": 19092,
+  "projected_artifact_gb": 1.893,
+  "P3_fires": true,
+  "targets_above_3bits_at_2e17": 3,
+  "P4_fires": false,
+  "targets_improving_2e16_to_2e17": 15,
+  "targets_improving_by_10pct": 14,
+  "train_fit_census_at_2e16": {
+   "memorizing": 0,
+   "not_fitting": 2,
+   "plateau": 2
+  }
+ }
+}

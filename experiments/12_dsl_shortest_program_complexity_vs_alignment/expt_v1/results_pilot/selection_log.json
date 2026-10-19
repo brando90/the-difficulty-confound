@@ -1,0 +1,133 @@
+{
+ "rejections": {
+  "2": {
+   "balance": 0,
+   "depends": 0,
+   "identifiability": 0,
+   "distinctness": 0,
+   "no_stratum": 0
+  },
+  "3": {
+   "balance": 0,
+   "depends": 0,
+   "identifiability": 0,
+   "distinctness": 3,
+   "no_stratum": 2
+  },
+  "4": {
+   "balance": 0,
+   "depends": 0,
+   "identifiability": 0,
+   "distinctness": 0,
+   "no_stratum": 4
+  },
+  "5": {
+   "balance": 0,
+   "depends": 1,
+   "identifiability": 1,
+   "distinctness": 0,
+   "no_stratum": 12
+  },
+  "6": {
+   "balance": 0,
+   "depends": 3,
+   "identifiability": 2,
+   "distinctness": 0,
+   "no_stratum": 72
+  }
+ },
+ "eligible_by_cell": {
+  "2": {
+   "S1_affine": 21,
+   "S1_nonaffine": 0,
+   "S2_affine": 0,
+   "S2_nonaffine": 18,
+   "S3_affine": 8,
+   "S3_nonaffine": 2,
+   "S4_affine": 9,
+   "S4_nonaffine": 2
+  },
+  "3": {
+   "S1_affine": 10,
+   "S1_nonaffine": 0,
+   "S2_affine": 0,
+   "S2_nonaffine": 23,
+   "S3_affine": 9,
+   "S3_nonaffine": 5,
+   "S4_affine": 9,
+   "S4_nonaffine": 7
+  },
+  "4": {
+   "S1_affine": 10,
+   "S1_nonaffine": 0,
+   "S2_affine": 0,
+   "S2_nonaffine": 17,
+   "S3_affine": 16,
+   "S3_nonaffine": 18,
+   "S4_affine": 17,
+   "S4_nonaffine": 16
+  },
+  "5": {
+   "S1_affine": 9,
+   "S1_nonaffine": 1,
+   "S2_affine": 1,
+   "S2_nonaffine": 20,
+   "S3_affine": 18,
+   "S3_nonaffine": 56,
+   "S4_affine": 25,
+   "S4_nonaffine": 39
+  },
+  "6": {
+   "S1_affine": 8,
+   "S1_nonaffine": 2,
+   "S2_affine": 0,
+   "S2_nonaffine": 44,
+   "S3_affine": 34,
+   "S3_nonaffine": 144,
+   "S4_affine": 46,
+   "S4_nonaffine": 149
+  }
+ },
+ "scanned": {
+  "2": 60,
+  "3": 68,
+  "4": 98,
+  "5": 183,
+  "6": 504
+ },
+ "identifiability_clashes": {
+  "2": {
+   "shorter": 0,
+   "equal": 0
+  },
+  "3": {
+   "shorter": 0,
+   "equal": 0
+  },
+  "4": {
+   "shorter": 0,
+   "equal": 0
+  },
+  "5": {
+   "shorter": 0,
+   "equal": 1
+  },
+  "6": {
+   "shorter": 1,
+   "equal": 1
+  }
+ },
+ "bfs": {
+  "level_counts": [
+   12,
+   112,
+   988,
+   8543,
+   73146,
+   622876
+  ],
+  "seconds": 14.7,
+  "peak_rss_gb": 2.055,
+  "from_cache": false
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "chunks": [
+  {
+   "start_utc": "2026-10-19T05:52:23.293817+00:00",
+   "arm": "pilot",
+   "seconds": 1206.7,
+   "cells_completed": 20
+  }
+ ],
+ "elapsed_seconds": 1206.7162940502167
+}
