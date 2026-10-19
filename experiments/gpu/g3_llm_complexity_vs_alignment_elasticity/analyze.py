@@ -128,7 +128,9 @@ def verdicts(r: dict) -> dict:
         v["C1_complexity_costs_data"] = "UNRESOLVED"
     E = r["pooled_fit"]["E"]
     Es = [f["E"] for f in r["per_seed_fit"].values()]
-    if r["censored_fraction"] > 1 / 3:
+    if v["C1_complexity_costs_data"] != "SUPPORTED":  # PLAN.md: without C1, e_K is not identified and E means nothing
+        v["C2_alignment_dominates"] = "UNRESOLVED (C1 not supported, so e_K is not identified)"
+    elif r["censored_fraction"] > 1 / 3:
         v["C2_alignment_dominates"] = f"UNRESOLVED (censored fraction {r['censored_fraction']:.2f} > 1/3)"
     elif math.isfinite(E) and E > 1 and Es and all(math.isfinite(x) and x > 1 for x in Es):
         v["C2_alignment_dominates"] = "SUPPORTED"
