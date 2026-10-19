@@ -6,3 +6,6 @@ results*/parts/
 results*/verify/
 results*/bfs_cache.npz
 results_fake/
+# probe checkpoints and the 23 MB embedding array: kept out of git, hashes in ../ARTIFACT_SHA256.json
+results*/probes/*.npz
+results*/embeddings.npz

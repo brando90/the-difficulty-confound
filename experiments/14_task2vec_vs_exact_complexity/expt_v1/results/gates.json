@@ -1,0 +1,161 @@
+{
+ "verdicts": {
+  "G1": "NOT_ESTABLISHED",
+  "G2": "NOT_ESTABLISHED",
+  "G3": "NOT_ESTABLISHED",
+  "G4": "NOT_RUN",
+  "G5": "NOT_RUN"
+ },
+ "families": {
+  "dfa": {
+   "G1": {
+    "rho": -0.35907731277414995,
+    "ci": {
+     "lo": -0.5545177353615223,
+     "hi": -0.15906702677164938,
+     "n_undefined_draws": 0
+    },
+    "n_tasks": 96,
+    "pass": false
+   },
+   "G2": {
+    "partial": 0.016560554061491067,
+    "ci": {
+     "lo": -0.20882806565034887,
+     "hi": 0.20987290540197562,
+     "n_undefined_draws": 0
+    },
+    "covariates": [
+     "label_entropy",
+     "sensitivity"
+    ],
+    "pass": false
+   },
+   "G3": {
+    "rho": -0.4357660298399499,
+    "ci": {
+     "lo": -0.6969450306894802,
+     "hi": 0.06732849160101856,
+     "n_undefined_draws": 405
+    },
+    "n_targets": 16,
+    "eps_star": 0.5,
+    "n_censored_targets": 13,
+    "n_censored_runs": 104,
+    "n_runs": 128,
+    "pass": false
+   },
+   "G4": {
+    "not_run": true,
+    "reason": "inputs not computed: the run stopped at the wall cap",
+    "n_mixes": 40,
+    "n_mixes_available": 0,
+    "pass": null
+   },
+   "G5": {
+    "ratio": 0.5924240979683605,
+    "ci": {
+     "lo": 0.4504638453330352,
+     "hi": 0.6532012354467408,
+     "n_undefined_draws": 0
+    },
+    "n_tasks": 16,
+    "rate": 0.25,
+    "ratio_at_other_rates": {
+     "0.10": 0.8003909414970412,
+     "0.25": 0.5924240979683605
+    },
+    "pass": false
+   }
+  },
+  "dsl": {
+   "G1": {
+    "rho": 0.18984204691788037,
+    "ci": {
+     "lo": 0.011224390219330645,
+     "hi": 0.3574609524814093,
+     "n_undefined_draws": 0
+    },
+    "n_tasks": 120,
+    "pass": false
+   },
+   "G2": {
+    "partial": -0.07196716499200544,
+    "ci": {
+     "lo": -0.27220908125609367,
+     "hi": 0.11556886798222554,
+     "n_undefined_draws": 0
+    },
+    "covariates": [
+     "label_entropy",
+     "sensitivity"
+    ],
+    "pass": false
+   },
+   "G3": {
+    "rho": -0.5636525384706728,
+    "ci": {
+     "lo": -0.8547655068078669,
+     "hi": -0.057219700692752756,
+     "n_undefined_draws": 0
+    },
+    "n_targets": 20,
+    "eps_star": 1.0,
+    "n_censored_targets": 5,
+    "n_censored_runs": 35,
+    "n_runs": 160,
+    "pass": false
+   },
+   "G4": {
+    "not_run": true,
+    "reason": "inputs not computed: the run stopped at the wall cap",
+    "n_mixes": 50,
+    "n_mixes_available": 0,
+    "pass": null
+   },
+   "G5": {
+    "not_run": true,
+    "reason": "inputs not computed: the run stopped at the wall cap",
+    "n_tasks": 20,
+    "rate": 0.25,
+    "pass": null
+   }
+  }
+ },
+ "thresholds": {
+  "g1_min_rho": 0.5,
+  "g1_lb_above": 0.2,
+  "g2_min_partial": 0.3,
+  "g2_lb_above": 0.0,
+  "g3_min_rho": 0.5,
+  "g3_lb_above": 0.0,
+  "g4_min_rho_H": 0.7,
+  "g4_rho_H_lb_above": 0.5,
+  "g4_min_gap": 0.3,
+  "g4_gap_lb_above": 0.0,
+  "g5_min_ratio": 1.2,
+  "g5_lb_above": 1.0
+ },
+ "handoff": {
+  "g123_supported": false,
+  "kendall_w_ok": {
+   "dfa": true,
+   "dsl": true
+  },
+  "rescaled_rho_ok": {
+   "dfa": null,
+   "dsl": null
+  },
+  "incremental_nonnegative": {
+   "dfa": false,
+   "dsl": false
+  },
+  "met": false,
+  "note": "rescaled-probe embeddings not computed (wall cap); the rescaling condition is untested"
+ },
+ "bootstrap": {
+  "draws": 20000,
+  "seed": 29101426
+ },
+ "seconds": 305.0
+}
