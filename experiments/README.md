@@ -18,4 +18,6 @@
 
 **Designed, not yet run:** Experiments 11–16 cross exactly computable task complexity with hand-set data alignment (deterministic finite automata, domain-specific-language programs, GINC-style hidden Markov models, a Task2Vec bridge, alignment recovery, crossed carry arithmetic); see the [complexity-versus-alignment overview](ideas/complexity_vs_alignment/README.md).
 
+**GPU plans, ready to dispatch, not yet run:** hard-to-easy (Putnam-style maths → GSM8K), cross-domain (maths → poetry) and the real-model counterpart of Exp 13's elasticity ratio, on Qwen2.5-0.5B/1.5B with Sherlock and SNAP launchers; see [experiments/gpu/](gpu/README.md).
+
 [Archive index](archive/README.md) · [Collaborator onboarding & next PRs](ideas/COLLABORATION_ONBOARDING.md).
