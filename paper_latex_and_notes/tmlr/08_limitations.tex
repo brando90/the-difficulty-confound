@@ -2,8 +2,8 @@
 \section{Limitations}
 \label{sec:limitations}
 
-The primary skill is exact three-digit addition under two-hidden-layer feedforward networks, extended in \texttt{experiments/archive/10\_autoregressive\_transformer\_replication/} to causal autoregressive transformers.
-Nothing in the ten studies estimates broad language-model benchmark difficulty or the fraction of benchmark variance that data would explain.
+The primary skill is exact three-digit addition under two-hidden-layer feedforward networks, extended in \texttt{experiments/archive/10\_autoregressive\_transformer\_replication/} and \texttt{experiments/archive/11\_transformer\_calibrated\_pretraining\_horizon/} to causal autoregressive transformers.
+Nothing in the eleven studies estimates broad language-model benchmark difficulty or the fraction of benchmark variance that data would explain.
 \texttt{experiments/archive/02\_heldout\_exposure\_difficulty\_laws/} states that limit in its own report, and the companion mathematics grid does not remove it.
 The grid has 24 observations, a breadth proxy, and no measured starting difficulty.
 
@@ -29,9 +29,15 @@ Near-ceiling widths shrink the accuracy reversal to a fraction of a point in one
 A supported pooled gate can coexist with a small effect at large width.
 \texttt{experiments/archive/10\_autoregressive\_transformer\_replication/} evaluates causal autoregressive transformers (2 layers, 4 attention heads, generating sum digits token-by-token).
 At width 32, the compositional ranking reversal and remediation replicate (11.77 points initial gap; 94.52\% recovery; $+0.23$ points retention).
-However, transformers exhibit far greater sample-efficiency on arithmetic than feedforward MLPs: after 1,500 pretraining steps, widths 64, 96, 128, and 384 completely saturate at ceiling accuracy (>99.8\% to 100.0\%, loss $<0.005$ bits) across both carry strata, leaving virtually zero residual error to predict.
+However, transformers exhibit far greater sample-efficiency on arithmetic than feedforward MLPs: after 1,500 pretraining steps, widths 64, 96, 128, and 384 completely saturate at ceiling accuracy (>99.8\% to 100.0%, loss $<0.005$ bits) across both carry strata, leaving virtually zero residual error to predict.
 Pooled held-out loss reduction (0.05\% [0.03, 2.84]) and prequential MDL reduction (3.77\% [1.21, 6.93]) remain below the 10\% gate, leaving all five prospective gates not established under the frozen criteria.
 Transformers shift the saturation boundary, demonstrating that difficulty scaling laws require earlier checkpointing horizons or longer digit sequences to measure sub-ceiling dynamics.
+\texttt{experiments/archive/11\_transformer\_calibrated\_pretraining\_horizon/} directly addresses that saturation boundary by calibrating the pretraining horizon to $T_{\text{pre}}=300$ updates.
+Active headroom is restored across all five model widths ($d_{\text{model}} \in \{32, 64, 96, 128, 384\}$).
+Pure compositional difficulty reversal is supported across all five widths (15.67 [12.13, 19.10] points at $q_{\text{pre}}=0.10$ vs 15.70 [12.89, 18.17] points at $q_{\text{pre}}=0.90$).
+Prequential online MDL prediction is supported: probed starting difficulty cuts held-out online adaptation MDL root mean squared error by 18.84\% [5.88, 34.16].
+However, final conditional loss prediction is not established (0.99\% [$-11.40$, $5.66$]), because 1{,}000 updates of balanced post-training compress final test loss to 0.02 bits across all widths, whereas the online prequential code integrates over the active trajectory.
+Additionally, while balanced remediation raises cascading two-carry accuracy from 68.32\% to 99.90\% (+31.58 points gain) and improves control accuracy by $+15.94$ points, the control confidence lower bound (12.13 points) falls just short of the protocol's 15.0-point gate line.
 
 Conditional bits are not Kolmogorov complexity and, outside the online-code study, not a full minimum description length.
 The online code charges for labels along one adaptation stream.
