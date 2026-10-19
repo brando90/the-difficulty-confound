@@ -9,18 +9,24 @@
 # files and the decoded arrays hash to expt_v1/data_sha256.json.
 set -euo pipefail
 cd "$EXP18_DIR"
-ml python/3.12.1 2>/dev/null || ml python/3.9.0
-if [ ! -x "$HOME/venvs/exp18/bin/python" ]; then
-  python3 -m venv "$HOME/venvs/exp18"
-  "$HOME/venvs/exp18/bin/pip" install -q --upgrade pip
-  "$HOME/venvs/exp18/bin/pip" install -q "torch==2.14.1" --index-url https://download.pytorch.org/whl/cpu \
-    || "$HOME/venvs/exp18/bin/pip" install -q torch --index-url https://download.pytorch.org/whl/cpu
-  "$HOME/venvs/exp18/bin/pip" install -q "numpy==2.5.4" scipy matplotlib pyarrow pillow \
-    || "$HOME/venvs/exp18/bin/pip" install -q numpy scipy matplotlib pyarrow pillow
+# Sherlock is glibc 2.17: pip there may only take manylinux2014/linux_x86_64 wheels, never a source build (the first
+# submit, 48476434, built numpy from source and the old assembler rejected endbr64). torch 2.14.1 has no such wheel, so
+# the cluster runs torch 2.6.0+cpu / numpy 2.2.6 (PROTOCOL Section 6.2; cross-CPU verify covers the version change).
+ml python/3.12.1
+VENV=${EXP18_VENV:?set EXP18_VENV}
+PIP="$VENV/bin/pip install -q --only-binary=:all: --no-cache-dir"
+if [ ! -e "$VENV/.ready" ]; then
+  rm -rf "$VENV"
+  python3 -m venv "$VENV"
+  $PIP --upgrade "pip==25.2"
+  $PIP "torch==2.6.0+cpu" --index-url https://download.pytorch.org/whl/cpu || true
+  "$VENV/bin/python" -c "import torch" || $PIP --force-reinstall "torch==2.6.0"
+  $PIP "numpy==2.2.6" "scipy==1.16.3" "pillow==12.2.0" "pyarrow==20.0.0"
+  "$VENV/bin/python" -c "import torch, numpy, scipy, PIL, pyarrow" && touch "$VENV/.ready"
 fi
-PY=$HOME/venvs/exp18/bin/python
-$PY -c "import torch, numpy; print('torch', torch.__version__, 'numpy', numpy.__version__)"
-export PATH=$HOME/venvs/exp18/bin:$PATH
+PY=$VENV/bin/python
+$PY -c "import torch, numpy, scipy, PIL, pyarrow; print('torch', torch.__version__, 'numpy', numpy.__version__, 'scipy', scipy.__version__, 'threads', torch.get_num_threads())"
+export PATH=$VENV/bin:$PATH
 VISION_RAW=$SCRATCH/exp18_raw VISION_DATA=$SCRATCH/exp18_npz bash launch/fetch_data.sh
 VISION_DATA=$SCRATCH/exp18_npz $PY - <<'PYEOF'
 import hashlib, json, os, sys

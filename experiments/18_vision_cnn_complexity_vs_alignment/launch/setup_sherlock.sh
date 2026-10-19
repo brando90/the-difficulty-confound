@@ -1,9 +1,13 @@
 #!/bin/bash
-# One-time environment on Sherlock (login node is fine; ~5 min). Creates $HOME/venvs/exp18 with CPU torch.
+# Not needed: prep_sherlock.sbatch builds the venv ($EXP18_VENV) from wheels only. Kept for a manual login-node build:
+#   EXP18_VENV=$SCRATCH/exp18_venv bash launch/setup_sherlock.sh
 set -euo pipefail
-ml python/3.12.1 2>/dev/null || ml python/3.9.0
-python3 -m venv "$HOME/venvs/exp18"
-"$HOME/venvs/exp18/bin/pip" install -q --upgrade pip
-"$HOME/venvs/exp18/bin/pip" install -q torch --index-url https://download.pytorch.org/whl/cpu
-"$HOME/venvs/exp18/bin/pip" install -q numpy scipy matplotlib pyarrow pillow
-"$HOME/venvs/exp18/bin/python" -c "import torch; print('torch', torch.__version__)"
+ml python/3.12.1
+VENV=${EXP18_VENV:?set EXP18_VENV}
+PIP="$VENV/bin/pip install -q --only-binary=:all: --no-cache-dir"
+python3 -m venv "$VENV"
+$PIP --upgrade "pip==25.2"
+$PIP "torch==2.6.0+cpu" --index-url https://download.pytorch.org/whl/cpu || true
+"$VENV/bin/python" -c "import torch" || $PIP --force-reinstall "torch==2.6.0"
+$PIP "numpy==2.2.6" "scipy==1.16.3" "pillow==12.2.0" "pyarrow==20.0.0"
+"$VENV/bin/python" -c "import torch, numpy, scipy, PIL, pyarrow; print('torch', torch.__version__)" && touch "$VENV/.ready"

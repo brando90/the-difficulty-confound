@@ -1,8 +1,10 @@
 #!/bin/bash
 # Submit the whole Experiment 18 grid on Sherlock's normal CPU partition, once (PROTOCOL Section 7).
-# Run from $SCRATCH/exp18 after unpacking the package:  bash exp18_pkg/submit_exp18.sh 2>&1 | tee submit_exp18.log
+# Run from $SCRATCH/exp18r2 after unpacking the package there:  bash exp18_pkg/submit_exp18.sh 2>&1 | tee submit_exp18.log
+# (r2: the first submit from $SCRATCH/exp18 failed in prep before any run; that folder is left as it is.)
 set -euo pipefail
-BASE=$SCRATCH/exp18
+BASE=$SCRATCH/exp18r2
+export EXP18_VENV=$SCRATCH/exp18_venv
 [ -e "$BASE/jobs_exp18.txt" ] && { echo "jobs_exp18.txt exists: already submitted, refusing"; exit 1; }
 cd "$BASE/exp18_pkg"
 sha256sum -c --quiet SHA256SUMS && echo "package verified: $(cat FREEZE)"
@@ -22,6 +24,7 @@ for ph in mnist_main mnist_H fashion_main kmnist_main fashion_H kmnist_H mis cif
   echo "$ph=$J ($N runs, -t $T)"
   IDS="$IDS:$J"
 done
-POST=$(sbatch --parsable --dependency=afterany$IDS --export=ALL,EXP18_DIR="$EXP18_DIR" launch/post_sherlock.sbatch)
+# post waits for a successful prep AND for every array to end (some failed tasks still get packed and reported)
+POST=$(sbatch --parsable --dependency=afterok:$PREP,afterany$IDS --export=ALL,EXP18_DIR="$EXP18_DIR" launch/post_sherlock.sbatch)
 echo "prep=$PREP post=$POST arrays=${IDS#:}" | tee "$BASE/jobs_exp18.txt"
 squeue -u "$USER" -o "%.18i %.12P %.20j %.8T %.10M %.6D %R" | head -20
