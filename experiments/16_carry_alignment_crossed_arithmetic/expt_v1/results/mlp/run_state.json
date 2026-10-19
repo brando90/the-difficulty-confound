@@ -1,0 +1,37 @@
+{
+ "chunks": [
+  {
+   "started_utc": "2026-10-19T20:13:54Z",
+   "runs": 384,
+   "seconds": 767.2482234840281
+  }
+ ],
+ "runtime": {
+  "host": "sh02-01n55.int",
+  "slurm_job_id": "48509778",
+  "python": "3.12.1",
+  "torch": "2.6.0+cpu",
+  "numpy": "2.2.6",
+  "git_revision": "0519a93ba3233b2ec5591de2ba7347f8333afafe",
+  "config_sha256": "4d7f42cb9301034d31b192bab8f2f350cb1c844c364d4b45bfb2aab644ca80cd",
+  "source_sha256": {
+   "analyze.py": "c8ab3abfc183f164e83a6361b837ba4f3f6969185b77c20873c4b5a8733a65c6",
+   "carry.py": "356d41934ba21675884d1bd00a61008de8dfff85e3090b431cf6be5c5e47075d",
+   "independent_fit.py": "306f3dac05e79f981de666209d568eaa6a36fe0aca48000cb97027a06fc0b594",
+   "laws.py": "c90ec3fed44937877f70afe43e863738a0a25d471e822cb86d9bd9d3e524a1d6",
+   "mlp_arm.py": "941356cc63d637c945349e6aa32865802234e6d345e2c2f516ffb7525d88b305",
+   "report.py": "7468dfb5205b672698b2448da312b74a528b2c1679bf86daf119a526decb74f2",
+   "run.py": "0d86545bcf8b312be79982bdf5191a65aa4e361c6ffb5f1706e1ce17e7519303",
+   "test_arms.py": "4476308018f0fc164436cf5c5b140245f63625a64b67c74251d0e7cf937ac4d7",
+   "test_carry.py": "d8a59a9347926e9be8669039fc7f97babf47919769111f47e90e688dd0d0a3c6",
+   "test_laws.py": "0d3bd90272452d8fec8438ad7cc2c0fead80e4e2da974599cdd163037938ebda",
+   "transformer_arm.py": "cbb5888060d1a782da35f0386daebba9fca0a12303f2dd481fd445e0ebe8b0e2",
+   "verify.py": "b6329fae5bb0d804df281b3b4899c16c469d1259d45f36f5701d2da62e3b29ac"
+  },
+  "imports_sha256": {
+   "exp06_addition.py": "766123242a12da2ee6973f03ade252880983720ed9c65db88932c01decef2289",
+   "exp08_run.py": "097e1e1c7f438fca6d55e100356be57611dc40442436c3b7e0360fb32127c8e7"
+  },
+  "started_utc": "2026-10-19T20:01:07Z"
+ }
+}
