@@ -117,11 +117,13 @@ def test_bootstrap_identical_seeds_collapses():
     assert abs(lo - 2.5) < 1e-12 and abs(hi - 2.5) < 1e-12
 
 
-@pytest.mark.parametrize('law,expect', [('M_K_coef', ('SUPPORTED', 'NOT_ESTABLISHED')),
-                                         ('M_K_exp', ('NOT_ESTABLISHED', 'SUPPORTED'))])
-def test_g3_logic(law, expect):
+# The noise draw is fixed per case: under M_K_coef truth gamma1 = 0 and its 8-seed bootstrap 95% CI excludes 0 on
+# a few percent of draws (2 of rng seeds 0-11 checked, 7 and 10), as a 95% interval should; rng seed 0 covers it.
+@pytest.mark.parametrize('law,expect,rng_seed', [('M_K_coef', ('SUPPORTED', 'NOT_ESTABLISHED'), 0),
+                                                  ('M_K_exp', ('NOT_ESTABLISHED', 'SUPPORTED'), 7)])
+def test_g3_logic(law, expect, rng_seed):
     """M_K_both on fit rows per seed, held-out RMSE of M_K_coef and M_K_exp, then the G3 rule."""
-    rows = synthetic_rows(law, rng_seed=7)
+    rows = synthetic_rows(law, rng_seed=rng_seed)
     held = [r for r in rows if not AN.is_fit(r, C)]
     boot = AN.Boot(8, 2000, C['analysis_seed'])
     kap, g1, sse = [], [], {'M_K_coef': np.zeros(8), 'M_K_exp': np.zeros(8)}

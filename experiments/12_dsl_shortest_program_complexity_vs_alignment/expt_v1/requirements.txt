@@ -2,6 +2,7 @@
 # pybdm installed with --no-deps (it needs only numpy at runtime)
 matplotlib==3.11.2
 numpy==2.5.4
+pybdm==0.1.0
 pytest==9.1.1
 scipy==1.18.1
 torch==2.14.1+cpu
