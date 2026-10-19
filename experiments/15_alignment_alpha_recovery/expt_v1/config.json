@@ -1,0 +1,83 @@
+{
+  "experiment": "15_alignment_alpha_recovery",
+  "graded_seeds": [15101, 15202, 15303, 15404, 15505, 15606, 15707, 15808],
+  "graded_fallback_seeds": [15101, 15202, 15303, 15404],
+  "graded_use_fallback": false,
+  "pilot_seed": 15909,
+  "task_sampling_seed": 20261015,
+  "analysis_seed": 29101526,
+  "bootstrap_draws": 20000,
+
+  "probes": [14101, 14202, 14303, 14404],
+  "references_per_target": 2048,
+  "scored_units_per_task": 4096,
+  "ncd_references": 128,
+  "ncd_units_per_task": 512,
+  "task2vec_batches": 8,
+  "task2vec_batch_size": 256,
+
+  "zstd": {"level": 3, "max_dict_bytes": 131072, "dict_granule": 256, "dict_fraction_divisor": 2560},
+  "gzip_level": 9,
+  "tfidf_ngram": 3,
+
+  "serialization": {
+    "dfa": {"a": "a", "b": "b", "sep": ">", "accept": "Y", "reject": "N"},
+    "dsl": {"in0": "0", "in1": "1", "sep": ">", "out0": "o", "out1": "i"},
+    "task_token_first_byte": 161
+  },
+
+  "graded": {
+    "K_levels": [8, 16],
+    "targets_per_level": 2,
+    "target_accept_band": [0.40, 0.60],
+    "distractor_accept_band": [0.30, 0.70],
+    "rewire_levels": [1, 2, 4, "all"],
+    "distractors_per_level": 2,
+    "max_tries": 1000,
+    "agreement_mc_draws": 1048576,
+    "verify_mc_draws": 65536,
+    "verify_mc_tol": 0.01,
+    "construction_min_rho_r1": 0.60,
+    "construction_max_rho_all": 0.20,
+    "distractor_pool_token_offset": 1000,
+    "mixes": {
+      "m1": {"alpha_share": 0.15, "distractors": {"all": 2}},
+      "m2": {"alpha_share": 0.15, "distractors": {"1": 2}},
+      "m3": {"alpha_share": 0.15, "distractors": {"1": 2, "2": 2, "4": 2, "all": 2}},
+      "m4": {"alpha_share": 0.40, "distractors": {"all": 2}},
+      "m5": {"alpha_share": 0.40, "distractors": {"2": 2, "4": 2}}
+    },
+    "n_task_tokens": 36
+  },
+
+  "law": {"dfa": "M_K_both", "dsl": "M_K_both", "k_unit": "K_bits",
+          "note": "lowest all-cell held-out RMSE in Experiment 11 (0.1814) and Experiment 12 (2.6435) RESULTS"},
+
+  "gates": {
+    "g1_min_rho": 0.90, "g1_lb_min": 0.80,
+    "g2_band": 0.02,
+    "g3_max_rel_change": 0.10, "g3_ub_max": 0.10,
+    "g4a_min_rel_reduction": 0.10, "g4a_lb_above": 0.0,
+    "g4b_min_diff": 0.10, "g4b_lb_above": 0.0
+  },
+  "eq2_check_tol": 0.01,
+  "eq2_check": {"dfa_seed": 11101, "dfa_targets": "first target of each K level", "dsl_seed": 12101},
+
+  "workers": 4,
+  "threads": 1,
+  "max_wall_seconds": 14400,
+  "graded_fallback_minutes": 90,
+  "ram_limit_gb": 12,
+  "verify_sample_fraction": 0.1,
+  "verify_sample_seed": 15707,
+  "verify_rel_tol": 1e-06,
+  "law_rel_tol": 0.0001,
+  "stats_tol": 1e-10,
+
+  "exp11_dir": "../../11_dfa_exact_complexity_vs_alignment/expt_v1",
+  "exp12_dir": "../../12_dsl_shortest_program_complexity_vs_alignment/expt_v1",
+  "exp14_dir": "../../14_task2vec_vs_exact_complexity/expt_v1",
+  "exp11_sources": ["config.json", "dfa.py", "data.py", "model.py", "run.py", "laws.py", "independent_fit.py", "analyze.py"],
+  "exp12_sources": ["config.json", "dsl.py", "data.py", "model.py", "laws.py", "independent_fit.py", "analyze.py"],
+  "exp14_sources": ["config.json", "tasks14.py", "probe.py", "task2vec.py"]
+}

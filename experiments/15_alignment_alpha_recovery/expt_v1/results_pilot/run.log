@@ -1,0 +1,22 @@
+[10-19-2026 16:32:05] refs: dfa 512 mixes rebuilt, counts equal mixes.json: True
+[10-19-2026 16:32:42] refs: dsl 640 mixes rebuilt, counts equal mixes.json: True
+[10-19-2026 16:33:31] graded construction attempt 0: mean rho by r {1: 0.7226113597318395, 2: 0.4063491062581118, 4: 0.2772769991724646, 'all': 0.0627622709129854} -> PASS
+[10-19-2026 16:33:42] refs: done in 147 s; token-free {'dfa': True, 'dsl': True, 'graded': True}; disjoint {'dfa': True, 'dsl': True}
+[10-19-2026 16:33:42] scores: 0 of 10 jobs done, 10 to run, budget 1000000000 s
+[10-19-2026 16:35:12] job dfa__p14101__dfa_n32_t1__t2v.json 90.1 s
+[10-19-2026 16:35:13] job dfa__p14101__dfa_n04_t1__t2v.json 90.6 s
+[10-19-2026 16:35:48] job dsl__p14101__dsl_k6_t1__t2v.json 34.9 s
+[10-19-2026 16:35:49] job dsl__p14101__dsl_k2_t1__t2v.json 36.8 s
+[10-19-2026 16:35:52] job dsl__p14101__probe.npz 130.2 s
+[10-19-2026 16:36:30] job dfa__dfa_n04_t1__nonprobe.npz 42.8 s
+[10-19-2026 16:36:31] job dfa__dfa_n32_t1__nonprobe.npz 41.7 s
+[10-19-2026 16:36:32] job dsl__dsl_k2_t1__nonprobe.npz 39.4 s
+[10-19-2026 16:36:52] job dsl__dsl_k6_t1__nonprobe.npz 21.8 s
+[10-19-2026 16:44:42] job dfa__p14101__probe.npz 659.7 s
+[10-19-2026 16:44:42] graded: 0 done, 5 to run
+[10-19-2026 16:46:27] graded run 15909_dfa_n08_t2_m3 104.8 s
+[10-19-2026 16:46:28] graded run 15909_dfa_n08_t2_m1 105.7 s
+[10-19-2026 16:46:30] graded run 15909_dfa_n08_t2_m2 107.5 s
+[10-19-2026 16:46:30] graded run 15909_dfa_n08_t2_m4 108.0 s
+[10-19-2026 16:47:17] graded run 15909_dfa_n08_t2_m5 50.0 s
+[10-19-2026 16:47:19] pilot done: projection {"per_graded_run_seconds": 95.1968060016632, "graded_wall_seconds": {"160": 3807.8722400665283, "80": 1903.9361200332642}, "scoring_cpu_seconds": {"probe": 6128.322359085083, "t2v": 11299.195011456808, "nonprobe": 1377.6979804039001}, "scoring_wall_seconds": 4701.303837736448, "longest_single_job_seconds": 659.7301979064941, "total_wall_seconds": 8509.176077802977, "graded_fallback": false}

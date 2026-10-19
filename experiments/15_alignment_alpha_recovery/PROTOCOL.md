@@ -2,7 +2,7 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/15_alignment_alpha_recovery/PROTOCOL.md>
 
-Status: DRAFT design, 10-18-2026, from Brando Miranda's complexity-versus-alignment idea. The running agent may revise it, then must freeze it in its own commit before any gated run; after the freeze nothing in Sections 2–5 changes.
+Status: FROZEN 10-19-2026 after the disclosed pilot (Section 2.8), before any gated run. Designed 10-18-2026 from Brando Miranda's complexity-versus-alignment idea. After the freeze nothing in Sections 2–5 changes; deviations are logged in RESULTS.
 
 Program overview: [complexity versus alignment, Experiments 11–16](../ideas/complexity_vs_alignment/README.md). Background on Task2Vec and complexity: [TASK2VEC_KOLMOGOROV.md](../ideas/complexity_vs_alignment/TASK2VEC_KOLMOGOROV.md). Companion: [Experiment 14](../14_task2vec_vs_exact_complexity/PROTOCOL.md), whose frozen probe networks and Task2Vec code this experiment imports.
 
@@ -139,6 +139,26 @@ For each family, use the law that Experiment 11 (or 12) reports as best on its h
 | Scored units per task | 4,096 | 4,096 |
 | Probes (from Experiment 14) | 4 | 4 |
 | Graded arm | 4 targets × 5 mixes × 8 seeds = 160 runs | none |
+
+### 2.8 Pilot disclosure and implementation choices (written before the freeze, no gated result seen)
+
+**Check-only (10-19-2026).** All 512 Experiment 11 and 640 Experiment 12 mixes were rebuilt with counts equal to their `mixes.json`. No mix of any seed leaves an unused example in any target's training file, so every reference is a fresh draw from the target's own generator and input sampler (seed 20261015), as Section 2.2 allows. References and scored units are disjoint, and no stripped serialization contains a task-token byte. Exact-content overlap between pool and references is 2.7–3.3% (DFA) and 4.8–6.0% (DSL). Reference coverage of pool inputs is 5.1–5.9% (DFA) and 100% (DSL: the 1,024-word input space is fully covered by 2,048 references). The input total-variation distance between target and distractors is at most 0.030 (DFA, over lengths) and exactly 0 (DSL). The graded construction passed on its first draw: mean $\rho$ = 0.723, 0.406, 0.277, 0.063 for $r$ = 1, 2, 4, all; 8 candidate distractors rejected; correlation of $\alpha_{\text{share}}$ and $\alpha_{\text{soft}}$ over the 20 mixes 0.111.
+
+**Pilot (seed 15909, `expt_v1/results_pilot/`).** Scoring of the lowest- and highest-$K$ target of each family on probe 14101, then 5 graded runs (first graded target, m1–m5). Per-example gradients ran at about 290 per second (DFA) and 180 per second (DSL) per core, below Section 7's 1,000–3,000 assumption. Task2Vec took about 90 s (DFA) and 36 s (DSL) per (target, probe). One graded run took about 95 s on 4 workers. Projection: 160 graded runs about 63 min, scoring about 78 min, total about 2.4 h, inside the 4 h cap (`max_wall_seconds` = 14,400). The 160-run projection is under 90 minutes, so the pre-declared fallback does not fire: the graded arm keeps 8 seeds (`graded_use_fallback` = false).
+
+**Implementation choices (fixed by this freeze):**
+
+- **Measure (a).** The paper's code was not readable, so (a) uses the literal reading in Section 2.3; (a′) covers the other reading.
+- **(b1) reads inputs only.** The probe input carries no label, so the permuted-label and input-only versions of (b1) equal (b1) by construction (a unit test asserts it). They are reported as such, and (c)'s controls change only through (a). Mean pooling covers every real (non-padding) position, including the null task-token position.
+- **(d) parameters:** every transformer-block parameter and the head; token and position embeddings and the final layer norm are excluded. Gradients are computed exactly per example (`torch.func.vmap(grad)`), DFA rows right-padded within a chunk.
+- **NCD (a2):** gzip of the plain concatenation $xr_j$, no separator.
+- **Counts $n_u(S)$** are the mean over training seeds of the per-task counts at the largest $T$ (the seed spread at that $T$ is at most 7 examples for DFA, 1 for DSL and 6 for the graded arm).
+- **Eq. 2 check scope:** exact Eq. 2 over the full training multiset for measure (c) on DFA seed 11101 (first target of each $K$ level) and DSL seed 12101 (all 20 targets), every $\alpha$ and probe.
+- **Task2Vec $c_0$:** main arms use one $c_0$ per target (all distractors at the relative shares of the $\alpha$ = 0.05 mix). In the graded arm each mix has its own $c_0$ (that mix's distractors at their relative shares), since the mixes use different distractors.
+- **Graded agreement:** Experiment 11's training sampler is not uniform given length, so the primary agreement is Monte Carlo over $2^{20}$ draws of that sampler (method recorded per distractor). The exact uniform-given-length dynamic program is recorded beside it; the two differ by at most about 0.004.
+- **Graded references and units:** references are 2,048 fresh target examples (seed 20261015, a separate stream from the main-arm references). The target's scored units are its main-arm units; each distractor's 4,096 units come from its graded training pool (fixed permutation).
+- **Gate 4a folds:** each fold fits on the 4 other mixes at every $T$ below the largest and is scored on the left-out mix at every $T$ plus the largest $T$ of every mix, as Section 4 states.
+- **Repository steps.** The folder stays at `experiments/15_alignment_alpha_recovery/` (no move to `experiments/archive/`), and the results go to `main` through the shared results branch rather than a separate pull request, as the coordinating task directs. These are recorded as deviations in RESULTS.
 
 ## 3. Measurements
 
