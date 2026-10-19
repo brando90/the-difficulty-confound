@@ -29,6 +29,7 @@ All completed experiments live in [`experiments/archive/`](../archive/README.md)
 | **08** | [`08_rlvr_verifiable_reward_utility_laws`](../archive/08_rlvr_verifiable_reward_utility_laws/RESULTS_rlvr_utility.md) | Does pure 0/1 verifiable-reward RL (RLVR / leave-one-out GRPO, $G=16$) exhibit history-dependent utility reversal, natural no-harm retention, and predictable RL improvement utility $U = \text{Acc}_T - \text{Acc}_0$? | **Post-RLVR loss (`39.87%`), utility reversal (`29.07` / `32.70` pp), and RLVR remediation (`78.23%` recovery, `+6.45 pp` retention) SUPPORTED.** Additive linear RL utility law cuts width-96 RMSE by **48.56%** (`14.59 -> 7.50` pp) but overshoots remaining headroom $1 - \text{Acc}_0$ at near-ceiling width 384 (`-15.78%` pooled). |
 | **09** | [`09_headroom_bounded_rlvr_utility_law`](../archive/09_headroom_bounded_rlvr_utility_law/RESULTS_headroom_bounded.md) | Does a headroom-bounded RLVR utility law ($\widehat{U} = (1 - \text{Acc}_0)(1 - e^{-r_\theta})$) resolve the width-384 ceiling overshoot across group sizes $G \in \{4, 8, 16, 64\}$? | **Structural repair SUPPORTED:** joint RMSE reduced by **73.72% [70.43, 77.26]**; impossible forecasts cut from 128 to 0; width-384 error dropped $20.63 \to 0.41$ pp. Probe features inside bound (**8.10%**) and signal density beyond $G$ (**0.96%**) are `NOT_ESTABLISHED`. Replicated RL utility reversal and remediation. |
 | **10** | [`10_autoregressive_transformer_replication`](../archive/10_autoregressive_transformer_replication/RESULTS_transformer_history.md) | Does the difficulty-confound phenomenon transfer to **autoregressive causal transformers** (2 layers, 4 heads, token-by-token generation)? | **Width 32 reversal and remediation replicated** (**11.77 pp** gap, **94.52%** recovery, **+0.23 pp** retention). High sample-efficiency of causal transformers causes ceiling saturation at widths 64–384 (>99.8% to 100.0%, loss < 0.005 bits) after 1,500 pretraining steps, leaving near-zero residual headroom; prospective gates `NOT_ESTABLISHED` under frozen criteria. |
+| **11** | [`11_transformer_calibrated_pretraining_horizon`](../archive/11_transformer_calibrated_pretraining_horizon/RESULTS_transformer_calibrated.md) | Does calibrating transformer pretraining horizon ($T_{\text{pre}}=300$ updates) restore active headroom and establish starting-difficulty predictability across all 5 widths? | **Reversal and prequential MDL law SUPPORTED:** pure compositional reversal across all widths (**15.67 [12.13, 19.10] pp** at $q=.10$ vs **15.70 [12.89, 18.17] pp** at $q=.90$); probed difficulty reduces prequential MDL RMSE by **18.84% [5.88, 34.16]**; remediation recovers **201.55%** of gap with **+15.94 pp** retention; conditional loss law not established (0.99%). |
 
 ---
 
@@ -42,7 +43,7 @@ Every experiment follows a strict 5-step workflow so that neither human nor agen
    - `python3 experiments/archive/<id>/expt_v1/run.py --check-only` verifies exact dataset cardinalities, train/probe/eval disjointness, and marginal invariants without training.
 3. **Run & Replay-Verify (`verify.py`):**
    - Training saves every checkpoint's `.pt` weights and per-item predictions.
-   - `python3 experiments/archive/<id>/expt_v1/verify.py` reloads every saved checkpoint, recomputes forward passes independently, checks greedy accuracy against saved tables, and requires bit-loss differences `<= 1e-6`. Completed studies are under `experiments/archive/`, not `experiments/<id>/`. For Experiments 05–10 the verifier falls back to the sibling copy of `experiments/archive/02_heldout_exposure_difficulty_laws/` after the archive move, and that path fallback is the only source file allowed to differ from the training hash.
+   - `python3 experiments/archive/<id>/expt_v1/verify.py` reloads every saved checkpoint, recomputes forward passes independently, checks greedy accuracy against saved tables, and requires bit-loss differences `<= 1e-6`. Completed studies are under `experiments/archive/`, not `experiments/<id>/`. For Experiments 05–11 the verifier falls back to the sibling copy of `experiments/archive/02_heldout_exposure_difficulty_laws/` after the archive move, and that path fallback is the only source file allowed to differ from the training hash.
 4. **Seed-Block Bootstrap Uncertainty (`analyze.py` & `report.py`):**
    - Never treat individual test items or checkpoints from the same seed as independent! All 95% confidence intervals use paired bootstrap resampling over the **8 independent seed blocks** (`20,000` replicates, the `bootstrap_draws` value in each experiment config).
 5. **Retain All Counterevidence:**
@@ -52,13 +53,12 @@ Every experiment follows a strict 5-step workflow so that neither human nor agen
 
 ## 4. Next Experimental Directions
 
-Ten controlled experiments are complete and archived (PRs #1–#7, #9, #10, and #11 merged). Key open avenues for subsequent investigation:
+Eleven controlled experiments are complete and archived (PRs #1–#7, #9, #10, #11, #13, and #14 merged). Key open avenues for subsequent investigation:
 
-1. **Calibrated Horizon / Sub-Saturated Pretraining on Causal Transformers (Experiment 11):**
-   - Experiment 10 demonstrated that autoregressive causal transformers learn digit addition far more sample-efficiently than MLPs, reaching near 100% accuracy within 1,500 steps for widths $\ge 64$.
-   - By calibrating pretraining to early/intermediate checkpoints (e.g., 100–300 steps) or scaling problem length (e.g., 5-digit addition where carry propagation spans longer contexts), we can measure scaling laws and headroom across all widths without ceiling saturation.
-2. **Reverse vs Forward Generation Order (Inductive Bias Study):**
-   - In standard digit addition, computing sum digits from LSB to MSB matches the directional flow of carries (right-to-left), whereas MSB-first requires multi-step lookahead. Does generation order interact with pretraining exposure and compositional carry transfer?
-3. **RLVR on Autoregressive Transformers with Headroom-Bounded Laws:**
+1. **Reverse vs Forward Generation Order (Inductive Bias Study):**
+   - In standard digit addition, computing sum digits from LSB to MSB matches the directional flow of carries (right-to-left), whereas MSB-first requires multi-step lookahead. Does generation order interact with pretraining exposure, compositional carry transfer, and sample-efficiency in causal transformers?
+2. **RLVR on Autoregressive Transformers with Headroom-Bounded Laws:**
    - Combining the headroom-bounded RLVR utility law from Experiment 09 with causal autoregressive generation on arithmetic chains.
+3. **Length Extrapolation (e.g., 5-Digit Addition):**
+   - Testing whether carry-chain transfer extends to longer token contexts where multi-hop carry cascades span 4–5 steps.
 

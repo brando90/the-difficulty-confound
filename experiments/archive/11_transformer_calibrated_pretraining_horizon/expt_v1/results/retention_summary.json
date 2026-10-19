@@ -1,0 +1,185 @@
+{
+  "status": "NOT_ESTABLISHED",
+  "n_seed_blocks": 8,
+  "n_widths": 5,
+  "statistics": {
+    "control_pre": {
+      "estimate": 0.8399131944444445,
+      "lo": 0.8212326388888889,
+      "hi": 0.8576744791666666
+    },
+    "target_pre": {
+      "estimate": 0.6727430555555556,
+      "lo": 0.6349652777777778,
+      "hi": 0.7097048611111111
+    },
+    "control_post": {
+      "estimate": 0.9993402777777778,
+      "lo": 0.9990104166666667,
+      "hi": 0.9996180555555556
+    },
+    "target_post": {
+      "estimate": 0.9991145833333335,
+      "lo": 0.9987847222222223,
+      "hi": 0.9994097222222222
+    },
+    "initial_gap": {
+      "estimate": 0.16717013888888888,
+      "lo": 0.13600694444444444,
+      "hi": 0.19871527777777778
+    },
+    "target_gain": {
+      "estimate": 0.3263715277777778,
+      "lo": 0.2894791666666666,
+      "hi": 0.3642708333333333
+    },
+    "recovery_fraction": {
+      "estimate": 1.9523314985979854,
+      "lo": 1.7784181311638645,
+      "hi": 2.190196784087151
+    },
+    "control_change": {
+      "estimate": 0.15942708333333333,
+      "lo": 0.1417534722222222,
+      "hi": 0.1779700520833332
+    },
+    "pure_control_pre": {
+      "estimate": 0.8399131944444445,
+      "lo": 0.8212326388888889,
+      "hi": 0.8576744791666666
+    },
+    "pure_target_pre": {
+      "estimate": 0.6832291666666668,
+      "lo": 0.6427083333333334,
+      "hi": 0.7235069444444444
+    },
+    "pure_control_post": {
+      "estimate": 0.9993402777777778,
+      "lo": 0.9990104166666667,
+      "hi": 0.9996180555555556
+    },
+    "pure_target_post": {
+      "estimate": 0.9990277777777778,
+      "lo": 0.9986111111111111,
+      "hi": 0.9993749999999999
+    },
+    "pure_initial_gap": {
+      "estimate": 0.1566840277777778,
+      "lo": 0.12130208333333335,
+      "hi": 0.19102473958333333
+    },
+    "pure_target_gain": {
+      "estimate": 0.3157986111111111,
+      "lo": 0.2757274305555555,
+      "hi": 0.35618229166666654
+    },
+    "pure_recovery_fraction": {
+      "estimate": 2.0155124653739613,
+      "lo": 1.8121416127271466,
+      "hi": 2.34279340978837
+    },
+    "pure_control_change": {
+      "estimate": 0.15942708333333333,
+      "lo": 0.14175347222222223,
+      "hi": 0.17797005208333322
+    }
+  },
+  "by_width": {
+    "32": {
+      "control_pre": 0.26614583333333336,
+      "target_pre": 0.04262152777777778,
+      "control_post": 0.9979166666666667,
+      "target_post": 0.9969618055555556,
+      "initial_gap": 0.22352430555555555,
+      "target_gain": 0.9543402777777777,
+      "recovery_fraction": 5.724356862874644,
+      "control_change": 0.7317708333333333,
+      "pure_control_pre": 0.26614583333333336,
+      "pure_target_pre": 0.03697916666666667,
+      "pure_control_post": 0.9979166666666667,
+      "pure_target_post": 0.9963541666666667,
+      "pure_initial_gap": 0.22916666666666666,
+      "pure_target_gain": 0.9593750000000001,
+      "pure_recovery_fraction": 5.525457005869212,
+      "pure_control_change": 0.7317708333333333
+    },
+    "64": {
+      "control_pre": 0.9728298611111111,
+      "target_pre": 0.6519097222222222,
+      "control_post": 0.9999131944444444,
+      "target_post": 0.9995659722222222,
+      "initial_gap": 0.32092013888888893,
+      "target_gain": 0.34765625,
+      "recovery_fraction": 1.0764608648536897,
+      "control_change": 0.027083333333333307,
+      "pure_control_pre": 0.972829861111111,
+      "pure_target_pre": 0.7017361111111111,
+      "pure_control_post": 0.9999131944444444,
+      "pure_target_post": 0.9996527777777777,
+      "pure_initial_gap": 0.27109374999999997,
+      "pure_target_gain": 0.2979166666666666,
+      "pure_recovery_fraction": 1.1000147963412266,
+      "pure_control_change": 0.027083333333333334
+    },
+    "128": {
+      "control_pre": 0.994357638888889,
+      "target_pre": 0.8570312499999999,
+      "control_post": 0.9995659722222222,
+      "target_post": 0.9996527777777777,
+      "initial_gap": 0.13732638888888893,
+      "target_gain": 0.14262152777777778,
+      "recovery_fraction": 1.0411389047276751,
+      "control_change": 0.005208333333333315,
+      "pure_control_pre": 0.994357638888889,
+      "pure_target_pre": 0.843576388888889,
+      "pure_control_post": 0.9995659722222222,
+      "pure_target_post": 0.9996527777777777,
+      "pure_initial_gap": 0.15078125000000003,
+      "pure_target_gain": 0.1560763888888889,
+      "pure_recovery_fraction": 1.0485875232948332,
+      "pure_control_change": 0.005208333333333315
+    },
+    "96": {
+      "control_pre": 0.995920138888889,
+      "target_pre": 0.8983506944444445,
+      "control_post": 0.9995659722222222,
+      "target_post": 0.9999131944444444,
+      "initial_gap": 0.09756944444444444,
+      "target_gain": 0.10156249999999999,
+      "recovery_fraction": 1.0427966153980006,
+      "control_change": 0.0036458333333333204,
+      "pure_control_pre": 0.995920138888889,
+      "pure_target_pre": 0.9095486111111111,
+      "pure_control_post": 0.9995659722222222,
+      "pure_target_post": 1.0,
+      "pure_initial_gap": 0.0863715277777778,
+      "pure_target_gain": 0.0904513888888889,
+      "pure_recovery_fraction": 1.0832595000926695,
+      "pure_control_change": 0.0036458333333333204
+    },
+    "384": {
+      "control_pre": 0.9703125,
+      "target_pre": 0.9138020833333333,
+      "control_post": 0.9997395833333333,
+      "target_post": 0.9994791666666667,
+      "initial_gap": 0.05651041666666666,
+      "target_gain": 0.08567708333333332,
+      "recovery_fraction": 1.2590420864641505,
+      "control_change": 0.029427083333333326,
+      "pure_control_pre": 0.9703125,
+      "pure_target_pre": 0.9243055555555555,
+      "pure_control_post": 0.9997395833333333,
+      "pure_target_post": 0.9994791666666667,
+      "pure_initial_gap": 0.046006944444444475,
+      "pure_target_gain": 0.07517361111111114,
+      "pure_recovery_fraction": 1.3082068581220625,
+      "pure_control_change": 0.029427083333333326
+    }
+  },
+  "criteria": {
+    "min_initial_gap": 0.15,
+    "min_recovery_fraction": 0.5,
+    "min_target_accuracy": 0.85,
+    "max_control_drop": 0.05
+  }
+}
