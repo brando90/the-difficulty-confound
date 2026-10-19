@@ -1,0 +1,1 @@
+{"job": "48471518", "gpu_hours": 1.0636, "rows": [{"job": "48471518", "state": "COMPLETED", "elapsed_s": 3829, "gpus": 1, "node": "sh03-12n15"}]}

@@ -1,0 +1,17 @@
+{
+ "1_sources_match_manifest": true,
+ "4_test_set_identical_to_exp11": true,
+ "2_metrics_rows_recomputed": "6144/6144",
+ "2_rows_equal_csv": true,
+ "2_max_accuracy_diff": 0.0,
+ "3_checkpoints_replayed": 512,
+ "3_max_abs_diff_mean_bits": 1.0026775498772622e-07,
+ "3_max_abs_diff_string_bits": 5.9485435485839844e-05,
+ "5_forecasts_hash_identical": true,
+ "5_gates_identical": true,
+ "5_E_identical": true,
+ "5_analysis_identical": true,
+ "5_tstar_identical": true,
+ "5_summary_identical": true,
+ "verdict": "PASS"
+}

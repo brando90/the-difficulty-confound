@@ -1,0 +1,238 @@
+{
+ "T_top": 1048576,
+ "stop_reason": "budget: next octave to 2097152 projected past the deadline",
+ "seeds_used": [
+  11101,
+  11202,
+  11303,
+  11404,
+  11505,
+  11606,
+  11707,
+  11808
+ ],
+ "skipped_cells": [],
+ "gpu": "NVIDIA GeForce RTX 2080 Ti",
+ "train_wall_seconds": 3804.5,
+ "converged_fraction_alpha1": 0.609375,
+ "converged_fraction_all": 0.369140625,
+ "grid_converged": false,
+ "census": {
+  "n=4 alpha=0.05": {
+   "runs": 32,
+   "converged": 1,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 1,
+   "mean_eps_top": 0.4515
+  },
+  "n=4 alpha=0.15": {
+   "runs": 32,
+   "converged": 0,
+   "learned_le_0p1": 2,
+   "stalled_gt_0p1": 0,
+   "mean_eps_top": 0.3329
+  },
+  "n=4 alpha=0.4": {
+   "runs": 32,
+   "converged": 2,
+   "learned_le_0p1": 14,
+   "stalled_gt_0p1": 1,
+   "mean_eps_top": 0.2519
+  },
+  "n=4 alpha=1.0": {
+   "runs": 32,
+   "converged": 12,
+   "learned_le_0p1": 24,
+   "stalled_gt_0p1": 0,
+   "mean_eps_top": 0.1555
+  },
+  "n=8 alpha=0.05": {
+   "runs": 32,
+   "converged": 3,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 3,
+   "mean_eps_top": 0.6942
+  },
+  "n=8 alpha=0.15": {
+   "runs": 32,
+   "converged": 0,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 0,
+   "mean_eps_top": 0.6153
+  },
+  "n=8 alpha=0.4": {
+   "runs": 32,
+   "converged": 2,
+   "learned_le_0p1": 1,
+   "stalled_gt_0p1": 2,
+   "mean_eps_top": 0.5285
+  },
+  "n=8 alpha=1.0": {
+   "runs": 32,
+   "converged": 10,
+   "learned_le_0p1": 6,
+   "stalled_gt_0p1": 10,
+   "mean_eps_top": 0.4229
+  },
+  "n=16 alpha=0.05": {
+   "runs": 32,
+   "converged": 18,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 18,
+   "mean_eps_top": 0.8331
+  },
+  "n=16 alpha=0.15": {
+   "runs": 32,
+   "converged": 6,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 6,
+   "mean_eps_top": 0.8095
+  },
+  "n=16 alpha=0.4": {
+   "runs": 32,
+   "converged": 10,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 10,
+   "mean_eps_top": 0.7743
+  },
+  "n=16 alpha=1.0": {
+   "runs": 32,
+   "converged": 24,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 24,
+   "mean_eps_top": 0.7932
+  },
+  "n=32 alpha=0.05": {
+   "runs": 32,
+   "converged": 26,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 26,
+   "mean_eps_top": 0.9498
+  },
+  "n=32 alpha=0.15": {
+   "runs": 32,
+   "converged": 19,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 19,
+   "mean_eps_top": 0.936
+  },
+  "n=32 alpha=0.4": {
+   "runs": 32,
+   "converged": 24,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 24,
+   "mean_eps_top": 0.9363
+  },
+  "n=32 alpha=1.0": {
+   "runs": 32,
+   "converged": 32,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 32,
+   "mean_eps_top": 1.0559
+  }
+ },
+ "eps_star_primary": 0.5,
+ "primary_rule_met": false,
+ "E_bits": 0.16490107881976732,
+ "E_bits_ci": [
+  0.16019466297983948,
+  0.17075468526754278
+ ],
+ "E_states": 0.11970970116401582,
+ "E_by_level": {
+  "0.5": {
+   "E_bits": 0.16490107881976732,
+   "ci_bits": [
+    0.16019466297983948,
+    0.17075468526754278
+   ],
+   "E_states": 0.11970970116401582,
+   "ci_states": [
+    0.11629308534934829,
+    0.12395911835164283
+   ],
+   "e_alpha": 0.9324062350940254,
+   "e_K_bits": 5.654336780374383
+  },
+  "0.3": {
+   "E_bits": 0.09744815194222185,
+   "ci_bits": [
+    0.09474879451812401,
+    0.10085038511929745
+   ],
+   "E_states": 0.07074234584443846,
+   "ci_states": [
+    0.06878275120208441,
+    0.07321219212945376
+   ],
+   "e_alpha": 0.9324062350940254,
+   "e_K_bits": 9.568229017281517
+  },
+  "0.1": {
+   "E_bits": 0.05184158666725252,
+   "ci_bits": [
+    0.05040988832540076,
+    0.053630124368113194
+   ],
+   "E_states": 0.03763432533141982,
+   "ci_states": [
+    0.03659498597787069,
+    0.03893271170477168
+   ],
+   "e_alpha": 0.9324062350940254,
+   "e_K_bits": 17.985680898980107
+  },
+  "0.03": {
+   "E_bits": 0.03426654666858696,
+   "ci_bits": [
+    0.03332385343268966,
+    0.035448027805643316
+   ],
+   "E_states": 0.02487575030423403,
+   "ci_states": [
+    0.024191403504526636,
+    0.025733444837588312
+   ],
+   "e_alpha": 0.9324062350940254,
+   "e_K_bits": 27.21039397730693
+  }
+ },
+ "E_mf": 0.529087208818288,
+ "E_mf_eps_star": 0.7,
+ "compare": {
+  "exp11_cpu_E_bits_at_0.5": 0.0832,
+  "exp11_cpu_E_bits_ci": [
+   0.0782,
+   0.0901
+  ],
+  "exp13_small_E_bits": 0.802,
+  "exp13_small_E_bits_ci": [
+   0.786,
+   0.83
+  ]
+ },
+ "verdict": "NOT_CONVERGED: the under-training caveat is not removed",
+ "gates": {
+  "G1": "SUPPORTED",
+  "G2": "SUPPORTED",
+  "G4": "NOT_ESTABLISHED",
+  "G5": "NOT_ESTABLISHED",
+  "G6": "NOT_ESTABLISHED",
+  "G7": "NOT_ESTABLISHED",
+  "G3a": "NOT_ESTABLISHED",
+  "G3b": "SUPPORTED"
+ },
+ "gpu_usage": {
+  "job": "48471518",
+  "gpu_hours": 1.0636,
+  "rows": [
+   {
+    "job": "48471518",
+    "state": "COMPLETED",
+    "elapsed_s": 3829,
+    "gpus": 1,
+    "node": "sh03-12n15"
+   }
+  ]
+ }
+}

@@ -1,0 +1,238 @@
+{
+ "T_top": 1048576,
+ "stop_reason": "budget: next octave to 2097152 projected past the deadline",
+ "seeds_used": [
+  11101,
+  11202,
+  11303,
+  11404,
+  11505,
+  11606,
+  11707,
+  11808
+ ],
+ "skipped_cells": [],
+ "gpu": "NVIDIA GeForce RTX 2080 Ti",
+ "train_wall_seconds": 3804.5,
+ "converged_fraction_alpha1": 0.609375,
+ "converged_fraction_all": 0.369140625,
+ "grid_converged": false,
+ "census": {
+  "n=4 alpha=0.05": {
+   "runs": 32,
+   "converged": 1,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 1,
+   "mean_eps_top": 0.4515
+  },
+  "n=4 alpha=0.15": {
+   "runs": 32,
+   "converged": 0,
+   "learned_le_0p1": 2,
+   "stalled_gt_0p1": 0,
+   "mean_eps_top": 0.3329
+  },
+  "n=4 alpha=0.4": {
+   "runs": 32,
+   "converged": 2,
+   "learned_le_0p1": 14,
+   "stalled_gt_0p1": 1,
+   "mean_eps_top": 0.2519
+  },
+  "n=4 alpha=1.0": {
+   "runs": 32,
+   "converged": 12,
+   "learned_le_0p1": 24,
+   "stalled_gt_0p1": 0,
+   "mean_eps_top": 0.1555
+  },
+  "n=8 alpha=0.05": {
+   "runs": 32,
+   "converged": 3,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 3,
+   "mean_eps_top": 0.6942
+  },
+  "n=8 alpha=0.15": {
+   "runs": 32,
+   "converged": 0,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 0,
+   "mean_eps_top": 0.6153
+  },
+  "n=8 alpha=0.4": {
+   "runs": 32,
+   "converged": 2,
+   "learned_le_0p1": 1,
+   "stalled_gt_0p1": 2,
+   "mean_eps_top": 0.5285
+  },
+  "n=8 alpha=1.0": {
+   "runs": 32,
+   "converged": 10,
+   "learned_le_0p1": 6,
+   "stalled_gt_0p1": 10,
+   "mean_eps_top": 0.4229
+  },
+  "n=16 alpha=0.05": {
+   "runs": 32,
+   "converged": 18,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 18,
+   "mean_eps_top": 0.8331
+  },
+  "n=16 alpha=0.15": {
+   "runs": 32,
+   "converged": 6,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 6,
+   "mean_eps_top": 0.8095
+  },
+  "n=16 alpha=0.4": {
+   "runs": 32,
+   "converged": 10,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 10,
+   "mean_eps_top": 0.7743
+  },
+  "n=16 alpha=1.0": {
+   "runs": 32,
+   "converged": 24,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 24,
+   "mean_eps_top": 0.7932
+  },
+  "n=32 alpha=0.05": {
+   "runs": 32,
+   "converged": 26,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 26,
+   "mean_eps_top": 0.9498
+  },
+  "n=32 alpha=0.15": {
+   "runs": 32,
+   "converged": 19,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 19,
+   "mean_eps_top": 0.936
+  },
+  "n=32 alpha=0.4": {
+   "runs": 32,
+   "converged": 24,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 24,
+   "mean_eps_top": 0.9363
+  },
+  "n=32 alpha=1.0": {
+   "runs": 32,
+   "converged": 32,
+   "learned_le_0p1": 0,
+   "stalled_gt_0p1": 32,
+   "mean_eps_top": 1.0559
+  }
+ },
+ "eps_star_primary": 0.5,
+ "primary_rule_met": false,
+ "E_bits": 0.16490107941197515,
+ "E_bits_ci": [
+  0.1601946640368812,
+  0.1707546857795262
+ ],
+ "E_states": 0.11970970159392824,
+ "E_by_level": {
+  "0.5": {
+   "E_bits": 0.16490107941197515,
+   "ci_bits": [
+    0.1601946640368812,
+    0.1707546857795262
+   ],
+   "E_states": 0.11970970159392824,
+   "ci_states": [
+    0.11629308611670622,
+    0.12395911872331647
+   ],
+   "e_alpha": 0.9324062405240336,
+   "e_K_bits": 5.654336792996894
+  },
+  "0.3": {
+   "E_bits": 0.09744815230182696,
+   "ci_bits": [
+    0.09474879547194043,
+    0.10085038519900978
+   ],
+   "E_states": 0.07074234610549326,
+   "ci_states": [
+    0.06878275189450606,
+    0.07321219218732082
+   ],
+   "e_alpha": 0.9324062405240336,
+   "e_K_bits": 9.568229037694673
+  },
+  "0.1": {
+   "E_bits": 0.05184158686202695,
+   "ci_bits": [
+    0.050409888478216584,
+    0.053630124501982374
+   ],
+   "E_states": 0.03763432547281604,
+   "ci_states": [
+    0.03659498608880712,
+    0.03893271180195382
+   ],
+   "e_alpha": 0.9324062405240336,
+   "e_K_bits": 17.985680936148288
+  },
+  "0.03": {
+   "E_bits": 0.034266546798213324,
+   "ci_bits": [
+    0.033323853533972665,
+    0.035448027870193924
+   ],
+   "E_states": 0.024875750398336102,
+   "ci_states": [
+    0.024191403578052887,
+    0.02573344488444873
+   ],
+   "e_alpha": 0.9324062405240336,
+   "e_K_bits": 27.210394032837
+  }
+ },
+ "E_mf": 0.5290872088182881,
+ "E_mf_eps_star": 0.7,
+ "compare": {
+  "exp11_cpu_E_bits_at_0.5": 0.0832,
+  "exp11_cpu_E_bits_ci": [
+   0.0782,
+   0.0901
+  ],
+  "exp13_small_E_bits": 0.802,
+  "exp13_small_E_bits_ci": [
+   0.786,
+   0.83
+  ]
+ },
+ "verdict": "NOT_CONVERGED: the under-training caveat is not removed",
+ "gates": {
+  "G1": "SUPPORTED",
+  "G2": "SUPPORTED",
+  "G4": "NOT_ESTABLISHED",
+  "G5": "NOT_ESTABLISHED",
+  "G6": "NOT_ESTABLISHED",
+  "G7": "NOT_ESTABLISHED",
+  "G3a": "NOT_ESTABLISHED",
+  "G3b": "SUPPORTED"
+ },
+ "gpu_usage": {
+  "job": "48471518",
+  "gpu_hours": 1.0636,
+  "rows": [
+   {
+    "job": "48471518",
+    "state": "COMPLETED",
+    "elapsed_s": 3829,
+    "gpus": 1,
+    "node": "sh03-12n15"
+   }
+  ]
+ }
+}

@@ -34,7 +34,7 @@ These experiments cross exactly computable task complexity with hand-set data al
 | [16_carry_alignment_crossed_arithmetic/](16_carry_alignment_crossed_arithmetic/) | Crossed carry arithmetic | Designed, not yet run |
 | [17_ginc_disjoint_support_and_hard_to_easy/](17_ginc_disjoint_support_and_hard_to_easy/) | Hard-to-easy (Putnam vs GSM8K) and disjoint support on GINC-style HMMs | Results: 96-run grid; 17b protocol (coverage-matched easy pools) frozen |
 | [18_vision_cnn_complexity_vs_alignment/](18_vision_cnn_complexity_vs_alignment/) | Small CNNs on MNIST-family and CIFAR-10 | Protocol frozen; grid running on Sherlock CPU |
-| [19_dfa_transformer_gpu_converged/](19_dfa_transformer_gpu_converged/) | Experiment 11's DFA grid with a transformer trained to convergence on one Sherlock GPU | Protocol frozen; run finished, write-up pending |
+| [19_dfa_transformer_gpu_converged/](19_dfa_transformer_gpu_converged/) | Experiment 11's DFA grid with a transformer trained to convergence on one Sherlock GPU | Results: trained 16x longer (1.06 GPU-h), not converged (n = 16, 32 stall); E 0.165 [0.160, 0.171] < 1; G1, G2, G3b SUPPORTED |
 
 **GPU plans, ready to dispatch, not yet run:** hard-to-easy (Putnam-style maths → GSM8K), cross-domain (maths → poetry) and the real-model counterpart of Exp 13's elasticity ratio, on Qwen2.5-0.5B/1.5B with Sherlock and SNAP launchers; see [experiments/gpu/](gpu/README.md).
 

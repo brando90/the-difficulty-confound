@@ -1,0 +1,34 @@
+{"job": "48471518", "gpu_hours": 1.0636, "rows": [{"job": "48471518", "state": "COMPLETED", "elapsed_s": 3829, "gpus": 1, "node": "sh03-12n15"}]}
+{"forecasts_frozen_sha256": "3ce67f8e474cc6fa69959c9e396bdbd5c89193c87ed565cb989343213efe42ee", "g2_k_law": "M_K_exp", "g2_fit_rmse": {"M_K_coef": 0.5304844187212574, "M_K_exp": 0.5047335220696874}, "all_fitters_agree": true}
+{
+ "T_top": 1048576,
+ "grid_converged": false,
+ "converged_fraction_alpha1": 0.609375,
+ "E_bits": 0.16490107881976732,
+ "E_bits_ci": [
+  0.16019466297983948,
+  0.17075468526754278
+ ],
+ "eps_star_primary": 0.5,
+ "verdict": "NOT_CONVERGED: the under-training caveat is not removed"
+}
+{
+ "1_sources_match_manifest": true,
+ "4_test_set_identical_to_exp11": true,
+ "2_metrics_rows_recomputed": "6144/6144",
+ "2_rows_equal_csv": true,
+ "2_max_accuracy_diff": 0.0,
+ "3_checkpoints_replayed": 512,
+ "3_max_abs_diff_mean_bits": 1.0026775498772622e-07,
+ "3_max_abs_diff_string_bits": 5.9485435485839844e-05,
+ "5_forecasts_hash_identical": true,
+ "5_gates_identical": true,
+ "5_E_identical": true,
+ "5_analysis_identical": true,
+ "5_tstar_identical": true,
+ "5_summary_identical": true,
+ "verdict": "PASS"
+}
+-rw-------+ 1 brando9 sanmi 278558275 Oct 19 08:56 exp19_full.tgz
+-rw-------+ 1 brando9 sanmi   1194915 Oct 19 08:55 exp19_small.tgz
+EXP19 POST DONE

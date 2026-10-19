@@ -1,0 +1,182 @@
+{
+ "sources": {
+  "common.py": "d155c84f7f7a2c5794db45d10797af2a925c23edcdf5331296ee64a8b95e123f",
+  "ensemble.py": "757a1f0e040f4d9501de31fa3e3d91253976caea5c366f891faa0c520e5c1274",
+  "gpu_train.py": "711142e896d8362af3e33a56086cc1967a304995f8eb82c02c34c6befac12a79",
+  "config.json": "7ff3cd47fdec5a1994dfe819be6ea6b9ecb6a9f335db68e5dda94374dd9bc427"
+ },
+ "e11_sources": {
+  "dfa.py": "4d574a58c1942a087e7c7f4247ad0cd492b0c2cde4e3162990323c95e68efc3b",
+  "data.py": "eeb147fe660bf58bb671cf36459b60600bde5d9642ac226bb37fda8d468867c7",
+  "model.py": "17dc72a7cb44fa9545f1f3a0f1ae393c65d7fdb538bba1acebd90e2825774c10",
+  "config.json": "a9058153f8af59d928280d7b86e8f28cf41abe33c83c25ae12c21f5267a0c4b2",
+  "results/tasks.json": "dec9da16c3db1239ef14b672c3f00fa35b8ecd742c2eb59dc8ee0bccdc3ccce6"
+ },
+ "torch": "2.6.0+cu124",
+ "numpy": "2.2.6",
+ "python": "3.12.1",
+ "host": "sh03-12n15.int",
+ "slurm_job": "48471518",
+ "cuda": "12.4",
+ "run_state": {
+  "experiment": "19_dfa_transformer_gpu_converged",
+  "device": "cuda",
+  "budget_minutes": 105.0,
+  "seeds_planned": [
+   11101,
+   11202,
+   11303,
+   11404,
+   11505,
+   11606,
+   11707,
+   11808
+  ],
+  "seeds_dropped": [],
+  "T_planned": [
+   512,
+   1024,
+   2048,
+   4096,
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288,
+   1048576,
+   2097152,
+   4194304
+  ],
+  "T_done": [
+   512,
+   1024,
+   2048,
+   4096,
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288,
+   1048576
+  ],
+  "stop_reason": "budget: next octave to 2097152 projected past the deadline",
+  "prep_seconds": 21.7,
+  "octaves": [
+   {
+    "T": 512,
+    "steps": 8,
+    "train_seconds": 3.42,
+    "eval_seconds": 8.26,
+    "groups": 8,
+    "seconds_per_step": 0.42783,
+    "elapsed": 42.6
+   },
+   {
+    "T": 1024,
+    "steps": 8,
+    "train_seconds": 1.83,
+    "eval_seconds": 5.19,
+    "groups": 8,
+    "seconds_per_step": 0.22889,
+    "elapsed": 49.6
+   },
+   {
+    "T": 2048,
+    "steps": 16,
+    "train_seconds": 3.57,
+    "eval_seconds": 5.24,
+    "groups": 8,
+    "seconds_per_step": 0.22306,
+    "elapsed": 58.5
+   },
+   {
+    "T": 4096,
+    "steps": 32,
+    "train_seconds": 6.97,
+    "eval_seconds": 4.94,
+    "groups": 8,
+    "seconds_per_step": 0.21786,
+    "elapsed": 70.4
+   },
+   {
+    "T": 8192,
+    "steps": 64,
+    "train_seconds": 14.38,
+    "eval_seconds": 4.93,
+    "groups": 8,
+    "seconds_per_step": 0.22462,
+    "elapsed": 89.7
+   },
+   {
+    "T": 16384,
+    "steps": 128,
+    "train_seconds": 28.99,
+    "eval_seconds": 7.17,
+    "groups": 8,
+    "seconds_per_step": 0.22648,
+    "elapsed": 125.8
+   },
+   {
+    "T": 32768,
+    "steps": 256,
+    "train_seconds": 57.76,
+    "eval_seconds": 6.49,
+    "groups": 8,
+    "seconds_per_step": 0.22564,
+    "elapsed": 190.1
+   },
+   {
+    "T": 65536,
+    "steps": 512,
+    "train_seconds": 115.69,
+    "eval_seconds": 7.76,
+    "groups": 8,
+    "seconds_per_step": 0.22596,
+    "elapsed": 313.6
+   },
+   {
+    "T": 131072,
+    "steps": 1024,
+    "train_seconds": 231.45,
+    "eval_seconds": 5.19,
+    "groups": 8,
+    "seconds_per_step": 0.22602,
+    "elapsed": 550.2
+   },
+   {
+    "T": 262144,
+    "steps": 2048,
+    "train_seconds": 460.98,
+    "eval_seconds": 5.09,
+    "groups": 8,
+    "seconds_per_step": 0.22509,
+    "elapsed": 1016.3
+   },
+   {
+    "T": 524288,
+    "steps": 4096,
+    "train_seconds": 925.42,
+    "eval_seconds": 5.21,
+    "groups": 8,
+    "seconds_per_step": 0.22593,
+    "elapsed": 1946.9
+   },
+   {
+    "T": 1048576,
+    "steps": 8192,
+    "train_seconds": 1852.45,
+    "eval_seconds": 5.17,
+    "groups": 8,
+    "seconds_per_step": 0.22613,
+    "elapsed": 3804.5
+   }
+  ],
+  "gpu": "NVIDIA GeForce RTX 2080 Ti",
+  "wall_seconds": 3804.5,
+  "T_top": 1048576
+ }
+}
