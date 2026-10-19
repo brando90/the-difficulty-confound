@@ -1,0 +1,26 @@
+{
+ "chunks": [
+  {
+   "start_utc": "2026-10-19T00:42:17+00:00",
+   "seconds": 3501.0,
+   "runs_completed": 36,
+   "note": "chunk killed by the 3500 s command timeout while 4 runs were in flight (their .tmp checkpoint dirs are discarded and the runs redone); run_state.json was not written, so this entry was reconstructed by hand from the shell timestamps 17:42:17-18:40:38 PDT and grid.log"
+  },
+  {
+   "start_utc": "2026-10-19T01:41:00.989437+00:00",
+   "seconds": 3047.4,
+   "runs_completed": 32
+  },
+  {
+   "start_utc": "2026-10-19T02:32:04.782549+00:00",
+   "seconds": 3215.5,
+   "runs_completed": 36
+  },
+  {
+   "start_utc": "2026-10-19T03:25:50.067191+00:00",
+   "seconds": 2303.1,
+   "runs_completed": 24
+  }
+ ],
+ "elapsed_seconds": 12067.045518875122
+}

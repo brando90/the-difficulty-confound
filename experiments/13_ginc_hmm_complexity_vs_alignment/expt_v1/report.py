@@ -100,9 +100,13 @@ def figures(out, A, c, path):
     ax = axes[2, 1]
     Ev = [cur[str(e)]['E_bits'] for e in eps]
     ax.plot(eps, [min(v, 1e3) for v in Ev], '-o', color=LEVEL_COLORS[2], lw=2, ms=4)
+    g4 = A['gates']['G4']
+    ax.errorbar([c['epsilon_star']], [g4['E_bits']], yerr=[[g4['E_bits'] - g4['ci95_bits'][0]],
+                [g4['ci95_bits'][1] - g4['E_bits']]], fmt='D', color=INK, ms=5, capsize=3, label='gated ε*')
     ax.axhline(1, color=MUTED, lw=0.8)
     ax.set_xscale('log')
-    ax.set_yscale('symlog')
+    ax.set_ylim(0, max(1.2, max(min(v, 1e3) for v in Ev + [g4['E_bits']]) * 1.1))
+    ax.legend(fontsize=7, frameon=False)
     ax.set_title('elasticity ratio E = e_α / e_K (bits)', fontsize=9, color=INK)
     ax.set_xlabel('ε* (bits/token)', fontsize=8, color=MUTED)
     style(ax)
