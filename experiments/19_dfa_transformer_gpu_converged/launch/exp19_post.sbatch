@@ -8,6 +8,8 @@
 #SBATCH --time=01:30:00
 #SBATCH --output=slurm_logs/%x_%j.out
 #SBATCH --error=slurm_logs/%x_%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=brandojazz@gmail.com,brando.science@gmail.com
 set -euo pipefail
 : "${SCRATCH:?}" "${BASE:?}" "${X19:?}" "${TRAIN_JOB:?}"
 source "$X19/launch/env.sh"

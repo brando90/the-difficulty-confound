@@ -5,6 +5,8 @@
 #SBATCH --mem=6G
 #SBATCH -t 02:00:00
 #SBATCH -o logs/exp18_%A_%a.out
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=brandojazz@gmail.com,brando.science@gmail.com
 # One Slurm array task = one shard of a run list (one run per task when --array=0-(N-1) and NSHARDS=N).
 # Usage, from experiments/18_vision_cnn_complexity_vs_alignment:
 #   mkdir -p logs && $HOME/venvs/exp18/bin/python expt_v1/run.py --list cifar10_main > runs_cifar10_main.txt

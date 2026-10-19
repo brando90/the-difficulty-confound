@@ -9,6 +9,8 @@
 #SBATCH --time=01:55:00
 #SBATCH --output=slurm_logs/%x_%j.out
 #SBATCH --error=slurm_logs/%x_%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=brandojazz@gmail.com,brando.science@gmail.com
 set -euo pipefail
 [[ -n ${SLURM_JOB_ID:-} ]] || { echo "submit with sbatch" >&2; exit 2; }
 : "${SCRATCH:?}" "${BASE:?}" "${X19:?}"
