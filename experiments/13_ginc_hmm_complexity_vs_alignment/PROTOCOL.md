@@ -149,6 +149,14 @@ A row (one run at one checkpoint) is a **fit row** iff none of its coordinates i
 
 The 13-small pilot outcome is written into this protocol in the freeze commit. No pilot outcome enters any gate.
 
+**Pilot disclosure (13-small, run 10-18-2026 17:10–17:39 PDT, before the freeze).** Seed `13909`, the 4 pilot concepts ($n = 4, 8, 16, 32$), $\alpha \in \{0.05, 0.4\}$, $T$ to $2^{21}$: 8 of 8 runs finished, none diverged, wall time 1,720 s. Measured under 4-way load (the box also carried a background load of about 3 from other jobs): median training throughput 3,884 tokens/s per worker (range 3,292–4,572), evaluation 37.1 s per checkpoint. Projected grid wall time: 7.50 h for $T_{\max} = 2^{21}$ and 4.58 h for $T_{\max} = 2^{20}$. Decisions, all by the rules fixed above:
+- **$T$ range:** the projection exceeds 3.0 h, so the fallback $\{2^{16}, 2^{17}, 2^{18}, 2^{19}, 2^{20}\}$ is used (`small.T_checkpoints`). The largest fit $T$ is $2^{19}$; $2^{20}$ is the held-out checkpoint.
+- **$\varepsilon^\star$:** the $n = 32$ pilot concept at $\alpha = 0.4$ had $\varepsilon_{\text{learn}} = 1.093$ bits/token at $2^{19}$, above $2\varepsilon^\star = 0.10$, so the Section 4.4 rule fires and $\varepsilon^\star$ is raised to **1.10 bits/token** (`small.epsilon_star`). This is far above the 0.05 the design expected: on this box the 354k-parameter model learns these concepts slowly (at $2^{20}$ the pilot $\varepsilon_{\text{learn}}$ was 0.17, 0.20, 0.40, 0.90 bits for $n = 4, 8, 16, 32$ at $\alpha = 0.4$, and 0.43, 0.52, 1.10, 1.99 at $\alpha = 0.05$). The G4 model-free fallback level (Section 5 alignment note) is therefore $2\varepsilon^\star = 2.2$ bits.
+- **Evaluation noise:** median standard error of $\varepsilon$ over all positions 0.0048 bits/token (max 0.0095), in line with the 0.004 assumed in Section 4.4; $\varepsilon^\star$ is more than 100 times it.
+- **Resolution floor** (needed by the Experiment 11 censored residual this protocol inherits; not set elsewhere here): $\varepsilon_{\text{res}} = 0.015$ bits/token, about 3 times the median pilot standard error (`shared.eps_res`). No pilot cell came near it (smallest 0.14).
+- **Wall cap (deviation, decided before the freeze):** even the fallback projects 4.58 h, over the 4 h cap of Section 7, because measured throughput was about 35% below the 6,000 tokens/s assumed and evaluation about 7 times slower. Rather than leave about 16 runs of the fourth seed unfinished (which would unbalance the Section 4.5 design), `small.max_wall_seconds` is raised from 14,400 to 18,000 s (5 h). No gate, law, threshold or seed changes.
+- Seed `13909` is never used again.
+
 ## 3. Measurements
 
 Per run and checkpoint, on the target's held-out documents:
@@ -224,6 +232,15 @@ For each seed and each slice $s \in \{\text{early}, \text{late}\}$, take $y = \l
 ## 5. Prospective pass/fail gates
 
 Every gate ends `SUPPORTED` or `NOT_ESTABLISHED` and is reported with equal prominence. Intervals are those of Section 4.3. G1–G5 are evaluated separately in 13-small and in 13-GPU (in 13-GPU on the full $N$ law, pooled, and per size). G1–G5 are primary. G6 (13-GPU only) is secondary. These mirror the Experiment 11 gate family. If Experiment 11's frozen protocol defines G1–G4 differently, the running agent aligns the definitions **before** this protocol's freeze and records the change in the freeze commit.
+
+**Alignment with Experiment 11 (made at the freeze, 13-small).** Experiment 11's frozen G1–G4 differ from the drafts below, so for 13-small the gated G1–G4 are Experiment 11's, with this experiment's $\varepsilon^\star$ (1.10 bits, pilot), $K$ in description-length bits (`K_bits`) and held-out level $n = 16$:
+- **G1:** $M_K$ at $\alpha = 1$ from model-free $T^\star$ (log-log interpolation of each run's $\varepsilon_{\text{learn}}$ curve), geometric mean over targets of $n = 32$ over $n = 4$. `SUPPORTED` iff $M_K \ge 2.0$, seed-block 95% lower bound $\gt 1$ and two-stage (seeds and targets) 95% lower bound $\gt 1$. Censored $T^\star$ (never reaching, or already below, $\varepsilon^\star$) is set to the nearest checkpoint and counted in the report.
+- **G2:** the $K$ law is whichever of `M_K_coef` and `M_K_exp` has the lower pooled fit-row RMSE, chosen before held-out rows are read. `SUPPORTED` iff its held-out RMSE reduction against `M_align_eff` is $\ge 10\%$ with 95% lower bound $\gt 0\%$, its RMSE is also lower on the held-out level's rows alone, and it has 0 invalid forecasts.
+- **G3a (coefficient):** in `M_K_both`, $\kappa$'s 95% interval above 0, $\gamma_1$'s interval contains 0, and held-out RMSE of `M_K_coef` $\le$ `M_K_exp`. **G3b (exponent):** $\gamma_1$'s 95% interval below 0, and `M_K_exp` cuts held-out RMSE relative to `M_K_coef` by $\ge 5\%$ with 95% lower bound $\gt 0\%$. Neither: C3 unresolved.
+- **G4:** the elasticity ratio $E = e_\alpha / e_K$ from `M_K_both` (refit on all rows, descriptive) at $\varepsilon^\star$ is $\gt 1$ with seed-block 95% lower bound $\gt 1$, in both $K$ units (bits and states), and the model-free $E_{\text{mf}}$ point estimate is $\gt 1$; if more than half of the (target, $\alpha$) pairs are censored at $\varepsilon^\star$ in the median seed, $E_{\text{mf}}$ is evaluated at $2\varepsilon^\star$.
+- **G5:** this protocol's position split, unchanged.
+
+The draft versions below (G2 Bonferroni pair, G3 ratio $\rho$, G4 range ratio $R$ and gap ratio $\Delta$, and the law-based $M_K$) are computed and reported next to the gates, not gated. G6 (13-GPU) is unchanged; 13-GPU is not run in this freeze.
 
 1. **G1 — Complexity is real (C1).** `SUPPORTED` iff $M_K \gt 1$ with 95% lower bound $\gt 1$ at $\varepsilon^\star$.
 2. **G2 — Complexity adds held-out value beyond alignment.** Two comparisons: `M_K_coef` vs `M_align_eff` and `M_K_exp` vs `M_align_eff`, on held-out rows. `SUPPORTED` iff at least one gives a relative RMSE reduction $\ge 10\%$ with a Bonferroni-corrected lower bound $\gt 0\%$ (2.5th percentile replaced by the 1.25th), and the winning law has 0 invalid forecasts. It must also improve on the held-out level's rows alone (relative reduction $\gt 0$).

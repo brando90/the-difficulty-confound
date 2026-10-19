@@ -17,7 +17,7 @@
    "both_starts": [[0.0, 0.0], [1.0, 0.0], [0.0, -0.1], [1.0, -0.1]],
    "independent_seed": 7
   },
-  "eps_res": null,
+  "eps_res": 0.015,
   "rmse_reduction_threshold": 0.10, "bonferroni_alpha": 0.025,
   "g3_ratio": 0.90, "g3_gamma1_band": 0.02, "g3b_reduction": 0.05, "g5_share": 0.5,
   "g1_min_MK": 2.0,
@@ -36,10 +36,10 @@
   "T_checkpoints_primary": [131072, 262144, 524288, 1048576, 2097152],
   "T_checkpoints_fallback": [65536, 131072, 262144, 524288, 1048576],
   "fallback_if_projected_hours_above": 3.0,
-  "T_checkpoints": null,
+  "T_checkpoints": [65536, 131072, 262144, 524288, 1048576],
   "seeds": [13101, 13202, 13303, 13404], "pilot_seed": 13909, "pilot_alphas": [0.05, 0.4],
-  "eval_docs_per_target": 512, "distractor_eval_docs": 64, "epsilon_star": 0.05,
-  "workers": 4, "threads": 1, "max_wall_seconds": 14400
+  "eval_docs_per_target": 512, "distractor_eval_docs": 64, "epsilon_star": 1.1,
+  "workers": 4, "threads": 1, "max_wall_seconds": 18000
  },
  "gpu": {
   "arm_index": 1,

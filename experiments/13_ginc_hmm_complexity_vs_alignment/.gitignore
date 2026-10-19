@@ -6,3 +6,6 @@ __pycache__/
 *.tmp
 expt_v1/prep/
 expt_v1/results_pilot/data/
+expt_v1/results_pilot/*.npz
+expt_v1/results/*/oracle.npz
+expt_v1/results/*/mixture.npz
