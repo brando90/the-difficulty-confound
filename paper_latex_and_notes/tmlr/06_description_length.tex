@@ -38,3 +38,12 @@ The strict retention gate is not established.
 The pool is carried down by the narrow networks.
 Eight-seed means of the pure two-carry cell at step 1{,}000 and mixture 0.1, with 720 items per seed and no new bootstrap, are 27.80\% at width 32, 82.26\% at width 64, 96.91\% at width 96, 99.05\% at width 128, and 99.43\% at width 384.
 We do not describe this study as having passed the strict retention gate.
+
+\subsection{Online description length on calibrated causal transformers}
+\label{sec:exp11_mdl}
+% Provenance: experiments/archive/11_transformer_calibrated_pretraining_horizon/RESULTS_transformer_calibrated.md
+In \texttt{experiments/archive/11\_transformer\_calibrated\_pretraining\_horizon/}, causal autoregressive transformers are pretrained for $T_{\text{pre}}=300$ updates before 1{,}000 updates of balanced adaptation, measuring online prequential description length along the stream.
+Adding probed starting difficulty (\texttt{stable\_difficulty} versus \texttt{stable\_base}) cuts joint held-out prequential adaptation MDL root mean squared error from 0.1626 to 0.1320 bits per item across held-out widths and mixtures.
+The relative reduction is 18.84\% [5.88, 34.16], which exceeds the prespecified 10\% threshold with a strictly positive lower bound; the predictive online MDL gate is supported.
+By contrast, final conditional loss error reduction is 0.99\% [$-11.40$, $5.66$] (not established) because 1{,}000 updates of balanced post-training compress final test loss down to 0.02 bits across all widths, whereas the online prequential code integrates over the active learning trajectory.
+Balanced adaptation raises cascading two-carry accuracy from 68.32\% to 99.90\% (a $+31.58$ point gain, recovering 201.55\% of the initial gap) while control single-carry accuracy improves from 83.99\% to 99.93\% ($+15.94$ points), though the control confidence lower bound (12.13 points) falls just short of the protocol's 15.0-point gate line.

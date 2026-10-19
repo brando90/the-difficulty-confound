@@ -66,3 +66,11 @@ Both directions are positive at all five widths, and the ranking gate is support
 The residual structure contrast is 2.30 [1.02, 3.51] points, much smaller than the 20.05 [17.75, 22.32] alignment contrast.
 Matching the column rates does not remove the reversal.
 It also does not make the reversal the same size at every width: width 384 leads by 7.04 and 3.01 points.
+
+\subsection{Reversal on calibrated causal transformers}
+\label{sec:exp11_ranking}
+% Provenance: experiments/archive/11_transformer_calibrated_pretraining_horizon/RESULTS_transformer_calibrated.md
+\texttt{experiments/archive/11\_transformer\_calibrated\_pretraining\_horizon/} tests whether pure compositional carry reversal replicates on causal autoregressive transformers when pretraining is calibrated to $T_{\text{pre}}=300$ updates across 200 checkpoints and five widths ($d_{\text{model}} \in \{32, 64, 96, 128, 384\}$).
+At a 10\% compositional pretraining mixture ($q_{\text{pre}}=0.10$), isolated single carries lead cascading two carries by 15.67 [12.13, 19.10] percentage points (83.99\% vs 68.32\%).
+At a 90\% compositional mixture ($q_{\text{pre}}=0.90$), cascading two carries lead isolated single carries by 15.70 [12.89, 18.17] percentage points (99.90\% vs 84.20\%).
+Both endpoint contrasts are positive with positive lower bounds at all five model widths, and the pure compositional reversal gate is supported on causal transformers.

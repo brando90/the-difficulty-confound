@@ -27,9 +27,9 @@ The probe improves held-out forecasts when starting checkpoints have different h
 It adds little when every checkpoint shares one warmup.
 The probe is a measurement of a trained network, not an intrinsic label of an item.
 
-% paragraph 4: instantiation. Nine prespecified studies, monotone ridge, online code length, verifiable reward, headroom bound.
-We report nine studies that were frozen before their outcomes.
-The networks have two hidden rectified layers, six one-hot input digits, and four digit heads.
+% paragraph 4: instantiation. Eleven prespecified studies, monotone ridge, online code length, verifiable reward, headroom bound, causal transformers.
+We report eleven studies that were frozen before their outcomes.
+The networks have two hidden rectified layers, six one-hot input digits, and four digit heads, extended in the final studies to causal autoregressive transformers generating digits token-by-token.
 Early studies vary carry exposure with a shared architecture and budget.
 Later studies match answer histograms, and then also match per-column carry rates.
 Forecasts use a constrained monotone ridge on log loss, fit on calibration outcomes and scored on held-out widths and mixtures.
@@ -62,4 +62,5 @@ We do not claim that these networks implement one shared internal algorithm.
 \item The reversal also appears in online description length and in verifiable-reward improvement, beside prespecified gates that fail.
 \item A headroom bound repairs the failed additive utility law on fresh seeds.
 \item Probe features inside that bound stay below the prespecified 10\% line.
+\item On causal autoregressive transformers under calibrated horizons, pure compositional difficulty reversal replicates across all widths, and probed starting difficulty cuts held-out prequential description length error by 18.84\%.
 \end{itemize}
