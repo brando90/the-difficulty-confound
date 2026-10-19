@@ -1,0 +1,359 @@
+{
+ "arm": "small",
+ "acceptance": {
+  "h_ref": 2.847016826063445,
+  "band_bits": 0.15,
+  "n_calibration": 256,
+  "levels": {
+   "4": {
+    "candidates_tried": 8,
+    "accepted_indices": [
+     1,
+     2,
+     3,
+     5,
+     7
+    ],
+    "checked": 65,
+    "passed_checks_1_2": 64,
+    "reasons": {
+     "ok": 64,
+     "not strongly": 1,
+     "process rank": 0
+    },
+    "quick_scored": 64,
+    "in_band": 33
+   },
+   "8": {
+    "candidates_tried": 14,
+    "accepted_indices": [
+     1,
+     4,
+     5,
+     11,
+     13
+    ],
+    "checked": 93,
+    "passed_checks_1_2": 64,
+    "reasons": {
+     "ok": 64,
+     "not strongly": 29,
+     "process rank": 0
+    },
+    "quick_scored": 64,
+    "in_band": 40
+   },
+   "16": {
+    "candidates_tried": 16,
+    "accepted_indices": [
+     2,
+     4,
+     9,
+     13,
+     15
+    ],
+    "checked": 148,
+    "passed_checks_1_2": 64,
+    "reasons": {
+     "ok": 64,
+     "not strongly": 84,
+     "process rank": 0
+    },
+    "quick_scored": 64,
+    "in_band": 56
+   },
+   "32": {
+    "candidates_tried": 30,
+    "accepted_indices": [
+     10,
+     14,
+     18,
+     24,
+     29
+    ],
+    "checked": 410,
+    "passed_checks_1_2": 64,
+    "reasons": {
+     "ok": 64,
+     "not strongly": 342,
+     "process rank": 4
+    },
+    "quick_scored": 64,
+    "in_band": 62
+   }
+  }
+ },
+ "concepts": [
+  {
+   "task_id": "hmm_n004_t1",
+   "role": "target",
+   "K": 4,
+   "K_bits": 240,
+   "process_rank": 4,
+   "entropy_rate": 2.778,
+   "entropy_rate_se": 0.0013,
+   "candidates_tried": 8
+  },
+  {
+   "task_id": "hmm_n004_t2",
+   "role": "target",
+   "K": 4,
+   "K_bits": 240,
+   "process_rank": 4,
+   "entropy_rate": 2.9548,
+   "entropy_rate_se": 0.001,
+   "candidates_tried": 8
+  },
+  {
+   "task_id": "hmm_n004_d1",
+   "role": "distractor",
+   "K": 4,
+   "K_bits": 240,
+   "process_rank": 4,
+   "entropy_rate": 2.7809,
+   "entropy_rate_se": 0.0014,
+   "candidates_tried": 8
+  },
+  {
+   "task_id": "hmm_n004_d2",
+   "role": "distractor",
+   "K": 4,
+   "K_bits": 240,
+   "process_rank": 4,
+   "entropy_rate": 2.9722,
+   "entropy_rate_se": 0.0011,
+   "candidates_tried": 8
+  },
+  {
+   "task_id": "hmm_n004_p1",
+   "role": "pilot",
+   "K": 4,
+   "K_bits": 240,
+   "process_rank": 4,
+   "entropy_rate": 2.9254,
+   "entropy_rate_se": 0.0009,
+   "candidates_tried": 8
+  },
+  {
+   "task_id": "hmm_n008_t1",
+   "role": "target",
+   "K": 8,
+   "K_bits": 504,
+   "process_rank": 8,
+   "entropy_rate": 2.9344,
+   "entropy_rate_se": 0.0012,
+   "candidates_tried": 14
+  },
+  {
+   "task_id": "hmm_n008_t2",
+   "role": "target",
+   "K": 8,
+   "K_bits": 504,
+   "process_rank": 8,
+   "entropy_rate": 2.9231,
+   "entropy_rate_se": 0.0012,
+   "candidates_tried": 14
+  },
+  {
+   "task_id": "hmm_n008_d1",
+   "role": "distractor",
+   "K": 8,
+   "K_bits": 504,
+   "process_rank": 8,
+   "entropy_rate": 2.7144,
+   "entropy_rate_se": 0.0014,
+   "candidates_tried": 14
+  },
+  {
+   "task_id": "hmm_n008_d2",
+   "role": "distractor",
+   "K": 8,
+   "K_bits": 504,
+   "process_rank": 8,
+   "entropy_rate": 2.7647,
+   "entropy_rate_se": 0.0012,
+   "candidates_tried": 14
+  },
+  {
+   "task_id": "hmm_n008_p1",
+   "role": "pilot",
+   "K": 8,
+   "K_bits": 504,
+   "process_rank": 8,
+   "entropy_rate": 2.842,
+   "entropy_rate_se": 0.0012,
+   "candidates_tried": 14
+  },
+  {
+   "task_id": "hmm_n016_t1",
+   "role": "target",
+   "K": 16,
+   "K_bits": 1056,
+   "process_rank": 16,
+   "entropy_rate": 2.7331,
+   "entropy_rate_se": 0.0014,
+   "candidates_tried": 16
+  },
+  {
+   "task_id": "hmm_n016_t2",
+   "role": "target",
+   "K": 16,
+   "K_bits": 1056,
+   "process_rank": 16,
+   "entropy_rate": 2.9096,
+   "entropy_rate_se": 0.0012,
+   "candidates_tried": 16
+  },
+  {
+   "task_id": "hmm_n016_d1",
+   "role": "distractor",
+   "K": 16,
+   "K_bits": 1056,
+   "process_rank": 16,
+   "entropy_rate": 2.9905,
+   "entropy_rate_se": 0.0012,
+   "candidates_tried": 16
+  },
+  {
+   "task_id": "hmm_n016_d2",
+   "role": "distractor",
+   "K": 16,
+   "K_bits": 1056,
+   "process_rank": 16,
+   "entropy_rate": 2.7704,
+   "entropy_rate_se": 0.0014,
+   "candidates_tried": 16
+  },
+  {
+   "task_id": "hmm_n016_p1",
+   "role": "pilot",
+   "K": 16,
+   "K_bits": 1056,
+   "process_rank": 16,
+   "entropy_rate": 2.7495,
+   "entropy_rate_se": 0.0016,
+   "candidates_tried": 16
+  },
+  {
+   "task_id": "hmm_n032_t1",
+   "role": "target",
+   "K": 32,
+   "K_bits": 2208,
+   "process_rank": 32,
+   "entropy_rate": 2.9467,
+   "entropy_rate_se": 0.001,
+   "candidates_tried": 30
+  },
+  {
+   "task_id": "hmm_n032_t2",
+   "role": "target",
+   "K": 32,
+   "K_bits": 2208,
+   "process_rank": 32,
+   "entropy_rate": 2.8712,
+   "entropy_rate_se": 0.0012,
+   "candidates_tried": 30
+  },
+  {
+   "task_id": "hmm_n032_d1",
+   "role": "distractor",
+   "K": 32,
+   "K_bits": 2208,
+   "process_rank": 32,
+   "entropy_rate": 2.991,
+   "entropy_rate_se": 0.0011,
+   "candidates_tried": 30
+  },
+  {
+   "task_id": "hmm_n032_d2",
+   "role": "distractor",
+   "K": 32,
+   "K_bits": 2208,
+   "process_rank": 32,
+   "entropy_rate": 2.7936,
+   "entropy_rate_se": 0.0012,
+   "candidates_tried": 30
+  },
+  {
+   "task_id": "hmm_n032_p1",
+   "role": "pilot",
+   "K": 32,
+   "K_bits": 2208,
+   "process_rank": 32,
+   "entropy_rate": 2.8393,
+   "entropy_rate_se": 0.0012,
+   "candidates_tried": 30
+  }
+ ],
+ "checks": {
+  "params": [
+   354240,
+   335712
+  ],
+  "alpha_schedule_exact": true,
+  "max_distractor_count_spread": 1,
+  "eval_train_disjoint": {
+   "eval_docs": 6656,
+   "training_docs_checked": 6553600,
+   "hits": 0,
+   "seconds": 394.4
+  },
+  "expected_runs": 128
+ },
+ "eps_id_all": {
+  "hmm_n004_t1|0.05": 0.03376506324130667,
+  "hmm_n004_t1|0.15": 0.02138254370442265,
+  "hmm_n004_t1|0.40": 0.010327563241306589,
+  "hmm_n004_t1|1.00": 0.0,
+  "hmm_n004_t2|0.05": 0.033765063241306306,
+  "hmm_n004_t2|0.15": 0.021382543704422295,
+  "hmm_n004_t2|0.40": 0.010327563241306233,
+  "hmm_n004_t2|1.00": 0.0,
+  "hmm_n004_p1|0.05": 0.03376506324130609,
+  "hmm_n004_p1|0.15": 0.02138254370442208,
+  "hmm_n004_p1|0.40": 0.010327563241306013,
+  "hmm_n004_p1|1.00": 0.0,
+  "hmm_n008_t1|0.05": 0.03376506324130633,
+  "hmm_n008_t1|0.15": 0.021382543704422316,
+  "hmm_n008_t1|0.40": 0.01032756324130625,
+  "hmm_n008_t1|1.00": 0.0,
+  "hmm_n008_t2|0.05": 0.03376506324130761,
+  "hmm_n008_t2|0.15": 0.021382543704423607,
+  "hmm_n008_t2|0.40": 0.010327563241307545,
+  "hmm_n008_t2|1.00": 0.0,
+  "hmm_n008_p1|0.05": 0.033765063241307514,
+  "hmm_n008_p1|0.15": 0.021382543704423496,
+  "hmm_n008_p1|0.40": 0.010327563241307437,
+  "hmm_n008_p1|1.00": 0.0,
+  "hmm_n016_t1|0.05": 0.033765063241307465,
+  "hmm_n016_t1|0.15": 0.021382543704423457,
+  "hmm_n016_t1|0.40": 0.010327563241307392,
+  "hmm_n016_t1|1.00": 0.0,
+  "hmm_n016_t2|0.05": 0.033765063241307,
+  "hmm_n016_t2|0.15": 0.02138254370442299,
+  "hmm_n016_t2|0.40": 0.010327563241306927,
+  "hmm_n016_t2|1.00": 0.0,
+  "hmm_n016_p1|0.05": 0.033765063241307805,
+  "hmm_n016_p1|0.15": 0.021382543704423787,
+  "hmm_n016_p1|0.40": 0.010327563241307729,
+  "hmm_n016_p1|1.00": 0.0,
+  "hmm_n032_t1|0.05": 0.033765063241307194,
+  "hmm_n032_t1|0.15": 0.021382543704423176,
+  "hmm_n032_t1|0.40": 0.010327563241307115,
+  "hmm_n032_t1|1.00": 0.0,
+  "hmm_n032_t2|0.05": 0.03376506324130747,
+  "hmm_n032_t2|0.15": 0.021382543704423464,
+  "hmm_n032_t2|0.40": 0.010327563241307399,
+  "hmm_n032_t2|1.00": 0.0,
+  "hmm_n032_p1|0.05": 0.03376506324130746,
+  "hmm_n032_p1|0.15": 0.02138254370442344,
+  "hmm_n032_p1|0.40": 0.010327563241307375,
+  "hmm_n032_p1|1.00": 0.0
+ },
+ "source_sha256": {
+  "config.json": "965d9f18bd45ac6e45616e8f106309f1251cc1dca252e0d56e2e2aacfbf6d4e2",
+  "hmm.py": "a5f6eca7a4b80b2fa9698c1004693a5d11147b99daafd4acac192a68c88931ba",
+  "model.py": "9c982afa9c8c2284987c915da7bfb6035c0bed66517274cf90cec6550247ad1e",
+  "run.py": "73679e184aa357063f1ec1310fc207e5941de2eab7a4efb0145763f9b56b73b2"
+ }
+}

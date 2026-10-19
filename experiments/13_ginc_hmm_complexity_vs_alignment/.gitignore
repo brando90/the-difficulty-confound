@@ -1,0 +1,8 @@
+checkpoints/
+*.tar
+*.tar.zst
+__pycache__/
+.pytest_cache/
+*.tmp
+expt_v1/prep/
+expt_v1/results_pilot/data/
