@@ -52,7 +52,7 @@
     "smollm2-1.7b": {"hf": "HuggingFaceTB/SmolLM2-1.7B", "params": 1710000000, "micro_batch": 4, "licence": "Apache-2.0"},
     "tiny-random": {"hf": "trl-internal-testing/tiny-Qwen2ForCausalLM-2.5", "params": 1000000, "micro_batch": 2, "licence": "Apache-2.0", "smoke_only": true}
   },
-  "selected_lr": {"qwen2.5-0.5b": null, "qwen2.5-1.5b": null, "smollm2-1.7b": null},
+  "selected_lr": {"qwen2.5-0.5b": 5e-06, "qwen2.5-1.5b": null, "smollm2-1.7b": null},
   "lr_scale_rule": "qwen2.5-1.5b and smollm2-1.7b use half the learning rate the 0.5B pilot selects, unless a pilot at that size is run and disclosed",
   "optim": {"betas": [0.9, 0.95], "weight_decay": 0.0, "grad_clip": 1.0, "warmup_steps": 10, "schedule": "linear warmup, then constant (so every checkpoint is a comparable stopping point)"},
   "tiers": {

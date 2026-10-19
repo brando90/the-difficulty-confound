@@ -2,7 +2,7 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/gpu/CKPT.md>
 
-Status: dated log of the GPU plans; nothing has run on a GPU. Write a line for every step of the order in [README.md](README.md): freeze commit, data manifest, pilot, learning-rate selection, disclosure commit, each tier, every failed or moved-aside run, analysis and `verify.py`. Times are US Pacific.
+Status: dated log of the GPU plans; the g1 pilot ran on Sherlock on 10-19-2026. Write a line for every step of the order in [README.md](README.md): freeze commit, data manifest, pilot, learning-rate selection, disclosure commit, each tier, every failed or moved-aside run, analysis and `verify.py`. Times are US Pacific.
 
 ## 10-18-2026 (written on the CPU box, before any GPU run)
 
@@ -28,9 +28,20 @@ The pilot selects the learning rate and is not gated. Because it trains E and H 
 
 ## Pilot disclosure
 
-- Pilot runs: `<n>/9 DONE`, cluster and GPU type, measured training tokens per second per GPU `<>`, generation minutes per checkpoint `<>`.
-- `runs.py select-lr` output (paste in full): `<...>`; selected learning rate `<>` (1.5B: half).
-- Disclosure commit: `<sha>`. It changes only `common/suite.json` `selected_lr` and this file.
+- Pilot runs: 7/7 g1 pilot runs DONE (E and H at 5e-6, 1e-5, 2e-5, plus base; seed 0), Sherlock public `gpu` partition, one H100_SXM5 80 GB per run (job array 48440728, node sh04-01n05, 10-19-2026 02:22–05:40). Measured training throughput 43,100–43,400 tokens per second per GPU (230 s of training per 10M-token run). Generation per checkpoint: GSM8K 10.3–14.0 min, MATH-500 9.4 min; bits per byte and HellaSwag under 1 min. Evaluation is about 85% of each run's 28–33 min wall time.
+- Environment deviation (the repo tree was unchanged, run commit `d4fd7f93` has the freeze's `experiments/gpu` tree `15f99df5`): the `torch==2.14.1` pin has no wheel Sherlock (glibc 2.17) can install, so the runs used Sherlock modules python 3.14.2, torch 2.9.1 (CUDA 12.6), datasets 4.4.1, numpy 2.3.5, with transformers 4.57.6 (the repo pin) in a venv.
+- Failed attempts, moved aside and not used (nothing deleted): (1) prep 48433204, no torch 2.14.1 wheel, 0 GPU time; (2) array 48435220, transformers 4.57.3 module raised OfflineModeIsEnabled loading the tokenizer, about 3.6 GPU-min; (3) array 48439388, CUDA out of memory on L40S 48 GB (fp32 0.5B, micro-batch 8 × 2048 logits), about 0.8 GPU-min. The run used `-C GPU_MEM:80GB`, the 80 GB class the plan was costed on.
+- `runs.py select-lr` output (run on the downloaded pilot metrics, in full):
+
+  ```
+  lr 5e-06: E on L1 0.1344, H on L3 0.3468, mean 0.2406 bits/byte
+  lr 1e-05: E on L1 0.1342, H on L3 0.3473, mean 0.2408 bits/byte
+  lr 2e-05: E on L1 0.1364, H on L3 0.3507, mean 0.2436 bits/byte
+  selected learning rate for qwen2.5-0.5b: 5e-06 (1.5B rule: 2.5e-06)
+  ```
+
+  Selected learning rate 5e-6 (1e-5 is within the 0.002 tie band, and ties go to the smaller rate); 1.5B: 2.5e-6.
+- Disclosure commit: this commit. It changes only `common/suite.json` `selected_lr` and this file.
 
 ## Tiers
 
