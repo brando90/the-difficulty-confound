@@ -1,0 +1,293 @@
+{
+  "shared": {
+    "split_seed": 20261016,
+    "task_sampling_seed": 20261016,
+    "analysis_seed": 29101626,
+    "bootstrap_draws": 20000,
+    "n_starts": 64,
+    "bounds": {
+      "gamma": [
+        0.001,
+        3.0
+      ],
+      "gamma1": [
+        -1.0,
+        1.0
+      ],
+      "eta": [
+        0.0,
+        3.0
+      ],
+      "kappa": [
+        -3.0,
+        3.0
+      ],
+      "beta": [
+        0.001,
+        3.0
+      ]
+    },
+    "starts": {
+      "gamma": [
+        0.1,
+        0.3,
+        0.6,
+        1.2
+      ],
+      "eta": [
+        0.25,
+        0.75,
+        1.25,
+        2.0
+      ],
+      "kappa": [
+        -0.5,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "gamma1": [
+        -0.15,
+        -0.05,
+        0.0,
+        0.05
+      ],
+      "both": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.1
+        ],
+        [
+          1.0,
+          -0.1
+        ]
+      ],
+      "beta": [
+        0.1,
+        0.5,
+        2.0
+      ],
+      "independent_seed": 16016
+    },
+    "eps_res": 0.001,
+    "rmse_reduction_threshold": 0.1,
+    "g1_min_multiplier": 2.0,
+    "g3b_min_reduction": 0.05,
+    "bonferroni_alpha": 0.025,
+    "g3_ratio": 0.9,
+    "g3_gamma1_band": 0.02,
+    "g6_ratio": 0.67,
+    "g7_log_ratio": 1.5,
+    "fallback_fail_share": 0.25,
+    "censored_share_for_emf_fallback": 0.5,
+    "independent_fit_tol": 0.0001,
+    "verify_tol_bits": 1e-09
+  },
+  "mlp": {
+    "digits": 3,
+    "minimum_pairs_per_answer_cell": 28,
+    "test_per_answer_cell": 4,
+    "calibration_per_answer_cell": 2,
+    "probe_per_answer_cell": 2,
+    "train_per_answer": 20,
+    "train_size": 3600,
+    "strata": {
+      "nocarry": [
+        0
+      ],
+      "isolated": [
+        1,
+        2
+      ],
+      "cascade": [
+        3
+      ]
+    },
+    "chain": {
+      "nocarry": 0,
+      "isolated": 1,
+      "cascade": 2
+    },
+    "alpha_grid": [
+      0.1,
+      0.33,
+      0.6,
+      0.9
+    ],
+    "heldout_alpha": 0.33,
+    "heldout_c": 1,
+    "widths": [
+      32,
+      64,
+      96,
+      128
+    ],
+    "heldout_width": 96,
+    "expected_params": [
+      4328,
+      10664,
+      19048,
+      29480
+    ],
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "warmup": 50,
+    "checkpoints_updates": [
+      100,
+      300,
+      1000,
+      3000
+    ],
+    "heldout_updates": 3000,
+    "seeds": [
+      16101,
+      16202,
+      16303,
+      16404,
+      16505,
+      16606,
+      16707,
+      16808
+    ],
+    "pilot_seed": 16909,
+    "pilot_width": 64,
+    "pilot_alphas": [
+      0.1,
+      0.9
+    ],
+    "epsilon_star": 4.95,
+    "workers": 4,
+    "threads": 1,
+    "max_wall_seconds": 5400,
+    "epsilon_star_draft": 0.25
+  },
+  "transformer": {
+    "digits": 8,
+    "vocab": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "+",
+      "=",
+      "$"
+    ],
+    "seq_len": 29,
+    "block": 32,
+    "primary_format": "plain",
+    "control_format": "reversed",
+    "control_size": "6M",
+    "train_levels": [
+      0,
+      1,
+      2,
+      4,
+      7
+    ],
+    "probe_levels": [
+      3,
+      5,
+      6,
+      8
+    ],
+    "heldout_c": 4,
+    "alpha_grid": [
+      0.05,
+      0.15,
+      0.4,
+      1.0
+    ],
+    "heldout_alpha": 0.15,
+    "test_per_stratum": 2000,
+    "sizes": {
+      "1M": {
+        "layers": 5,
+        "d": 128,
+        "heads": 4,
+        "lr": 0.002
+      },
+      "6M": {
+        "layers": 8,
+        "d": 256,
+        "heads": 8,
+        "lr": 0.001
+      },
+      "25M": {
+        "layers": 8,
+        "d": 512,
+        "heads": 8,
+        "lr": 0.0005
+      }
+    },
+    "size_order": [
+      "1M",
+      "6M",
+      "25M"
+    ],
+    "expected_params": [
+      997376,
+      6330112,
+      25243136
+    ],
+    "expected_nonembedding": [
+      991616,
+      6318592,
+      25220096
+    ],
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "weight_decay": 0.1,
+    "clip": 1.0,
+    "batch_size": 256,
+    "warmup": 200,
+    "T_checkpoints_log2": [
+      16,
+      18,
+      20,
+      22,
+      24
+    ],
+    "heldout_T_log2": 24,
+    "stream_block": 1024,
+    "seeds": [
+      16101,
+      16202,
+      16303
+    ],
+    "pilot_seed": 16919,
+    "pilot_c": 3,
+    "pilot_alpha": 0.4,
+    "pilot_lr_multipliers": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "pilot_T_log2": 22,
+    "pilot_tie_bits": 0.01,
+    "format_swap_threshold_bits": 2.0,
+    "epsilon_star": 0.1,
+    "n_shards": 240,
+    "data_workers": 8,
+    "eval_batch": 2000,
+    "gpu_torch_version": "2.6.0",
+    "lr_selected": null,
+    "primary_format_final": null
+  }
+}

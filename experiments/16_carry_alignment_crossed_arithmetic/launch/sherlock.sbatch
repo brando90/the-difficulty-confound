@@ -16,9 +16,11 @@
 #SBATCH --output=slurm_logs/%x_%A_%a.out
 #SBATCH --error=slurm_logs/%x_%A_%a.err
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=brandojazz@gmail.com,brando.science@gmail.com
+#SBATCH --mail-user=brandojazz@gmail.com,brando.science@gmail.com,laoluoguneye@gmail.com
 # Optional GPU constraint (not needed for memory here; list features with: sh_node_feat -p gpu | grep GPU_SKU)
 ##SBATCH -C GPU_MEM:80GB
+# bfloat16 needs compute capability >= 8.0; on Sherlock's public gpu partition that is H100, L40S and RTX 3090 (10-19-2026).
+#SBATCH --constraint=GPU_SKU:H100_SXM5|GPU_SKU:L40S|GPU_SKU:RTX_3090
 set -euo pipefail
 
 die() { echo "sherlock.sbatch: ERROR: $*" >&2; exit 2; }
@@ -86,7 +88,7 @@ if [[ -n ${GROUP_HOME:-} ]]; then VENV_ROOT=$GROUP_HOME/$USER/venvs; else VENV_R
 VENV=${VENV:-$VENV_ROOT/tdc_$EXP_NAME}
 TORCH_VERSION=$(python3 -c 'import json, sys; print(json.load(open(sys.argv[1]))["gpu_torch_version"])' "$CODE/config.json")
 TORCH_VERSION=${TORCH_VERSION%%+*}
-TORCH_INDEX=${TORCH_INDEX:-https://download.pytorch.org/whl/cu128}
+TORCH_INDEX=${TORCH_INDEX:-https://download.pytorch.org/whl/cu124}  # torch 2.6.0+cu124 ran on Sherlock GPUs in Experiment 19
 if [[ ! -f $VENV/.ready ]]; then
   mkdir -p "$VENV_ROOT"
   if mkdir "$VENV.lock" 2>/dev/null; then

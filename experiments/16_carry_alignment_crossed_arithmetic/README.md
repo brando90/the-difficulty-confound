@@ -7,6 +7,6 @@ Experiment 16 brings the complexity-versus-alignment program back to addition. I
 - **16b (primary, GPU = graphics processing unit):** fresh 8-digit problems, three transformer sizes, plus a reversed-output control. The control tests whether the cost exists only when the output format makes the chain sequential. About 90 A100-hours, launched from [`launch/`](launch/README.md).
 - **16a (secondary, CPU = central processing unit):** the answer-matched 3-digit multilayer perceptron (MLP) setup of Experiments 06 and 08. About 25 min.
 
-Status: DRAFT (10-18-2026), not run. Design: [PROTOCOL.md](PROTOCOL.md). Coding-agent prompt: [PROMPT.md](PROMPT.md). Program overview: [complexity versus alignment](../ideas/complexity_vs_alignment/README.md).
+Status: protocol FROZEN (10-19-2026); 16a running on Sherlock; 16b pending the GPU pilot. Design: [PROTOCOL.md](PROTOCOL.md). Coding-agent prompt: [PROMPT.md](PROMPT.md). Program overview: [complexity versus alignment](../ideas/complexity_vs_alignment/README.md).
 
 **TLDR-end:** [tdc: Expt 16 readme] Cross carry-chain length (a structural demand, not $K$) with target share on 8-digit transformer addition and 3-digit MLP addition, and test with numeric gates whether chain length costs data, whether alignment dominates, and whether it enters the law like exact complexity; GPU primary arm plus a short CPU arm.

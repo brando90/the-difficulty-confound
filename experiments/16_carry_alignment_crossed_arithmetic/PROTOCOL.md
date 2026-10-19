@@ -2,7 +2,7 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/16_carry_alignment_crossed_arithmetic/PROTOCOL.md>
 
-Status: DRAFT design, 10-18-2026, from Brando Miranda's complexity-versus-alignment idea. The running agent may revise it, then must freeze it in its own commit before any gated run; after the freeze nothing in Sections 2–5 changes.
+Status: FROZEN 10-19-2026, before any gated run (design 10-18-2026, from Brando Miranda's complexity-versus-alignment idea). Pre-freeze changes are marked in place: the 16a pilot disclosure (Section 2.1), stream blocks (2.4), censoring and starts (4.1), the alignment with Experiment 11's G1–G4 (Section 5) and the hardware decisions (Section 7). After this freeze nothing in Sections 2–5 changes; the only allowed later edit is the GPU pilot disclosure (Section 7 and `config.json`).
 
 Program overview: [complexity versus alignment, Experiments 11–16](../ideas/complexity_vs_alignment/README.md). Notation follows it: $\varepsilon$ excess loss in bits, $T$ training examples seen, $\alpha$ target share, $N$ non-embedding parameters, and the law family `M0_scale`, `M_align_eff`, `M_align_add`, `M_K_coef`, `M_K_exp`, `M_K_both` with parameters $A, \eta, \kappa, \gamma_0, \gamma_1$.
 
@@ -78,6 +78,8 @@ The test set therefore has 2,880 pairs, 720 per cell.
 
 **Pilot.** Seed `16909`, width 64, all 3 targets, $\alpha \in \{0.1, 0.9\}$ (6 runs, about 1 min). It confirms timing and applies the $\varepsilon^\star$ rule of Section 4.4.
 
+**16a pilot disclosure (10-19-2026, before the freeze).** Seed 16909, width 64, all three targets at $\alpha \in \{0.1, 0.9\}$: 6 runs, about 8 s on 4 workers (1.2 s per run, so the full grid is about 2 minutes, not 20–25). Excess bits per answer at 100 / 300 / 1,000 / 3,000 updates: cascade $\alpha=0.1$: 7.90 / 6.40 / 4.92 / 1.18; cascade $\alpha=0.9$: 7.80 / 4.36 / 0.72 / 0.05; isolated $\alpha=0.1$: 7.90 / 6.10 / 4.81 / 1.36; isolated $\alpha=0.9$: 7.88 / 5.67 / 2.41 / 0.18; no-carry $\alpha=0.1$: 7.91 / 6.44 / 3.93 / 1.30; no-carry $\alpha=0.9$: 7.82 / 4.46 / 0.67 / 0.02. The Section 4.4 rule fired (cascade at $\alpha = 0.1$ is 4.92 bits at 1,000 updates, above $2\varepsilon^\star = 0.5$), so the 16a $\varepsilon^\star$ is **4.95 bits per answer**. That is loose (uniform guessing over 4 digits is 13.3 bits): it marks the early phase of learning, and the multiplier curves at 0.03–1 bits are reported beside it. Pilot outputs are in `expt_v1/results_pilot/mlp/`; seed 16909 is not reused.
+
 ### 2.2 Arm 16b: 8-digit addition with transformers (GPU, primary)
 
 **Problems.** Ordered pairs $(a, b)$ with $0 \le a, b \lt 10^8$, written as zero-padded 8-digit numbers, so input length never varies with the operands. Chain length $c \in \{0, \dots, 8\}$ is the longest run of consecutive columns that produce a carry, counting the carry out of the top column (as in Experiment 06's `carry_chain`).
@@ -117,6 +119,7 @@ Let $D[i][\text{carry}][\text{run}][\text{max}]$ count the completions of column
 
 - **Fresh data.** Every training example is new. Example $j$ of stratum $c$ in training seed $s$ comes from NumPy PCG64 seeded by ($s$, $c$, $j$), so it is identical in every run of that seed (common random numbers across $\alpha$ and model sizes).
 - **Schedule.** Example $k$ is a target example iff $\lfloor (k+1)\alpha \rfloor - \lfloor k\alpha \rfloor = 1$, which gives exactly $\lfloor m\alpha \rfloor$ target examples after any $m$. Non-target slots cycle through the other 4 training levels in a seeded permutation, so each gets $(1-\alpha)/4$. Grid: $\alpha \in \{0.05, 0.15, 0.4, 1.0\}$.
+- **Stream blocks (implementation, fixed before the freeze).** Example $j$ of stratum $c$ is element $j \bmod 1024$ of block $\lfloor j/1024 \rfloor$, and block $k$ is drawn by the exact sampler from PCG64 seeded by `SeedSequence([s, c, k])`. This keeps the common-random-number property (example $j$ is identical in every run of seed $s$) while sampling 1,024 examples per generator. Data are generated in the training process, not by separate data workers.
 - **Test set.** 2,000 pairs per stratum $c = 0, \dots, 8$ (18,000 in all), drawn with the split seed `20261016` from a separate stream. A pair and its commuted twin $(b, a)$ are both excluded from training: the sampler rejects them (the expected rejection rate is below $10^{-10}$ in every stratum; every rejection is counted and logged).
 - **Held fixed.** Input length (zero padding), output length (9 digits), the format, and the token positions. There is no task token: the stratum is never signalled to the model.
 - **Not held fixed (logged covariates).** Longer chains force more 9-sum and carry-generating columns, so the input-digit and answer-digit distributions differ by stratum. We log per stratum the input-digit total-variation distance from the natural distribution, the answer-digit entropy, the number of carries (as distinct from the longest run), and the training exposure to chains of length $\ge k$ for every $k$ (an example with $c = 7$ also contains every shorter chain).
@@ -197,6 +200,7 @@ Floors are 0, so the forms are the program's, with $s$ in place of $K$ and the $
 - Bounds: $\gamma, \gamma_0, \beta \in (0, 3]$; $\gamma_1 \in [-1, 1]$ with $\gamma(s) \gt 0$ on the grid; $\eta \in [0, 3]$; $\kappa \in [-3, 3]$; $A, B \gt 0$.
 - `M_align_add` is fit in linear space and can forecast $\le 0$, which counts as invalid.
 - `independent_fit.py` (L-BFGS-B on the same objective, a different start grid) must agree on every held-out RMSE (root-mean-square error) to $10^{-4}$ relative.
+- **Censoring and starts (fixed before the freeze).** As in Experiments 11 and 13, an observed $\varepsilon$ below $\varepsilon_{\text{res}} = 10^{-3}$ bits enters through the censored residual $\max(0, \log_2\hat\varepsilon - \log_2\varepsilon_{\text{res}})$, and an invalid forecast is scored at $\varepsilon_{\text{res}}$. $\gamma(s)$ is parametrized by its values at the ends of the fit grid, each in $[10^{-3}, 3]$ (Experiment 13's parametrization), which keeps $\gamma(s) \gt 0$; it implies $|\gamma_1| \le 3/\log_2(s_{\max}/s_{\min})$ instead of a separate $[-1, 1]$ box. The 64-start exponent grid is crossed with $\beta \in \{0.1, 0.5, 2.0\}$ (192 starts), because a synthetic dry run showed the $N$ term leaves a nearly flat direction that a single $\beta$ start does not escape.
 - **Sensitivity (reported, not gated):** $s = c$ on $c \ge 1$ only; $s$ = number of carries; per-size fits; 16b fits with exact-match error in place of $\varepsilon$.
 
 ### 4.2 Held-out scoring and uncertainty
@@ -234,6 +238,17 @@ Multiplier curves over $\varepsilon \in \{0.03, 0.1, 0.3, 1\}$ are reported rega
 ## 5. Prospective pass/fail gates
 
 Every gate ends `SUPPORTED` or `NOT_ESTABLISHED`, reported with equal prominence. Primary: G1–G4 on 16b in its primary format. Secondary: G5–G7 and the 16a gates. G1–G4 mirror the Experiment 11 gate family. If Experiment 11's frozen protocol defines them differently, the running agent aligns them before this freeze and records it.
+
+**Alignment with Experiment 11 (made at the freeze).** Experiment 11's frozen G1–G4 differ from the drafts below, so, as in Experiment 13, the gated G1–G4 are Experiment 11's, adapted to this design:
+
+- **G1:** $M_s$ from model-free $T^\star$ (log-log interpolation of each run's curve; censored values at the nearest checkpoint, counted in the report) at the top $\alpha$ ($\alpha = 1$ for 16b, $0.9$ for 16a, whose grid has no $\alpha = 1$) and the largest model, $s_{\max}$ over $s_{\min}$. `SUPPORTED` iff $M_s \ge 2.0$ with seed-block 95% lower bound $\gt 1$. There is one target per level, so there is no two-stage interval.
+- **G2:** the $s$ law is whichever of `M_K_coef` and `M_K_exp` has the lower pooled fit-row RMSE, chosen in stage 1 before held-out rows are read. `SUPPORTED` iff its held-out RMSE reduction against `M_align_eff` is $\ge 10\%$ with 95% lower bound $\gt 0\%$, it is also lower on the held-out level's rows alone, and it has 0 invalid forecasts.
+- **G3a (coefficient):** in `M_K_both`, $\kappa$'s 95% interval above 0, $\gamma_1$'s interval contains 0, and held-out RMSE of `M_K_coef` $\le$ `M_K_exp`. **G3b (exponent):** $\gamma_1$'s 95% interval below 0, and `M_K_exp` cuts held-out RMSE relative to `M_K_coef` by $\ge 5\%$ with 95% lower bound $\gt 0\%$. Neither: C3 unresolved.
+- **G4:** $E = \bar e_\alpha / \bar e_s$ from `M_K_both` refit on all rows (descriptive), at $\varepsilon^\star$ and the geometric centre of the trained levels, is $\gt 1$ with seed-block 95% lower bound $\gt 1$, and the model-free $E_{\text{mf}}$ point estimate is $\gt 1$ (evaluated at $2\varepsilon^\star$ if more than half the (level, $\alpha$) pairs are censored in the median seed). There is one unit for $s$, so the two-unit condition does not apply.
+- For 16b (3 seeds), every gate also requires each seed's own point estimate on the supported side (Section 4.2).
+- **G5** compares with Experiments 11 and 12 as written. Experiment 19's G3 (the Experiment 11 grid trained 16× longer: G3b `SUPPORTED`) is reported beside it but does not enter G5.
+
+The draft versions below (law-based $M_s$, the Bonferroni pair, the ratio $\rho$, the range ratio $R$ and the gap ratio $\Delta$) are computed and reported, not gated. G6, G7 and the 16a gates are unchanged except that 16a's G1–G4 use the aligned definitions.
 
 1. **G1 — Chain length is a real data cost (C1).** `SUPPORTED` iff $M_s \gt 1$ with 95% lower bound $\gt 1$ at $\varepsilon^\star$, and every seed's $M_s \gt 1$.
 2. **G2 — Chain length adds held-out value beyond alignment.**
@@ -285,6 +300,8 @@ Every gate ends `SUPPORTED` or `NOT_ESTABLISHED`, reported with equal prominence
 | **Total** | | | **240 + 9** | **about 90** |
 
 That is about 12 h on one 8-GPU node, or about 6 h with Sherlock's 16-GPU cap, if GPUs are free. Every listed GPU fits all sizes in memory (25M at 8,192 tokens per step needs about 3 GB), including mercury's 16 GB RTX A4000. The A4000 should be used only for 1M and 6M shards. Data is generated on the fly by 8 CPU workers per GPU using the exact sampler. Checkpoint storage (float32, 5 per run) is about 1.2 GB (1M) + 15 GB (6M with control) + 30 GB (25M) ≈ **47 GB**. Checkpoints stay on cluster storage, and only their SHA-256s enter the repository. Shards use atomic claim directories and DONE markers, exactly as in Experiment 13. Launch scripts are in [`launch/`](launch/README.md).
+
+**Hardware decisions (fixed before the freeze, 10-19-2026).** 16a runs as one CPU job on Sherlock's `normal` partition. 16b runs on Sherlock's public `gpu` partition, restricted to GPUs with compute capability $\ge 8.0$ (H100, L40S, RTX 3090: `--constraint` in `launch/sherlock.sbatch`), at most 16 at a time. The GPU environment uses torch 2.6.0 built for CUDA 12.4, which ran on Sherlock GPUs in Experiment 19 (torch 2.14.1 has no CUDA 12.x build); the CPU analysis environment uses torch 2.14.1. Slurm mail also goes to Laolu.
 
 ## 8. Artifacts and verification
 
