@@ -1,8 +1,8 @@
 {
   "CKPT_headroom_bounded.md": "c9e7837d7a5c3d9391cfb77d4efa35a616041c04a92126ab2f250e9d39b61538",
   "PROTOCOL.md": "faba99652cca0094d23ef5b415c5edc1b47d74918768639ec73e69e05d6eafbf",
-  "README.md": "9adb790f61a6ca97d98b8f8cca977abaeae9c6dfd1d86b22d2c7520b38adc5b5",
-  "RESULTS_headroom_bounded.md": "295cf99c309258faa6794ab00189aced32e8997ee855f0dd34f70fe354570daf",
+  "README.md": "26125875d2728b54d33722a00ef058e863a79ffaccbf6eb756111adac204e15a",
+  "RESULTS_headroom_bounded.md": "f7a0361e4b5ca735ec1c1191553854c4b69a2cc39f09997cbaecede15a764556",
   "exploratory/refit_exp08.py": "0d43a1308720653ff710c174e788c80c6028987cb01dcf82f8a9132407a0e6b6",
   "exploratory/results/exploratory_forecasts.csv": "fd7b60ac83d49a188fda11db9cbcb7be0680a2fb5ee6c5c8cd7efc93f0199135",
   "exploratory/results/exploratory_summary.json": "1ff37794b061f24cefe25548f9976ded5b21196eec77f3bf8e75ebdd12e9d5dd",
@@ -6443,5 +6443,5 @@
   "expt_v1/run.py": "3dff5369129080ad1160bcd71722ebce794e6af6360507cd88ef8ab2d8d4a78a",
   "expt_v1/test_laws.py": "675112bc3df0189bcee1d26a4870de4c53a27c01db442bafd793095e4e10b4fc",
   "expt_v1/verify.py": "87cf542e222f1809326b08b079fbf639e8f21e4a21cd5078f10f100303c04784",
-  "results.md": "295cf99c309258faa6794ab00189aced32e8997ee855f0dd34f70fe354570daf"
+  "results.md": "f7a0361e4b5ca735ec1c1191553854c4b69a2cc39f09997cbaecede15a764556"
 }

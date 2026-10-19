@@ -67,7 +67,7 @@ At a fixed budget of 4,096 rollouts per update, larger groups raise probe signal
 - **Exploratory influence.** The bounded form was proposed before any refit, but the noise-aware margin and the decision to drop a two-sided form were informed by a disclosed refit on Experiment 08's published outcomes ([`exploratory/`](exploratory/)). Gate 2's fresh-seed estimate (8.10%) is lower than that refit (16.53%).
 - **Noise margin.** Gate 2 at width 384 and Gate 3 at both group sizes count as non-inferior only because of the frozen margin of one binomial noise standard deviation. Neither gate fails on that criterion; both fail on the 10% joint threshold.
 - **Ridge penalty.** All laws reuse Experiment 08's ridge penalty ($\lambda=0.01$) on standardized coefficients, which is strong relative to squared error measured in utility units. It applies equally to every law, but different shrinkage could change the size of the Gate 2 effect.
-- **Environment.** Trained on Sherlock (job `48325211`, CPU, 7 min 45 s) with Python 3.12.1, torch 2.5.1+cpu, numpy 1.26.4. Experiment 08 used Python 3.11.11 with the same torch and numpy versions.
+- **Environment.** Trained on Sherlock (job `48325211`, CPU, 6 min 46 s, `elapsed_seconds = 406.28` in `runtime.json`) with Python 3.12.1, torch 2.5.1+cpu, numpy 1.26.4. Experiment 08 used Python 3.11.11 with the same torch and numpy versions.
 - **Scope.** Small networks on fixed-width addition. These results do not by themselves validate or refute the `rl-4-code-verification` utility law on language models.
 
 All 200 starting checkpoints, 800 RLVR trajectories and every forecast are retained.
