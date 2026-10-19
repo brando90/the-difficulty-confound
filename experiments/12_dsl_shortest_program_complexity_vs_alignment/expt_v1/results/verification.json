@@ -1,6 +1,6 @@
 {
  "analysis_source_sha256": {
-  "laws.py": "c94494c411cdbe7379c7b07a423cada350f72abddc8592c66b7a48e3ca960f67",
+  "laws.py": "6c07f970d703e63f95fd1a36079b37d7aa0b878eb1fd47b9eb45a78da471ab0c",
   "independent_fit.py": "b3142cb79aca9f690e5d02aa145a55c943e435de54d14f948edb040b4dcb50a0",
   "analyze.py": "bcc1880b43df4b954163a073d2f8266895d6e8305ee9b20e82841d8bb63ce76f",
   "verify.py": "0c102a1e061d35f92b8c694e82d7522b2739220c7c5d6cfa39c747a79bb230cc",
@@ -14,7 +14,7 @@
   73146,
   622876
  ],
- "2_bfs_seconds": 51.1,
+ "2_bfs_seconds": 81.1,
  "2_tasks_K_program_nshortest": "200/200",
  "3_covariates_recomputed": "200/200",
  "4_data_files_identical": "400/400",
@@ -151,10 +151,10 @@
   "7_secondary_bitwise_equal": true,
   "8_tstar_identical": true,
   "9_forecasts_hash_identical": true,
-  "9_fitters_agree": false,
+  "9_fitters_agree": true,
   "10_gates_identical": true,
   "10_key_numbers_identical": true
  },
- "status": "FAIL",
- "seconds": 863.1
+ "status": "PASS",
+ "seconds": 3549.3
 }

@@ -174,6 +174,18 @@ def fit(law, X, c, base=None):
         cost = float(np.sum(r.fun ** 2))
         if best is None or cost < best['cost']:
             best = dict(theta=r.x.copy(), cost=cost)
+    if law == 'M_align_add':
+        # Polish: (a, c, d) are linear given gamma, so minimize the exact 1-D profile over gamma; the 4-parameter
+        # trust-region fit stalls on the a/c cancellation ridge when gamma is near its lower bound.
+        from scipy.optimize import minimize_scalar
+
+        def prof(g):
+            return objective(law, np.r_[_linear_add(g, X), g], X)
+        g0 = float(best['theta'][3])
+        r = minimize_scalar(prof, bounds=(max(lo[3], g0 / 4), min(hi[3], g0 * 4)), method='bounded',
+                            options=dict(xatol=1e-12))
+        if r.fun < best['cost']:
+            best = dict(theta=np.r_[_linear_add(r.x, X), r.x], cost=float(r.fun))
     best['params'] = public_params(law, best['theta'], X, base)
     best['theta'] = best['theta'].tolist()
     return best
