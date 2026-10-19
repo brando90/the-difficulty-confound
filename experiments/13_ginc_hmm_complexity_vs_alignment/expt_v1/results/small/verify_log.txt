@@ -1,0 +1,63 @@
+Sun Oct 18 21:05:32 PDT 2026
+[      0s] 0 sources match manifest
+[    189s] 1 20 concepts regenerate; ranks certified; K_bits recomputed; eval docs regenerate
+[    399s] 2 oracle and mixture code lengths agree (max abs diff 2.49e-13 bits)
+[   1925s] 3 128 training streams regenerate (hash and counts)
+[   2282s] 4 ... 16/128 runs replayed, max diff so far 0.00e+00
+[   2639s] 4 ... 32/128 runs replayed, max diff so far 0.00e+00
+[   2991s] 4 ... 48/128 runs replayed, max diff so far 0.00e+00
+[   3343s] 4 ... 64/128 runs replayed, max diff so far 0.00e+00
+[   3724s] 4 ... 80/128 runs replayed, max diff so far 0.00e+00
+[   4076s] 4 ... 96/128 runs replayed, max diff so far 0.00e+00
+[   4479s] 4 ... 112/128 runs replayed, max diff so far 0.00e+00
+[   4824s] 4 ... 128/128 runs replayed, max diff so far 0.00e+00
+[   4824s] 4 640 checkpoints replayed (max abs diff 0.00e+00 bits)
+stage1 primary seed 13101 done
+stage1 primary seed 13202 done
+stage1 primary seed 13303 done
+stage1 primary seed 13404 done
+stage1 no_offset seed 13101 done
+stage1 no_offset seed 13202 done
+stage1 no_offset seed 13303 done
+stage1 no_offset seed 13404 done
+stage1 K_n seed 13101 done
+stage1 K_n seed 13202 done
+stage1 K_n seed 13303 done
+stage1 K_n seed 13404 done
+stage1 K_canonical seed 13101 done
+stage1 K_canonical seed 13202 done
+stage1 K_canonical seed 13303 done
+stage1 K_canonical seed 13404 done
+{
+ "forecasts_sha256": "3dad89e9b0f65e0dd2afcdbf4dfd220eec96516df2f1513a9e87eaf090466ed7",
+ "seeds": [
+  13101,
+  13202,
+  13303,
+  13404
+ ],
+ "T0": 65536,
+ "Tmax": 1048576,
+ "g2_K_law": "M_K_coef",
+ "g2_fit_rmse": {
+  "M_K_coef": 0.5743601291921351,
+  "M_K_exp": 0.9144074717035128
+ },
+ "eps_res": 0.015
+}
+[   4856s] 5 96 law fits reproduce to 1e-4; forecasts hash identical
+/var/lib/agent/scratch/at343/repo/experiments/13_ginc_hmm_complexity_vs_alignment/expt_v1/laws.py:71: RuntimeWarning: overflow encountered in power
+  return X['eid'] + 2.0 ** (th[0] + shape(law, th, X))
+/home/agent/.venvs/tdc/lib/python3.12/site-packages/scipy/optimize/_numdiff.py:710: RuntimeWarning: invalid value encountered in subtract
+  df = [f_eval - f0 for f_eval in f_evals]
+independent fit AGREE
+G1 SUPPORTED
+G2 SUPPORTED
+G3a NOT_ESTABLISHED
+G3b NOT_ESTABLISHED
+G4 NOT_ESTABLISHED
+G5 SUPPORTED
+[   4875s] 5 gate verdicts identical on rerun; independent fitter AGREE
+PASS (4875s)
+exit=0
+Sun Oct 18 22:26:52 PDT 2026

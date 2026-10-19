@@ -1,0 +1,21 @@
+{
+ "result": "PASS",
+ "seconds": 4875.3,
+ "steps": [
+  "0 sources match manifest",
+  "1 20 concepts regenerate; ranks certified; K_bits recomputed; eval docs regenerate",
+  "2 oracle and mixture code lengths agree (max abs diff 2.49e-13 bits)",
+  "3 128 training streams regenerate (hash and counts)",
+  "4 ... 16/128 runs replayed, max diff so far 0.00e+00",
+  "4 ... 32/128 runs replayed, max diff so far 0.00e+00",
+  "4 ... 48/128 runs replayed, max diff so far 0.00e+00",
+  "4 ... 64/128 runs replayed, max diff so far 0.00e+00",
+  "4 ... 80/128 runs replayed, max diff so far 0.00e+00",
+  "4 ... 96/128 runs replayed, max diff so far 0.00e+00",
+  "4 ... 112/128 runs replayed, max diff so far 0.00e+00",
+  "4 ... 128/128 runs replayed, max diff so far 0.00e+00",
+  "4 640 checkpoints replayed (max abs diff 0.00e+00 bits)",
+  "5 96 law fits reproduce to 1e-4; forecasts hash identical",
+  "5 gate verdicts identical on rerun; independent fitter AGREE"
+ ]
+}

@@ -1,0 +1,7 @@
+# tested with: python 3.12, torch 2.14.1+cpu, numpy, scipy 1.18.1, pandas 3.0.6, matplotlib 3.11.2, pyarrow (prep only), pillow (prep only)
+torch
+numpy
+scipy
+matplotlib
+pyarrow
+pillow

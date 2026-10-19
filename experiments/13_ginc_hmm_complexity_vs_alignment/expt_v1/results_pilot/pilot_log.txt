@@ -1,0 +1,77 @@
+10-18-2026 17:10:37 0 runs done, 8 to run, budget 1000000000s
+10-18-2026 17:26:41 done 13909_hmm_n008_p1_0.40 963.9s train 3327 tok/s (1/8, 964s)
+10-18-2026 17:26:54 done 13909_hmm_n004_p1_0.40 977.1s train 3292 tok/s (2/8, 977s)
+10-18-2026 17:27:07 done 13909_hmm_n004_p1_0.05 989.7s train 3408 tok/s (3/8, 990s)
+10-18-2026 17:27:07 done 13909_hmm_n008_p1_0.05 989.6s train 3411 tok/s (4/8, 990s)
+10-18-2026 17:38:56 done 13909_hmm_n016_p1_0.40 721.6s train 4386 tok/s (5/8, 1699s)
+10-18-2026 17:39:04 done 13909_hmm_n032_p1_0.40 717.6s train 4484 tok/s (6/8, 1708s)
+10-18-2026 17:39:07 done 13909_hmm_n016_p1_0.05 745.7s train 4357 tok/s (7/8, 1710s)
+10-18-2026 17:39:17 done 13909_hmm_n032_p1_0.05 730.0s train 4572 tok/s (8/8, 1720s)
+10-18-2026 17:39:17 {
+ "seed": 13909,
+ "runs": 8,
+ "missing": [],
+ "wall_seconds": 1719.9926335811615,
+ "train_tokens_per_second_per_worker": {
+  "median": 3884.2764370559435,
+  "min": 3292.235624213112,
+  "max": 4572.187253874027
+ },
+ "eval_seconds_per_checkpoint": 37.1161,
+ "projected_hours_primary": 7.501915732730266,
+ "projected_hours_fallback": 4.575760088587356,
+ "projected_seconds_per_run_primary": 843.965519932155,
+ "projected_seconds_per_run_fallback": 514.7730099660776,
+ "use_fallback": true,
+ "T_checkpoints": [
+  65536,
+  131072,
+  262144,
+  524288,
+  1048576
+ ],
+ "largest_fit_T": 524288,
+ "hard_pilot": "hmm_n032_p1",
+ "hard_learn_bits_at_largest_fit_T_alpha0_4": 1.0930452741744556,
+ "eps_star_rule_fires": true,
+ "epsilon_star": 1.1,
+ "eval_se_excess_all": {
+  "median": 0.004833995790272168,
+  "max": 0.009489466008952566
+ },
+ "diverged": []
+}
+10-18-2026 17:39:17 {
+ "seed": 13909,
+ "runs": 8,
+ "missing": [],
+ "wall_seconds": 1719.9926335811615,
+ "train_tokens_per_second_per_worker": {
+  "median": 3884.2764370559435,
+  "min": 3292.235624213112,
+  "max": 4572.187253874027
+ },
+ "eval_seconds_per_checkpoint": 37.1161,
+ "projected_hours_primary": 7.501915732730266,
+ "projected_hours_fallback": 4.575760088587356,
+ "projected_seconds_per_run_primary": 843.965519932155,
+ "projected_seconds_per_run_fallback": 514.7730099660776,
+ "use_fallback": true,
+ "T_checkpoints": [
+  65536,
+  131072,
+  262144,
+  524288,
+  1048576
+ ],
+ "largest_fit_T": 524288,
+ "hard_pilot": "hmm_n032_p1",
+ "hard_learn_bits_at_largest_fit_T_alpha0_4": 1.0930452741744556,
+ "eps_star_rule_fires": true,
+ "epsilon_star": 1.1,
+ "eval_se_excess_all": {
+  "median": 0.004833995790272168,
+  "max": 0.009489466008952566
+ },
+ "diverged": []
+}

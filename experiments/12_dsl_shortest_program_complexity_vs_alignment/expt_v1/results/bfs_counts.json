@@ -1,0 +1,13 @@
+{
+ "level_counts": [
+  12,
+  112,
+  988,
+  8543,
+  73146,
+  622876
+ ],
+ "seconds": 17.8,
+ "peak_rss_gb": 2.055,
+ "from_cache": false
+}

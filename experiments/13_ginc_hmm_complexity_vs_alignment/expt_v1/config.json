@@ -1,0 +1,57 @@
+{
+ "shared": {
+  "q": 6, "successors_per_state": 3, "emissions_per_state": 4,
+  "doc_len": 128,
+  "alpha_grid": [0.05, 0.15, 0.4, 1.0], "heldout_alpha": 0.15,
+  "entropy_band_bits": 0.15, "entropy_band_fallback": 0.30,
+  "band_calibration_candidates": 64, "max_candidates_per_level": 1000,
+  "quick_entropy_seqs": 10, "entropy_seqs": 100, "entropy_seq_len": 10000, "entropy_burn_in": 100,
+  "slices": {"early": [1, 16], "middle": [17, 64], "late": [65, 128], "all": [1, 128]},
+  "task_sampling_seed": 20261013, "eval_seed": 20261020, "analysis_seed": 29101326,
+  "bootstrap_draws": 20000, "n_starts": 64,
+  "fit": {
+   "gamma_bounds": [0.001, 3.0], "gamma1_bounds": [-1.0, 1.0], "eta_bounds": [0.0, 3.0],
+   "kappa_bounds": [-3.0, 3.0], "beta_bounds": [0.001, 3.0],
+   "gamma_starts": [0.1, 0.3, 0.6, 1.2], "eta_starts": [0.25, 0.75, 1.25, 2.0],
+   "kappa_starts": [-0.5, 0.5, 1.0, 2.0], "gamma1_starts": [-0.15, -0.05, 0.0, 0.05],
+   "both_starts": [[0.0, 0.0], [1.0, 0.0], [0.0, -0.1], [1.0, -0.1]],
+   "independent_seed": 7
+  },
+  "eps_res": 0.015,
+  "rmse_reduction_threshold": 0.10, "bonferroni_alpha": 0.025,
+  "g3_ratio": 0.90, "g3_gamma1_band": 0.02, "g3b_reduction": 0.05, "g5_share": 0.5,
+  "g1_min_MK": 2.0,
+  "g6_ratio": 0.67, "g6_reverse_ratio": 1.5, "fallback_fail_share": 0.25,
+  "independent_fit_tol": 1e-4, "verify_tol_bits": 1e-9, "prime": 2305843009213693951,
+  "eps_curve": [0.01, 0.02, 0.05, 0.1, 0.2]
+ },
+ "small": {
+  "arm_index": 0,
+  "V": 64, "levels": [4, 8, 16, 32], "heldout_level": 16,
+  "targets_per_level": 2, "distractors_per_level": 2, "pilot_concepts_per_level": 1,
+  "model": {"n_layers": 3, "d_model": 96, "n_heads": 4, "d_mlp": 384, "vocab": 65, "max_positions": 128,
+            "expected_params": 354240, "expected_nonembedding": 335712},
+  "lr": 1e-3, "betas": [0.9, 0.95], "weight_decay": 0.1, "grad_clip": 1.0, "warmup_steps": 32,
+  "batch_docs": 8,
+  "T_checkpoints_primary": [131072, 262144, 524288, 1048576, 2097152],
+  "T_checkpoints_fallback": [65536, 131072, 262144, 524288, 1048576],
+  "fallback_if_projected_hours_above": 3.0,
+  "T_checkpoints": [65536, 131072, 262144, 524288, 1048576],
+  "seeds": [13101, 13202, 13303, 13404], "pilot_seed": 13909, "pilot_alphas": [0.05, 0.4],
+  "eval_docs_per_target": 512, "distractor_eval_docs": 64, "epsilon_star": 1.1,
+  "workers": 4, "threads": 1, "max_wall_seconds": 18000
+ },
+ "gpu": {
+  "arm_index": 1,
+  "V": 150, "levels": [8, 16, 32, 64, 128], "heldout_level": 32,
+  "targets_per_level": 2, "distractors_per_level": 2, "pilot_concepts_per_level": 1,
+  "sizes": {"S": [4, 256, 4], "M": [8, 512, 8], "L": [12, 768, 12]}, "vocab": 151,
+  "expected_params": [3230976, 25362944, 85270272], "expected_nonembedding": [3159552, 25220096, 85056000],
+  "lr": [1e-3, 6e-4, 3e-4], "warmup_steps": 200, "batch_docs": 128,
+  "T_checkpoints": [4194304, 16777216, 67108864, 268435456, 1073741824], "flop_cap": 3e17,
+  "seeds": [13101, 13202, 13303], "pilot_seed": 13919, "pilot_lr_multipliers": [0.5, 1, 2], "pilot_T": 67108864,
+  "eval_docs_per_target": 2048, "epsilon_star": 0.02, "n_shards": 360, "data_workers": 8,
+  "lr_selected": null
+ },
+ "gpu_torch_version": "2.14.1"
+}

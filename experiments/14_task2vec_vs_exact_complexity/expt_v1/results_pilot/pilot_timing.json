@@ -1,0 +1,80 @@
+{
+ "seed": 14909,
+ "timings": {
+  "dfa": {
+   "probe_pretrain_seconds": 197.582,
+   "probe_job_seconds": 565.216,
+   "all_estimators_per_task_seconds": 77.78658610582352,
+   "e0_only_per_task_seconds": 17.73548448085785,
+   "e3_batch_seconds": 4.274791479110718,
+   "n_batches_timed": 24
+  },
+  "dsl": {
+   "probe_pretrain_seconds": 142.753,
+   "probe_job_seconds": 209.437,
+   "all_estimators_per_task_seconds": 130.62191626429558,
+   "e0_only_per_task_seconds": 34.99277889728546,
+   "e3_batch_seconds": 2.214546869198481,
+   "n_batches_timed": 24
+  }
+ },
+ "wall_probe_stage": 587.7,
+ "wall_embed_and_diversity": 556.9,
+ "work_counts": {
+  "dfa": {
+   "embedded_tasks": 96,
+   "noise_embeddings_per_probe": 32,
+   "all_estimator_task_embeddings": 384,
+   "e0_only_task_embeddings": 608,
+   "interleaved_mixes": 104,
+   "single_task_mixes": 40,
+   "batch_embeddings": 7008,
+   "probes_pretrained": 4,
+   "random_init_probes": 1
+  },
+  "dsl": {
+   "embedded_tasks": 120,
+   "noise_embeddings_per_probe": 40,
+   "all_estimator_task_embeddings": 480,
+   "e0_only_task_embeddings": 760,
+   "interleaved_mixes": 130,
+   "single_task_mixes": 50,
+   "batch_embeddings": 8736,
+   "probes_pretrained": 4,
+   "random_init_probes": 1
+  }
+ },
+ "projection_12_batches": {
+  "core_seconds": {
+   "dfa": {
+    "probes": 2320.864,
+    "embeddings": 40653.2236289978,
+    "diversity": 29957.73868560791
+   },
+   "dsl": {
+    "probes": 897.748,
+    "embeddings": 89293.03176879883,
+    "diversity": 19346.281449317932
+   }
+  },
+  "projected_wall_hours": 12.921
+ },
+ "projection_8_batches": {
+  "core_seconds": {
+   "dfa": {
+    "probes": 2320.864,
+    "embeddings": 40653.2236289978,
+    "diversity": 19971.825790405273
+   },
+   "dsl": {
+    "probes": 897.748,
+    "embeddings": 89293.03176879883,
+    "diversity": 12897.520966211954
+   }
+  },
+  "projected_wall_hours": 11.78
+ },
+ "threshold_hours": 2.5,
+ "decision": "fallback: cut diversity batches to 8",
+ "note": "timings measured on 4 worker processes running at once (projection = core seconds / 4 + 0.25 h for analysis and verification)"
+}

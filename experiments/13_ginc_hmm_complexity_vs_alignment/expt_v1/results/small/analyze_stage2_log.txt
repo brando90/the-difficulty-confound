@@ -1,0 +1,15 @@
+/var/lib/agent/scratch/at343/repo/experiments/13_ginc_hmm_complexity_vs_alignment/expt_v1/laws.py:71: RuntimeWarning: overflow encountered in power
+  return X['eid'] + 2.0 ** (th[0] + shape(law, th, X))
+/home/agent/.venvs/tdc/lib/python3.12/site-packages/scipy/optimize/_numdiff.py:710: RuntimeWarning: invalid value encountered in subtract
+  df = [f_eval - f0 for f_eval in f_evals]
+independent fit AGREE
+G1 SUPPORTED
+G2 SUPPORTED
+G3a NOT_ESTABLISHED
+G3b NOT_ESTABLISHED
+G4 NOT_ESTABLISHED
+G5 SUPPORTED
+
+real	0m25.742s
+user	1m14.723s
+sys	0m0.213s

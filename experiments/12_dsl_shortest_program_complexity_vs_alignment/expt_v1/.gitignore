@@ -1,0 +1,8 @@
+results/checkpoints/
+results_pilot/checkpoints/
+results/bfs_cache.npz
+results_pilot/bfs_cache.npz
+*.tar
+__pycache__/
+.pytest_cache/
+*.tmp

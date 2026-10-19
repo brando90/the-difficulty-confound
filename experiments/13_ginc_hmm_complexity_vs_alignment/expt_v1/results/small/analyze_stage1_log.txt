@@ -1,0 +1,37 @@
+stage1 primary seed 13101 done
+stage1 primary seed 13202 done
+stage1 primary seed 13303 done
+stage1 primary seed 13404 done
+stage1 no_offset seed 13101 done
+stage1 no_offset seed 13202 done
+stage1 no_offset seed 13303 done
+stage1 no_offset seed 13404 done
+stage1 K_n seed 13101 done
+stage1 K_n seed 13202 done
+stage1 K_n seed 13303 done
+stage1 K_n seed 13404 done
+stage1 K_canonical seed 13101 done
+stage1 K_canonical seed 13202 done
+stage1 K_canonical seed 13303 done
+stage1 K_canonical seed 13404 done
+{
+ "forecasts_sha256": "3dad89e9b0f65e0dd2afcdbf4dfd220eec96516df2f1513a9e87eaf090466ed7",
+ "seeds": [
+  13101,
+  13202,
+  13303,
+  13404
+ ],
+ "T0": 65536,
+ "Tmax": 1048576,
+ "g2_K_law": "M_K_coef",
+ "g2_fit_rmse": {
+  "M_K_coef": 0.5743601291921351,
+  "M_K_exp": 0.9144074717035128
+ },
+ "eps_res": 0.015
+}
+
+real	0m38.317s
+user	0m36.146s
+sys	0m0.359s
