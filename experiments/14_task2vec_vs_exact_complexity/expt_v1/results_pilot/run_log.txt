@@ -1,0 +1,113 @@
+10-19-2026 07:34:44 tasks14.json written (16.7s)
+10-19-2026 07:34:44 0 of 2 jobs already done; 2 to run
+10-19-2026 07:38:34 done probe_dsl_14909 209.4s (1 this run)
+10-19-2026 07:44:27 done probe_dfa_14909 565.2s (2 this run)
+10-19-2026 07:44:32 0 of 28 jobs already done; 28 to run
+10-19-2026 07:46:47 done emb_dfa_14909_main_00 104.5s (1 this run)
+10-19-2026 07:46:50 done emb_dfa_14909_main_01 105.5s (2 this run)
+10-19-2026 07:46:52 done emb_dfa_14909_main_03 104.6s (3 this run)
+10-19-2026 07:47:00 done emb_dfa_14909_main_02 114.9s (4 this run)
+10-19-2026 07:47:34 done emb_dfa_14909_main_04 47.0s (5 this run)
+10-19-2026 07:47:41 done emb_dfa_14909_main_05 50.7s (6 this run)
+10-19-2026 07:47:42 done emb_dfa_14909_main_06 49.4s (7 this run)
+10-19-2026 07:47:45 done emb_dfa_14909_main_07 45.7s (8 this run)
+10-19-2026 07:47:49 done emb_dfa_14909_rescaled_00 15.1s (9 this run)
+10-19-2026 07:47:58 done emb_dfa_14909_rescaled_01 17.4s (10 this run)
+10-19-2026 07:48:00 done emb_dfa_14909_rescaled_02 18.1s (11 this run)
+10-19-2026 07:48:06 done emb_dfa_14909_rescaled_03 20.4s (12 this run)
+10-19-2026 07:49:57 done emb_dsl_14909_main_00 128.0s (13 this run)
+10-19-2026 07:50:27 done emb_dsl_14909_main_02 147.1s (14 this run)
+10-19-2026 07:50:27 done emb_dsl_14909_main_01 149.0s (15 this run)
+10-19-2026 07:50:33 done emb_dsl_14909_main_03 147.3s (16 this run)
+10-19-2026 07:51:56 done emb_dsl_14909_main_04 118.6s (17 this run)
+10-19-2026 07:52:22 done emb_dsl_14909_main_06 115.2s (18 this run)
+10-19-2026 07:52:29 done emb_dsl_14909_rescaled_00 33.5s (19 this run)
+10-19-2026 07:52:29 done emb_dsl_14909_main_05 122.7s (20 this run)
+10-19-2026 07:52:30 done emb_dsl_14909_main_07 117.2s (21 this run)
+10-19-2026 07:52:57 done emb_dsl_14909_rescaled_01 34.7s (22 this run)
+10-19-2026 07:53:05 done emb_dsl_14909_rescaled_02 35.4s (23 this run)
+10-19-2026 07:53:06 done emb_dsl_14909_rescaled_03 36.4s (24 this run)
+10-19-2026 07:53:31 done div_dsl_14909_00 26.5s (25 this run)
+10-19-2026 07:53:33 done div_dfa_14909_00 62.7s (26 this run)
+10-19-2026 07:53:34 done div_dsl_14909_01 28.3s (27 this run)
+10-19-2026 07:53:40 done div_dfa_14909_01 43.3s (28 this run)
+10-19-2026 07:53:50 {
+ "seed": 14909,
+ "timings": {
+  "dfa": {
+   "probe_pretrain_seconds": 197.582,
+   "probe_job_seconds": 565.216,
+   "all_estimators_per_task_seconds": 77.78658610582352,
+   "e0_only_per_task_seconds": 17.73548448085785,
+   "e3_batch_seconds": 4.274791479110718,
+   "n_batches_timed": 24
+  },
+  "dsl": {
+   "probe_pretrain_seconds": 142.753,
+   "probe_job_seconds": 209.437,
+   "all_estimators_per_task_seconds": 130.62191626429558,
+   "e0_only_per_task_seconds": 34.99277889728546,
+   "e3_batch_seconds": 2.214546869198481,
+   "n_batches_timed": 24
+  }
+ },
+ "wall_probe_stage": 587.7,
+ "wall_embed_and_diversity": 556.9,
+ "work_counts": {
+  "dfa": {
+   "embedded_tasks": 96,
+   "noise_embeddings_per_probe": 32,
+   "all_estimator_task_embeddings": 384,
+   "e0_only_task_embeddings": 608,
+   "interleaved_mixes": 104,
+   "single_task_mixes": 40,
+   "batch_embeddings": 7008,
+   "probes_pretrained": 4,
+   "random_init_probes": 1
+  },
+  "dsl": {
+   "embedded_tasks": 120,
+   "noise_embeddings_per_probe": 40,
+   "all_estimator_task_embeddings": 480,
+   "e0_only_task_embeddings": 760,
+   "interleaved_mixes": 130,
+   "single_task_mixes": 50,
+   "batch_embeddings": 8736,
+   "probes_pretrained": 4,
+   "random_init_probes": 1
+  }
+ },
+ "projection_12_batches": {
+  "core_seconds": {
+   "dfa": {
+    "probes": 2320.864,
+    "embeddings": 40653.2236289978,
+    "diversity": 29957.73868560791
+   },
+   "dsl": {
+    "probes": 897.748,
+    "embeddings": 89293.03176879883,
+    "diversity": 19346.281449317932
+   }
+  },
+  "projected_wall_hours": 12.921
+ },
+ "projection_8_batches": {
+  "core_seconds": {
+   "dfa": {
+    "probes": 2320.864,
+    "embeddings": 40653.2236289978,
+    "diversity": 19971.825790405273
+   },
+   "dsl": {
+    "probes": 897.748,
+    "embeddings": 89293.03176879883,
+    "diversity": 12897.520966211954
+   }
+  },
+  "projected_wall_hours": 11.78
+ },
+ "threshold_hours": 2.5,
+ "decision": "fallback: cut diversity batches to 8",
+ "note": "timings measured on 4 worker processes running at once (projection = core seconds / 4 + 0.25 h for analysis and verification)"
+}

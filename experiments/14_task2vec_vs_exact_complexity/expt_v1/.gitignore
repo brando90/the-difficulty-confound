@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+*.tmp
+# per-job part files: merged into embeddings.npz and batch_embeddings/ (hashes in ARTIFACT_SHA256.json)
+results*/parts/
+results*/verify/
+results*/bfs_cache.npz
+results_fake/

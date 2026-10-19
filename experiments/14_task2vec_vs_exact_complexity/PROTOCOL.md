@@ -2,7 +2,7 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/14_task2vec_vs_exact_complexity/PROTOCOL.md>
 
-Status: DRAFT design, 10-18-2026, from Brando Miranda's complexity-versus-alignment idea. The running agent may revise it, then must freeze it in its own commit before any gated run; after the freeze nothing in Sections 2–5 changes.
+Status: FROZEN 10-19-2026, before any gated run (timing pilot disclosed in Section 2.8; the pre-declared fallback fired, so diversity coefficients use 8 batches). Drafted 10-18-2026 from Brando Miranda's complexity-versus-alignment idea. After the freeze nothing in Sections 2–5 changes; deviations are logged in CKPT_task2vec_complexity.md.
 
 Program overview: [complexity versus alignment, Experiments 11–16](../ideas/complexity_vs_alignment/README.md). What Task2Vec does and does not prove about Kolmogorov complexity is in the research note [TASK2VEC_KOLMOGOROV.md](../ideas/complexity_vs_alignment/TASK2VEC_KOLMOGOROV.md); this protocol does not repeat that argument, it tests its predictions.
 
@@ -51,13 +51,13 @@ All new tasks are drawn with the Experiment 11/12 generator, imported, at the sa
 | **Tasks embedded** (targets + distractors + fresh) | **96** | **120** |
 | Label-noise arm: first 4 fresh tasks per level × noise rates $\{0.10, 0.25\}$ | 32 | 40 |
 
-Every embedded task uses a fixed set of 2,048 examples: the first 2,048 of its training file under a fixed permutation (seed 20261014), or 2,048 freshly sampled examples for new tasks, from the same input sampler. Fixing the count matters because the Task2Vec norm depends on the number of samples (Task2Vec Sect. 3.1).
+Every embedded task uses a fixed set of 2,048 examples: the first 2,048 of its training file under a fixed permutation (seed 20261014), or 2,048 freshly sampled examples for new tasks, from the same input sampler. The DSL family has only 512 training inputs per task (Experiment 12), so its 2,048 examples are 4 passes over those 512 inputs in a fixed order, as produced by Experiment 12's `data.example_stream`; this is the same for every DSL task, so the count stays fixed. Fixing the count matters because the Task2Vec norm depends on the number of samples (Task2Vec Sect. 3.1).
 
 ### 2.3 Probe networks
 
 - **Architecture.** Exactly the Experiment 11 model for the DFA family and the Experiment 12 model for the DSL family (2 transformer blocks, width 64; about 0.1 M parameters with a 4× feed-forward layer; the exact count is read from the imported model and recorded). One permitted change: if the source model ties its input embedding to its output layer, the probe unties them, so that the output layer is a separate "head" module that Task2Vec can retrain while the feature extractor stays fixed.
 - **Task token and the null token.** Every Experiment 11/12 example carries a task token. Task2Vec must not see it, or the embedding is a lookup of the task identity. We add one reserved null token. During pretraining, each example keeps its task token with probability 0.5 and gets the null token otherwise ("task dropout"), so the probe learns a meaningful null-token pathway. Every embedding in this experiment uses the null token. This mirrors real data, where GPT-2 is not told which task a batch comes from.
-- **Pretraining.** The Experiment 11 (or 12) optimizer, learning-rate schedule and batch size; $2^{16} = 65{,}536$ fresh examples drawn uniformly over that family's probe-pretraining tasks (one pass, no repeats); then frozen.
+- **Pretraining.** The Experiment 11 (or 12) optimizer, learning-rate schedule and batch size; $2^{16} = 65{,}536$ fresh examples drawn uniformly over that family's probe-pretraining tasks (one pass, no repeats, for the DFA family; for the DSL family the 80 probe tasks have only 40,960 distinct training pairs, so this is about 1.6 passes over them, disclosed in the report); then frozen.
 - **Seeds.** Four probes per family, seeds 14101, 14202, 14303, 14404, so every result averages over probes. Four, not eight: the bootstrap's main unit here is the task (96 or 120 per family), and each extra probe adds about 25 minutes of embedding. One extra randomly initialized, untrained probe per family (seed 14505) is a probe-swap control, as in the diversity paper's Appendix H.
 - **Recorded:** each probe's held-out accuracy and loss per pretraining task with the task token and with the null token.
 
@@ -82,14 +82,14 @@ Head fitting may run on cached final hidden states. That is exact because the fe
 
 ### 2.5 Diversity coefficient
 
-- **Definition (diversity paper, Sect. 2.2, implemented as `get_diversity_coefficient`).** Draw 12 batches of 512 examples from the dataset, embed each batch with E3 under the same probe, and average $d_{\text{sym}}$ over the 66 unordered pairs. The paper used 200 batches (and the code defaults to 600); 12 is what a 4-core CPU affords. The bootstrap interval over batch pairs is reported for every coefficient.
+- **Definition (diversity paper, Sect. 2.2, implemented as `get_diversity_coefficient`).** Draw 12 batches of 512 examples from the dataset, embed each batch with E3 under the same probe, and average $d_{\text{sym}}$ over the 66 unordered pairs (after the pre-declared fallback, Section 2.8: 8 batches and 28 pairs). The paper used 200 batches (and the code defaults to 600); 12 is what a 4-core CPU affords. The bootstrap interval over batch pairs is reported for every coefficient.
 - **Interleaved batches (primary).** Each batch is an i.i.d. draw from the mix: pick a task by its share, then a uniformly random example of that task. This is the paper's interleaved-mixture protocol (Appendix I.6). Sequences from all tasks share a batch.
 - **Single-task batches (secondary).** Pick a task by its share, then fill the whole batch from it. This is the paper's concatenated-dataset protocol (Appendix I.4). Here theory predicts $\widehat{\mathrm{div}} \approx \sum_{j \ne k} \pi_j \pi_k\, d_{\text{sym}}(F_j, F_k)$ plus a within-task noise floor. That sum is Rao's quadratic entropy $Q$ of the mix under task embeddings, computed from the E3 task embeddings.
 - **Mixes scored.**
   - All Experiment 11/12 training mixes: 16 DFA targets × 4 $\alpha$ = 64, and 20 DSL targets × 4 $\alpha$ = 80, with shares from `mixes.json`. Shares are identical across training seeds, so one mix per (target, $\alpha$).
   - **Coverage mixes**, built only for this measurement (no training): $m \in \{1, 2, 4, 8, 16\}$ fresh tasks from a single $K$ level, uniform shares, 2 replicate draws per ($K$, $m$); DFA 4 × 5 × 2 = 40, DSL 5 × 5 × 2 = 50. At $m = 16$ both replicates use all 16 fresh tasks of that level and differ only in batch sampling. Coverage mixes cross entropy $H = \log_2 m$ with $K$ by construction. In the Experiment 11/12 mixes, $H$ is a function of $\alpha$ alone.
   - **Reference bounds (diversity paper, Sect. 2.4):** a lower-bound dataset in which every position is one fixed non-special token, and an upper-bound dataset of uniformly random tokens over the family vocabulary (task tokens excluded). Computed per family and probe.
-- Interleaved: 234 mixes × 4 probes × 12 batches. Single-task: 90 coverage mixes × 4 probes × 12 batches.
+- Interleaved: 234 mixes × 4 probes × 12 batches. Single-task: 90 coverage mixes × 4 probes × 12 batches. (8 batches each after the fallback, Section 2.8.)
 
 ### 2.6 Covariates and outcomes per task
 
@@ -113,6 +113,23 @@ From `tasks.json`: $K$, $K_{\text{bits}}$, acceptance rate or output-bit balance
 | Parameterization | Function-preserving rescaling check (Section 3). |
 | Input distribution | One sampler per family, so the total-variation distance between task input distributions is 0 by construction (checked). |
 | Train/test overlap | Only training examples are embedded; test files are never read except by Experiment 11/12 metrics. |
+
+### 2.8 Pilot disclosure (10-19-2026, before the freeze)
+
+**Timing pilot.** `run.py --pilot`, seed 14909, both families, 07:34–07:54 (19.5 min wall): one trained probe per family; 8 embedded tasks per family (evenly spaced in the K-sorted list) with all four estimators; 4 of them with E0 on the rescaled probe; two interleaved diversity coefficients per family (the first Experiment 11/12 training mix and the m = 16 coverage mix of the first level) at 12 batches. Per-unit times measured with 4 workers running at once: DFA 77.8 s per all-estimator task, 17.7 s per E0-only task, 4.27 s per E3 batch, 198 s probe pretraining; DSL 130.6 s, 35.0 s, 2.21 s, 143 s. Projection (core seconds / 4 + 0.25 h): **12.9 h at 12 batches, 11.8 h at 8 batches**.
+
+**Decision.** The projection exceeds 2.5 h, so the pre-declared fallback applies: `diversity_batches` = 8 (28 pairs per coefficient) in `config.json`. Nothing else changes.
+
+**Context for the timing.** The box was shared: other jobs, not visible to this run, kept the load average at 7–10 during the pilot and the CPU 95% busy after it ended. The pilot's processes received 683 CPU-seconds in 19.5 minutes, roughly a quarter of the 4 cores, so the per-unit times are several times the uncontended rate (development benchmarks on a free CPU: DFA 7 s, 3.6 s, 0.83 s; DSL 19 s, 6.7 s, 0.5 s, which project to about 2.1–2.4 h at 12 batches, close to the threshold). The rule is applied as written to the measured pilot. At the measured contended speed even 8 batches exceed the 4 h cap; the run proceeds in chunks of at most 60 minutes, and if the cap is reached first it stops and the report states what is missing, without extrapolation. The Section 7 per-unit estimates (about 1 s per task embedding) were optimistic: E2 needs 5 sampled labels for each of 2,048 examples, and E0/E1 differentiate the full feature extractor for 156 batches.
+
+**Implementation choices made before the freeze (no results seen).**
+- E0 and E1 use the same class-balanced draws and batches (E1 swaps in the true labels), so their difference isolates the label source.
+- The rescaled probe reuses the original probe's draws and head-fit seed, so the rescaling check measures the parameterization alone.
+- Diversity batches depend only on (task-sampling seed, family, mix, batch kind), so every probe sees the same batches.
+- Gradients are exact but computed with `torch.func`: per-example gradients of the 2-way score with `vmap(grad)` for DFA (right-padded chunks of 128 read at each string's last position, exact because the model is causal), and one forward plus `vjp` per batch, vmapped over cotangent sets, for DSL. Batch gradients are combined from per-example rows with float32 sparse products; squares and sums are float64. A unit test checks E0–E3 against direct autograd for both families (relative difference below 1e-5).
+- Only `weight` tensors are differentiated: biases are dropped by the aggregation (Section 2.4), so their gradients are never needed.
+- The DSL family's 2,048 examples per task are 4 passes over its 512 training inputs (Section 2.2).
+- Job order in the full run: all-estimator embeddings, then diversity, then E0-only embeddings (label noise first, then rescaled and random-init probes).
 
 ## 3. Measurements
 
@@ -210,7 +227,7 @@ Under `experiments/14_task2vec_vs_exact_complexity/expt_v1/results/`:
 - The probe is tiny and trained on the same task family. A GPT-2 probe on text differs in scale, tokenization and pretraining; the handoff below exists because passing here is necessary, not sufficient.
 - E0 follows the reference `montecarlo` estimator; the Task2Vec paper's variational ("robust") Fisher and the β = 1 variational code length discussed in the research note are not computed here (cost). They are natural follow-ups if Gates 1–2 are borderline.
 - $T^\star$ is known before the freeze (see Section 1); only the predictors are prospective.
-- Twelve batches per diversity coefficient is far below the paper's 200. The intervals report the resulting noise; small differences between mixes should not be over-read.
+- Eight batches per diversity coefficient (12 planned; the pre-declared fallback fired, Section 2.8) is far below the paper's 200. The intervals report the resulting noise; small differences between mixes should not be over-read.
 
 ### Handoff to real data
 

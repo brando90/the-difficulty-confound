@@ -1,0 +1,62 @@
+{
+  "experiment": "14_task2vec_vs_exact_complexity",
+  "probe_seeds": [14101, 14202, 14303, 14404],
+  "random_init_seed": 14505,
+  "pilot_seed": 14909,
+  "task_sampling_seed": 20261014,
+  "analysis_seed": 29101426,
+  "bootstrap_draws": 20000,
+  "bootstrap_chunk": 250,
+
+  "examples_per_task": 2048,
+  "probe_pretrain_examples": 65536,
+  "task_dropout": 0.5,
+  "diversity_batches": 8,
+  "diversity_batch_size": 512,
+  "coverage_m": [1, 2, 4, 8, 16],
+  "coverage_replicates": 2,
+  "noise_rates": [0.10, 0.25],
+  "noise_tasks_per_level": 4,
+
+  "dfa": {"probe_per_quartile": 4, "fresh_per_quartile": 4, "candidates_per_level": 64,
+          "n_probe_tokens": 64, "lower_bound_length": 16},
+  "dsl": {"n_probe_tokens": 80},
+
+  "estimators": {
+    "E0": {"head_optimizer": "adam", "head_lr": 0.0004, "head_weight_decay": 0.0001, "head_epochs": 10,
+           "draws_per_epoch": 10000, "batch_size": 64, "fisher_labels": "sampled", "sampler": "class_balanced"},
+    "E1": {"head_optimizer": "adam", "head_lr": 0.0004, "head_weight_decay": 0.0001, "head_epochs": 10,
+           "draws_per_epoch": 10000, "batch_size": 64, "fisher_labels": "true", "sampler": "class_balanced"},
+    "E2": {"head_optimizer": "adam", "head_lr": 0.0004, "head_weight_decay": 0.0001, "head_epochs": 10,
+           "draws_per_epoch": 10000, "batch_size": 64, "fisher_labels": "sampled", "draws_per_example": 5,
+           "per_example_chunk": 256},
+    "E3": {"head_optimizer": "adamw", "head_lr": 5e-05, "head_eps": 1e-08, "head_weight_decay": 0.0001,
+           "head_epochs": 5, "batch_size": 8, "fisher_labels": "sampled", "sampler": "sequential"}
+  },
+  "log_floor": 1e-12,
+  "cosine_eps": 1e-08,
+
+  "gates": {
+    "g1_min_rho": 0.50, "g1_lb_above": 0.20,
+    "g2_min_partial": 0.30, "g2_lb_above": 0.0,
+    "g3_min_rho": 0.50, "g3_lb_above": 0.0,
+    "g4_min_rho_H": 0.70, "g4_rho_H_lb_above": 0.50, "g4_min_gap": 0.30, "g4_gap_lb_above": 0.0,
+    "g5_min_ratio": 1.20, "g5_lb_above": 1.00
+  },
+  "handoff": {"min_kendall_w": 0.80, "min_rescaled_rho": 0.90},
+
+  "workers": 4,
+  "threads": 1,
+  "max_wall_seconds": 14400,
+  "fallback_projection_hours": 2.5,
+  "fallback_diversity_batches": 8,
+  "verify_sample_fraction": 0.10,
+  "verify_sample_seed": 14707,
+  "verify_rel_tol": 1e-06,
+  "stats_tol": 1e-10,
+
+  "exp11_dir": "../../11_dfa_exact_complexity_vs_alignment/expt_v1",
+  "exp12_dir": "../../12_dsl_shortest_program_complexity_vs_alignment/expt_v1",
+  "exp11_sources": ["config.json", "dfa.py", "data.py", "model.py"],
+  "exp12_sources": ["config.json", "dsl.py", "data.py", "model.py"]
+}
