@@ -2,7 +2,15 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/gpu/README.md>
 
-Status: three pre-registered plans, written 10-18-2026, ready to dispatch, not run. The code passed a CPU smoke test (toy data, tiny random Qwen2 model, data prep, training and every evaluation; the base, poetry, web-only and repeated-hard paths are not yet smoke-tested, see `CKPT.md`) and a planted-effect test (fake runs with known answers, recovered by all three analyses and confirmed by `verify.py`). Nothing here has touched a GPU yet: the pilot is the first GPU check.
+Status: three pre-registered plans, written 10-18-2026, ready to dispatch, not run. Tests done and gaps: Section "Checks and gaps".
+
+- **g1 hard-to-easy:** does training only on Putnam-style olympiad maths also cover GSM8K, or does each end need its own data? Easy-only, hard-only, mixed, web and repeated-hard arms at matched tokens. Pilot ~1.6 A100-hours, main ~10.4.
+- **g2 cross-domain:** does hard maths buy any poetry? Adds a poetry-only arm and measures how much of its gain on unseen poems hard maths transfers (predicted ≤ 10%, and no more than easy maths). Pilot ~0.4, main ~8.4.
+- **g3 LLM elasticity:** three maths difficulty levels × target share 0.03–1 (rest web text), fitting Exp 13's ratio E = e_α/e_K on a real model (E > 1: alignment dominates; E < 1: complexity does, as Exp 13-small's 0.80). Pilot ~0.3, main ~15.8.
+
+**Cost, all three together (they share runs):** pilot ~2 A100-hours, main ~24 (49 runs), 1.5B scale ~70. Run the pilot on Sherlock and the main tier on SNAP (skampere1/2) or NAIRR.
+
+**Order:** freeze commit → data prep → pilot → learning-rate disclosure commit → seed-0 first look (optional) → main → analysis and `verify.py` → scale. Exact commands: Section "Dispatch".
 
 ## The three plans
 
@@ -27,7 +35,7 @@ All three fine-tune Qwen2.5-0.5B (Apache-2.0) for 40.0M tokens per run with seed
 
 Costs are `python3 common/runs.py cost --tier <tier> --plans g1,g2,g3`: A100-80GB hours at 35% model FLOPs utilisation for training, plus a measured rule of thumb for generation. Wall-clock is cost divided by the number of GPUs, plus about 20 minutes of queue and start-up per job. The pilot measures real throughput; scale the later tiers by it.
 
-**With single-digit Sherlock hours:** run the pilot (~2 h) on Sherlock, then the seed-0 first look of g1 alone (`PLANS=g1 SEEDS=0`, ~3.6 h) if hours remain. Run the main tier on SNAP (skampere1/2/3, 8 GPUs, ~3 h) or on the NAIRR allocation. Each plan also has a pilot of its own (g1 ~1.6 h, g2 ~0.4 h, g3 ~0.3 h) via `PLANS=gN`.
+**With single-digit Sherlock hours:** run the pilot (~2 h) on Sherlock, then the seed-0 first look of g1 alone (`PLANS=g1 SEEDS=0`, ~3.6 h) if hours remain. Run the main tier on SNAP (skampere1/2) or on the NAIRR allocation. Each plan also has a pilot of its own (g1 ~1.6 h, g2 ~0.4 h, g3 ~0.3 h) via `PLANS=gN`.
 
 ## Order (do not skip a step)
 
@@ -84,7 +92,7 @@ Each array task trains one run of the registry (1 GPU, 8 CPUs, 64 GB, 4 h limit;
 There is no Slurm partition for this group on SNAP; the launcher runs on one GPU node you are logged in to, inside tmux, one worker per free GPU (at least 30 GB free).
 
 ```bash
-# log in once to skampere1 (or 2/3; mercury1/2 only for the 0.5B tiers). Never retry a failed login in a loop.
+# log in once to skampere1 (or skampere2; mercury1/2 only for the 0.5B tiers). Never retry a failed login in a loop.
 mkdir -p /dfs/scratch0/$USER/tdc_gpu && cd /dfs/scratch0/$USER/tdc_gpu
 git clone https://github.com/brando90/the-difficulty-confound.git && cd the-difficulty-confound
 git checkout --detach <sha>
@@ -132,8 +140,15 @@ Each `analyze.py` writes `results_<tier>/results.json`, `RESULTS_draft.md` and i
 
 Licences: Qwen2.5 models Apache-2.0; NuminaMath-CoT Apache-2.0; FineWeb-Edu ODC-By 1.0; Gutenberg Poetry Corpus CC0; GSM8K, MATH-500 and HellaSwag MIT.
 
+## Checks and gaps
+
+- **Planted-effect test** (`common/smoke_test.sh` stage 3): fake runs with known answers; all three analyses recover them and `verify.py` prints `VERIFY PASS` for g1, g2 and g3.
+- **CPU smoke test** (tiny random Qwen2 model, toy data): data prep, training and every evaluation passed for one-, two- and three-pool mixtures.
+- **Not yet smoke-tested on CPU:** the base-model evaluation, the poetry pool, the web-only arm and the repeated-hard pool. The GPU pilot exercises all four; `common/smoke_test.sh` stage 2 runs them on any free CPU. Details in `CKPT.md`.
+- **Nothing has run on a GPU.** Costs are estimates at 35% utilisation; the pilot measures real throughput.
+
 ## Relation to the CPU experiments
 
-The synthetic counterparts run on CPU: Exp 13-small measured the within-family elasticity ratio (E = 0.80), and Exp 17 (AT-437) has hard-to-easy and disjoint-support arms on HMM concepts. g1 and g2 are the real-model versions of those arms, and g3 is the real-model version of Exp 13's ratio. Where a synthetic and a GPU result disagree, the report says so; neither overrides the other.
+The synthetic counterparts run on CPU: Exp 13-small measured the within-family elasticity ratio (E = 0.80), and Exp 17 has hard-to-easy and disjoint-support arms on HMM concepts. g1 and g2 are the real-model versions of those arms, and g3 is the real-model version of Exp 13's ratio. Where a synthetic and a GPU result disagree, the report says so; neither overrides the other.
 
 **TLDR-end:** [tdc: GPU plans] Three pre-registered, dispatch-ready GPU plans on Qwen2.5-0.5B/1.5B (hard-to-easy Putnam-style→GSM8K, cross-domain maths→poetry, and the LLM counterpart of Exp 13's elasticity ratio) sharing one run registry: pilot ~2 A100-hours, main ~24 for all three, with Sherlock and SNAP launchers, analysis scripts and independent verification, tested on CPU and on planted fake runs.

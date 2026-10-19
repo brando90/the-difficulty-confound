@@ -8,7 +8,7 @@ Status: pre-registered plan, written 10-18-2026, not run. Same freeze rule as g1
 
 Brando, 10-18-2026: *"if we overtrain on say putnam questions, it shouldn't really be able to do poetry…or something? even if putnam is considered 'harder'"*
 
-This is the strong form of the alignment hypothesis: when the target sits outside the training support, no amount of "harder" data should buy it. Exp 13-small tested only the weak form (alignment varied within one concept family, every target reachable) and found that alignment does not dominate (elasticity ratio 0.80). Exp 17's disjoint-support arm (AT-437) is the synthetic version of this question; g2 is the real-model version.
+This is the strong form of the alignment hypothesis: when the target sits outside the training support, no amount of "harder" data should buy it. Exp 13-small tested only the weak form (alignment varied within one concept family, every target reachable) and found that alignment does not dominate (elasticity ratio 0.80). Exp 17's disjoint-support arm is the synthetic version of this question; g2 is the real-model version.
 
 ## 2. Prediction (written before any run) and what would falsify it
 

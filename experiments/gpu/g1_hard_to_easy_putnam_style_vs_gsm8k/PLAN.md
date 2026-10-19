@@ -10,7 +10,7 @@ Brando, 10-18-2026: *"if we overtrain on putnam … you probably can't do gsm8k 
 
 If difficulty were a ladder (a total order), training only on the hardest problems would also cover the easy ones: hard-only data would match easy-only data on GSM8K (Grade School Math 8K) and beat it on hard problems. The alternative is that the two ends need different skills (one-shot constructions versus reliable multi-step arithmetic bookkeeping), so each end is best served by its own data, and heavy hard-only training may even cost the easy end.
 
-The synthetic counterpart (Exp 17's hard-to-easy arm on CPU, AT-437) asks the same question on HMM concepts. Exp 13-small already found that, within one concept family, alignment does not dominate complexity (elasticity ratio 0.80). g1 is the real-model test of the hard-to-easy question.
+The synthetic counterpart (Exp 17's hard-to-easy arm on CPU) asks the same question on HMM concepts. Exp 13-small already found that, within one concept family, alignment does not dominate complexity (elasticity ratio 0.80). g1 is the real-model test of the hard-to-easy question.
 
 ## 2. Prediction (written before any run) and what would falsify it
 
@@ -75,7 +75,7 @@ Cost is `runs.py cost`: A100-80GB hours at 35% model FLOPs utilisation for train
 | **main** (0.5B, 3 seeds, 40M tokens) | 16 | **~10.4** | ~2 h on 8 GPUs | **yes** |
 | scale (1.5B, 3 seeds) | 16 | ~31 | ~5 h on 8 GPUs | yes, as a replication at 3× parameters |
 
-With single-digit Sherlock hours, run the pilot and the seed-0 look on Sherlock and the main tier on SNAP (skampere1/2/3) or on the NAIRR allocation once it lands.
+With single-digit Sherlock hours, run the pilot and the seed-0 look on Sherlock and the main tier on SNAP (skampere1/2) or on the NAIRR allocation once it lands.
 
 ## 6. Dispatch
 

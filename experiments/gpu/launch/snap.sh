@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# GPU plans g1-g3 on ONE SNAP GPU node (skampere1/2/3, or mercury1/2 for the 0.5B tiers only): one worker per free
+# GPU plans g1-g3 on ONE SNAP GPU node (skampere1/2, or mercury1/2 for the 0.5B tiers only): one worker per free
 # GPU in the tmux session tdc_gpu, each taking registry indices round-robin. Run it ON the node after logging in once
 # (never retry a failed login in a loop: whale bans IPs). It never opens SSH itself.
 #
