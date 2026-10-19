@@ -18,7 +18,23 @@
 | [experiments/archive/10_autoregressive_transformer_replication/](archive/10_autoregressive_transformer_replication/) | Autoregressive causal transformer architecture replication; token-by-token generation across 200 checkpoints | COMPLETE; **width 32 reversal and remediation replicated** (11.77 pp gap, 94.52% recovery, +0.23 pp retention); ceiling saturation at widths 64–384 (>99.8% to 100.0%, loss < 0.005 bits); prospective gates NOT_ESTABLISHED under frozen criteria |
 | [experiments/archive/11_transformer_calibrated_pretraining_horizon/](archive/11_transformer_calibrated_pretraining_horizon/) | Calibrated pretraining horizon ($T_{\text{pre}}=300$ updates) for causal autoregressive transformers; 200 checkpoints $\times$ 5 widths | COMPLETE; **pure compositional reversal SUPPORTED** (**15.67 [12.13, 19.10] pp** at $q=.10$ vs **15.70 [12.89, 18.17] pp** at $q=.90$ across all 5 widths); **prequential online MDL predictive law SUPPORTED** (**18.84% [5.88, 34.16]** RMSE reduction); remediation recovers **201.55%** of gap with **+15.94 pp** retention; conditional loss law not established (0.99% reduction) |
 
-**Designed, not yet run:** Experiments 11–16 cross exactly computable task complexity with hand-set data alignment (deterministic finite automata, domain-specific-language programs, GINC-style hidden Markov models, a Task2Vec bridge, alignment recovery, crossed carry arithmetic); see the [complexity-versus-alignment overview](ideas/complexity_vs_alignment/README.md).
+## Complexity-versus-alignment series (top-level `experiments/11_*` to `19_*`)
+
+**Numbering note.** These folders were numbered in parallel with `archive/10_autoregressive_transformer_replication/` and `archive/11_transformer_calibrated_pretraining_horizon/` (PRs #13, #15), so two different studies carry the number 11. They are separate series and nothing overlaps on disk: the archive studies live under `archive/`, this series lives at the top level of `experiments/`. In this series' own files and commit messages, "Experiment 11" means `11_dfa_exact_complexity_vs_alignment/`, not `archive/11_transformer_calibrated_pretraining_horizon/`. The folders keep their names because runs in progress write to these paths.
+
+These experiments cross exactly computable task complexity with hand-set data alignment; see the [complexity-versus-alignment overview](ideas/complexity_vs_alignment/README.md).
+
+| Folder | Study | State |
+|---|---|---|
+| [11_dfa_exact_complexity_vs_alignment/](11_dfa_exact_complexity_vs_alignment/) | Deterministic finite automata, exact complexity vs alignment (LSTM arm on CPU) | Results: 512/512 gated runs, all gates NOT_ESTABLISHED |
+| [12_dsl_shortest_program_complexity_vs_alignment/](12_dsl_shortest_program_complexity_vs_alignment/) | Domain-specific-language programs, shortest-program complexity | Results: G1 NOT_ESTABLISHED, G4 and G7 SUPPORTED |
+| [13_ginc_hmm_complexity_vs_alignment/](13_ginc_hmm_complexity_vs_alignment/) | GINC-style hidden Markov models | Results (13-small): G1, G2, G5 SUPPORTED, G3 unresolved, G4 NOT_ESTABLISHED |
+| [14_task2vec_vs_exact_complexity/](14_task2vec_vs_exact_complexity/) | Task2Vec versus exact complexity | Protocol frozen; run in progress |
+| [15_alignment_alpha_recovery/](15_alignment_alpha_recovery/) | Alignment recovery | Designed, not yet run |
+| [16_carry_alignment_crossed_arithmetic/](16_carry_alignment_crossed_arithmetic/) | Crossed carry arithmetic | Designed, not yet run |
+| [17_ginc_disjoint_support_and_hard_to_easy/](17_ginc_disjoint_support_and_hard_to_easy/) | Hard-to-easy (Putnam vs GSM8K) and disjoint support on GINC-style HMMs | Results: 96-run grid; 17b protocol (coverage-matched easy pools) frozen |
+| [18_vision_cnn_complexity_vs_alignment/](18_vision_cnn_complexity_vs_alignment/) | Small CNNs on MNIST-family and CIFAR-10 | Protocol frozen; grid running on Sherlock CPU |
+| [19_dfa_transformer_gpu_converged/](19_dfa_transformer_gpu_converged/) | Experiment 11's DFA grid with a transformer trained to convergence on one Sherlock GPU | Protocol frozen; run finished, write-up pending |
 
 **GPU plans, ready to dispatch, not yet run:** hard-to-easy (Putnam-style maths → GSM8K), cross-domain (maths → poetry) and the real-model counterpart of Exp 13's elasticity ratio, on Qwen2.5-0.5B/1.5B with Sherlock and SNAP launchers; see [experiments/gpu/](gpu/README.md).
 
