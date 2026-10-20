@@ -1,6 +1,6 @@
 """Experiment 22 checks (PROTOCOL Section 5).
 
-  python verify.py --stage remote   # on Sherlock, in the post job (GPU): data hashes, every run present, two replays,
+  python verify.py --stage remote   # on the cluster, in the post job (GPU): data hashes, every run present, two replays,
                                     # structure + analysis recomputed, results/MANIFEST.sha256 written
   python verify.py --stage local    # here, after fetching results/: manifest, analysis recomputed (1e-9),
                                     # structure recomputed (tolerance), RESULTS.md numbers match analysis.json
@@ -14,7 +14,7 @@ import analyze as AN
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPLAYS = [('txt_real', 0), ('vis_real', 0)]  # (phase, index in its run list): the first cell of each arm
-REPLAY_TOL = 0.03   # accuracy; GPU kernels in fp16 are not bit-reproducible across devices
+REPLAY_TOL = 0.03   # accuracy; GPU kernels in reduced precision are not bit-reproducible across devices
 STRUCT_TOL = 1e-4
 fails = []
 
@@ -101,7 +101,7 @@ def local(results, results_md):
     an = AN.analyze(results)
     saved = json.load(open(os.path.join(results, 'analysis.json')))
     an = json.loads(json.dumps(an))  # same types as the saved file (tuples -> lists)
-    check('analysis recomputed (within 1e-9; numpy/scipy versions differ from Sherlock)', close(an, saved, 1e-9))
+    check('analysis recomputed (within 1e-9; numpy/scipy versions differ from the cluster)', close(an, saved, 1e-9))
     try:
         import structure as ST
         st = ST.compute(results)

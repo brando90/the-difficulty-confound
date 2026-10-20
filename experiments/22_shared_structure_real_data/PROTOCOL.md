@@ -54,7 +54,7 @@ These are measurements, not models under study; the logistic regressions in the 
 
 - **Vision: ViT**, 4×4 patches (64 tokens + [CLS]), width 192, depth 6, 3 heads, MLP 768, pre-LayerNorm, learned positions, no dropout (2.7 M parameters). Random 32×32 crops from 4-pixel zero padding and horizontal flips. AdamW (β 0.9, 0.999), weight decay 0.05 on weight matrices only, peak learning rate 1e-3, 5 warmup epochs then cosine to 0, 100 epochs, batch 256, label smoothing 0.1, gradient clipping 1.0. Validation every 5 epochs.
 - **Text: word-level transformer encoder**, vocabulary = the 20,000 most frequent words (document frequency ≥ 2) of **the run's own training documents** (so a never-seen subgroup's words that occur nowhere else are unknown tokens, as they would be to a model that never saw them), [CLS] + the first 255 tokens, width 256, depth 4, 4 heads, MLP 1024, dropout 0.1, pre-LayerNorm, learned positions (8.3 M parameters, 5.1 M of them the embedding table). AdamW, weight decay 0.05, peak learning rate 5e-4, 1 warmup epoch then cosine, 30 epochs, batch 64, gradient clipping 1.0. Validation every epoch.
-- Initialization depends on the seed alone, so all runs with one seed start from the same weights within an arm. fp16 autocast with loss scaling on GPU; deterministic algorithms requested (GPU results are still not bit-reproducible across devices; Section 5 uses a tolerance).
+- Initialization depends on the seed alone, so all runs with one seed start from the same weights within an arm. fp16 autocast with loss scaling on GPU; deterministic algorithms requested (GPU results are still not bit-reproducible across devices; Section 5 uses a tolerance). *(Amendment 1: bf16 autocast without loss scaling on the FarmShare L40S.)*
 
 ### 2.7 Grid and seeds
 
@@ -86,11 +86,13 @@ What would count against H_B: shuffled-map transfer clearly above 0 (models hand
 
 ## 5. Verification (`expt_v1/verify.py`)
 
-- `--stage remote` (Sherlock post job, on a GPU): prepared data hash to `data_sha256.json`; every run of every frozen run list present and no `.error` file; two replays from scratch (the first text cell and the first vision cell) agree with the originals within 0.03 in in-distribution and held-out accuracy; structure and analysis recomputed; `results/MANIFEST.sha256` written.
+- `--stage remote` (Sherlock post job, on a GPU): prepared data hash to `data_sha256.json`; every run of every frozen run list present and no `.error` file; two replays from scratch (the first text cell and the first vision cell) agree with the originals within 0.03 in in-distribution and held-out accuracy; structure and analysis recomputed; `results/MANIFEST.sha256` written. *(Amendment 1: this runs in the FarmShare post job.)*
 - `--stage local` (here, after the fetch): every file matches the manifest; `analysis.json` recomputed from the run files within 1e-9 (numpy and scipy versions differ between Sherlock and here); structure recomputed from local data within 1e-4; every verdict and the two p = 0 means in `RESULTS.md` match `analysis.json`.
 - `expt_v1/test_splits.py`: maps are partitions with the right sizes, the real CIFAR-100 map equals the dataset's superclasses, the budget is exactly N at every p, no held-out class in validation, n_h = round(p × held-out items), validation and N do not depend on p or seed.
 
 ## 6. Compute
+
+*Superseded before any run by Amendment 1 (Section 9): the grid runs on FarmShare L40S GPUs, not Sherlock. The paragraph below is the text frozen at a0a31d7a.*
 
 Sherlock only (Brando, 10-20-2026: nothing billed through Rylan; transformers only; V100s allowed). `launch/submit_exp22.sh` from `$SCRATCH/exp22`: a foreground `srun -p dev` builds the wheel-only venv `$SCRATCH/exp22_venv` (python 3.12.1, torch 2.6.0 with bundled CUDA 12.4, numpy 2.2.6, scipy 1.16.3, scikit-learn 1.7.2, pillow, pyarrow), downloads the raw data and checks every hash and the split tests; only then one GPU array per phase goes to `-p gpu` with `-C GPU_GEN:VLT` (V100-class; `GPU_CON=` allows any GPU if the Volta queue stalls, a deviation to be logged), one array task per run, Slurm mail END,FAIL to brandojazz@gmail.com and brando.science@gmail.com; a post job (after every array ends) runs `verify.py --stage remote` and writes `$SCRATCH/exp22/exp22_results.tgz`. Estimated cost: vision ≈ 10–20 GPU-minutes per run on a V100, text ≈ 3–5, about 25 GPU-hours in all. CPU was ruled out: the pilot's tiny depth-1 ViT trained at about 20 images/s per core.
 
@@ -111,4 +113,15 @@ Changes the pilot forced (code only, before the freeze): the 20 Newsgroups archi
 
 ## 9. Deviations
 
-None yet.
+### Amendment 1 (10-20-2026, before any Experiment 22 run on any cluster): platform moved from Sherlock to FarmShare
+
+Why: on 10-20-2026 Brando opened Stanford FarmShare for this work, and the run was routed there (09:17 and 09:44 that day) before anything was submitted. No Experiment 22 job has run on Sherlock or FarmShare; nothing beyond the CPU code-path pilot of Section 7 had been seen.
+
+What changes (compute and precision only):
+- **Cluster**: FarmShare instead of Sherlock. Submission from the FarmShare JupyterLab terminal (a compute node); `launch/submit_exp22.sh` with the experiment checked out at the frozen commit (git clone) or unpacked from the package.
+- **Prep**: an `sbatch --wait` job on `-p normal` (FarmShare has no `dev` partition) builds the venv `~/venvs/exp22` from `~/venvs/fs_hf/requirements.lock.txt` (torch 2.13.0 with CUDA 13 wheels) plus scikit-learn, scipy, pyarrow and pillow constrained to that lock (the exact versions are written to `logs/exp22_venv_freeze.txt`), downloads the raw data to `~/exp22/raw`, prepares it in `~/exp22/data` (FarmShare has no `/scratch`), and checks every hash in `data_sha256.json` and the split tests. Nothing else is submitted unless it passes.
+- **GPUs**: one array of all 155 runs (`runs_all.txt` = the five frozen run lists in Section 2.7's order) on `-p gpu --qos=gpu --gres=gpu:1` (NVIDIA L40S), throttled `%4` so at most 4 GPUs run at once (FarmShare's per-user limit), 3 h wall time per run (under the 2-day cap). The post job (one GPU) runs after the array ends and writes `~/exp22/exp22_results.tgz`. Slurm mail END,FAIL to brandojazz@gmail.com and brando.science@gmail.com on every job.
+- **Precision**: bf16 autocast without loss scaling (the L40S supports bf16), instead of fp16 with loss scaling (Section 2.6). The code falls back to fp16 with loss scaling on a GPU without bf16; each run records its precision (`amp`). The Section 5 replay tolerance (0.03) is unchanged.
+- **Cost estimate**: about 10–20 GPU-hours on L40S (vision ≈ 5–10 min per run, text ≈ 2–4), roughly 4–6 hours of wall time with 4 GPUs, plus queue time. This replaces the 25 V100 GPU-hour estimate of Section 6.
+
+Unchanged: the question, data and hashes, maps, splits, p dial, outcome, structure and complexity measures, models and every other hyperparameter, the grid and seeds (`launch/runs/` is byte-identical to a0a31d7a), P1–P3 and their thresholds, the analysis and the verification checks (Sections 2–5).

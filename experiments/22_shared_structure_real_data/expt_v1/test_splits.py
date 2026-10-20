@@ -1,4 +1,4 @@
-"""Checks of the maps, held-out members and the p dial (run in the Sherlock prep step and before the freeze)."""
+"""Checks of the maps, held-out members and the p dial (run in the cluster prep job and before the freeze)."""
 import json, os
 import numpy as np
 import data as D

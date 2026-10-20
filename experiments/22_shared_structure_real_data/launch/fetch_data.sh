@@ -1,6 +1,6 @@
 #!/bin/bash
 # Download the raw files of Experiment 22 into $EXP22_RAW (hashes are checked by expt_v1/prep.py).
-# Usage: EXP22_RAW=$SCRATCH/exp22_raw bash launch/fetch_data.sh
+# Usage: EXP22_RAW=$HOME/exp22/raw bash launch/fetch_data.sh
 set -euo pipefail
 RAW=${EXP22_RAW:?set EXP22_RAW}
 mkdir -p "$RAW"

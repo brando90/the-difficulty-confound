@@ -47,6 +47,17 @@ def device():
     return torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
+def amp_dtype(dev):
+    """bf16 autocast where the GPU supports it (FarmShare L40S), else fp16 with loss scaling; CPU runs in fp32."""
+    if dev.type != 'cuda':
+        return None
+    return torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
+
+
+def autocast(dev):
+    return torch.autocast('cuda', dtype=amp_dtype(dev) or torch.float16, enabled=dev.type == 'cuda')
+
+
 def setup(seed):
     os.environ.setdefault('CUBLAS_WORKSPACE_CONFIG', ':4096:8')
     torch.use_deterministic_algorithms(True, warn_only=True)
@@ -103,7 +114,7 @@ def predict(model, X, dev, kind, bs=1024):
     out = []
     for i in range(0, X.shape[0], bs):
         xb = X[i:i + bs]
-        with torch.autocast('cuda', dtype=torch.float16, enabled=dev.type == 'cuda'):
+        with autocast(dev):
             lo = model(norm_images(xb) if kind == 'vision' else xb)
         out.append(lo.float().argmax(1).cpu())
     model.train()
@@ -111,11 +122,12 @@ def predict(model, X, dev, kind, bs=1024):
 
 
 def train_loop(model, Xtr, ytr, Xval, yval, hp, seed, dev, kind, extra_eval=None):
-    """Cosine schedule with warmup, AdamW, fp16 autocast on GPU. Keeps the weights of the epoch with the best
-    in-distribution validation accuracy (ties -> earlier epoch); held-out accuracy is only logged (extra_eval)."""
+    """Cosine schedule with warmup, AdamW, bf16 autocast on GPU (fp16 + loss scaling where bf16 is missing). Keeps
+    the weights of the epoch with the best in-distribution validation accuracy (ties -> earlier epoch); held-out
+    accuracy is only logged (extra_eval)."""
     model.to(dev).train()
     opt = make_opt(model, hp['lr'], hp['wd'])
-    scaler = torch.amp.GradScaler('cuda', enabled=dev.type == 'cuda')
+    scaler = torch.amp.GradScaler('cuda', enabled=amp_dtype(dev) == torch.float16)
     n = Xtr.shape[0]
     spe = max(1, math.ceil(n / hp['batch']))
     total, warm = hp['epochs'] * spe, hp['warmup_epochs'] * spe
@@ -134,7 +146,7 @@ def train_loop(model, Xtr, ytr, Xval, yval, hp, seed, dev, kind, extra_eval=None
                 xb = norm_images(augment(xb, gen, hp['crop_pad']))
             for g in opt.param_groups:
                 g['lr'] = lr_at(step, total, warm, hp['lr'])
-            with torch.autocast('cuda', dtype=torch.float16, enabled=dev.type == 'cuda'):
+            with autocast(dev):
                 loss = F.cross_entropy(model(xb).float(), ytr_d[idx], label_smoothing=hp['label_smoothing'])
             opt.zero_grad(set_to_none=True)
             scaler.scale(loss).backward()
@@ -312,7 +324,7 @@ def run_feat(s, pilot, dev, root):
             Xs = to_dev_images(c100[f'x_{split}'], dev)
             fs = []
             for i in range(0, Xs.shape[0], 1024):
-                with torch.autocast('cuda', dtype=torch.float16, enabled=dev.type == 'cuda'):
+                with autocast(dev):
                     fs.append(model.features(norm_images(Xs[i:i + 1024])).float().cpu())
             feats[split] = torch.cat(fs).numpy().astype(np.float32)
     fp = os.path.join(root, 'feat', 'cifar100_features_from_cifar10_vit.npz')
@@ -345,7 +357,7 @@ def run_one(s, pilot=False, root=None):
             f.write(traceback.format_exc())
         raise
     r.update({'pilot': pilot, 'wall_sec': round(time.time() - t0, 1), 'device': str(dev),
-              'gpu': torch.cuda.get_device_name(0) if dev.type == 'cuda' else None,
+              'gpu': torch.cuda.get_device_name(0) if dev.type == 'cuda' else None, 'amp': str(amp_dtype(dev)),
               'torch': torch.__version__, 'numpy': np.__version__, 'host': os.uname().nodename,
               'slurm_job': os.environ.get('SLURM_JOB_ID')})
     with open(op + '.tmp', 'w') as f:

@@ -1,6 +1,6 @@
 """Raw files -> prepared data in $EXP22_DATA, then check every hash against data_sha256.json (exit 1 on a mismatch).
 
-  python prep.py --raw <raw folder>            # build + check (what the Sherlock prep step runs)
+  python prep.py --raw <raw folder>            # build + check (what the cluster prep job runs)
   python prep.py --raw <raw folder> --write    # build + record the hashes (done once, before the freeze)"""
 import argparse, json, os, sys
 import data as D

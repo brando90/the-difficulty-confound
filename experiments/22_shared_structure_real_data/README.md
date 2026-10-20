@@ -11,6 +11,6 @@ of every held-out class is measured from inputs alone. Design, predictions P1–
 - `expt_v1/analyze.py` -> `results/analysis.json`; `expt_v1/report.py` prints the RESULTS tables
 - `expt_v1/verify.py --stage remote|local`; `expt_v1/test_splits.py`
 - `expt_v1/prep.py` + `data_sha256.json` — raw files -> prepared data, every hash pinned
-- `launch/submit_exp22.sh` — the whole grid on Sherlock (prep on dev, GPU arrays, post job); run lists in `launch/runs/`
+- `launch/submit_exp22.sh` — the whole grid on FarmShare (prep job, one GPU array of all 155 runs at most 4 at a time on L40S, post job); run lists in `launch/runs/`
 
 Local data: `EXP22_DATA=<folder> python expt_v1/prep.py --raw <raw folder>` (raw files: `launch/fetch_data.sh`).
