@@ -36,6 +36,7 @@ These experiments cross exactly computable task complexity with hand-set data al
 | [18_vision_cnn_complexity_vs_alignment/](18_vision_cnn_complexity_vs_alignment/) | Small CNNs on MNIST-family and CIFAR-10 | Protocol frozen; grid running on Sherlock CPU |
 | [19_dfa_transformer_gpu_converged/](19_dfa_transformer_gpu_converged/) | Experiment 11's DFA grid with a transformer trained to convergence on one Sherlock GPU | Results: trained 16x longer (1.06 GPU-h), not converged (n = 16, 32 stall); E 0.165 [0.160, 0.171] < 1; G1, G2, G3b SUPPORTED |
 | [20_dfa_lstm_complexity_vs_alignment/](20_dfa_lstm_complexity_vs_alignment/) | Experiment 11's DFA grid rerun with an LSTM that learns within budget | Results: 512/512 runs; G1 SUPPORTED (on seen $\alpha = 1$ data), G3b exponent and G6 alignment floor SUPPORTED prospectively; G2, G3a, G4 (E = 0.93), G5, G7 NOT_ESTABLISHED |
+| [22_shared_structure_real_data/](22_shared_structure_real_data/) | Brando's "no shared structure, no transfer" on real data: held-out CIFAR-100 fine classes (ViT) and 20 Newsgroups subgroups (text transformer), real vs shuffled class hierarchy, measured structure vs complexity, transformers from scratch | Protocol frozen; 155-run grid packaged for Sherlock GPUs (V100) |
 
 **GPU plans, ready to dispatch, not yet run:** hard-to-easy (Putnam-style maths → GSM8K), cross-domain (maths → poetry) and the real-model counterpart of Exp 13's elasticity ratio, on Qwen2.5-0.5B/1.5B with Sherlock and SNAP launchers; see [experiments/gpu/](gpu/README.md).
 
