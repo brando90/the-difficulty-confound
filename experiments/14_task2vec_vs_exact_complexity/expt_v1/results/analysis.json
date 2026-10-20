@@ -62,8 +62,24 @@
     }
    },
    "rescaled_E0": {
-    "not_run": true,
-    "reason": "inputs not computed: the run stopped at the wall cap"
+    "g1_rho": -0.36008595691115597,
+    "g1_ci": {
+     "lo": -0.5535033236963617,
+     "hi": -0.1530015376034117,
+     "n_undefined_draws": 0
+    },
+    "g2_partial": 0.01718440964579557,
+    "g2_ci": {
+     "lo": -0.20310801956280267,
+     "hi": 0.21577513719699293,
+     "n_undefined_draws": 0
+    },
+    "g3_rho": -0.40124990866450827,
+    "g3_ci": {
+     "lo": -0.6877303054053769,
+     "hi": 0.08432740427115679,
+     "n_undefined_draws": 405
+    }
    },
    "E0_L2": {
     "g1_rho": -0.3594135274864853,
@@ -146,8 +162,10 @@
     }
    },
    "random_init_E0": {
-    "not_run": true,
-    "reason": "inputs not computed: the run stopped at the wall cap"
+    "g1_rho": -0.053121924548984734,
+    "g2_partial": -0.04066883061590511,
+    "g3_rho": -0.021572575734650982,
+    "note": "one untrained probe: point estimates only"
    }
   },
   "probe_sensitivity": {
@@ -190,8 +208,16 @@
    }
   },
   "parameterization": {
-   "not_run": true,
-   "reason": "inputs not computed: the run stopped at the wall cap"
+   "spearman_khat_original_vs_rescaled": 0.9956185567010309,
+   "spearman_l1_original_vs_rescaled_by_probe": [
+    0.9951437873033098,
+    0.9927835051546392,
+    0.9975311991318503,
+    0.9928106348345089
+   ],
+   "g1_rho_rescaled": -0.36008595691115597,
+   "g1_rho_change": -0.0010086441370060206,
+   "median_l1_ratio_rescaled_over_original": 1.2817383047493136
   },
   "mechanism": {
    "rho_khat_head_loss": -0.9562262615301139,
@@ -227,31 +253,56 @@
   },
   "diversity": {
    "coverage_interleaved": {
-    "n": 0,
-    "rho_H": null,
-    "rho_K": null,
-    "rho_Q": null,
-    "div_range": null
+    "n": 40,
+    "rho_H": 0.23277427889604174,
+    "rho_K": 0.31380973191155415,
+    "rho_Q": 0.1357396738150054,
+    "div_range": [
+     0.026353104932971216,
+     0.036585588089161965
+    ]
    },
    "coverage_single": {
-    "n": 0,
-    "rho_H": null,
-    "rho_K": null,
-    "rho_Q": null,
-    "div_range": null
+    "n": 40,
+    "rho_H": 0.7289510312797097,
+    "rho_K": -0.3661113538968132,
+    "rho_Q": 0.9134404004053486,
+    "div_range": [
+     0.026867544886277427,
+     0.16188417567989216
+    ]
    },
    "exp_interleaved": {
-    "n": 0,
-    "rho_H": null,
-    "rho_K": null,
-    "rho_alpha": null,
-    "rho_Q": null
+    "n": 64,
+    "rho_H": 0.15129852391628923,
+    "rho_K": 0.16795064031559268,
+    "rho_alpha": -0.14828074550385661,
+    "rho_Q": 0.10473326439137716
    },
    "alpha1_slice": {
-    "n": 0,
-    "rho_div_K": null
+    "n": 16,
+    "rho_div_K": 0.46081768756903263
    },
-   "bounds": {},
+   "bounds": {
+    "lower": {
+     "div": 7.454354593911765e-16,
+     "by_probe": [
+      6.97854472621527e-16,
+      7.692259527760013e-16,
+      7.256100482371559e-16,
+      7.890513639300219e-16
+     ]
+    },
+    "upper": {
+     "div": 0.032915723135049965,
+     "by_probe": [
+      0.026984774504177012,
+      0.03645872711388425,
+      0.04037068738895982,
+      0.027848703533178774
+     ]
+    }
+   },
    "n_mixes_expected": {
     "coverage_interleaved": 40,
     "coverage_single": 40,
@@ -323,8 +374,24 @@
     }
    },
    "rescaled_E0": {
-    "not_run": true,
-    "reason": "inputs not computed: the run stopped at the wall cap"
+    "g1_rho": 0.19392467158278104,
+    "g1_ci": {
+     "lo": 0.013950973341053302,
+     "hi": 0.36101600599718603,
+     "n_undefined_draws": 0
+    },
+    "g2_partial": -0.06734529934546447,
+    "g2_ci": {
+     "lo": -0.27105987298838713,
+     "hi": 0.12658374933925498,
+     "n_undefined_draws": 0
+    },
+    "g3_rho": -0.5636525384706728,
+    "g3_ci": {
+     "lo": -0.8546496210501001,
+     "hi": -0.06921371018084421,
+     "n_undefined_draws": 0
+    }
    },
    "E0_L2": {
     "g1_rho": 0.18524909416986715,
@@ -407,8 +474,10 @@
     }
    },
    "random_init_E0": {
-    "not_run": true,
-    "reason": "inputs not computed: the run stopped at the wall cap"
+    "g1_rho": 0.11907655272626905,
+    "g2_partial": -0.015369370608373458,
+    "g3_rho": -0.7182024280513412,
+    "note": "one untrained probe: point estimates only"
    }
   },
   "probe_sensitivity": {
@@ -455,8 +524,16 @@
    }
   },
   "parameterization": {
-   "not_run": true,
-   "reason": "inputs not computed: the run stopped at the wall cap"
+   "spearman_khat_original_vs_rescaled": 0.9989721508438086,
+   "spearman_l1_original_vs_rescaled_by_probe": [
+    0.9982498784637822,
+    0.999124939231891,
+    0.9985415653864852,
+    0.9985832349468713
+   ],
+   "g1_rho_rescaled": 0.19392467158278104,
+   "g1_rho_change": 0.004082624664900669,
+   "median_l1_ratio_rescaled_over_original": 1.350350303725751
   },
   "mechanism": {
    "rho_khat_head_loss": -0.9610667407458852,
@@ -493,31 +570,56 @@
   },
   "diversity": {
    "coverage_interleaved": {
-    "n": 0,
-    "rho_H": null,
-    "rho_K": null,
-    "rho_Q": null,
-    "div_range": null
+    "n": 50,
+    "rho_H": -0.1283789408781066,
+    "rho_K": 0.1009391672553052,
+    "rho_Q": -0.16379115377611697,
+    "div_range": [
+     0.016682875159655157,
+     0.02131327991476976
+    ]
    },
    "coverage_single": {
-    "n": 0,
-    "rho_H": null,
-    "rho_K": null,
-    "rho_Q": null,
-    "div_range": null
+    "n": 50,
+    "rho_H": 0.6948142678059358,
+    "rho_K": 0.03429971702850177,
+    "rho_Q": 0.8917625519838926,
+    "div_range": [
+     0.016702243304605995,
+     0.0632965947698989
+    ]
    },
    "exp_interleaved": {
-    "n": 0,
-    "rho_H": null,
-    "rho_K": null,
-    "rho_alpha": null,
-    "rho_Q": null
+    "n": 80,
+    "rho_H": 0.1943338161971765,
+    "rho_K": -0.05550058813776723,
+    "rho_alpha": -0.20576831654500322,
+    "rho_Q": 0.043058442704535745
    },
    "alpha1_slice": {
-    "n": 0,
-    "rho_div_K": null
+    "n": 20,
+    "rho_div_K": -0.12262786789699316
    },
-   "bounds": {},
+   "bounds": {
+    "lower": {
+     "div": 0.012978667930729835,
+     "by_probe": [
+      0.010321529283730714,
+      0.014433338974124474,
+      0.012655410028582769,
+      0.01450439343648138
+     ]
+    },
+    "upper": {
+     "div": 0.017389715655085458,
+     "by_probe": [
+      0.017748833449954236,
+      0.017276624779682254,
+      0.01741243792420142,
+      0.017120966466503927
+     ]
+    }
+   },
    "n_mixes_expected": {
     "coverage_interleaved": 50,
     "coverage_single": 50,
