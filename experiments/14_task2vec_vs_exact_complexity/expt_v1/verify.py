@@ -22,6 +22,7 @@ os.environ.setdefault('MKL_NUM_THREADS', '1')
 import argparse
 import concurrent.futures as cf
 import csv
+import gc
 import json
 import math
 import multiprocessing as mp
@@ -99,7 +100,9 @@ def plan(c, out, roster):
             ests_of[g] = tuple(j['ests'])
             for e in j['ests']:
                 group_of[R.emb_key(j['fam'], tid, j['seed'], e, R.variant_name(j['variant'], rate))] = g
-    keys = sorted(group_of)
+    z = np.load(out / 'embeddings.npz', allow_pickle=False)
+    saved = {k for fam in T.FAMILIES for k in z[f'{fam}_keys'].tolist()}
+    keys = sorted(k for k in group_of if k in saved)      # a run stopped at the wall cap has a subset
     pick = rng.choice(len(keys), math.ceil(c['verify_sample_fraction'] * len(keys)), replace=False)
     sampled = {group_of[keys[i]] for i in pick}
     p0 = c['probe_seeds'][0]
@@ -108,18 +111,25 @@ def plan(c, out, roster):
     for fam in T.FAMILIES:
         gate |= {(fam, p0, 'main', t['task_id'], None) for t in T.embedded_tasks(roster, fam)}
         gate |= {(fam, p0, 'noise', t['task_id'], hi) for t in T.noise_tasks(c, roster, fam)}
+    gate = {g for g in gate if R.emb_key(g[0], g[3], g[1], 'E0', R.variant_name(g[2], g[4])) in saved}
     groups = sorted(sampled | gate, key=lambda g: (g[0], g[1], g[2], g[3], -1 if g[4] is None else g[4]))
     # batch embeddings
+    bsaved = set()
+    for fam in T.FAMILIES:
+        for s in c['probe_seeds']:
+            f = out / 'batch_embeddings' / f'{fam}_{s}.npz'
+            if f.exists():
+                bsaved |= set(np.load(f, allow_pickle=False)['keys'].tolist())
     bkeys = []
     for j in div:
         for mix_id, kind in j['items']:
             bkeys += [R.div_key(j['fam'], j['seed'], mix_id, kind, i) for i in range(j['n_batches'])]
-    bkeys = sorted(bkeys)
+    bkeys = sorted(k for k in bkeys if k in bsaved)
     bpick = {bkeys[i] for i in rng.choice(len(bkeys), math.ceil(c['verify_sample_fraction'] * len(bkeys)),
                                          replace=False)}
     for fam in T.FAMILIES:
         for m in T.coverage_mixes(c, roster, fam):
-            bpick |= {R.div_key(fam, p0, m['mix_id'], 'interleaved', i) for i in range(c['diversity_batches'])}
+            bpick |= {R.div_key(fam, p0, m['mix_id'], 'interleaved', i) for i in range(c['diversity_batches'])} & bsaved
     bgroups = {}
     for k in sorted(bpick):
         fam, seed, mix_id, kind, i = k.split('|')
@@ -212,11 +222,16 @@ def rel_diff(a, b):
 
 def compare_recomputed(c, out, jobs, log):
     z = np.load(out / 'embeddings.npz', allow_pickle=False)
-    saved = {k: i for i, k in enumerate(z['keys'].tolist())}
-    sf, shl = z['f'], z['head_loss']
+    saved = {}
+    for fam in T.FAMILIES:     # read each array once: z[name] re-reads the whole array on every access
+        F0, H0 = z[f'{fam}_f'], z[f'{fam}_head_loss']
+        for i, k in enumerate(z[f'{fam}_keys'].tolist()):
+            saved[k] = (F0[i], H0[i])
     bsaved = {}
     for fam in T.FAMILIES:
         for s in c['probe_seeds']:
+            if not (out / 'batch_embeddings' / f'{fam}_{s}.npz').exists():
+                continue
             b = np.load(out / 'batch_embeddings' / f'{fam}_{s}.npz', allow_pickle=False)
             for k, f, h in zip(b['keys'].tolist(), b['f'], b['head_loss']):
                 bsaved[k] = (f, h)
@@ -224,7 +239,7 @@ def compare_recomputed(c, out, jobs, log):
     for j in jobs:
         r = np.load(vpath(out, j), allow_pickle=False)
         for k, f, h in zip(r['keys'].tolist(), r['f'], r['head_loss']):
-            f0, h0 = (sf[saved[k]], shl[saved[k]]) if j['kind'] == 'vembed' else bsaved[k]
+            f0, h0 = saved[k] if j['kind'] == 'vembed' else bsaved[k]
             d = max(rel_diff(f, f0), rel_diff([h], [h0]))
             n += 1
             if d > worst:
@@ -379,6 +394,7 @@ def main():
             sys.exit(2)
         report['probe_max_abs_diff_bits'] = check_probes(c, out, roster, log)
         check_tasks(c, out, roster, log)
+        gc.collect()
         report['embeddings_checked'], report['embedding_max_rel_diff'] = compare_recomputed(c, out, jobs, log)
         report['stats'] = check_stats(c, out, log)
     except Fail as e:

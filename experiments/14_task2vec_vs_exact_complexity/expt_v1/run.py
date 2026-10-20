@@ -21,7 +21,6 @@ import concurrent.futures as cf
 import json
 import multiprocessing as mp
 import platform
-import socket
 import sys
 import time
 import traceback
@@ -62,7 +61,7 @@ def diversity_items(c, roster, fam):
     """(mix dict, kind) for every scored mix: interleaved for Experiment 11/12 and coverage mixes, single-task for
     coverage mixes, and the two reference bounds."""
     exp, cov = T.exp_mixes(c, roster, fam), T.coverage_mixes(c, roster, fam)
-    items = [(m, 'interleaved') for m in exp + cov] + [(m, 'single') for m in cov]
+    items = [(m, 'interleaved') for m in cov + exp] + [(m, 'single') for m in cov]   # Gate 4 mixes first
     items += [(dict(mix_id=f'{fam}_bound_{w}', kind='bound', which=w), 'bound') for w in ('lower', 'upper')]
     return items
 
@@ -364,24 +363,34 @@ def versions():
                 scipy=scipy.__version__)
 
 
-def merge(c, out, roster, log):
-    """Merge part files into embeddings.npz and batch_embeddings/<family>_<probe>.npz."""
+def merge(c, out, roster, log, partial=False):
+    """Merge part files into embeddings.npz and batch_embeddings/<family>_<probe>.npz. partial=True merges only the
+    finished jobs (a run stopped at the wall cap) and returns the ids of the missing ones."""
     probes, emb, div = all_jobs(c, roster)
-    keys, F_, hl, he, secs = [], [], [], [], []
-    for j in emb:
-        with np.load(part_path(out, j), allow_pickle=False) as z:
-            keys += z['keys'].tolist()
-            F_.append(z['f'])
-            hl.append(z['head_loss'])
-            he.append(z['head_error'])
-            secs.append(z['seconds'])
-    order = np.argsort(keys, kind='stable')
-    keys = np.array(keys)[order]
-    assert len(set(keys.tolist())) == len(keys)
-    _atomic_npz(out / 'embeddings.npz', keys=keys, f=np.concatenate(F_)[order],
-                head_loss=np.concatenate(hl)[order], head_error=np.concatenate(he)[order],
-                seconds=np.concatenate(secs)[order])
-    log(f'merged {len(keys)} task embeddings into embeddings.npz')
+    missing = [j['id'] for j in emb + div if not job_done(out, j)]
+    assert partial or not missing, missing
+    emb = [j for j in emb if job_done(out, j)]
+    div = [j for j in div if job_done(out, j)]
+    arrays = {}       # one set of arrays per family: the embedding dimension differs (DFA 1,564, DSL 1,566)
+    for fam in T.FAMILIES:
+        keys, F_, hl, he, secs = [], [], [], [], []
+        for j in emb:
+            if j['fam'] != fam:
+                continue
+            with np.load(part_path(out, j), allow_pickle=False) as z:
+                keys += z['keys'].tolist()
+                F_.append(z['f'])
+                hl.append(z['head_loss'])
+                he.append(z['head_error'])
+                secs.append(z['seconds'])
+        order = np.argsort(keys, kind='stable')
+        keys = np.array(keys)[order]
+        assert len(set(keys.tolist())) == len(keys)
+        arrays.update({f'{fam}_keys': keys, f'{fam}_f': np.concatenate(F_)[order],
+                       f'{fam}_head_loss': np.concatenate(hl)[order], f'{fam}_head_error': np.concatenate(he)[order],
+                       f'{fam}_seconds': np.concatenate(secs)[order]})
+        log(f'merged {len(keys)} {fam} task embeddings into embeddings.npz')
+    _atomic_npz(out / 'embeddings.npz', **arrays)
     by = {}
     for j in div:
         by.setdefault((j['fam'], j['seed']), []).append(j)
@@ -397,12 +406,13 @@ def merge(c, out, roster, log):
         _atomic_npz(out / 'batch_embeddings' / f'{fam}_{seed}.npz', keys=np.array(keys), f=np.concatenate(F_),
                     head_loss=np.concatenate(hl), head_error=np.concatenate(he), seconds=np.concatenate(secs))
         log(f'merged {len(keys)} batch embeddings into batch_embeddings/{fam}_{seed}.npz')
+    return missing
 
 
 def write_manifest(c, out, state, extra=None):
     mods = T.exp_modules(c)
     man = dict(experiment=c['experiment'], sources=source_hashes(), versions=versions(),
-               hostname=socket.gethostname(), workers=c['workers'], threads=c['threads'],
+               machine=f'{os.cpu_count()}-core CPU, no GPU', workers=c['workers'], threads=c['threads'],
                diversity_batches=c['diversity_batches'],
                upstream={fam: dict(dir=str(Path(os.path.relpath(m['dir'], HERE))), source_sha256=m['hashes'],
                                    manifest_sha256=T.sha256_file(m['dir'] / 'results' / 'manifest.json'),
@@ -530,6 +540,8 @@ def main():
     ap.add_argument('--resume', action='store_true')
     ap.add_argument('--budget-seconds', type=float, default=float('inf'))
     ap.add_argument('--stages', default='probes,embed,diversity')
+    ap.add_argument('--merge-partial', action='store_true',
+                    help='run no jobs: merge the finished parts of a run stopped at the wall cap')
     a = ap.parse_args()
     c = T.load_config()
     torch.set_num_threads(c['threads'])
@@ -550,7 +562,7 @@ def main():
     state = json.loads(st_path.read_text()) if st_path.exists() else dict(wall_seconds=0.0, invocations=[])
     t_start = time.time()
     left = c['max_wall_seconds'] - state['wall_seconds']
-    if left <= 0:
+    if left <= 0 and not a.merge_partial:
         log(f"wall cap max_wall_seconds={c['max_wall_seconds']} reached; stopping")
         return
     deadline = t_start + min(a.budget_seconds, left)
@@ -558,21 +570,26 @@ def main():
         f"budget {min(a.budget_seconds, left):.0f}s, sources {json.dumps(source_hashes())}")
     roster = prepare_tasks(c, out, log)
     probes, emb, div = all_jobs(c, roster)
-    stages = a.stages.split(',')
+    stages = [] if a.merge_partial else a.stages.split(',')
     pending = 0
     if 'probes' in stages:
         d, f, pending = run_pool(out, probes, c['workers'], log, deadline)
         if f:
             log(f'{f} probe jobs failed; stopping')
     if not pending and ('embed' in stages or 'diversity' in stages):
-        jobs = []
+        # gate inputs first (deviation 2, CKPT): all-estimator embeddings (Gates 1-3), label noise (Gate 5),
+        # diversity jobs holding interleaved coverage mixes (Gate 4); then other diversity, rescaled, random-init
+        def g4(j):
+            return any(k == 'interleaved' and '_cov_' in m for m, k in j['items'])
+        rank = []
         if 'embed' in stages:
-            jobs += [j for j in emb if j['variant'] == 'main' and len(j['ests']) == 4]
+            rank += [(0, j) for j in emb if j['variant'] == 'main' and len(j['ests']) == 4]
+            rank += [(1, j) for j in emb if j['variant'] == 'noise']
+            rank += [(4, j) for j in emb if j['variant'] == 'rescaled']
+            rank += [(5, j) for j in emb if j['variant'] == 'main' and len(j['ests']) == 1]
         if 'diversity' in stages:
-            jobs += div
-        if 'embed' in stages:      # E0-only: label noise (Gate 5) first, then rescaled and random-init probes
-            rest = [j for j in emb if not (j['variant'] == 'main' and len(j['ests']) == 4)]
-            jobs += sorted(rest, key=lambda j: dict(noise=0, rescaled=1, main=2)[j['variant']])
+            rank += [(2 if g4(j) else 3, j) for j in div]
+        jobs = [j for _, j in sorted(rank, key=lambda r: r[0])]
         d, f, pending = run_pool(out, jobs, c['workers'], log, deadline)
     dt = time.time() - t_start
     state['wall_seconds'] += dt
@@ -583,9 +600,13 @@ def main():
     if all_pending:
         log(f'stopped with {all_pending} jobs pending (cumulative wall {state["wall_seconds"]:.0f}s); '
             f'rerun with --resume')
+        if a.merge_partial or state['wall_seconds'] >= c['max_wall_seconds']:
+            missing = merge(c, out, roster, log, partial=True)
+            write_manifest(c, out, state, dict(complete=False, stopped_at_wall_cap=True, missing_jobs=missing))
+            log(f'wall cap reached: merged the finished jobs; {len(missing)} jobs missing (listed in manifest.json)')
         return
     merge(c, out, roster, log)
-    write_manifest(c, out, state)
+    write_manifest(c, out, state, dict(complete=True))
     log(f'all jobs done; cumulative wall {state["wall_seconds"]:.0f}s')
 
 

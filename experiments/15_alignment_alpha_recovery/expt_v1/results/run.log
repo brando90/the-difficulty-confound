@@ -1,0 +1,442 @@
+[10-19-2026 16:53:23] refs: dfa 512 mixes rebuilt, counts equal mixes.json: True
+[10-19-2026 16:54:01] refs: dsl 640 mixes rebuilt, counts equal mixes.json: True
+[10-19-2026 16:54:53] graded construction attempt 0: mean rho by r {1: 0.7226113597318395, 2: 0.4063491062581118, 4: 0.2772769991724646, 'all': 0.0627622709129854} -> PASS
+[10-19-2026 16:55:08] refs: done in 139 s; token-free {'dfa': True, 'dsl': True, 'graded': True}; disjoint {'dfa': True, 'dsl': True}
+[10-19-2026 16:55:08] graded: 0 done, 160 to run
+[10-19-2026 16:56:37] graded run 15101_dfa_n08_t2_m4 89.3 s
+[10-19-2026 16:56:37] graded run 15101_dfa_n08_t2_m3 89.3 s
+[10-19-2026 16:56:38] graded run 15101_dfa_n08_t2_m1 89.5 s
+[10-19-2026 16:56:39] graded run 15101_dfa_n08_t2_m2 90.9 s
+[10-19-2026 16:58:10] graded run 15101_dfa_n08_t2_m5 92.6 s
+[10-19-2026 16:58:11] graded run 15101_dfa_n08_t3_m1 93.6 s
+[10-19-2026 16:58:11] graded run 15101_dfa_n08_t3_m2 93.7 s
+[10-19-2026 16:58:18] graded run 15101_dfa_n08_t3_m3 98.7 s
+[10-19-2026 17:00:09] graded run 15101_dfa_n08_t3_m4 119.3 s
+[10-19-2026 17:00:13] graded run 15101_dfa_n16_t1_m1 122.0 s
+[10-19-2026 17:00:15] graded run 15101_dfa_n16_t1_m2 117.5 s
+[10-19-2026 17:00:16] graded run 15101_dfa_n08_t3_m5 124.6 s
+[10-19-2026 17:01:36] graded run 15101_dfa_n16_t1_m3 87.2 s
+[10-19-2026 17:01:41] graded run 15101_dfa_n16_t1_m5 86.1 s
+[10-19-2026 17:01:42] graded run 15101_dfa_n16_t1_m4 88.4 s
+[10-19-2026 17:01:43] graded run 15101_dfa_n16_t2_m1 86.9 s
+[10-19-2026 17:03:03] graded run 15101_dfa_n16_t2_m2 86.3 s
+[10-19-2026 17:03:05] graded run 15101_dfa_n16_t2_m4 83.3 s
+[10-19-2026 17:03:06] graded run 15101_dfa_n16_t2_m3 84.7 s
+[10-19-2026 17:03:07] graded run 15101_dfa_n16_t2_m5 84.7 s
+[10-19-2026 17:04:15] graded run 15202_dfa_n08_t2_m1 72.4 s
+[10-19-2026 17:04:18] graded run 15202_dfa_n08_t2_m4 70.8 s
+[10-19-2026 17:04:19] graded run 15202_dfa_n08_t2_m2 73.6 s
+[10-19-2026 17:04:19] graded run 15202_dfa_n08_t2_m3 72.9 s
+[10-19-2026 17:05:23] graded run 15202_dfa_n08_t2_m5 67.7 s
+[10-19-2026 17:05:28] graded run 15202_dfa_n08_t3_m1 70.0 s
+[10-19-2026 17:05:29] graded run 15202_dfa_n08_t3_m2 70.3 s
+[10-19-2026 17:05:30] graded run 15202_dfa_n08_t3_m3 71.1 s
+[10-19-2026 17:06:34] graded run 15202_dfa_n08_t3_m4 70.9 s
+[10-19-2026 17:06:42] graded run 15202_dfa_n08_t3_m5 73.8 s
+[10-19-2026 17:06:43] graded run 15202_dfa_n16_t1_m1 74.3 s
+[10-19-2026 17:06:45] graded run 15202_dfa_n16_t1_m2 74.7 s
+[10-19-2026 17:07:50] graded run 15202_dfa_n16_t1_m3 76.6 s
+[10-19-2026 17:07:57] graded run 15202_dfa_n16_t1_m4 74.7 s
+[10-19-2026 17:07:58] graded run 15202_dfa_n16_t1_m5 74.6 s
+[10-19-2026 17:08:00] graded run 15202_dfa_n16_t2_m1 74.8 s
+[10-19-2026 17:09:05] graded run 15202_dfa_n16_t2_m2 75.0 s
+[10-19-2026 17:09:20] graded run 15202_dfa_n16_t2_m3 83.6 s
+[10-19-2026 17:09:24] graded run 15202_dfa_n16_t2_m4 85.7 s
+[10-19-2026 17:09:34] graded run 15202_dfa_n16_t2_m5 94.1 s
+[10-19-2026 17:11:02] graded run 15303_dfa_n08_t2_m1 116.5 s
+[10-19-2026 17:11:08] graded run 15303_dfa_n08_t2_m3 104.3 s
+[10-19-2026 17:11:09] graded run 15303_dfa_n08_t2_m2 108.3 s
+[10-19-2026 17:11:17] graded run 15303_dfa_n08_t2_m4 103.7 s
+[10-19-2026 17:12:16] graded run 15303_dfa_n08_t2_m5 74.6 s
+[10-19-2026 17:12:20] graded run 15303_dfa_n08_t3_m1 72.5 s
+[10-19-2026 17:12:22] graded run 15303_dfa_n08_t3_m2 73.2 s
+[10-19-2026 17:12:30] graded run 15303_dfa_n08_t3_m3 72.1 s
+[10-19-2026 17:13:26] graded run 15303_dfa_n08_t3_m4 69.2 s
+[10-19-2026 17:13:33] graded run 15303_dfa_n08_t3_m5 72.2 s
+[10-19-2026 17:13:34] graded run 15303_dfa_n16_t1_m1 72.5 s
+[10-19-2026 17:13:44] graded run 15303_dfa_n16_t1_m2 74.0 s
+[10-19-2026 17:14:38] graded run 15303_dfa_n16_t1_m3 72.9 s
+[10-19-2026 17:14:45] graded run 15303_dfa_n16_t1_m5 70.4 s
+[10-19-2026 17:14:47] graded run 15303_dfa_n16_t1_m4 74.0 s
+[10-19-2026 17:14:54] graded run 15303_dfa_n16_t2_m1 70.9 s
+[10-19-2026 17:15:49] graded run 15303_dfa_n16_t2_m2 70.7 s
+[10-19-2026 17:15:59] graded run 15303_dfa_n16_t2_m3 74.5 s
+[10-19-2026 17:16:01] graded run 15303_dfa_n16_t2_m4 74.8 s
+[10-19-2026 17:16:09] graded run 15303_dfa_n16_t2_m5 74.6 s
+[10-19-2026 17:17:05] graded run 15404_dfa_n08_t2_m1 75.4 s
+[10-19-2026 17:17:10] graded run 15404_dfa_n08_t2_m2 70.4 s
+[10-19-2026 17:17:11] graded run 15404_dfa_n08_t2_m3 69.8 s
+[10-19-2026 17:17:18] graded run 15404_dfa_n08_t2_m4 69.1 s
+[10-19-2026 17:18:11] graded run 15404_dfa_n08_t2_m5 66.7 s
+[10-19-2026 17:18:16] graded run 15404_dfa_n08_t3_m1 66.8 s
+[10-19-2026 17:18:18] graded run 15404_dfa_n08_t3_m2 66.4 s
+[10-19-2026 17:18:27] graded run 15404_dfa_n08_t3_m3 68.5 s
+[10-19-2026 17:19:18] graded run 15404_dfa_n08_t3_m4 67.1 s
+[10-19-2026 17:19:25] graded run 15404_dfa_n16_t1_m1 66.9 s
+[10-19-2026 17:19:25] graded run 15404_dfa_n08_t3_m5 68.3 s
+[10-19-2026 17:19:36] graded run 15404_dfa_n16_t1_m2 69.5 s
+[10-19-2026 17:20:28] graded run 15404_dfa_n16_t1_m3 69.1 s
+[10-19-2026 17:20:34] graded run 15404_dfa_n16_t1_m4 69.1 s
+[10-19-2026 17:20:37] graded run 15404_dfa_n16_t1_m5 71.9 s
+[10-19-2026 17:20:49] graded run 15404_dfa_n16_t2_m1 72.6 s
+[10-19-2026 17:21:37] graded run 15404_dfa_n16_t2_m2 69.3 s
+[10-19-2026 17:21:42] graded run 15404_dfa_n16_t2_m3 68.7 s
+[10-19-2026 17:21:44] graded run 15404_dfa_n16_t2_m4 67.7 s
+[10-19-2026 17:21:58] graded run 15404_dfa_n16_t2_m5 68.7 s
+[10-19-2026 17:22:45] graded run 15505_dfa_n08_t2_m1 68.2 s
+[10-19-2026 17:22:49] graded run 15505_dfa_n08_t2_m2 66.8 s
+[10-19-2026 17:22:52] graded run 15505_dfa_n08_t2_m3 67.5 s
+[10-19-2026 17:23:05] graded run 15505_dfa_n08_t2_m4 67.6 s
+[10-19-2026 17:23:55] graded run 15505_dfa_n08_t2_m5 69.6 s
+[10-19-2026 17:23:57] graded run 15505_dfa_n08_t3_m1 68.3 s
+[10-19-2026 17:23:59] graded run 15505_dfa_n08_t3_m2 67.1 s
+[10-19-2026 17:24:12] graded run 15505_dfa_n08_t3_m3 67.1 s
+[10-19-2026 17:25:02] graded run 15505_dfa_n08_t3_m4 66.9 s
+[10-19-2026 17:25:04] graded run 15505_dfa_n08_t3_m5 66.9 s
+[10-19-2026 17:25:05] graded run 15505_dfa_n16_t1_m1 65.9 s
+[10-19-2026 17:25:18] graded run 15505_dfa_n16_t1_m2 66.1 s
+[10-19-2026 17:26:08] graded run 15505_dfa_n16_t1_m3 66.7 s
+[10-19-2026 17:26:11] graded run 15505_dfa_n16_t1_m4 66.4 s
+[10-19-2026 17:26:12] graded run 15505_dfa_n16_t1_m5 67.2 s
+[10-19-2026 17:26:26] graded run 15505_dfa_n16_t2_m1 67.8 s
+[10-19-2026 17:27:15] graded run 15505_dfa_n16_t2_m2 67.1 s
+[10-19-2026 17:27:19] graded run 15505_dfa_n16_t2_m4 66.9 s
+[10-19-2026 17:27:19] graded run 15505_dfa_n16_t2_m3 68.6 s
+[10-19-2026 17:27:36] graded run 15505_dfa_n16_t2_m5 69.6 s
+[10-19-2026 17:28:23] graded run 15606_dfa_n08_t2_m1 67.2 s
+[10-19-2026 17:28:26] graded run 15606_dfa_n08_t2_m2 67.5 s
+[10-19-2026 17:28:27] graded run 15606_dfa_n08_t2_m3 67.4 s
+[10-19-2026 17:28:46] graded run 15606_dfa_n08_t2_m4 70.5 s
+[10-19-2026 17:29:30] graded run 15606_dfa_n08_t2_m5 67.0 s
+[10-19-2026 17:29:33] graded run 15606_dfa_n08_t3_m2 66.7 s
+[10-19-2026 17:29:36] graded run 15606_dfa_n08_t3_m1 69.2 s
+[10-19-2026 17:29:55] graded run 15606_dfa_n08_t3_m3 68.8 s
+[10-19-2026 17:30:41] graded run 15606_dfa_n08_t3_m4 70.9 s
+[10-19-2026 17:30:43] graded run 15606_dfa_n08_t3_m5 70.0 s
+[10-19-2026 17:30:49] graded run 15606_dfa_n16_t1_m1 73.4 s
+[10-19-2026 17:31:11] graded run 15606_dfa_n16_t1_m2 75.8 s
+[10-19-2026 17:32:04] graded run 15606_dfa_n16_t1_m3 83.3 s
+[10-19-2026 17:32:07] graded run 15606_dfa_n16_t1_m4 83.4 s
+[10-19-2026 17:32:13] graded run 15606_dfa_n16_t1_m5 83.8 s
+[10-19-2026 17:32:28] graded run 15606_dfa_n16_t2_m1 77.2 s
+[10-19-2026 17:33:12] graded run 15606_dfa_n16_t2_m2 68.2 s
+[10-19-2026 17:33:15] graded run 15606_dfa_n16_t2_m3 68.1 s
+[10-19-2026 17:33:21] graded run 15606_dfa_n16_t2_m4 68.0 s
+[10-19-2026 17:33:38] graded run 15606_dfa_n16_t2_m5 70.3 s
+[10-19-2026 17:34:19] graded run 15707_dfa_n08_t2_m1 67.0 s
+[10-19-2026 17:34:23] graded run 15707_dfa_n08_t2_m2 67.7 s
+[10-19-2026 17:34:29] graded run 15707_dfa_n08_t2_m3 68.0 s
+[10-19-2026 17:34:49] graded run 15707_dfa_n08_t2_m4 70.5 s
+[10-19-2026 17:35:29] graded run 15707_dfa_n08_t2_m5 69.6 s
+[10-19-2026 17:35:32] graded run 15707_dfa_n08_t3_m1 69.8 s
+[10-19-2026 17:35:40] graded run 15707_dfa_n08_t3_m2 71.4 s
+[10-19-2026 17:36:02] graded run 15707_dfa_n08_t3_m3 72.8 s
+[10-19-2026 17:36:40] graded run 15707_dfa_n08_t3_m4 71.7 s
+[10-19-2026 17:36:43] graded run 15707_dfa_n08_t3_m5 70.4 s
+[10-19-2026 17:36:51] graded run 15707_dfa_n16_t1_m1 70.9 s
+[10-19-2026 17:37:11] graded run 15707_dfa_n16_t1_m2 69.0 s
+[10-19-2026 17:37:50] graded run 15707_dfa_n16_t1_m3 70.0 s
+[10-19-2026 17:37:52] graded run 15707_dfa_n16_t1_m4 68.9 s
+[10-19-2026 17:37:59] graded run 15707_dfa_n16_t1_m5 68.5 s
+[10-19-2026 17:38:19] graded run 15707_dfa_n16_t2_m1 68.0 s
+[10-19-2026 17:39:00] graded run 15707_dfa_n16_t2_m2 69.6 s
+[10-19-2026 17:39:00] graded run 15707_dfa_n16_t2_m3 68.7 s
+[10-19-2026 17:39:11] graded run 15707_dfa_n16_t2_m4 71.1 s
+[10-19-2026 17:39:29] graded run 15707_dfa_n16_t2_m5 70.5 s
+[10-19-2026 17:40:14] graded run 15808_dfa_n08_t2_m2 73.3 s
+[10-19-2026 17:40:14] graded run 15808_dfa_n08_t2_m1 73.6 s
+[10-19-2026 17:40:24] graded run 15808_dfa_n08_t2_m3 73.9 s
+[10-19-2026 17:40:48] graded run 15808_dfa_n08_t2_m4 78.8 s
+[10-19-2026 17:41:25] graded run 15808_dfa_n08_t3_m1 71.3 s
+[10-19-2026 17:41:27] graded run 15808_dfa_n08_t2_m5 73.3 s
+[10-19-2026 17:41:38] graded run 15808_dfa_n08_t3_m2 73.5 s
+[10-19-2026 17:42:03] graded run 15808_dfa_n08_t3_m3 75.2 s
+[10-19-2026 17:42:39] graded run 15808_dfa_n08_t3_m4 74.5 s
+[10-19-2026 17:42:41] graded run 15808_dfa_n08_t3_m5 74.3 s
+[10-19-2026 17:42:51] graded run 15808_dfa_n16_t1_m1 73.3 s
+[10-19-2026 17:43:13] graded run 15808_dfa_n16_t1_m2 70.3 s
+[10-19-2026 17:43:49] graded run 15808_dfa_n16_t1_m3 69.4 s
+[10-19-2026 17:43:51] graded run 15808_dfa_n16_t1_m4 69.6 s
+[10-19-2026 17:44:03] graded run 15808_dfa_n16_t1_m5 71.5 s
+[10-19-2026 17:44:22] graded run 15808_dfa_n16_t2_m1 68.2 s
+[10-19-2026 17:44:59] graded run 15808_dfa_n16_t2_m2 70.0 s
+[10-19-2026 17:45:01] graded run 15808_dfa_n16_t2_m3 69.9 s
+[10-19-2026 17:45:07] graded run 15808_dfa_n16_t2_m4 64.5 s
+[10-19-2026 17:45:19] graded run 15808_dfa_n16_t2_m5 57.6 s
+[10-19-2026 17:45:19] graded: metrics.csv written
+[10-19-2026 17:45:19] scores: 0 of 212 jobs done, 212 to run, budget 149 s
+[10-19-2026 17:54:21] refs: already built
+[10-19-2026 17:54:21] graded: 160 done, 0 to run
+[10-19-2026 17:54:21] graded: metrics.csv written
+[10-19-2026 17:54:21] scores: 0 of 212 jobs done, 212 to run, budget 3000 s
+[10-19-2026 18:16:42] job dfa__p14303__probe.npz 1341.3 s
+[10-19-2026 18:16:45] job dfa__p14202__probe.npz 1343.7 s
+[10-19-2026 18:16:47] job dfa__p14101__probe.npz 1346.4 s
+[10-19-2026 18:16:48] job dfa__p14404__probe.npz 1347.3 s
+[10-19-2026 18:20:07] job dsl__p14202__probe.npz 202.8 s
+[10-19-2026 18:20:12] job dsl__p14404__probe.npz 204.1 s
+[10-19-2026 18:20:13] job dsl__p14303__probe.npz 205.2 s
+[10-19-2026 18:20:24] job dsl__p14101__probe.npz 222.0 s
+[10-19-2026 18:34:15] job graded__p14202__probe.npz 842.4 s
+[10-19-2026 18:34:20] job graded__p14101__probe.npz 852.5 s
+[10-19-2026 18:35:07] job graded__p14303__probe.npz 894.8 s
+[10-19-2026 18:35:19] job graded__p14404__probe.npz 894.5 s
+[10-19-2026 18:50:04] refs: already built
+[10-19-2026 18:50:04] graded: 160 done, 0 to run
+[10-19-2026 18:50:04] graded: metrics.csv written
+[10-19-2026 18:50:04] scores: 12 of 212 jobs done, 200 to run, budget 3300 s
+[10-19-2026 18:52:02] job dfa__p14101__dfa_n04_t4__t2v.json 118.3 s
+[10-19-2026 18:52:03] job dfa__p14101__dfa_n04_t2__t2v.json 119.2 s
+[10-19-2026 18:52:04] job dfa__p14101__dfa_n04_t1__t2v.json 119.4 s
+[10-19-2026 18:52:05] job dfa__p14101__dfa_n04_t3__t2v.json 120.6 s
+[10-19-2026 18:53:04] job dfa__p14101__dfa_n08_t3__t2v.json 59.9 s
+[10-19-2026 18:53:05] job dfa__p14101__dfa_n08_t2__t2v.json 61.2 s
+[10-19-2026 18:53:05] job dfa__p14101__dfa_n08_t1__t2v.json 62.6 s
+[10-19-2026 18:53:06] job dfa__p14101__dfa_n08_t4__t2v.json 60.7 s
+[10-19-2026 18:54:02] job dfa__p14101__dfa_n16_t1__t2v.json 58.9 s
+[10-19-2026 18:54:05] job dfa__p14101__dfa_n16_t2__t2v.json 60.0 s
+[10-19-2026 18:54:05] job dfa__p14101__dfa_n16_t3__t2v.json 59.8 s
+[10-19-2026 18:54:06] job dfa__p14101__dfa_n16_t4__t2v.json 60.8 s
+[10-19-2026 18:55:03] job dfa__p14101__dfa_n32_t1__t2v.json 60.5 s
+[10-19-2026 18:55:03] job dfa__p14101__dfa_n32_t3__t2v.json 58.7 s
+[10-19-2026 18:55:04] job dfa__p14101__dfa_n32_t2__t2v.json 59.4 s
+[10-19-2026 18:55:06] job dfa__p14101__dfa_n32_t4__t2v.json 59.4 s
+[10-19-2026 18:56:01] job dfa__p14202__dfa_n04_t2__t2v.json 57.9 s
+[10-19-2026 18:56:02] job dfa__p14202__dfa_n04_t1__t2v.json 59.5 s
+[10-19-2026 18:56:04] job dfa__p14202__dfa_n04_t3__t2v.json 60.0 s
+[10-19-2026 18:56:05] job dfa__p14202__dfa_n04_t4__t2v.json 59.1 s
+[10-19-2026 18:57:01] job dfa__p14202__dfa_n08_t1__t2v.json 59.5 s
+[10-19-2026 18:57:02] job dfa__p14202__dfa_n08_t2__t2v.json 59.5 s
+[10-19-2026 18:57:04] job dfa__p14202__dfa_n08_t4__t2v.json 59.2 s
+[10-19-2026 18:57:05] job dfa__p14202__dfa_n08_t3__t2v.json 60.9 s
+[10-19-2026 18:57:58] job dfa__p14202__dfa_n16_t1__t2v.json 57.3 s
+[10-19-2026 18:58:01] job dfa__p14202__dfa_n16_t2__t2v.json 59.3 s
+[10-19-2026 18:58:02] job dfa__p14202__dfa_n16_t3__t2v.json 58.0 s
+[10-19-2026 18:58:04] job dfa__p14202__dfa_n16_t4__t2v.json 59.5 s
+[10-19-2026 18:59:00] job dfa__p14202__dfa_n32_t1__t2v.json 61.4 s
+[10-19-2026 18:59:01] job dfa__p14202__dfa_n32_t2__t2v.json 59.5 s
+[10-19-2026 18:59:03] job dfa__p14202__dfa_n32_t3__t2v.json 61.1 s
+[10-19-2026 18:59:04] job dfa__p14202__dfa_n32_t4__t2v.json 59.9 s
+[10-19-2026 19:00:00] job dfa__p14303__dfa_n04_t2__t2v.json 59.6 s
+[10-19-2026 19:00:01] job dfa__p14303__dfa_n04_t1__t2v.json 61.3 s
+[10-19-2026 19:00:03] job dfa__p14303__dfa_n04_t3__t2v.json 59.4 s
+[10-19-2026 19:00:04] job dfa__p14303__dfa_n04_t4__t2v.json 59.7 s
+[10-19-2026 19:01:13] job dfa__p14303__dfa_n08_t2__t2v.json 71.7 s
+[10-19-2026 19:01:14] job dfa__p14303__dfa_n08_t1__t2v.json 73.9 s
+[10-19-2026 19:01:16] job dfa__p14303__dfa_n08_t4__t2v.json 71.7 s
+[10-19-2026 19:01:16] job dfa__p14303__dfa_n08_t3__t2v.json 73.8 s
+[10-19-2026 19:02:19] job dfa__p14303__dfa_n16_t1__t2v.json 66.8 s
+[10-19-2026 19:02:22] job dfa__p14303__dfa_n16_t4__t2v.json 66.2 s
+[10-19-2026 19:02:23] job dfa__p14303__dfa_n16_t3__t2v.json 66.9 s
+[10-19-2026 19:02:24] job dfa__p14303__dfa_n16_t2__t2v.json 69.4 s
+[10-19-2026 19:03:21] job dfa__p14303__dfa_n32_t1__t2v.json 61.3 s
+[10-19-2026 19:03:25] job dfa__p14303__dfa_n32_t2__t2v.json 62.4 s
+[10-19-2026 19:03:25] job dfa__p14303__dfa_n32_t3__t2v.json 62.5 s
+[10-19-2026 19:03:25] job dfa__p14303__dfa_n32_t4__t2v.json 61.6 s
+[10-19-2026 19:04:23] job dfa__p14404__dfa_n04_t1__t2v.json 62.4 s
+[10-19-2026 19:04:28] job dfa__p14404__dfa_n04_t3__t2v.json 63.2 s
+[10-19-2026 19:04:29] job dfa__p14404__dfa_n04_t4__t2v.json 63.4 s
+[10-19-2026 19:04:29] job dfa__p14404__dfa_n04_t2__t2v.json 64.2 s
+[10-19-2026 19:05:27] job dfa__p14404__dfa_n08_t1__t2v.json 64.5 s
+[10-19-2026 19:05:34] job dfa__p14404__dfa_n08_t4__t2v.json 65.0 s
+[10-19-2026 19:05:35] job dfa__p14404__dfa_n08_t3__t2v.json 66.8 s
+[10-19-2026 19:05:37] job dfa__p14404__dfa_n08_t2__t2v.json 68.8 s
+[10-19-2026 19:06:44] job dfa__p14404__dfa_n16_t1__t2v.json 76.1 s
+[10-19-2026 19:06:50] job dfa__p14404__dfa_n16_t2__t2v.json 75.7 s
+[10-19-2026 19:06:52] job dfa__p14404__dfa_n16_t3__t2v.json 76.3 s
+[10-19-2026 19:06:53] job dfa__p14404__dfa_n16_t4__t2v.json 75.8 s
+[10-19-2026 19:07:57] job dfa__p14404__dfa_n32_t1__t2v.json 73.3 s
+[10-19-2026 19:08:04] job dfa__p14404__dfa_n32_t2__t2v.json 73.7 s
+[10-19-2026 19:08:04] job dfa__p14404__dfa_n32_t3__t2v.json 72.5 s
+[10-19-2026 19:08:13] job dfa__p14404__dfa_n32_t4__t2v.json 79.5 s
+[10-19-2026 19:08:29] job dsl__p14101__dsl_k2_t1__t2v.json 32.4 s
+[10-19-2026 19:08:36] job dsl__p14101__dsl_k2_t2__t2v.json 32.2 s
+[10-19-2026 19:08:36] job dsl__p14101__dsl_k2_t3__t2v.json 31.6 s
+[10-19-2026 19:08:46] job dsl__p14101__dsl_k2_t4__t2v.json 33.4 s
+[10-19-2026 19:09:02] job dsl__p14101__dsl_k3_t1__t2v.json 33.1 s
+[10-19-2026 19:09:08] job dsl__p14101__dsl_k3_t2__t2v.json 32.2 s
+[10-19-2026 19:09:08] job dsl__p14101__dsl_k3_t3__t2v.json 32.5 s
+[10-19-2026 19:09:15] job dsl__p14101__dsl_k3_t4__t2v.json 29.4 s
+[10-19-2026 19:09:29] job dsl__p14101__dsl_k4_t1__t2v.json 26.8 s
+[10-19-2026 19:09:35] job dsl__p14101__dsl_k4_t3__t2v.json 26.6 s
+[10-19-2026 19:09:35] job dsl__p14101__dsl_k4_t2__t2v.json 27.4 s
+[10-19-2026 19:09:45] job dsl__p14101__dsl_k4_t4__t2v.json 30.0 s
+[10-19-2026 19:10:01] job dsl__p14101__dsl_k5_t1__t2v.json 31.7 s
+[10-19-2026 19:10:09] job dsl__p14101__dsl_k5_t3__t2v.json 33.8 s
+[10-19-2026 19:10:10] job dsl__p14101__dsl_k5_t2__t2v.json 34.9 s
+[10-19-2026 19:10:18] job dsl__p14101__dsl_k5_t4__t2v.json 32.7 s
+[10-19-2026 19:10:32] job dsl__p14101__dsl_k6_t1__t2v.json 31.0 s
+[10-19-2026 19:10:39] job dsl__p14101__dsl_k6_t3__t2v.json 29.5 s
+[10-19-2026 19:10:40] job dsl__p14101__dsl_k6_t2__t2v.json 30.6 s
+[10-19-2026 19:10:49] job dsl__p14101__dsl_k6_t4__t2v.json 30.6 s
+[10-19-2026 19:11:04] job dsl__p14202__dsl_k2_t1__t2v.json 31.9 s
+[10-19-2026 19:11:11] job dsl__p14202__dsl_k2_t2__t2v.json 31.9 s
+[10-19-2026 19:11:12] job dsl__p14202__dsl_k2_t3__t2v.json 31.8 s
+[10-19-2026 19:11:18] job dsl__p14202__dsl_k2_t4__t2v.json 29.1 s
+[10-19-2026 19:11:31] job dsl__p14202__dsl_k3_t1__t2v.json 27.4 s
+[10-19-2026 19:11:40] job dsl__p14202__dsl_k3_t2__t2v.json 28.4 s
+[10-19-2026 19:11:40] job dsl__p14202__dsl_k3_t3__t2v.json 28.4 s
+[10-19-2026 19:11:48] job dsl__p14202__dsl_k3_t4__t2v.json 30.0 s
+[10-19-2026 19:12:05] job dsl__p14202__dsl_k4_t1__t2v.json 33.4 s
+[10-19-2026 19:12:14] job dsl__p14202__dsl_k4_t3__t2v.json 33.4 s
+[10-19-2026 19:12:14] job dsl__p14202__dsl_k4_t2__t2v.json 34.0 s
+[10-19-2026 19:12:20] job dsl__p14202__dsl_k4_t4__t2v.json 32.0 s
+[10-19-2026 19:12:37] job dsl__p14202__dsl_k5_t1__t2v.json 32.7 s
+[10-19-2026 19:12:46] job dsl__p14202__dsl_k5_t3__t2v.json 32.3 s
+[10-19-2026 19:12:46] job dsl__p14202__dsl_k5_t2__t2v.json 32.7 s
+[10-19-2026 19:12:54] job dsl__p14202__dsl_k5_t4__t2v.json 34.6 s
+[10-19-2026 19:13:11] job dsl__p14202__dsl_k6_t1__t2v.json 33.8 s
+[10-19-2026 19:13:18] job dsl__p14202__dsl_k6_t2__t2v.json 31.6 s
+[10-19-2026 19:13:18] job dsl__p14202__dsl_k6_t3__t2v.json 31.2 s
+[10-19-2026 19:13:24] job dsl__p14202__dsl_k6_t4__t2v.json 29.5 s
+[10-19-2026 19:13:38] job dsl__p14303__dsl_k2_t1__t2v.json 27.2 s
+[10-19-2026 19:13:47] job dsl__p14303__dsl_k2_t3__t2v.json 29.9 s
+[10-19-2026 19:13:48] job dsl__p14303__dsl_k2_t2__t2v.json 30.2 s
+[10-19-2026 19:13:57] job dsl__p14303__dsl_k2_t4__t2v.json 32.6 s
+[10-19-2026 19:14:10] job dsl__p14303__dsl_k3_t1__t2v.json 31.9 s
+[10-19-2026 19:14:17] job dsl__p14303__dsl_k3_t2__t2v.json 29.3 s
+[10-19-2026 19:14:17] job dsl__p14303__dsl_k3_t3__t2v.json 29.3 s
+[10-19-2026 19:14:25] job dsl__p14303__dsl_k3_t4__t2v.json 28.3 s
+[10-19-2026 19:14:39] job dsl__p14303__dsl_k4_t1__t2v.json 29.1 s
+[10-19-2026 19:14:48] job dsl__p14303__dsl_k4_t3__t2v.json 30.5 s
+[10-19-2026 19:14:49] job dsl__p14303__dsl_k4_t2__t2v.json 31.9 s
+[10-19-2026 19:14:57] job dsl__p14303__dsl_k4_t4__t2v.json 32.0 s
+[10-19-2026 19:15:11] job dsl__p14303__dsl_k5_t1__t2v.json 31.6 s
+[10-19-2026 19:15:17] job dsl__p14303__dsl_k5_t2__t2v.json 29.5 s
+[10-19-2026 19:15:19] job dsl__p14303__dsl_k5_t3__t2v.json 30.0 s
+[10-19-2026 19:15:25] job dsl__p14303__dsl_k5_t4__t2v.json 28.2 s
+[10-19-2026 19:15:38] job dsl__p14303__dsl_k6_t1__t2v.json 27.3 s
+[10-19-2026 19:15:47] job dsl__p14303__dsl_k6_t2__t2v.json 29.6 s
+[10-19-2026 19:15:49] job dsl__p14303__dsl_k6_t3__t2v.json 30.2 s
+[10-19-2026 19:16:01] job dsl__p14303__dsl_k6_t4__t2v.json 36.3 s
+[10-19-2026 19:16:12] job dsl__p14404__dsl_k2_t1__t2v.json 33.9 s
+[10-19-2026 19:16:22] job dsl__p14404__dsl_k2_t2__t2v.json 35.4 s
+[10-19-2026 19:16:25] job dsl__p14404__dsl_k2_t3__t2v.json 36.2 s
+[10-19-2026 19:16:38] job dsl__p14404__dsl_k2_t4__t2v.json 36.4 s
+[10-19-2026 19:16:49] job dsl__p14404__dsl_k3_t1__t2v.json 37.1 s
+[10-19-2026 19:16:59] job dsl__p14404__dsl_k3_t2__t2v.json 36.6 s
+[10-19-2026 19:17:01] job dsl__p14404__dsl_k3_t3__t2v.json 36.3 s
+[10-19-2026 19:17:11] job dsl__p14404__dsl_k3_t4__t2v.json 33.0 s
+[10-19-2026 19:17:19] job dsl__p14404__dsl_k4_t1__t2v.json 29.9 s
+[10-19-2026 19:17:27] job dsl__p14404__dsl_k4_t2__t2v.json 28.2 s
+[10-19-2026 19:17:29] job dsl__p14404__dsl_k4_t3__t2v.json 27.5 s
+[10-19-2026 19:17:39] job dsl__p14404__dsl_k4_t4__t2v.json 28.1 s
+[10-19-2026 19:17:50] job dsl__p14404__dsl_k5_t1__t2v.json 31.2 s
+[10-19-2026 19:17:59] job dsl__p14404__dsl_k5_t2__t2v.json 31.9 s
+[10-19-2026 19:18:02] job dsl__p14404__dsl_k5_t3__t2v.json 33.4 s
+[10-19-2026 19:18:10] job dsl__p14404__dsl_k5_t4__t2v.json 31.5 s
+[10-19-2026 19:18:20] job dsl__p14404__dsl_k6_t1__t2v.json 29.2 s
+[10-19-2026 19:18:27] job dsl__p14404__dsl_k6_t2__t2v.json 27.8 s
+[10-19-2026 19:18:30] job dsl__p14404__dsl_k6_t3__t2v.json 27.8 s
+[10-19-2026 19:18:39] job dsl__p14404__dsl_k6_t4__t2v.json 28.6 s
+[10-19-2026 19:20:16] job graded__p14101__dfa_n08_t2__t2v.json 116.1 s
+[10-19-2026 19:20:20] job graded__p14101__dfa_n08_t3__t2v.json 112.9 s
+[10-19-2026 19:20:25] job graded__p14101__dfa_n16_t1__t2v.json 114.3 s
+[10-19-2026 19:20:33] job graded__p14101__dfa_n16_t2__t2v.json 113.9 s
+[10-19-2026 19:22:03] job graded__p14202__dfa_n08_t2__t2v.json 107.7 s
+[10-19-2026 19:22:08] job graded__p14202__dfa_n08_t3__t2v.json 108.4 s
+[10-19-2026 19:22:11] job graded__p14202__dfa_n16_t1__t2v.json 106.5 s
+[10-19-2026 19:22:19] job graded__p14202__dfa_n16_t2__t2v.json 106.3 s
+[10-19-2026 19:23:46] job graded__p14303__dfa_n08_t2__t2v.json 102.2 s
+[10-19-2026 19:23:52] job graded__p14303__dfa_n08_t3__t2v.json 103.9 s
+[10-19-2026 19:23:56] job graded__p14303__dfa_n16_t1__t2v.json 105.0 s
+[10-19-2026 19:24:06] job graded__p14303__dfa_n16_t2__t2v.json 106.6 s
+[10-19-2026 19:25:35] job graded__p14404__dfa_n08_t3__t2v.json 103.5 s
+[10-19-2026 19:25:36] job graded__p14404__dfa_n08_t2__t2v.json 109.9 s
+[10-19-2026 19:25:40] job graded__p14404__dfa_n16_t1__t2v.json 104.3 s
+[10-19-2026 19:26:07] job graded__p14404__dfa_n16_t2__t2v.json 121.2 s
+[10-19-2026 19:26:45] job dfa__dfa_n04_t2__nonprobe.npz 69.7 s
+[10-19-2026 19:26:46] job dfa__dfa_n04_t1__nonprobe.npz 70.1 s
+[10-19-2026 19:26:50] job dfa__dfa_n04_t3__nonprobe.npz 70.1 s
+[10-19-2026 19:27:00] job dfa__dfa_n04_t4__nonprobe.npz 52.8 s
+[10-19-2026 19:27:16] job dfa__dfa_n08_t1__nonprobe.npz 30.4 s
+[10-19-2026 19:27:16] job dfa__dfa_n08_t2__nonprobe.npz 30.5 s
+[10-19-2026 19:27:20] job dfa__dfa_n08_t3__nonprobe.npz 30.0 s
+[10-19-2026 19:27:27] job dfa__dfa_n08_t4__nonprobe.npz 27.1 s
+[10-19-2026 19:27:43] job dfa__dfa_n16_t1__nonprobe.npz 26.9 s
+[10-19-2026 19:27:45] job dfa__dfa_n16_t2__nonprobe.npz 29.3 s
+[10-19-2026 19:27:49] job dfa__dfa_n16_t3__nonprobe.npz 28.8 s
+[10-19-2026 19:27:58] job dfa__dfa_n16_t4__nonprobe.npz 30.9 s
+[10-19-2026 19:28:11] job dfa__dfa_n32_t1__nonprobe.npz 28.8 s
+[10-19-2026 19:28:13] job dfa__dfa_n32_t2__nonprobe.npz 27.3 s
+[10-19-2026 19:28:17] job dfa__dfa_n32_t3__nonprobe.npz 27.7 s
+[10-19-2026 19:28:22] job dfa__dfa_n32_t4__nonprobe.npz 24.6 s
+[10-19-2026 19:28:39] job dsl__dsl_k2_t1__nonprobe.npz 27.5 s
+[10-19-2026 19:28:40] job dsl__dsl_k2_t2__nonprobe.npz 26.9 s
+[10-19-2026 19:28:45] job dsl__dsl_k2_t3__nonprobe.npz 28.0 s
+[10-19-2026 19:28:52] job dsl__dsl_k2_t4__nonprobe.npz 29.3 s
+[10-19-2026 19:29:07] job dsl__dsl_k3_t1__nonprobe.npz 27.7 s
+[10-19-2026 19:29:07] job dsl__dsl_k3_t2__nonprobe.npz 27.5 s
+[10-19-2026 19:29:11] job dsl__dsl_k3_t3__nonprobe.npz 26.0 s
+[10-19-2026 19:29:17] job dsl__dsl_k3_t4__nonprobe.npz 24.9 s
+[10-19-2026 19:29:30] job dsl__dsl_k4_t1__nonprobe.npz 23.2 s
+[10-19-2026 19:29:31] job dsl__dsl_k4_t2__nonprobe.npz 24.4 s
+[10-19-2026 19:29:36] job dsl__dsl_k4_t3__nonprobe.npz 24.9 s
+[10-19-2026 19:29:44] job dsl__dsl_k4_t4__nonprobe.npz 27.9 s
+[10-19-2026 19:29:59] job dsl__dsl_k5_t1__nonprobe.npz 28.7 s
+[10-19-2026 19:30:01] job dsl__dsl_k5_t2__nonprobe.npz 29.2 s
+[10-19-2026 19:30:03] job dsl__dsl_k5_t3__nonprobe.npz 27.5 s
+[10-19-2026 19:30:14] job dsl__dsl_k5_t4__nonprobe.npz 29.0 s
+[10-19-2026 19:30:22] job dsl__dsl_k6_t2__nonprobe.npz 21.6 s
+[10-19-2026 19:30:23] job dsl__dsl_k6_t1__nonprobe.npz 24.8 s
+[10-19-2026 19:30:26] job dsl__dsl_k6_t3__nonprobe.npz 22.6 s
+[10-19-2026 19:30:53] refs: already built
+[10-19-2026 19:30:53] graded: 160 done, 0 to run
+[10-19-2026 19:30:53] graded: metrics.csv written
+[10-19-2026 19:30:53] scores: 207 of 212 jobs done, 5 to run, budget 3300 s
+[10-19-2026 19:31:10] job graded__dfa_n16_t1__nonprobe.npz 16.4 s
+[10-19-2026 19:31:10] job graded__dfa_n08_t3__nonprobe.npz 17.3 s
+[10-19-2026 19:31:11] job graded__dfa_n08_t2__nonprobe.npz 17.7 s
+[10-19-2026 19:31:18] job graded__dfa_n16_t2__nonprobe.npz 8.0 s
+[10-19-2026 19:31:18] job dsl__dsl_k6_t4__nonprobe.npz 24.5 s
+[10-19-2026 19:31:42] scores: merged into scores/
+[10-19-2026 19:35:57] eq2 check dfa dfa_n04_t1 done
+[10-19-2026 19:39:41] eq2 check dfa dfa_n08_t1 done
+[10-19-2026 19:43:58] eq2 check dfa dfa_n16_t1 done
+[10-19-2026 19:47:44] eq2 check dfa dfa_n32_t1 done
+[10-19-2026 19:47:50] eq2 check dsl dsl_k2_t1 done
+[10-19-2026 19:47:56] eq2 check dsl dsl_k2_t2 done
+[10-19-2026 19:48:01] eq2 check dsl dsl_k2_t3 done
+[10-19-2026 19:48:07] eq2 check dsl dsl_k2_t4 done
+[10-19-2026 19:48:12] eq2 check dsl dsl_k3_t1 done
+[10-19-2026 19:48:18] eq2 check dsl dsl_k3_t2 done
+[10-19-2026 19:48:23] eq2 check dsl dsl_k3_t3 done
+[10-19-2026 19:48:29] eq2 check dsl dsl_k3_t4 done
+[10-19-2026 19:48:36] eq2 check dsl dsl_k4_t1 done
+[10-19-2026 19:48:42] eq2 check dsl dsl_k4_t2 done
+[10-19-2026 19:48:48] eq2 check dsl dsl_k4_t3 done
+[10-19-2026 19:48:53] eq2 check dsl dsl_k4_t4 done
+[10-19-2026 19:48:59] eq2 check dsl dsl_k5_t1 done
+[10-19-2026 19:49:04] eq2 check dsl dsl_k5_t2 done
+[10-19-2026 19:49:10] eq2 check dsl dsl_k5_t3 done
+[10-19-2026 19:49:15] eq2 check dsl dsl_k5_t4 done
+[10-19-2026 19:49:21] eq2 check dsl dsl_k6_t1 done
+[10-19-2026 19:49:26] eq2 check dsl dsl_k6_t2 done
+[10-19-2026 19:49:32] eq2 check dsl dsl_k6_t3 done
+[10-19-2026 19:49:38] eq2 check dsl dsl_k6_t4 done
+[10-19-2026 19:49:38] eq2: exact Eq. 2 on full mixes written
+[10-19-2026 19:56:03] eq2 check dfa dfa_n04_t1 done
+[10-19-2026 20:00:46] eq2 check dfa dfa_n08_t1 done
+[10-19-2026 20:06:37] eq2 check dfa dfa_n16_t1 done
+[10-19-2026 20:15:46] eq2 check dfa dfa_n32_t1 done
+[10-19-2026 20:16:32] eq2 check dsl dsl_k2_t1 done
+[10-19-2026 20:16:48] eq2 check dsl dsl_k2_t2 done
+[10-19-2026 20:17:04] eq2 check dsl dsl_k2_t3 done
+[10-19-2026 20:17:23] eq2 check dsl dsl_k2_t4 done
+[10-19-2026 20:17:39] eq2 check dsl dsl_k3_t1 done
+[10-19-2026 20:17:49] eq2 check dsl dsl_k3_t2 done
+[10-19-2026 20:17:57] eq2 check dsl dsl_k3_t3 done
+[10-19-2026 20:18:03] eq2 check dsl dsl_k3_t4 done
+[10-19-2026 20:18:09] eq2 check dsl dsl_k4_t1 done
+[10-19-2026 20:18:15] eq2 check dsl dsl_k4_t2 done
+[10-19-2026 20:18:21] eq2 check dsl dsl_k4_t3 done
+[10-19-2026 20:18:27] eq2 check dsl dsl_k4_t4 done
+[10-19-2026 20:18:35] eq2 check dsl dsl_k5_t1 done
+[10-19-2026 20:18:43] eq2 check dsl dsl_k5_t2 done
+[10-19-2026 20:18:51] eq2 check dsl dsl_k5_t3 done
+[10-19-2026 20:18:59] eq2 check dsl dsl_k5_t4 done
+[10-19-2026 20:19:05] eq2 check dsl dsl_k6_t1 done
+[10-19-2026 20:19:11] eq2 check dsl dsl_k6_t2 done
+[10-19-2026 20:19:17] eq2 check dsl dsl_k6_t3 done
+[10-19-2026 20:19:23] eq2 check dsl dsl_k6_t4 done
+[10-19-2026 20:19:23] eq2: exact Eq. 2 on full mixes written

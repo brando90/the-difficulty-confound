@@ -1,0 +1,196 @@
+{
+ "experiment": "19_dfa_transformer_gpu_converged/diag_cosine_lr",
+ "device": "cuda",
+ "budget_minutes": 18.0,
+ "n_steps": 16384,
+ "arms_planned": [
+  "constant",
+  "cosine"
+ ],
+ "arms_dropped": [],
+ "T_planned": [
+  512,
+  1024,
+  2048,
+  4096,
+  8192,
+  16384,
+  32768,
+  65536,
+  131072,
+  262144,
+  524288,
+  1048576
+ ],
+ "T_done": [
+  512,
+  1024,
+  2048,
+  4096,
+  8192,
+  16384,
+  32768,
+  65536,
+  131072,
+  262144,
+  524288,
+  1048576
+ ],
+ "stop_reason": "reached T_max",
+ "prep_seconds": 0.5,
+ "octaves": [
+  {
+   "T": 512,
+   "steps": 8,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 1.29,
+   "eval_seconds": 0.62,
+   "seconds_per_step": 0.16085,
+   "elapsed": 7.9
+  },
+  {
+   "T": 1024,
+   "steps": 8,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 0.17,
+   "eval_seconds": 0.58,
+   "seconds_per_step": 0.02126,
+   "elapsed": 8.7
+  },
+  {
+   "T": 2048,
+   "steps": 16,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 0.34,
+   "eval_seconds": 0.58,
+   "seconds_per_step": 0.02122,
+   "elapsed": 9.6
+  },
+  {
+   "T": 4096,
+   "steps": 32,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 0.65,
+   "eval_seconds": 0.58,
+   "seconds_per_step": 0.02024,
+   "elapsed": 10.8
+  },
+  {
+   "T": 8192,
+   "steps": 64,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 1.33,
+   "eval_seconds": 0.58,
+   "seconds_per_step": 0.02081,
+   "elapsed": 12.7
+  },
+  {
+   "T": 16384,
+   "steps": 128,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 2.68,
+   "eval_seconds": 0.58,
+   "seconds_per_step": 0.02096,
+   "elapsed": 16.0
+  },
+  {
+   "T": 32768,
+   "steps": 256,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 5.37,
+   "eval_seconds": 0.58,
+   "seconds_per_step": 0.02097,
+   "elapsed": 22.0
+  },
+  {
+   "T": 65536,
+   "steps": 512,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 10.78,
+   "eval_seconds": 0.58,
+   "seconds_per_step": 0.02106,
+   "elapsed": 33.3
+  },
+  {
+   "T": 131072,
+   "steps": 1024,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 21.73,
+   "eval_seconds": 0.58,
+   "seconds_per_step": 0.02122,
+   "elapsed": 55.6
+  },
+  {
+   "T": 262144,
+   "steps": 2048,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 43.44,
+   "eval_seconds": 0.58,
+   "seconds_per_step": 0.02121,
+   "elapsed": 99.7
+  },
+  {
+   "T": 524288,
+   "steps": 4096,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 86.43,
+   "eval_seconds": 0.58,
+   "seconds_per_step": 0.0211,
+   "elapsed": 186.7
+  },
+  {
+   "T": 1048576,
+   "steps": 8192,
+   "arms": [
+    "constant",
+    "cosine"
+   ],
+   "train_seconds": 172.77,
+   "eval_seconds": 0.81,
+   "seconds_per_step": 0.02109,
+   "elapsed": 360.2
+  }
+ ],
+ "init_sha256": {
+  "11101": "8cda22a17ca63bece342943a742b299d7c3b4e5b1e287263adfedb81a19643c3",
+  "11202": "0d437cb6b272380b1b6cc56850b1f61bf2ee10785c169bdd8cf2ac8d8159f340",
+  "11303": "b98f4ce7a1fb6b90fe5696de7d2c33b087c9e9a39d16b30b79b0dd07575079af",
+  "11404": "b55f9d9700ebf7f512927702a5ef8750901c43dfba8d48a18a0ac8518825a077"
+ },
+ "gpu": "NVIDIA L40S",
+ "wall_seconds": 360.2,
+ "T_top": 1048576
+}

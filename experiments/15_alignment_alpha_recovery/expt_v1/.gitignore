@@ -1,0 +1,15 @@
+__pycache__/
+.pytest_cache/
+*.tmp
+# per-job part files: merged into scores/ (hashes in ARTIFACT_SHA256.json)
+results*/parts/
+# graded-arm checkpoints and data, per-unit score arrays, zstd dictionaries, references and units: kept out of git,
+# SHA-256 in ../ARTIFACT_SHA256.json; run.py --stage all --resume rebuilds them
+results*/graded/checkpoints/
+results*/graded/data/
+results*/scores/
+results*/dicts/
+results*/references.npz
+results*/scored_units.npz
+results_pilot/graded/predictions/
+results/graded/predictions/

@@ -28,11 +28,12 @@ class Store:
     def __init__(self, c, out):
         self.c, self.out = c, Path(out)
         self.roster = T.load_roster(self.out / 'tasks14.json')[0]
-        z = np.load(self.out / 'embeddings.npz', allow_pickle=False)
-        self.keys = z['keys'].tolist()
-        self.row = {k: i for i, k in enumerate(self.keys)}
-        self.f = z['f']
-        self.head_loss, self.head_error = z['head_loss'], z['head_error']
+        z = np.load(self.out / 'embeddings.npz', allow_pickle=False)      # arrays per family (dimensions differ)
+        self.row, self.f, self.head_loss, self.head_error = {}, {}, {}, {}
+        for fam in T.FAMILIES:
+            self.row.update({k: (fam, i) for i, k in enumerate(z[f'{fam}_keys'].tolist())})
+            self.f[fam], self.head_loss[fam], self.head_error[fam] = (z[f'{fam}_f'], z[f'{fam}_head_loss'],
+                                                                      z[f'{fam}_head_error'])
         self.layout = {}
         for fam in T.FAMILIES:
             rec = json.loads((self.out / 'probes' / f"probe_{fam}_{c['probe_seeds'][0]}.json").read_text())
@@ -40,14 +41,20 @@ class Store:
         self._batch = {}
 
     def emb(self, fam, tid, probe, est='E0', variant='main'):
-        return self.f[self.row[f'{fam}|{tid}|{probe}|{est}|{variant}']].astype(np.float64)
+        f, i = self.row[f'{fam}|{tid}|{probe}|{est}|{variant}']
+        return self.f[f][i].astype(np.float64)
 
     def head(self, fam, tid, probe, est='E0', variant='main'):
-        i = self.row[f'{fam}|{tid}|{probe}|{est}|{variant}']
-        return float(self.head_loss[i]), float(self.head_error[i])
+        f, i = self.row[f'{fam}|{tid}|{probe}|{est}|{variant}']
+        return float(self.head_loss[f][i]), float(self.head_error[f][i])
+
+    def has(self, fam, tid, probe, est='E0', variant='main'):
+        return f'{fam}|{tid}|{probe}|{est}|{variant}' in self.row
 
     def batches(self, fam, probe):
         if (fam, probe) not in self._batch:
+            if not (self.out / 'batch_embeddings' / f'{fam}_{probe}.npz').exists():
+                return {}
             z = np.load(self.out / 'batch_embeddings' / f'{fam}_{probe}.npz', allow_pickle=False)
             d = {}
             for k, f in zip(z['keys'].tolist(), z['f']):
@@ -110,6 +117,11 @@ def tstar_and_code(c, fam, targets):
 
 def verdict(ok):
     return 'SUPPORTED' if ok else 'NOT_ESTABLISHED'
+
+
+def not_run(**kw):
+    """Placeholder for an analysis whose inputs were not computed (run stopped at the wall cap)."""
+    return dict(not_run=True, reason='inputs not computed: the run stopped at the wall cap', **kw)
 
 
 def ci_dict(draws):
@@ -192,23 +204,32 @@ def analyze_family(c, st, fam, boot):
     cov_mixes = T.coverage_mixes(c, R, fam)
     exp_mixes = T.exp_mixes(c, R, fam)
     cell, rep = mix_cells(cov_mixes)
+    nb = c['diversity_batches']
+
+    def avail(mix_id, kind):
+        return all(len(st.batches(fam, p).get((mix_id, kind), [])) == nb for p in probes)
     dist = {}
     for kind, mixes in (('interleaved', cov_mixes + exp_mixes), ('single', cov_mixes)):
         for m in mixes:
-            dist[(m['mix_id'], kind)] = np.stack([pair_distances(st.batches(fam, p)[(m['mix_id'], kind)])
-                                                  for p in probes])
+            if avail(m['mix_id'], kind):
+                dist[(m['mix_id'], kind)] = np.stack([pair_distances(st.batches(fam, p)[(m['mix_id'], kind)])
+                                                      for p in probes])
     bounds = {w: np.stack([pair_distances(st.batches(fam, p)[(f'{fam}_bound_{w}', 'bound')]) for p in probes])
-              for w in ('lower', 'upper')}
-    D4 = np.stack([dist[(m['mix_id'], 'interleaved')] for m in cov_mixes])          # (n_mix, 4, n_pairs)
-    Hc = np.array([m['H'] for m in cov_mixes])
-    Kc = np.array([m['K'] for m in cov_mixes], float)
-    g4 = S.gate4(c, fi, D4, Hc, Kc, cell, rep)
-    boot[f'{fam}_g4_rho_H'] = g4['rho_H_draws']
-    boot[f'{fam}_g4_gap'] = g4['gap_draws']
-    G4 = dict(rho_H=g4['rho_H'], rho_H_ci=ci_dict(g4['rho_H_draws']), rho_K=g4['rho_K'], gap=g4['gap'],
-              gap_ci=ci_dict(g4['gap_draws']), n_mixes=len(cov_mixes), n_pairs=int(D4.shape[2]))
-    G4['pass'] = bool(G4['rho_H'] >= g['g4_min_rho_H'] and G4['rho_H_ci']['lo'] > g['g4_rho_H_lb_above']
-                      and G4['gap'] >= g['g4_min_gap'] and G4['gap_ci']['lo'] > g['g4_gap_lb_above'])
+              for w in ('lower', 'upper') if avail(f'{fam}_bound_{w}', 'bound')}
+    n_cov = sum((m['mix_id'], 'interleaved') in dist for m in cov_mixes)
+    if n_cov == len(cov_mixes):
+        D4 = np.stack([dist[(m['mix_id'], 'interleaved')] for m in cov_mixes])      # (n_mix, 4, n_pairs)
+        Hc = np.array([m['H'] for m in cov_mixes])
+        Kc = np.array([m['K'] for m in cov_mixes], float)
+        g4 = S.gate4(c, fi, D4, Hc, Kc, cell, rep)
+        boot[f'{fam}_g4_rho_H'] = g4['rho_H_draws']
+        boot[f'{fam}_g4_gap'] = g4['gap_draws']
+        G4 = dict(rho_H=g4['rho_H'], rho_H_ci=ci_dict(g4['rho_H_draws']), rho_K=g4['rho_K'], gap=g4['gap'],
+                  gap_ci=ci_dict(g4['gap_draws']), n_mixes=len(cov_mixes), n_pairs=int(D4.shape[2]))
+        G4['pass'] = bool(G4['rho_H'] >= g['g4_min_rho_H'] and G4['rho_H_ci']['lo'] > g['g4_rho_H_lb_above']
+                          and G4['gap'] >= g['g4_min_gap'] and G4['gap_ci']['lo'] > g['g4_gap_lb_above'])
+    else:
+        G4 = not_run(n_mixes=len(cov_mixes), n_mixes_available=n_cov, **{'pass': None})
 
     # Gate 5: label noise
     nt = T.noise_tasks(c, R, fam)
@@ -217,13 +238,17 @@ def analyze_family(c, st, fam, boot):
     hi_rate = max(c['noise_rates'])
     lr = {}
     for r in c['noise_rates']:
-        lr[r] = np.array([[summary(st.emb(fam, t, p, 'E0', f'noise{r:.2f}'), 'l1') - summary(st.emb(fam, t, p), 'l1')
-                           for t in nids] for p in probes])
-    g5 = S.gate5(c, fi, lr[hi_rate], Kn)
-    boot[f'{fam}_g5_ratio'] = g5['ratio_draws']
-    G5 = dict(ratio=g5['ratio'], ci=ci_dict(g5['ratio_draws']), n_tasks=len(nids), rate=hi_rate,
-              ratio_at_other_rates={f'{r:.2f}': float(np.exp(np.median(lr[r].mean(0)))) for r in c['noise_rates']})
-    G5['pass'] = bool(G5['ratio'] >= g['g5_min_ratio'] and G5['ci']['lo'] > g['g5_lb_above'])
+        if all(st.has(fam, t, p, 'E0', f'noise{r:.2f}') for t in nids for p in probes):
+            lr[r] = np.array([[summary(st.emb(fam, t, p, 'E0', f'noise{r:.2f}'), 'l1') -
+                               summary(st.emb(fam, t, p), 'l1') for t in nids] for p in probes])
+    if hi_rate in lr:
+        g5 = S.gate5(c, fi, lr[hi_rate], Kn)
+        boot[f'{fam}_g5_ratio'] = g5['ratio_draws']
+        G5 = dict(ratio=g5['ratio'], ci=ci_dict(g5['ratio_draws']), n_tasks=len(nids), rate=hi_rate,
+                  ratio_at_other_rates={f'{r:.2f}': float(np.exp(np.median(v.mean(0)))) for r, v in lr.items()})
+        G5['pass'] = bool(G5['ratio'] >= g['g5_min_ratio'] and G5['ci']['lo'] > g['g5_lb_above'])
+    else:
+        G5 = not_run(n_tasks=len(nids), rate=hi_rate, **{'pass': None})
     gates = dict(G1=G1, G2=G2, G3=G3, G4=G4, G5=G5)
 
     # ---- reported, not gated
@@ -232,6 +257,9 @@ def analyze_family(c, st, fam, boot):
                                      ('E3', 'E3', 'main', 'l1'), ('rescaled_E0', 'E0', 'rescaled', 'l1'),
                                      ('E0_L2', 'E0', 'main', 'l2'), ('E0_logsum', 'E0', 'main', 'logsum'),
                                      ('E0_block1', 'E0', 'main', 'block1'), ('E0_block2', 'E0', 'main', 'block2')):
+        if not all(st.has(fam, t, p, est, variant) for t in tids for p in probes):
+            var[name] = not_run()
+            continue
         ln = score_matrix(st, fam, tids, probes, est, variant, kind)
         m_, s_ = S.z_constants(ln)
         a = S.gate12(c, fi, ln, K, cov, m_, s_)
@@ -239,11 +267,16 @@ def analyze_family(c, st, fam, boot):
         var[name] = dict(g1_rho=a['rho'], g1_ci=ci_dict(a['rho_draws']), g2_partial=a['partial'],
                          g2_ci=ci_dict(a['partial_draws']), g3_rho=b['rho'], g3_ci=ci_dict(b['rho_draws']))
     rp = c['random_init_seed']
-    lnr = score_matrix(st, fam, tids, [rp])
-    zr = (lnr[0] - lnr[0].mean()) / lnr[0].std()
-    var['random_init_E0'] = dict(g1_rho=float(S.spearman(zr, K)), g2_partial=float(S.partial_spearman(zr, K, cov)),
-                                 g3_rho=float(S.spearman(zr[ti], g3['tstar'])),
-                                 note='one untrained probe: point estimates only')
+    lnr = None
+    if all(st.has(fam, t, rp) for t in tids):
+        lnr = score_matrix(st, fam, tids, [rp])
+        zr = (lnr[0] - lnr[0].mean()) / lnr[0].std()
+        var['random_init_E0'] = dict(g1_rho=float(S.spearman(zr, K)),
+                                     g2_partial=float(S.partial_spearman(zr, K, cov)),
+                                     g3_rho=float(S.spearman(zr[ti], g3['tstar'])),
+                                     note='one untrained probe: point estimates only')
+    else:
+        var['random_init_E0'] = not_run()
     A['variants'] = var
 
     # probe-seed sensitivity (L1 norms, E0)
@@ -260,13 +293,17 @@ def analyze_family(c, st, fam, boot):
                                                           for i, p in enumerate(probes)})
 
     # parameterization sensitivity
-    lres = score_matrix(st, fam, tids, probes, 'E0', 'rescaled')
-    khr = S.khat(lres, *S.z_constants(lres))
-    A['parameterization'] = dict(
-        spearman_khat_original_vs_rescaled=float(S.spearman(kh, khr)),
-        spearman_l1_original_vs_rescaled_by_probe=[float(S.spearman(logn[i], lres[i])) for i in range(len(probes))],
-        g1_rho_rescaled=var['rescaled_E0']['g1_rho'], g1_rho_change=var['rescaled_E0']['g1_rho'] - G1['rho'],
-        median_l1_ratio_rescaled_over_original=float(np.exp(np.median(lres - logn))))
+    if var['rescaled_E0'].get('not_run'):
+        A['parameterization'] = not_run()
+    else:
+        lres = score_matrix(st, fam, tids, probes, 'E0', 'rescaled')
+        khr = S.khat(lres, *S.z_constants(lres))
+        A['parameterization'] = dict(
+            spearman_khat_original_vs_rescaled=float(S.spearman(kh, khr)),
+            spearman_l1_original_vs_rescaled_by_probe=[float(S.spearman(logn[i], lres[i]))
+                                                       for i in range(len(probes))],
+            g1_rho_rescaled=var['rescaled_E0']['g1_rho'], g1_rho_change=var['rescaled_E0']['g1_rho'] - G1['rho'],
+            median_l1_ratio_rescaled_over_original=float(np.exp(np.median(lres - logn))))
 
     # mechanism
     hl = np.array([[st.head(fam, t, p)[0] for t in tids] for p in probes]).mean(0)
@@ -318,6 +355,8 @@ def analyze_family(c, st, fam, boot):
     drows = []
     for kind, mixes in (('interleaved', cov_mixes + exp_mixes), ('single', cov_mixes)):
         for m in mixes:
+            if (m['mix_id'], kind) not in dist:
+                continue
             d = dist[(m['mix_id'], kind)]
             q = [rao(m, p) for p in probes]
             drows.append(dict(family=fam, mix_id=m['mix_id'], mix_kind=m['kind'], batches=kind, K=m['K'],
@@ -340,25 +379,27 @@ def analyze_family(c, st, fam, boot):
 
     def col(rows, k):
         return np.array([float(r[k]) for r in rows])
+
+    def sp(rows, a, b):
+        return float(S.spearman(col(rows, a), col(rows, b))) if len(rows) >= 3 else None
+
+    def rng_(rows):
+        return [float(col(rows, 'div').min()), float(col(rows, 'div').max())] if rows else None
     ci_rows = [r for r in drows if r['mix_kind'] == 'coverage' and r['batches'] == 'interleaved']
     cs_rows = [r for r in drows if r['mix_kind'] == 'coverage' and r['batches'] == 'single']
     ex_rows = [r for r in drows if r['mix_kind'] == 'exp']
     a1 = [r for r in ex_rows if abs(float(r['alpha']) - 1.0) < 1e-9]
     A['diversity'] = dict(
-        coverage_interleaved=dict(rho_H=float(S.spearman(col(ci_rows, 'div'), col(ci_rows, 'H'))),
-                                  rho_K=float(S.spearman(col(ci_rows, 'div'), col(ci_rows, 'K'))),
-                                  rho_Q=float(S.spearman(col(ci_rows, 'div'), col(ci_rows, 'rao_q'))),
-                                  div_range=[float(col(ci_rows, 'div').min()), float(col(ci_rows, 'div').max())]),
-        coverage_single=dict(rho_H=float(S.spearman(col(cs_rows, 'div'), col(cs_rows, 'H'))),
-                             rho_K=float(S.spearman(col(cs_rows, 'div'), col(cs_rows, 'K'))),
-                             rho_Q=float(S.spearman(col(cs_rows, 'div'), col(cs_rows, 'rao_q'))),
-                             div_range=[float(col(cs_rows, 'div').min()), float(col(cs_rows, 'div').max())]),
-        exp_interleaved=dict(rho_H=float(S.spearman(col(ex_rows, 'div'), col(ex_rows, 'H'))),
-                             rho_K=float(S.spearman(col(ex_rows, 'div'), col(ex_rows, 'K'))),
-                             rho_alpha=float(S.spearman(col(ex_rows, 'div'), col(ex_rows, 'alpha'))),
-                             rho_Q=float(S.spearman(col(ex_rows, 'div'), col(ex_rows, 'rao_q')))),
-        alpha1_slice=dict(n=len(a1), rho_div_K=float(S.spearman(col(a1, 'div'), col(a1, 'K')))),
-        bounds={w: dict(div=float(d.mean()), by_probe=[float(x) for x in d.mean(1)]) for w, d in bounds.items()})
+        coverage_interleaved=dict(n=len(ci_rows), rho_H=sp(ci_rows, 'div', 'H'), rho_K=sp(ci_rows, 'div', 'K'),
+                                  rho_Q=sp(ci_rows, 'div', 'rao_q'), div_range=rng_(ci_rows)),
+        coverage_single=dict(n=len(cs_rows), rho_H=sp(cs_rows, 'div', 'H'), rho_K=sp(cs_rows, 'div', 'K'),
+                             rho_Q=sp(cs_rows, 'div', 'rao_q'), div_range=rng_(cs_rows)),
+        exp_interleaved=dict(n=len(ex_rows), rho_H=sp(ex_rows, 'div', 'H'), rho_K=sp(ex_rows, 'div', 'K'),
+                             rho_alpha=sp(ex_rows, 'div', 'alpha'), rho_Q=sp(ex_rows, 'div', 'rao_q')),
+        alpha1_slice=dict(n=len(a1), rho_div_K=sp(a1, 'div', 'K')),
+        bounds={w: dict(div=float(d.mean()), by_probe=[float(x) for x in d.mean(1)]) for w, d in bounds.items()},
+        n_mixes_expected=dict(coverage_interleaved=len(cov_mixes), coverage_single=len(cov_mixes),
+                              exp_interleaved=len(exp_mixes), bounds=2))
 
     # task table rows
     trows = []
@@ -368,7 +409,7 @@ def analyze_family(c, st, fam, boot):
                  head_error=float(he[j]))
         for i, p in enumerate(probes):
             r[f'log_l1_{p}'] = float(logn[i, j])
-        r['log_l1_random_init'] = float(lnr[0, j])
+        r['log_l1_random_init'] = float(lnr[0, j]) if lnr is not None else ''
         if t['role'] == 'target':
             k = tgt_ids.index(t['task_id'])
             r['tstar_median'] = float(ts[k])
@@ -409,18 +450,24 @@ def main():
         drows += dr
     verdicts = {}
     for G in ('G1', 'G2', 'G3', 'G4', 'G5'):
-        verdicts[G] = verdict(all(gates[f][G]['pass'] for f in T.FAMILIES))
+        if any(gates[f][G].get('not_run') for f in T.FAMILIES):
+            verdicts[G] = 'NOT_RUN'
+        else:
+            verdicts[G] = verdict(all(gates[f][G]['pass'] for f in T.FAMILIES))
     h = c['handoff']
     handoff = dict(
         g123_supported=all(verdicts[G] == 'SUPPORTED' for G in ('G1', 'G2', 'G3')),
         kendall_w_ok={f: analysis[f]['probe_sensitivity']['kendall_w'] >= h['min_kendall_w'] for f in T.FAMILIES},
-        rescaled_rho_ok={f: analysis[f]['parameterization']['spearman_khat_original_vs_rescaled']
-                         >= h['min_rescaled_rho'] for f in T.FAMILIES},
+        rescaled_rho_ok={f: (None if analysis[f]['parameterization'].get('not_run') else
+                             analysis[f]['parameterization']['spearman_khat_original_vs_rescaled']
+                             >= h['min_rescaled_rho']) for f in T.FAMILIES},
         incremental_nonnegative={f: analysis[f]['incremental']['partial_khat_tstar_given_K'] >= 0
                                  for f in T.FAMILIES})
     handoff['met'] = bool(handoff['g123_supported'] and all(handoff['kendall_w_ok'].values())
-                          and all(handoff['rescaled_rho_ok'].values())
+                          and all(v is True for v in handoff['rescaled_rho_ok'].values())
                           and all(handoff['incremental_nonnegative'].values()))
+    if any(v is None for v in handoff['rescaled_rho_ok'].values()):
+        handoff['note'] = 'rescaled-probe embeddings not computed (wall cap); the rescaling condition is untested'
     res = dict(verdicts=verdicts, families=gates, thresholds=c['gates'], handoff=handoff,
                bootstrap=dict(draws=c['bootstrap_draws'], seed=c['analysis_seed']),
                seconds=round(time.time() - t0, 1))

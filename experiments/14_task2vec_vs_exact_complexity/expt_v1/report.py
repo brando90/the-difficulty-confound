@@ -131,7 +131,9 @@ def figure(c, out, G, trows, drows):
                        marker='s', label=f'censored ({(~fin).sum()})')
         ax.set_xscale('log')
         ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
-        ax.xaxis.set_major_locator(matplotlib.ticker.LogLocator(base=10))
+        ax.xaxis.set_major_locator(matplotlib.ticker.LogLocator(base=10, subs=(1.0, 2.0, 5.0)))
+        ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f'{v:,.0f}'))
+        ax.tick_params(axis='x', labelrotation=30)
         ax.set_xlabel(f"T* at alpha = 1 (eps* = {g['G3']['eps_star']:g} bits; censored at right)", fontsize=9,
                       color=INK)
         ax.set_ylabel('K_hat', fontsize=9, color=INK)
@@ -142,6 +144,11 @@ def figure(c, out, G, trows, drows):
 
         # (d) diversity coefficient versus mixture entropy on coverage mixes, with per-mix intervals
         ax = axes[row, 3]
+        if g['G4'].get('not_run'):
+            ax.axis('off')
+            ax.text(0.5, 0.5, 'Gate 4 (diversity vs mixture entropy)\nnot run: the wall-clock cap was\nreached before the diversity jobs',
+                    ha='center', va='center', fontsize=9, color=MUTED, transform=ax.transAxes)
+            continue
         cv = [r for r in drows if r['family'] == fam and r['mix_kind'] == 'coverage' and r['batches'] == 'interleaved']
         H = np.array([num(r, 'H') for r in cv])
         d = np.array([num(r, 'div') for r in cv])
@@ -157,8 +164,8 @@ def figure(c, out, G, trows, drows):
                             color=MUTED, ha='right', va='bottom' if w == 'upper' else 'top')
         ax.set_xlabel('mixture entropy H (bits), coverage mixes', fontsize=9, color=INK)
         ax.set_ylabel('diversity coefficient', fontsize=9, color=INK)
-        ax.set_title(f"Gate 4: rho_H = {g['G4']['rho_H']:.2f}, rho_K = {g['G4']['rho_K']:.2f}", fontsize=9,
-                     color=INK)
+        ax.set_title('Gate 4: not run' if g['G4'].get('not_run') else
+                     f"Gate 4: rho_H = {g['G4']['rho_H']:.2f}, rho_K = {g['G4']['rho_K']:.2f}", fontsize=9, color=INK)
         style(ax)
     fig.tight_layout()
     fig.savefig(out / 'task2vec_vs_K.png', dpi=150)
@@ -175,6 +182,10 @@ def gate_rows(c, G):
         src = gk[:2]
         for fam in T.FAMILIES:
             g = G['families'][fam][src]
+            if g.get('not_run'):
+                L.append(f"| {src} | {text} | {fam.upper()} | not run | — | ≥ {th[tmin]:g}, lower bound > {th[tlb]:g} "
+                         f"| — |")
+                continue
             ci = g[cik]
             L.append(f"| {src} | {text} | {fam.upper()} | {fmt(g[est])} | [{fmt(ci['lo'])}, {fmt(ci['hi'])}] | "
                      f"≥ {th[tmin]:g}, lower bound > {th[tlb]:g} | {fmt(g['pass'])} |")
@@ -193,6 +204,9 @@ def variant_rows(A):
             continue
         for fam in T.FAMILIES:
             v = A[fam]['variants'][key]
+            if v.get('not_run'):
+                L.append(f'| {label} | {fam.upper()} | not run (wall cap) | | |')
+                continue
 
             def cell(s, cik):
                 if cik in v:
@@ -231,12 +245,21 @@ def main():
           f"rank correlation ≥ {c['handoff']['min_rescaled_rho']}, non-negative incremental value in both families): "
           f"**{'met' if h['met'] else 'not met'}**.", '',
           '## Estimators and summaries (reported, not gated)', ''] + variant_rows(A)
+    G5 = {f: G['families'][f]['G5'] for f in T.FAMILIES}
+    failed = [f.upper() for f in T.FAMILIES if not G5[f].get('not_run') and not G5[f].get('pass')]
+    if failed and any(G5[f].get('not_run') for f in T.FAMILIES):
+        i = L.index('## Estimators and summaries (reported, not gated)')
+        L[i:i] = [f"Gate 5 is NOT_RUN only because one family's inputs are missing; it cannot pass, since "
+                  f"{', '.join(failed)} already fails its threshold and both families must pass.", '']
     L += ['', '## Probe and parameterization sensitivity', '',
           "| Family | Kendall's W | mean pairwise Spearman | probe pairs disagreeing on K-level order | "
           "Spearman(K_hat, rescaled K_hat) | Gate 1 rho change, rescaled | median L1 ratio rescaled/original |",
           '|---|---|---|---|---|---|---|']
     for fam in T.FAMILIES:
         p, q = A[fam]['probe_sensitivity'], A[fam]['parameterization']
+        if q.get('not_run'):
+            q = {k: None for k in ('spearman_khat_original_vs_rescaled', 'g1_rho_change',
+                                   'median_l1_ratio_rescaled_over_original')}
         L.append(f"| {fam.upper()} | {fmt(p['kendall_w'])} | {fmt(p['mean_pairwise_spearman'])} | "
                  f"{fmt(p['frac_probe_pairs_disagree_on_level_order'])} | "
                  f"{fmt(q['spearman_khat_original_vs_rescaled'])} | {fmt(q['g1_rho_change'])} | "
@@ -259,19 +282,20 @@ def main():
     for fam in T.FAMILIES:
         dv = A[fam]['diversity']
         ci_, cs, ex = dv['coverage_interleaved'], dv['coverage_single'], dv['exp_interleaved']
-        L.append(f"| {fam.upper()} | coverage | interleaved | {fmt(ci_['rho_H'])} | {fmt(ci_['rho_K'])} | "
+        L.append(f"| {fam.upper()} | coverage ({ci_['n']}) | interleaved | {fmt(ci_['rho_H'])} | {fmt(ci_['rho_K'])} | "
                  f"{fmt(ci_['rho_Q'])} | range {fmt(ci_['div_range'])} |")
-        L.append(f"| {fam.upper()} | coverage | single-task | {fmt(cs['rho_H'])} | {fmt(cs['rho_K'])} | "
+        L.append(f"| {fam.upper()} | coverage ({cs['n']}) | single-task | {fmt(cs['rho_H'])} | {fmt(cs['rho_K'])} | "
                  f"{fmt(cs['rho_Q'])} | range {fmt(cs['div_range'])} |")
-        L.append(f"| {fam.upper()} | Experiment 11/12 training mixes | interleaved | {fmt(ex['rho_H'])} | "
+        L.append(f"| {fam.upper()} | Experiment 11/12 training mixes ({ex['n']}) | interleaved | {fmt(ex['rho_H'])} | "
                  f"{fmt(ex['rho_K'])} | {fmt(ex['rho_Q'])} | rho with alpha {fmt(ex['rho_alpha'])}; alpha = 1 "
                  f"slice rho with K {fmt(dv['alpha1_slice']['rho_div_K'])} (n = {dv['alpha1_slice']['n']}) |")
-        L.append(f"| {fam.upper()} | reference bounds | — | — | — | — | lower {fmt(dv['bounds']['lower']['div'])}, "
-                 f"upper {fmt(dv['bounds']['upper']['div'])} |")
+        bd = {w: fmt(dv['bounds'][w]['div']) if w in dv['bounds'] else 'not run' for w in ('lower', 'upper')}
+        L.append(f"| {fam.upper()} | reference bounds | — | — | — | — | lower {bd['lower']}, upper {bd['upper']} |")
     G5 = {f: G['families'][f]['G5'] for f in T.FAMILIES}
     L += ['', '## Label noise', '']
     for fam in T.FAMILIES:
-        L.append(f"- {fam.upper()}: L1 ratio noisy/clean by rate {G5[fam]['ratio_at_other_rates']} "
+        L.append(f"- {fam.upper()}: not run (wall cap)" if G5[fam].get('not_run') else
+                 f"- {fam.upper()}: L1 ratio noisy/clean by rate {G5[fam]['ratio_at_other_rates']} "
                  f"({G5[fam]['n_tasks']} tasks)")
     L += ['', '## Censoring of T*', '']
     for fam in T.FAMILIES:
@@ -280,10 +304,22 @@ def main():
                  f"eps* = {g3['eps_star']:g} bits; {g3['n_censored_targets']} of {g3['n_targets']} targets have a "
                  f"censored median T* (ranked highest, tied).")
     if man:
-        L += ['', '## Run', '', f"Wall time {fmt(man.get('wall_seconds', float('nan')) / 3600, 3)} h on "
-              f"{man.get('hostname', '?')}; versions {man.get('versions')}; bootstrap {G['bootstrap']['draws']} draws, "
+        L += ['', '## Run', '', f"Wall time {fmt(man.get('wall_seconds_cumulative', float('nan')) / 3600, 3)} h on "
+              f"a shared 4-core, 15 GB CPU machine (no GPU); versions {man.get('versions')}; "
+              f"bootstrap {G['bootstrap']['draws']} draws, "
               f"seed {G['bootstrap']['seed']}. Full numbers: expt_v1/{a.results}/gates.json, analysis.json, "
               'task_table.csv, diversity.csv.']
+        if man.get('complete') is False:
+            miss = man.get('missing_jobs', [])
+            kinds = {}
+            for j in miss:
+                k = j.split('_')[0] + ('_' + j.split('_')[3] if j.startswith('emb_') else '')
+                k = dict(div='diversity', emb_main='random-init-probe embedding', emb_noise='label-noise embedding',
+                         emb_rescaled='rescaled-probe embedding').get(k, k)
+                kinds[k] = kinds.get(k, 0) + 1
+            L += ['', f"**Incomplete run.** The run stopped at the {c['max_wall_seconds'] / 3600:g} h wall cap with "
+                  f"{len(miss)} jobs not run ({', '.join(f'{v} {k}' for k, v in sorted(kinds.items()))}); "
+                  'analyses that need them are marked not run. The run is resumable with `run.py --resume`.']
     (EXP / 'RESULTS_task2vec_complexity.md').write_text('\n'.join(L) + '\n')
     print('wrote', EXP / 'RESULTS_task2vec_complexity.md', out / 'task2vec_vs_K.png')
 

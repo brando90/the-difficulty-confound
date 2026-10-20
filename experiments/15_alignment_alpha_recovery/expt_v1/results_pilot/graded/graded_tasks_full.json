@@ -1,0 +1,3446 @@
+{
+ "tasks": [
+  {
+   "task_id": "dfa_n08_t2",
+   "family": "dfa",
+   "role": "target",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      4
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     2,
+     3,
+     6,
+     7
+    ]
+   },
+   "task_token": 0,
+   "exp11_task_token": 5,
+   "acceptance_rate": 0.5001061488600338
+  },
+  {
+   "task_id": "dfa_n08_t3",
+   "family": "dfa",
+   "role": "target",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      7,
+      2
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     4,
+     5,
+     7
+    ]
+   },
+   "task_token": 1,
+   "exp11_task_token": 6,
+   "acceptance_rate": 0.45865732080796184
+  },
+  {
+   "task_id": "dfa_n16_t1",
+   "family": "dfa",
+   "role": "target",
+   "K": 16,
+   "K_bits": 144,
+   "definition": {
+    "n_states": 16,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      3
+     ],
+     [
+      5,
+      8
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      3,
+      10
+     ],
+     [
+      11,
+      0
+     ],
+     [
+      8,
+      12
+     ],
+     [
+      13,
+      4
+     ],
+     [
+      3,
+      9
+     ],
+     [
+      3,
+      14
+     ],
+     [
+      14,
+      8
+     ],
+     [
+      15,
+      12
+     ],
+     [
+      5,
+      5
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     3,
+     6,
+     9,
+     11,
+     13,
+     15
+    ]
+   },
+   "task_token": 2,
+   "exp11_task_token": 8,
+   "acceptance_rate": 0.4810509716763216
+  },
+  {
+   "task_id": "dfa_n16_t2",
+   "family": "dfa",
+   "role": "target",
+   "K": 16,
+   "K_bits": 144,
+   "definition": {
+    "n_states": 16,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      8,
+      10
+     ],
+     [
+      6,
+      11
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      9,
+      12
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      13,
+      14
+     ],
+     [
+      0,
+      13
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      15,
+      10
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      12,
+      6
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     5,
+     6,
+     7,
+     8,
+     9,
+     13,
+     15
+    ]
+   },
+   "task_token": 3,
+   "exp11_task_token": 9,
+   "acceptance_rate": 0.5729838083772099
+  },
+  {
+   "task_id": "dfa_n08_t2_r1_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t2",
+   "r": "1",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      4
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     2,
+     3,
+     6,
+     7
+    ]
+   },
+   "task_token": 4,
+   "pool_token": 1004,
+   "acceptance_rate": 0.5386628368321587,
+   "agree": 0.868596076965332,
+   "agree_se": 0.0003299234163339327,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.8687168289633358,
+   "a0": 0.5001417814091837,
+   "rho": 0.73711761025933,
+   "changed_entries": 1,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t2_r1_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t2",
+   "r": "1",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      4
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      7
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     2,
+     3,
+     6,
+     7
+    ]
+   },
+   "task_token": 5,
+   "pool_token": 1005,
+   "acceptance_rate": 0.49918683136210723,
+   "agree": 0.9781513214111328,
+   "agree_se": 0.0001427629962917111,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.9785884723943823,
+   "a0": 0.49999862683034735,
+   "rho": 0.9563027628297056,
+   "changed_entries": 1,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t2_r2_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t2",
+   "r": "2",
+   "K": 6,
+   "K_bits": 42,
+   "definition": {
+    "n_states": 6,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      1
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      2,
+      4
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     2,
+     3,
+     5
+    ]
+   },
+   "task_token": 6,
+   "pool_token": 1006,
+   "acceptance_rate": 0.5625,
+   "agree": 0.5104150772094727,
+   "agree_se": 0.00048817530702890114,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.5089394520310795,
+   "a0": 0.5002116947980539,
+   "rho": 0.02041540849439425,
+   "changed_entries": 2,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t2_r2_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t2",
+   "r": "2",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      5,
+      4
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      7,
+      4
+     ],
+     [
+      3,
+      3
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     2,
+     3,
+     6,
+     7
+    ]
+   },
+   "task_token": 7,
+   "pool_token": 1007,
+   "acceptance_rate": 0.6684528659371769,
+   "agree": 0.5754852294921875,
+   "agree_se": 0.00048268470443525735,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.5718164198538837,
+   "a0": 0.5005763501831098,
+   "rho": 0.1499906528986813,
+   "changed_entries": 2,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t2_r4_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t2",
+   "r": "4",
+   "K": 6,
+   "K_bits": 42,
+   "definition": {
+    "n_states": 6,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      2,
+      5
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     2,
+     5
+    ]
+   },
+   "task_token": 8,
+   "pool_token": 1008,
+   "acceptance_rate": 0.5550619539092568,
+   "agree": 0.6637144088745117,
+   "agree_se": 0.00046136516045953,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.6644357653225169,
+   "a0": 0.5001981076457014,
+   "rho": 0.3271622291355736,
+   "changed_entries": 4,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t2_r4_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t2",
+   "r": "4",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      5,
+      4
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      2,
+      4
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     2,
+     3,
+     6,
+     7
+    ]
+   },
+   "task_token": 9,
+   "pool_token": 1009,
+   "acceptance_rate": 0.469956075443941,
+   "agree": 0.6449108123779297,
+   "agree_se": 0.00046732455021867994,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.6451528668403625,
+   "a0": 0.49989579022076214,
+   "rho": 0.28996960897646085,
+   "changed_entries": 4,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t2_rall_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t2",
+   "r": "all",
+   "K": 6,
+   "K_bits": 42,
+   "definition": {
+    "n_states": 6,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     3,
+     5
+    ]
+   },
+   "task_token": 10,
+   "pool_token": 1010,
+   "acceptance_rate": 0.6844114976770738,
+   "agree": 0.45025157928466797,
+   "agree_se": 0.00048585833884034005,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.4483533782117507,
+   "a0": 0.5006340791551338,
+   "rho": 0.0,
+   "changed_entries": 11,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t2_rall_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t2",
+   "r": "all",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      4,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      3,
+      7
+     ],
+     [
+      3,
+      3
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6
+    ]
+   },
+   "task_token": 11,
+   "pool_token": 1011,
+   "acceptance_rate": 0.6104486058740055,
+   "agree": 0.5837211608886719,
+   "agree_se": 0.0004813876336395049,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.5847863204338971,
+   "a0": 0.5003829894994851,
+   "rho": 0.16680411122451339,
+   "changed_entries": 14,
+   "tries": 4
+  },
+  {
+   "task_id": "dfa_n08_t3_r1_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t3",
+   "r": "1",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      6,
+      1
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      7,
+      2
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     4,
+     5,
+     7
+    ]
+   },
+   "task_token": 12,
+   "pool_token": 1012,
+   "acceptance_rate": 0.4783276705180897,
+   "agree": 0.8732204437255859,
+   "agree_se": 0.0003249276012847432,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.8743827658541062,
+   "a0": 0.5017988387990044,
+   "rho": 0.7455253697747489,
+   "changed_entries": 1,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t3_r1_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t3",
+   "r": "1",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     4,
+     5,
+     7
+    ]
+   },
+   "task_token": 13,
+   "pool_token": 1013,
+   "acceptance_rate": 0.49586336051716523,
+   "agree": 0.6496009826660156,
+   "agree_se": 0.0004659129907163907,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.6503049696193022,
+   "a0": 0.5004119307268411,
+   "rho": 0.29862412878719624,
+   "changed_entries": 1,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t3_r2_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t3",
+   "r": "2",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      6,
+      5
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      7,
+      2
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     4,
+     5,
+     7
+    ]
+   },
+   "task_token": 14,
+   "pool_token": 1014,
+   "acceptance_rate": 0.42010389356052175,
+   "agree": 0.7514963150024414,
+   "agree_se": 0.00042201694337470804,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.7521089806276209,
+   "a0": 0.5067412879216135,
+   "rho": 0.49620010977511636,
+   "changed_entries": 2,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t3_r2_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t3",
+   "r": "2",
+   "K": 7,
+   "K_bits": 49,
+   "definition": {
+    "n_states": 7,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      5,
+      5
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      5,
+      1
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     4,
+     6
+    ]
+   },
+   "task_token": 15,
+   "pool_token": 1015,
+   "acceptance_rate": 0.4941867239335004,
+   "agree": 0.7112569808959961,
+   "agree_se": 0.00044255684355241275,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.7126286731046789,
+   "a0": 0.5005319439296727,
+   "rho": 0.42189892707903703,
+   "changed_entries": 2,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t3_r4_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t3",
+   "r": "4",
+   "K": 6,
+   "K_bits": 42,
+   "definition": {
+    "n_states": 6,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      0
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      5,
+      2
+     ],
+     [
+      2,
+      4
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     3,
+     5
+    ]
+   },
+   "task_token": 16,
+   "pool_token": 1016,
+   "acceptance_rate": 0.3342013814870049,
+   "agree": 0.5032463073730469,
+   "agree_se": 0.0004882709583763449,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.5033295540248647,
+   "a0": 0.5136581581173232,
+   "rho": 0.0,
+   "changed_entries": 4,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t3_r4_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t3",
+   "r": "4",
+   "K": 7,
+   "K_bits": 49,
+   "definition": {
+    "n_states": 7,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      5,
+      4
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     3,
+     4,
+     6
+    ]
+   },
+   "task_token": 17,
+   "pool_token": 1017,
+   "acceptance_rate": 0.5719256436123568,
+   "agree": 0.4512462615966797,
+   "agree_se": 0.0004859544884675673,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.4512910597464618,
+   "a0": 0.4940500316442922,
+   "rho": 0.0,
+   "changed_entries": 4,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n08_t3_rall_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t3",
+   "r": "all",
+   "K": 6,
+   "K_bits": 42,
+   "definition": {
+    "n_states": 6,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      0
+     ],
+     [
+      2,
+      0
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "accept": [
+     0,
+     2,
+     4,
+     5
+    ]
+   },
+   "task_token": 18,
+   "pool_token": 1018,
+   "acceptance_rate": 0.6236374623635236,
+   "agree": 0.44942188262939453,
+   "agree_se": 0.000485776636948492,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.4500777896712808,
+   "a0": 0.4896874197947909,
+   "rho": 0.0,
+   "changed_entries": 13,
+   "tries": 2
+  },
+  {
+   "task_id": "dfa_n08_t3_rall_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n08_t3",
+   "r": "all",
+   "K": 8,
+   "K_bits": 56,
+   "definition": {
+    "n_states": 8,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      2
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      4,
+      0
+     ]
+    ],
+    "accept": [
+     0,
+     2,
+     3,
+     5,
+     7
+    ]
+   },
+   "task_token": 19,
+   "pool_token": 1019,
+   "acceptance_rate": 0.5798562905367683,
+   "agree": 0.5713396072387695,
+   "agree_se": 0.0004832856367354443,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.5712597720763263,
+   "a0": 0.4933393072205945,
+   "rho": 0.15394977571732707,
+   "changed_entries": 14,
+   "tries": 4
+  },
+  {
+   "task_id": "dfa_n16_t1_r1_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t1",
+   "r": "1",
+   "K": 16,
+   "K_bits": 144,
+   "definition": {
+    "n_states": 16,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      3
+     ],
+     [
+      5,
+      8
+     ],
+     [
+      8,
+      7
+     ],
+     [
+      3,
+      9
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      11,
+      4
+     ],
+     [
+      3,
+      12
+     ],
+     [
+      13,
+      8
+     ],
+     [
+      8,
+      14
+     ],
+     [
+      15,
+      14
+     ],
+     [
+      3,
+      13
+     ],
+     [
+      5,
+      5
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     3,
+     6,
+     10,
+     11,
+     12,
+     15
+    ]
+   },
+   "task_token": 20,
+   "pool_token": 1020,
+   "acceptance_rate": 0.45508554753135233,
+   "agree": 0.8586406707763672,
+   "agree_se": 0.00034022639936357596,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.8588734584696153,
+   "a0": 0.5016721525753383,
+   "rho": 0.7163326714447684,
+   "changed_entries": 1,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t1_r1_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t1",
+   "r": "1",
+   "K": 16,
+   "K_bits": 144,
+   "definition": {
+    "n_states": 16,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      3
+     ],
+     [
+      5,
+      8
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      3,
+      10
+     ],
+     [
+      11,
+      0
+     ],
+     [
+      8,
+      12
+     ],
+     [
+      13,
+      4
+     ],
+     [
+      3,
+      9
+     ],
+     [
+      5,
+      14
+     ],
+     [
+      14,
+      8
+     ],
+     [
+      15,
+      12
+     ],
+     [
+      5,
+      5
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     3,
+     6,
+     9,
+     11,
+     13,
+     15
+    ]
+   },
+   "task_token": 21,
+   "pool_token": 1021,
+   "acceptance_rate": 0.4508491824654972,
+   "agree": 0.9345979690551758,
+   "agree_se": 0.00024143936333687326,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.9348837943638072,
+   "a0": 0.5018210588204965,
+   "rho": 0.8687177928678069,
+   "changed_entries": 1,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t1_r2_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t1",
+   "r": "2",
+   "K": 15,
+   "K_bits": 135,
+   "definition": {
+    "n_states": 15,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      3
+     ],
+     [
+      5,
+      8
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      3,
+      10
+     ],
+     [
+      11,
+      0
+     ],
+     [
+      12,
+      4
+     ],
+     [
+      13,
+      7
+     ],
+     [
+      3,
+      14
+     ],
+     [
+      10,
+      8
+     ],
+     [
+      5,
+      5
+     ],
+     [
+      8,
+      7
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     3,
+     6,
+     11,
+     12,
+     13,
+     14
+    ]
+   },
+   "task_token": 22,
+   "pool_token": 1022,
+   "acceptance_rate": 0.4501475867103128,
+   "agree": 0.8129262924194336,
+   "agree_se": 0.00038083074751262577,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.8121931097086739,
+   "a0": 0.5018808188724506,
+   "rho": 0.6244398636545098,
+   "changed_entries": 2,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t1_r2_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t1",
+   "r": "2",
+   "K": 15,
+   "K_bits": 135,
+   "definition": {
+    "n_states": 15,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      3
+     ],
+     [
+      5,
+      8
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      5,
+      10
+     ],
+     [
+      8,
+      0
+     ],
+     [
+      8,
+      11
+     ],
+     [
+      12,
+      4
+     ],
+     [
+      3,
+      13
+     ],
+     [
+      13,
+      8
+     ],
+     [
+      14,
+      11
+     ],
+     [
+      5,
+      5
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     3,
+     6,
+     9,
+     12,
+     14
+    ]
+   },
+   "task_token": 23,
+   "pool_token": 1023,
+   "acceptance_rate": 0.3773335884599125,
+   "agree": 0.7059497833251953,
+   "agree_se": 0.000444936157477784,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.7065833877114689,
+   "a0": 0.504460484633455,
+   "rho": 0.40660591626623543,
+   "changed_entries": 2,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t1_r4_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t1",
+   "r": "4",
+   "K": 13,
+   "K_bits": 117,
+   "definition": {
+    "n_states": 13,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      8,
+      0
+     ],
+     [
+      6,
+      9
+     ],
+     [
+      3,
+      10
+     ],
+     [
+      3,
+      11
+     ],
+     [
+      12,
+      3
+     ],
+     [
+      12,
+      9
+     ],
+     [
+      4,
+      4
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     3,
+     5,
+     7,
+     8,
+     12
+    ]
+   },
+   "task_token": 24,
+   "pool_token": 1024,
+   "acceptance_rate": 0.5083883229423972,
+   "agree": 0.6307106018066406,
+   "agree_se": 0.00047130118193336137,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.6285743467948016,
+   "a0": 0.49981112436944386,
+   "rho": 0.2617000973325929,
+   "changed_entries": 4,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t1_r4_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t1",
+   "r": "4",
+   "K": 16,
+   "K_bits": 144,
+   "definition": {
+    "n_states": 16,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      3
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      7,
+      5
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      9,
+      0
+     ],
+     [
+      5,
+      10
+     ],
+     [
+      6,
+      11
+     ],
+     [
+      5,
+      11
+     ],
+     [
+      12,
+      4
+     ],
+     [
+      2,
+      13
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      5,
+      14
+     ],
+     [
+      15,
+      13
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     5,
+     8,
+     9,
+     11,
+     12,
+     15
+    ]
+   },
+   "task_token": 25,
+   "pool_token": 1025,
+   "acceptance_rate": 0.43500903774710264,
+   "agree": 0.8367929458618164,
+   "agree_se": 0.0003608930441395076,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.836451463839587,
+   "a0": 0.5024089227554214,
+   "rho": 0.6720056656925076,
+   "changed_entries": 4,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t1_rall_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t1",
+   "r": "all",
+   "K": 10,
+   "K_bits": 90,
+   "definition": {
+    "n_states": 10,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      6,
+      5
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      4,
+      9
+     ],
+     [
+      2,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      8,
+      3
+     ],
+     [
+      9,
+      0
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     4,
+     6,
+     9
+    ]
+   },
+   "task_token": 26,
+   "pool_token": 1026,
+   "acceptance_rate": 0.5267217474825242,
+   "agree": 0.51959228515625,
+   "agree_se": 0.0004879062450219153,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.5185055732727051,
+   "a0": 0.49901237165613566,
+   "rho": 0.04107868605088357,
+   "changed_entries": 32,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t1_rall_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t1",
+   "r": "all",
+   "K": 15,
+   "K_bits": 135,
+   "definition": {
+    "n_states": 15,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      8,
+      4
+     ],
+     [
+      7,
+      1
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      11,
+      11
+     ],
+     [
+      5,
+      5
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      1,
+      13
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      11,
+      2
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     3,
+     7,
+     8,
+     11,
+     12
+    ]
+   },
+   "task_token": 27,
+   "pool_token": 1027,
+   "acceptance_rate": 0.5535788290640887,
+   "agree": 0.5271701812744141,
+   "agree_se": 0.000487559800270014,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.5261903159758624,
+   "a0": 0.4980857027985621,
+   "rho": 0.05794710100513275,
+   "changed_entries": 28,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t2_r1_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t2",
+   "r": "1",
+   "K": 16,
+   "K_bits": 144,
+   "definition": {
+    "n_states": 16,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      2,
+      8
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      6,
+      11
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      9,
+      2
+     ],
+     [
+      8,
+      12
+     ],
+     [
+      13,
+      14
+     ],
+     [
+      0,
+      13
+     ],
+     [
+      3,
+      9
+     ],
+     [
+      15,
+      10
+     ],
+     [
+      9,
+      2
+     ],
+     [
+      12,
+      6
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     5,
+     6,
+     7,
+     8,
+     9,
+     13,
+     15
+    ]
+   },
+   "task_token": 28,
+   "pool_token": 1028,
+   "acceptance_rate": 0.5452217529801762,
+   "agree": 0.81365966796875,
+   "agree_se": 0.0003802549449212057,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.8134817726471845,
+   "a0": 0.506426232677768,
+   "rho": 0.6224671075162777,
+   "changed_entries": 1,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t2_r1_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t2",
+   "r": "1",
+   "K": 16,
+   "K_bits": 144,
+   "definition": {
+    "n_states": 16,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      8,
+      10
+     ],
+     [
+      6,
+      11
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      9,
+      12
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      13,
+      14
+     ],
+     [
+      0,
+      13
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      15,
+      2
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      12,
+      6
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     5,
+     6,
+     7,
+     8,
+     9,
+     13,
+     15
+    ]
+   },
+   "task_token": 29,
+   "pool_token": 1029,
+   "acceptance_rate": 0.5768627629560583,
+   "agree": 0.9196844100952148,
+   "agree_se": 0.00026541128365849015,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.9193069619290969,
+   "a0": 0.5108570657430391,
+   "rho": 0.8358034343748835,
+   "changed_entries": 1,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t2_r2_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t2",
+   "r": "2",
+   "K": 15,
+   "K_bits": 135,
+   "definition": {
+    "n_states": 15,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      6,
+      10
+     ],
+     [
+      11,
+      0
+     ],
+     [
+      9,
+      5
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      0,
+      12
+     ],
+     [
+      13,
+      14
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      12,
+      11
+     ],
+     [
+      8,
+      2
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     6,
+     7,
+     8,
+     9,
+     12,
+     13
+    ]
+   },
+   "task_token": 30,
+   "pool_token": 1030,
+   "acceptance_rate": 0.5497726622749778,
+   "agree": 0.6975517272949219,
+   "agree_se": 0.00044855304257511826,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.6963967260192422,
+   "a0": 0.5071547929401277,
+   "rho": 0.38632197620553144,
+   "changed_entries": 2,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t2_r2_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t2",
+   "r": "2",
+   "K": 16,
+   "K_bits": 144,
+   "definition": {
+    "n_states": 16,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      1,
+      8
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      6,
+      11
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      9,
+      2
+     ],
+     [
+      8,
+      12
+     ],
+     [
+      13,
+      14
+     ],
+     [
+      0,
+      13
+     ],
+     [
+      3,
+      9
+     ],
+     [
+      15,
+      10
+     ],
+     [
+      9,
+      2
+     ],
+     [
+      12,
+      6
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     5,
+     6,
+     7,
+     8,
+     9,
+     13,
+     15
+    ]
+   },
+   "task_token": 31,
+   "pool_token": 1031,
+   "acceptance_rate": 0.5986409608055564,
+   "agree": 0.8760528564453125,
+   "agree_se": 0.00032179808823158283,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.8763276023023269,
+   "a0": 0.5140852224358241,
+   "rho": 0.7449199956913894,
+   "changed_entries": 2,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t2_r4_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t2",
+   "r": "4",
+   "K": 14,
+   "K_bits": 126,
+   "definition": {
+    "n_states": 14,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      9,
+      4
+     ],
+     [
+      6,
+      10
+     ],
+     [
+      11,
+      0
+     ],
+     [
+      4,
+      9
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      12,
+      13
+     ],
+     [
+      5,
+      11
+     ],
+     [
+      8,
+      2
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     4,
+     5,
+     6,
+     7,
+     8,
+     12
+    ]
+   },
+   "task_token": 32,
+   "pool_token": 1032,
+   "acceptance_rate": 0.6142818997888004,
+   "agree": 0.6722507476806641,
+   "agree_se": 0.000458391488669899,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.6713032967904035,
+   "a0": 0.5162979482629453,
+   "rho": 0.32241500497603076,
+   "changed_entries": 4,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t2_r4_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t2",
+   "r": "4",
+   "K": 16,
+   "K_bits": 144,
+   "definition": {
+    "n_states": 16,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      10,
+      11
+     ],
+     [
+      6,
+      12
+     ],
+     [
+      11,
+      0
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      2
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      0,
+      13
+     ],
+     [
+      0,
+      14
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      15,
+      11
+     ],
+     [
+      10,
+      6
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     5,
+     6,
+     7,
+     8,
+     9,
+     14,
+     15
+    ]
+   },
+   "task_token": 33,
+   "pool_token": 1033,
+   "acceptance_rate": 0.4976598269799176,
+   "agree": 0.6721973419189453,
+   "agree_se": 0.0004584106240183659,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.6710455207263722,
+   "a0": 0.499565899510344,
+   "rho": 0.344963387266551,
+   "changed_entries": 4,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t2_rall_1",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t2",
+   "r": "all",
+   "K": 14,
+   "K_bits": 126,
+   "definition": {
+    "n_states": 14,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      9,
+      3
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      6
+     ],
+     [
+      12,
+      5
+     ],
+     [
+      4,
+      4
+     ],
+     [
+      4,
+      13
+     ],
+     [
+      4,
+      12
+     ],
+     [
+      4,
+      8
+     ]
+    ],
+    "accept": [
+     0,
+     1,
+     2,
+     3,
+     6,
+     11,
+     12
+    ]
+   },
+   "task_token": 34,
+   "pool_token": 1034,
+   "acceptance_rate": 0.5013141807387856,
+   "agree": 0.5413713455200195,
+   "agree_se": 0.0004866069064103157,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.5403048150679645,
+   "a0": 0.5002311247044418,
+   "rho": 0.08231849330602645,
+   "changed_entries": 30,
+   "tries": 1
+  },
+  {
+   "task_id": "dfa_n16_t2_rall_2",
+   "family": "dfa",
+   "role": "distractor",
+   "of_target": "dfa_n16_t2",
+   "r": "all",
+   "K": 13,
+   "K_bits": 117,
+   "definition": {
+    "n_states": 13,
+    "alphabet": [
+     "a",
+     "b"
+    ],
+    "start": 0,
+    "transitions": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      9,
+      9
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      5,
+      10
+     ],
+     [
+      9,
+      11
+     ],
+     [
+      5,
+      8
+     ],
+     [
+      8,
+      4
+     ],
+     [
+      1,
+      11
+     ],
+     [
+      12,
+      12
+     ],
+     [
+      11,
+      8
+     ]
+    ],
+    "accept": [
+     0,
+     3,
+     4,
+     9,
+     10,
+     11,
+     12
+    ]
+   },
+   "task_token": 35,
+   "pool_token": 1035,
+   "acceptance_rate": 0.5034608876003939,
+   "agree": 0.4009380340576172,
+   "agree_se": 0.00047860203989293044,
+   "agree_method": "monte_carlo_train_sampler",
+   "agree_exact_uniform": 0.39973756145028505,
+   "a0": 0.5004136787247262,
+   "rho": 0.0,
+   "changed_entries": 32,
+   "tries": 2
+  }
+ ],
+ "mixes": {
+  "dfa_n08_t2_m1": {
+   "target_id": "dfa_n08_t2",
+   "mix": "m1",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n08_t2_rall_1",
+    "dfa_n08_t2_rall_2"
+   ],
+   "pi": 0.425,
+   "alpha_soft": 0.2208917472704182,
+   "alpha_agree": 0.5894384145736694
+  },
+  "dfa_n08_t2_m2": {
+   "target_id": "dfa_n08_t2",
+   "mix": "m2",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n08_t2_r1_1",
+    "dfa_n08_t2_r1_2"
+   ],
+   "pi": 0.425,
+   "alpha_soft": 0.8697036585628402,
+   "alpha_agree": 0.9348676443099976
+  },
+  "dfa_n08_t2_m3": {
+   "target_id": "dfa_n08_t2",
+   "mix": "m3",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n08_t2_r1_1",
+    "dfa_n08_t2_r1_2",
+    "dfa_n08_t2_r2_1",
+    "dfa_n08_t2_r2_2",
+    "dfa_n08_t2_r4_1",
+    "dfa_n08_t2_r4_2",
+    "dfa_n08_t2_rall_1",
+    "dfa_n08_t2_rall_2"
+   ],
+   "pi": 0.10625,
+   "alpha_soft": 0.4313247532807325,
+   "alpha_agree": 0.71049485206604
+  },
+  "dfa_n08_t2_m4": {
+   "target_id": "dfa_n08_t2",
+   "mix": "m4",
+   "alpha_share": 0.4,
+   "distractors": [
+    "dfa_n08_t2_rall_1",
+    "dfa_n08_t2_rall_2"
+   ],
+   "pi": 0.3,
+   "alpha_soft": 0.450041233367354,
+   "alpha_agree": 0.710191822052002
+  },
+  "dfa_n08_t2_m5": {
+   "target_id": "dfa_n08_t2",
+   "mix": "m5",
+   "alpha_share": 0.4,
+   "distractors": [
+    "dfa_n08_t2_r2_1",
+    "dfa_n08_t2_r2_2",
+    "dfa_n08_t2_r4_1",
+    "dfa_n08_t2_r4_2"
+   ],
+   "pi": 0.15,
+   "alpha_soft": 0.5181306849257665,
+   "alpha_agree": 0.7591788291931152
+  },
+  "dfa_n08_t3_m1": {
+   "target_id": "dfa_n08_t3",
+   "mix": "m1",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n08_t3_rall_1",
+    "dfa_n08_t3_rall_2"
+   ],
+   "pi": 0.425,
+   "alpha_soft": 0.215428654679864,
+   "alpha_agree": 0.5838236331939697
+  },
+  "dfa_n08_t3_m2": {
+   "target_id": "dfa_n08_t3",
+   "mix": "m2",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n08_t3_r1_1",
+    "dfa_n08_t3_r1_2"
+   ],
+   "pi": 0.425,
+   "alpha_soft": 0.5937635368888267,
+   "alpha_agree": 0.7971991062164306
+  },
+  "dfa_n08_t3_m3": {
+   "target_id": "dfa_n08_t3",
+   "mix": "m3",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n08_t3_r1_1",
+    "dfa_n08_t3_r1_2",
+    "dfa_n08_t3_r2_1",
+    "dfa_n08_t3_r2_2",
+    "dfa_n08_t3_r4_1",
+    "dfa_n08_t3_r4_2",
+    "dfa_n08_t3_rall_1",
+    "dfa_n08_t3_rall_2"
+   ],
+   "pi": 0.10625,
+   "alpha_soft": 0.37484607055792646,
+   "alpha_agree": 0.6770880579948425
+  },
+  "dfa_n08_t3_m4": {
+   "target_id": "dfa_n08_t3",
+   "mix": "m4",
+   "alpha_share": 0.4,
+   "distractors": [
+    "dfa_n08_t3_rall_1",
+    "dfa_n08_t3_rall_2"
+   ],
+   "pi": 0.3,
+   "alpha_soft": 0.44618493271519816,
+   "alpha_agree": 0.7062284469604492
+  },
+  "dfa_n08_t3_m5": {
+   "target_id": "dfa_n08_t3",
+   "mix": "m5",
+   "alpha_share": 0.4,
+   "distractors": [
+    "dfa_n08_t3_r2_1",
+    "dfa_n08_t3_r2_2",
+    "dfa_n08_t3_r4_1",
+    "dfa_n08_t3_r4_2"
+   ],
+   "pi": 0.15,
+   "alpha_soft": 0.537714855528123,
+   "alpha_agree": 0.7625868797302247
+  },
+  "dfa_n16_t1_m1": {
+   "target_id": "dfa_n16_t1",
+   "mix": "m1",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n16_t1_rall_1",
+    "dfa_n16_t1_rall_2"
+   ],
+   "pi": 0.425,
+   "alpha_soft": 0.1920859594988069,
+   "alpha_agree": 0.5948740482330322
+  },
+  "dfa_n16_t1_m2": {
+   "target_id": "dfa_n16_t1",
+   "mix": "m2",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n16_t1_r1_1",
+    "dfa_n16_t1_r1_2"
+   ],
+   "pi": 0.425,
+   "alpha_soft": 0.8236464473328445,
+   "alpha_agree": 0.9121264219284058
+  },
+  "dfa_n16_t1_m3": {
+   "target_id": "dfa_n16_t1",
+   "mix": "m3",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n16_t1_r1_1",
+    "dfa_n16_t1_r1_2",
+    "dfa_n16_t1_r2_1",
+    "dfa_n16_t1_r2_2",
+    "dfa_n16_t1_r4_1",
+    "dfa_n16_t1_r4_2",
+    "dfa_n16_t1_rall_1",
+    "dfa_n16_t1_rall_2"
+   ],
+   "pi": 0.10625,
+   "alpha_soft": 0.537687953145909,
+   "alpha_agree": 0.7690529525279999
+  },
+  "dfa_n16_t1_m4": {
+   "target_id": "dfa_n16_t1",
+   "mix": "m4",
+   "alpha_share": 0.4,
+   "distractors": [
+    "dfa_n16_t1_rall_1",
+    "dfa_n16_t1_rall_2"
+   ],
+   "pi": 0.3,
+   "alpha_soft": 0.4297077361168049,
+   "alpha_agree": 0.7140287399291992
+  },
+  "dfa_n16_t1_m5": {
+   "target_id": "dfa_n16_t1",
+   "mix": "m5",
+   "alpha_share": 0.4,
+   "distractors": [
+    "dfa_n16_t1_r2_1",
+    "dfa_n16_t1_r2_2",
+    "dfa_n16_t1_r4_1",
+    "dfa_n16_t1_r4_2"
+   ],
+   "pi": 0.15,
+   "alpha_soft": 0.6947127314418768,
+   "alpha_agree": 0.8479569435119629
+  },
+  "dfa_n16_t2_m1": {
+   "target_id": "dfa_n16_t2",
+   "mix": "m1",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n16_t2_rall_1",
+    "dfa_n16_t2_rall_2"
+   ],
+   "pi": 0.425,
+   "alpha_soft": 0.18498535965506124,
+   "alpha_agree": 0.5504814863204955
+  },
+  "dfa_n16_t2_m2": {
+   "target_id": "dfa_n16_t2",
+   "mix": "m2",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n16_t2_r1_1",
+    "dfa_n16_t2_r1_2"
+   ],
+   "pi": 0.425,
+   "alpha_soft": 0.7697649803037434,
+   "alpha_agree": 0.8866712331771851
+  },
+  "dfa_n16_t2_m3": {
+   "target_id": "dfa_n16_t2",
+   "mix": "m3",
+   "alpha_share": 0.15,
+   "distractors": [
+    "dfa_n16_t2_r1_1",
+    "dfa_n16_t2_r1_2",
+    "dfa_n16_t2_r2_1",
+    "dfa_n16_t2_r2_2",
+    "dfa_n16_t2_r4_1",
+    "dfa_n16_t2_r4_2",
+    "dfa_n16_t2_rall_1",
+    "dfa_n16_t2_rall_2"
+   ],
+   "pi": 0.10625,
+   "alpha_soft": 0.5047909986795234,
+   "alpha_agree": 0.7443312764167785
+  },
+  "dfa_n16_t2_m4": {
+   "target_id": "dfa_n16_t2",
+   "mix": "m4",
+   "alpha_share": 0.4,
+   "distractors": [
+    "dfa_n16_t2_rall_1",
+    "dfa_n16_t2_rall_2"
+   ],
+   "pi": 0.3,
+   "alpha_soft": 0.424695547991808,
+   "alpha_agree": 0.6826928138732911
+  },
+  "dfa_n16_t2_m5": {
+   "target_id": "dfa_n16_t2",
+   "mix": "m5",
+   "alpha_share": 0.4,
+   "distractors": [
+    "dfa_n16_t2_r2_1",
+    "dfa_n16_t2_r2_2",
+    "dfa_n16_t2_r4_1",
+    "dfa_n16_t2_r4_2"
+   ],
+   "pi": 0.15,
+   "alpha_soft": 0.6697930546209254,
+   "alpha_agree": 0.8377079010009766
+  }
+ },
+ "construction": [
+  {
+   "attempt": 0,
+   "mean_rho_by_r": {
+    "1": 0.7226113597318395,
+    "2": 0.4063491062581118,
+    "4": 0.2772769991724646,
+    "all": 0.0627622709129854
+   },
+   "passed": true
+  }
+ ],
+ "rejections": [
+  {
+   "target": "dfa_n08_t2",
+   "r": "all",
+   "index": 2,
+   "attempt": 0,
+   "try_": 1,
+   "rejected": "acceptance outside band"
+  },
+  {
+   "target": "dfa_n08_t2",
+   "r": "all",
+   "index": 2,
+   "attempt": 0,
+   "try_": 2,
+   "rejected": "acceptance outside band"
+  },
+  {
+   "target": "dfa_n08_t2",
+   "r": "all",
+   "index": 2,
+   "attempt": 0,
+   "try_": 3,
+   "rejected": "acceptance outside band"
+  },
+  {
+   "target": "dfa_n08_t3",
+   "r": "all",
+   "index": 1,
+   "attempt": 0,
+   "try_": 1,
+   "rejected": "acceptance outside band"
+  },
+  {
+   "target": "dfa_n08_t3",
+   "r": "all",
+   "index": 2,
+   "attempt": 0,
+   "try_": 1,
+   "rejected": "acceptance outside band"
+  },
+  {
+   "target": "dfa_n08_t3",
+   "r": "all",
+   "index": 2,
+   "attempt": 0,
+   "try_": 2,
+   "rejected": "acceptance outside band"
+  },
+  {
+   "target": "dfa_n08_t3",
+   "r": "all",
+   "index": 2,
+   "attempt": 0,
+   "try_": 3,
+   "rejected": "acceptance outside band"
+  },
+  {
+   "target": "dfa_n16_t2",
+   "r": "all",
+   "index": 2,
+   "attempt": 0,
+   "try_": 1,
+   "rejected": "acceptance outside band"
+  }
+ ],
+ "counts_mean": {
+  "dfa_n08_t2_m1": {
+   "dfa_n08_t2": 9831.0,
+   "dfa_n08_t2_rall_1": 27853.0,
+   "dfa_n08_t2_rall_2": 27852.0
+  },
+  "dfa_n08_t2_m2": {
+   "dfa_n08_t2": 9831.0,
+   "dfa_n08_t2_r1_1": 27853.0,
+   "dfa_n08_t2_r1_2": 27852.0
+  },
+  "dfa_n08_t2_m3": {
+   "dfa_n08_t2": 9831.0,
+   "dfa_n08_t2_r1_1": 6965.0,
+   "dfa_n08_t2_r1_2": 6964.0,
+   "dfa_n08_t2_r2_1": 6961.0,
+   "dfa_n08_t2_r2_2": 6963.0,
+   "dfa_n08_t2_r4_1": 6963.0,
+   "dfa_n08_t2_r4_2": 6963.0,
+   "dfa_n08_t2_rall_1": 6962.0,
+   "dfa_n08_t2_rall_2": 6964.0
+  },
+  "dfa_n08_t2_m4": {
+   "dfa_n08_t2": 26215.0,
+   "dfa_n08_t2_rall_1": 19661.0,
+   "dfa_n08_t2_rall_2": 19660.0
+  },
+  "dfa_n08_t2_m5": {
+   "dfa_n08_t2": 26215.0,
+   "dfa_n08_t2_r2_1": 9830.0,
+   "dfa_n08_t2_r2_2": 9830.0,
+   "dfa_n08_t2_r4_1": 9831.0,
+   "dfa_n08_t2_r4_2": 9830.0
+  },
+  "dfa_n08_t3_m1": {
+   "dfa_n08_t3": 9831.0,
+   "dfa_n08_t3_rall_1": 27851.0,
+   "dfa_n08_t3_rall_2": 27854.0
+  },
+  "dfa_n08_t3_m2": {
+   "dfa_n08_t3": 9831.0,
+   "dfa_n08_t3_r1_1": 27851.0,
+   "dfa_n08_t3_r1_2": 27854.0
+  },
+  "dfa_n08_t3_m3": {
+   "dfa_n08_t3": 9831.0,
+   "dfa_n08_t3_r1_1": 6964.0,
+   "dfa_n08_t3_r1_2": 6964.0,
+   "dfa_n08_t3_r2_1": 6961.0,
+   "dfa_n08_t3_r2_2": 6962.0,
+   "dfa_n08_t3_r4_1": 6966.0,
+   "dfa_n08_t3_r4_2": 6962.0,
+   "dfa_n08_t3_rall_1": 6964.0,
+   "dfa_n08_t3_rall_2": 6962.0
+  },
+  "dfa_n08_t3_m4": {
+   "dfa_n08_t3": 26215.0,
+   "dfa_n08_t3_rall_1": 19660.0,
+   "dfa_n08_t3_rall_2": 19661.0
+  },
+  "dfa_n08_t3_m5": {
+   "dfa_n08_t3": 26215.0,
+   "dfa_n08_t3_r2_1": 9832.0,
+   "dfa_n08_t3_r2_2": 9828.0,
+   "dfa_n08_t3_r4_1": 9829.0,
+   "dfa_n08_t3_r4_2": 9832.0
+  },
+  "dfa_n16_t1_m1": {
+   "dfa_n16_t1": 9831.0,
+   "dfa_n16_t1_rall_1": 27851.0,
+   "dfa_n16_t1_rall_2": 27854.0
+  },
+  "dfa_n16_t1_m2": {
+   "dfa_n16_t1": 9831.0,
+   "dfa_n16_t1_r1_1": 27851.0,
+   "dfa_n16_t1_r1_2": 27854.0
+  },
+  "dfa_n16_t1_m3": {
+   "dfa_n16_t1": 9831.0,
+   "dfa_n16_t1_r1_1": 6964.0,
+   "dfa_n16_t1_r1_2": 6964.0,
+   "dfa_n16_t1_r2_1": 6961.0,
+   "dfa_n16_t1_r2_2": 6963.0,
+   "dfa_n16_t1_r4_1": 6965.0,
+   "dfa_n16_t1_r4_2": 6964.0,
+   "dfa_n16_t1_rall_1": 6963.0,
+   "dfa_n16_t1_rall_2": 6961.0
+  },
+  "dfa_n16_t1_m4": {
+   "dfa_n16_t1": 26215.0,
+   "dfa_n16_t1_rall_1": 19661.0,
+   "dfa_n16_t1_rall_2": 19660.0
+  },
+  "dfa_n16_t1_m5": {
+   "dfa_n16_t1": 26215.0,
+   "dfa_n16_t1_r2_1": 9832.0,
+   "dfa_n16_t1_r2_2": 9831.0,
+   "dfa_n16_t1_r4_1": 9830.0,
+   "dfa_n16_t1_r4_2": 9828.0
+  },
+  "dfa_n16_t2_m1": {
+   "dfa_n16_t2": 9831.0,
+   "dfa_n16_t2_rall_1": 27853.0,
+   "dfa_n16_t2_rall_2": 27852.0
+  },
+  "dfa_n16_t2_m2": {
+   "dfa_n16_t2": 9831.0,
+   "dfa_n16_t2_r1_1": 27853.0,
+   "dfa_n16_t2_r1_2": 27852.0
+  },
+  "dfa_n16_t2_m3": {
+   "dfa_n16_t2": 9831.0,
+   "dfa_n16_t2_r1_1": 6963.0,
+   "dfa_n16_t2_r1_2": 6961.0,
+   "dfa_n16_t2_r2_1": 6964.0,
+   "dfa_n16_t2_r2_2": 6963.0,
+   "dfa_n16_t2_r4_1": 6961.0,
+   "dfa_n16_t2_r4_2": 6962.0,
+   "dfa_n16_t2_rall_1": 6964.0,
+   "dfa_n16_t2_rall_2": 6967.0
+  },
+  "dfa_n16_t2_m4": {
+   "dfa_n16_t2": 26215.0,
+   "dfa_n16_t2_rall_1": 19661.0,
+   "dfa_n16_t2_rall_2": 19660.0
+  },
+  "dfa_n16_t2_m5": {
+   "dfa_n16_t2": 26215.0,
+   "dfa_n16_t2_r2_1": 9830.0,
+   "dfa_n16_t2_r2_2": 9831.0,
+   "dfa_n16_t2_r4_1": 9829.0,
+   "dfa_n16_t2_r4_2": 9831.0
+  }
+ },
+ "counts_spread": 0,
+ "mix_names": [
+  "m1",
+  "m2",
+  "m3",
+  "m4",
+  "m5"
+ ],
+ "seeds": [
+  15909
+ ],
+ "alpha_share_soft_correlation": 0.11100873749468448
+}
