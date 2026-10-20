@@ -48,6 +48,7 @@ def compute_alpha_hat(c, res, arm, probes=None):
     """dict measure -> array (targets, mixes, probes) of alpha-hat (probes axis 1 for non-probe measures), plus the
     decomposition rows and the token-weighted true share."""
     st = J.Setup(c, arm, res)
+    st.constant_scores = set()
     probes = probes or c['probes']
     fam = st.fam
     sd = Path(res) / 'scores'
@@ -72,7 +73,9 @@ def compute_alpha_hat(c, res, arm, probes=None):
 
         def norm(m, pi):
             r = raw[m][ti] if m in nonp else raw[m][ti][:, pi]
-            return S.minmax(r)
+            if np.ptp(r) == 0:
+                st.constant_scores.add((m, T, probes[pi] if m in prb else 'none'))
+            return S.minmax_or_zero(r)
 
         def ah(s, m):
             tt, size = (t512, c['ncd_units_per_task']) if m == 'a2' else (t, st.nU)
@@ -90,7 +93,7 @@ def compute_alpha_hat(c, res, arm, probes=None):
                 if m in combos:
                     u, v = combos[m]
                     s = 0.5 * norm(u, pi) + 0.5 * norm(v, pi)
-                    resol.append(len(np.unique(0.5 * raw[u][ti][..., pi] if u in prb else raw[u][ti])))
+                    resol.append(len(np.unique(s)))
                 else:
                     s = norm(m, pi)
                     resol.append(len(np.unique(raw[m][ti] if m in nonp else raw[m][ti][:, pi])))
@@ -413,6 +416,8 @@ def analyze(c, res):
     refs_log = json.loads((res / 'refs_log.json').read_text())
     gates['inputs'] = dict(overlap=refs_log['overlap'], tv=refs_log['tv'], references=refs_log['references'],
                            mix_check=refs_log['mix_check'], graded=refs_log['graded'])
+    gates['constant_scores'] = {arm: sorted([list(map(str, x)) for x in ST[arm].constant_scores])
+                                for arm in J.ARMS}
     gates['analysis_seconds'] = time.time() - t_start
     C.atomic_write_text(res / 'gates.json', json.dumps(gates, indent=1, default=float))
     C.atomic_write_text(res / 'laws.json', json.dumps(laws_out, indent=1, default=float))

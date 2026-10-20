@@ -63,7 +63,7 @@
   "sklearn": "1.9.1",
   "zstandard": "0.25.0"
  },
- "host": "agent-bf1193c2cobsq4.us-west1-b.c.ae-pool01.internal",
+ "host": "CPU box (4 cores, 15 GB)",
  "cpu_model": "Intel(R) Xeon(R) CPU @ 2.20GHz",
  "cpu_count": 4,
  "pilot": true

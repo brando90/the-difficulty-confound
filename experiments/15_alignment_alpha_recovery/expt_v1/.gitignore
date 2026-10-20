@@ -11,6 +11,5 @@ results*/scores/
 results*/dicts/
 results*/references.npz
 results*/scored_units.npz
-results*/bootstrap.npz
 results_pilot/graded/predictions/
 results/graded/predictions/

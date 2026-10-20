@@ -55,6 +55,14 @@ def test_minmax_range_and_constant():
         S.minmax(np.full(5, 2.0))
 
 
+def test_minmax_or_zero_constant_pool():
+    # Deviation 2: a score constant over the pool maps to 0; otherwise identical to minmax
+    assert np.array_equal(S.minmax_or_zero(np.full(5, 1.0)), np.zeros(5))
+    x = np.array([3.0, -1.0, 2.0, 7.0])
+    assert np.array_equal(S.minmax_or_zero(x), S.minmax(x))
+    assert np.array_equal(S.minmax_or_zero(np.array([0.5, 1.0]), 1.0, 1.0), np.zeros(2))
+
+
 # 3. Compression -----------------------------------------------------------------------------------------------------
 
 def test_ncd_self_and_random():

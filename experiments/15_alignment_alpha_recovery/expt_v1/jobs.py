@@ -444,7 +444,7 @@ def eq2_check(c, out, fam, probes=None, log=print):
         a_full, _ = S.score_a(c, dct, xs)
         tt = C.n_tokens(fam, raws)
         lo_a, hi_a = a_raw.min(), a_raw.max()
-        na = (a_full - lo_a) / (hi_a - lo_a)
+        na = S.minmax_or_zero(a_full, lo_a, hi_a)
         per_probe = {}
         for p in probes:
             b_raw = np.load(Path(out) / 'scores' / f'{fam}_b1_{p}.npz')['raw'][ti].astype(np.float64)
@@ -452,7 +452,7 @@ def eq2_check(c, out, fam, probes=None, log=print):
             model.eval()
             rf = S.pooled_features(model, fam, C.probe_input(c, fam, st.refs[t]))
             bf = S.max_cosine(S.pooled_features(model, fam, C.probe_input(c, fam, raws)), rf)
-            nb = (bf - b_raw.min()) / (b_raw.max() - b_raw.min())
+            nb = S.minmax_or_zero(bf, b_raw.min(), b_raw.max())
             sc = 0.5 * nb + 0.5 * na
             pos = np.empty(len(keys), np.int64)
             pos[order] = np.arange(len(keys))

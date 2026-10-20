@@ -52,12 +52,22 @@ def _probe_sample(args):
         saved = np.load(Path(res) / 'scores' / f'{arm}_{m}_{probe}.npz')['raw']
         if m in ('b1_perm', 'b1_inp'):
             continue
-        mx = 0.0
+        mx = mx_plain = mx_abs = 0.0
         for ti, T in enumerate(st.targets):
             lay = st.layout(T)
             pos = np.concatenate([b * st.nU + sel[u] for b, u in enumerate(lay)])
-            mx = max(mx, rel(np.asarray(r[m][ti], np.float32), saved[ti][pos]))
+            # the saved scores are float32; compare the recompute at the same precision
+            a = np.asarray(r[m][ti], np.float32).astype(np.float64)
+            b = saved[ti][pos].astype(np.float64)
+            # scale: the target's pool range, the scale min-max normalization divides by (Deviation 5 in RESULTS:
+            # gradient cosines near 0 make the plain relative difference ill-conditioned)
+            span = float(np.ptp(saved[ti])) or 1.0
+            mx = max(mx, float(np.max(np.abs(a - b))) / span)
+            mx_abs = max(mx_abs, float(np.max(np.abs(a - b))))
+            mx_plain = max(mx_plain, rel(np.asarray(r[m][ti], np.float32), saved[ti][pos]))
         worst[m] = mx
+        worst[m + ' (abs)'] = mx_abs
+        worst[m + ' (plain relative)'] = mx_plain
     return arm, probe, worst
 
 
@@ -95,32 +105,32 @@ def _nonprobe(args):
 
 
 def _replay(args):
+    """Replay every checkpoint of the given graded runs on the target's test split (as Experiment 11's verify.py)."""
     res, names = args
     c = C.load_config()
+    import importlib
     import torch
     torch.set_num_threads(1)
     R = GR.exp11_run(c)
-    M = sys.modules['model'] if 'model' in sys.modules else None
-    import importlib
-    M = importlib.import_module('model')
+    M = importlib.import_module('model')  # Experiment 11's model.py (its folder is on sys.path after the import)
     G = json.loads((Path(res) / 'graded' / 'graded_tasks_full.json').read_text())
     data = GR.load_data(Path(res) / 'graded', G['tasks'])
     c11 = R.load_config()
-    rows = {}
-    with open(Path(res) / 'graded' / 'metrics.csv') as f:
-        for r in csv.DictReader(f):
-            rows[(f"{r['seed']}_{r['target_id']}_{r['mix']}", int(r['T']))] = float(r['excess_bits'])
     tok = {t['task_id']: t['task_token'] for t in G['tasks']}
-    worst = 0.0
+    wb = wp = 0.0
+    n = 0
     for name in names:
-        tid = name.split('_', 1)[1].rsplit('_', 1)[0]
-        for p in sorted((Path(res) / 'graded' / 'checkpoints' / name).glob('T_*.npz')):
-            T = int(p.stem[2:])
-            model = M.build_model(c11, c['graded']['n_task_tokens'])
-            M.load_npz(model, p)
-            ev = M.evaluate(model, tok[tid], data['test_bits'], data['test_lens'], data['test_labels'][tok[tid]])
-            worst = max(worst, abs(ev['excess_bits'] - rows[(name, T)]))
-    return worst
+        rec = json.loads((Path(res) / 'graded' / 'cells' / f'{name}.json').read_text())
+        t = tok[rec['target_id']]
+        pred = np.load(Path(res) / 'graded' / 'predictions' / f'{name}.npz')
+        for i, row in enumerate(rec['rows']):
+            m = M.load_npz(M.build_model(c11, c['graded']['n_task_tokens']),
+                           Path(res) / 'graded' / 'checkpoints' / name / f"T_{row['T']}.npz")
+            ev = M.evaluate(m, t, data['test_bits'], data['test_lens'], data['test_labels'][t])
+            wb = max(wb, abs(ev['excess_bits'] - row['excess_bits']))
+            wp = max(wp, float(np.max(np.abs(ev['per_string_bits'] - pred['bits'][i]))))
+            n += 1
+    return wb, wp, n
 
 
 # ---------------------------------------------------------------- main
@@ -173,8 +183,10 @@ def verify(c, res, workers):
         for arm, probe, w in ex.map(_probe_sample, [(arm, p, str(res)) for arm in J.ARMS for p in c['probes']]):
             for k, v in w.items():
                 pw[k] = max(pw.get(k, 0.0), v)
-        check(all(v <= c['verify_rel_tol'] for v in pw.values()), f'b1 / d sample recompute: {pw}')
-        note(f'b1, d (and controls) on a seeded 10% unit sample: max rel diff {pw}')
+        gated = {k: v for k, v in pw.items() if '(' not in k}
+        check(all(v <= c['verify_rel_tol'] for v in gated.values()), f'b1 / d sample recompute: {pw}')
+        note(f'b1, d (and controls) on a seeded 10% unit sample: max difference relative to the pool range {gated}; '
+             f'also absolute and plain relative: { {k: v for k, v in pw.items() if "(" in k} }')
         rng = np.random.default_rng(c['verify_sample_seed'])
         tj = [(arm, p, T, str(res)) for arm in J.ARMS for p in c['probes'] for T in J.arm_targets(c, res, arm)]
         pick = sorted(rng.choice(len(tj), max(1, int(round(c['verify_sample_fraction'] * len(tj)))), replace=False))
@@ -219,11 +231,13 @@ def verify(c, res, workers):
          'recomputed (Hopcroft and Moore)')
     # 6. graded checkpoints
     names = sorted(p.name for p in (res / 'graded' / 'checkpoints').iterdir())
-    chunks = [names[i::workers] for i in range(workers)]
+    check(len(names) == len(mj), f'graded checkpoints: {len(names)} runs, mixes.json has {len(mj)}')
     with cf.ProcessPoolExecutor(workers) as ex:
-        worst = max(ex.map(_replay, [(str(res), ch) for ch in chunks]))
-    check(worst < 1e-9, f'graded checkpoint replay: max abs diff {worst}')
-    note(f'graded checkpoints replayed ({len(names)} runs): max abs diff {worst:.2e} bits')
+        out = list(ex.map(_replay, [(str(res), names[i::workers]) for i in range(workers)]))
+    wb, wp, n = max(o[0] for o in out), max(o[1] for o in out), sum(o[2] for o in out)
+    check(wb < 1e-9 and wp < 1e-9, f'graded checkpoint replay: max abs diff {wb} bits, predictions {wp}')
+    note(f'graded checkpoints replayed ({len(names)} runs, {n} checkpoints): max abs diff {wb:.2e} bits, '
+         f'per-string predictions {wp:.2e}')
     # 8. laws and statistics
     laws = json.loads((res / 'laws.json').read_text())
     gates = json.loads((res / 'gates.json').read_text())
@@ -254,12 +268,17 @@ def verify(c, res, workers):
             for fa, fb in zip(a['folds'], b['folds']):
                 check(abs(fa['cost'] - fb['cost']) <= tol * abs(fa['cost']), f'graded {key}: law cost differs')
             check(abs(a['sse'] - b['sse']) <= tol * abs(a['sse']), f'graded {key}: held-out SSE differs')
+    def same(x, y):
+        # undefined in both (a score constant over the pool, Deviation 2) counts as agreement
+        x, y = np.atleast_1d(np.asarray(x, np.float64)), np.atleast_1d(np.asarray(y, np.float64))
+        both = np.isnan(x) & np.isnan(y)
+        return bool(np.all(both | (np.abs(x - y) <= c['stats_tol'])))
+
     for k, v in gates['per_measure'].items():
-        check(np.max(np.abs(np.array(v['g1_rho']) - np.array(v['g1_rho_independent']))) <= c['stats_tol'],
-              f'{k}: Spearman differs')
-        check(abs(v['g2_slope'] - v['g2_slope_independent']) <= c['stats_tol'], f'{k}: slope differs')
+        check(same(v['g1_rho'], v['g1_rho_independent']), f'{k}: Spearman differs')
+        check(same(v['g2_slope'], v['g2_slope_independent']), f'{k}: slope differs')
     for m, v in gates['G4b']['all_measures'].items():
-        check(abs(v['rho_soft'] - v['rho_soft_independent']) <= c['stats_tol'], f'G4b {m}: Spearman differs')
+        check(same(v['rho_soft'], v['rho_soft_independent']), f'G4b {m}: Spearman differs')
     note(f'laws refit with independent_fit.py (Gate 3 true/calibrated/raw, Gate 4a share/soft/agree) within {tol}; '
          f'calibrator, Spearman and slopes within {c["stats_tol"]}')
     check(gates['eq2_check']['passed'], f"Eq. 2 check: {gates['eq2_check']['max_abs_diff']}")

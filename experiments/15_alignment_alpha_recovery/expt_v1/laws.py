@@ -62,6 +62,8 @@ class Isotonic:
 def percentile_ci(d):
     d = np.asarray(d, float)
     d = d[np.isfinite(d)]
+    if not d.size:  # statistic undefined in every draw (a constant alpha-hat): no interval
+        return [float('nan'), float('nan')]
     lo, hi = np.percentile(d, [2.5, 97.5])
     return [float(lo), float(hi)]
 

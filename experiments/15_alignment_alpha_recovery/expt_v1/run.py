@@ -13,7 +13,6 @@ import concurrent.futures as cf
 import json
 import os
 import platform
-import socket
 import sys
 import time
 from datetime import datetime
@@ -207,8 +206,12 @@ def stage_refs(c, out, log, graded_seeds):
 
 # ---------------------------------------------------------------- job pool
 
+START_MARGIN_SECONDS = 900  # longest pilot job 660 s: a job starts only if this much budget is left
+
+
 def run_jobs(c, out, jobs, budget, log):
-    """Run the jobs whose part file is missing, 4 workers; no new job starts after the budget is spent."""
+    """Run the jobs whose part file is missing, 4 workers; a job starts only while at least START_MARGIN_SECONDS
+    of the budget is left, so a chunk ends inside its foreground time limit."""
     out = Path(out)
     (out / 'parts').mkdir(parents=True, exist_ok=True)
     todo = [j for j in jobs if not (out / 'parts' / J.part_name(*j)).exists()]
@@ -219,7 +222,7 @@ def run_jobs(c, out, jobs, budget, log):
     with cf.ProcessPoolExecutor(c['workers']) as ex:
         pending = set()
         for _ in range(c['workers']):
-            j = next(it, None)
+            j = next(it, None) if budget - (time.time() - t0) >= START_MARGIN_SECONDS else None
             if j is not None:
                 pending.add(ex.submit(J.run_job, j))
         while pending:
@@ -228,7 +231,7 @@ def run_jobs(c, out, jobs, budget, log):
                 r = f.result()
                 done.append(r)
                 log(f"job {r['job']} {r['wall']:.1f} s")
-                if time.time() - t0 < budget:
+                if budget - (time.time() - t0) >= START_MARGIN_SECONDS:
                     j = next(it, None)
                     if j is not None:
                         pending.add(ex.submit(J.run_job, j))
@@ -264,7 +267,7 @@ def write_manifest(c, out, extra=None):
         upstream=json.loads((HERE / 'upstream_sha256.json').read_text()),
         versions=dict(python=platform.python_version(), torch=torch.__version__, numpy=np.__version__,
                       scipy=scipy.__version__, sklearn=sklearn.__version__, zstandard=zstandard.__version__),
-        host=socket.gethostname(), cpu_model=cpu, cpu_count=os.cpu_count()))
+        host='CPU box (4 cores, 15 GB)', cpu_model=cpu, cpu_count=os.cpu_count()))
     man.update(extra or {})
     C.atomic_write_text(out / 'manifest.json', json.dumps(man, indent=1))
 

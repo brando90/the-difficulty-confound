@@ -126,7 +126,7 @@ def figure(c, res, gates, ah_rows, grows, path):
     ax.invert_yaxis()
     ax.set_xlabel('Gate 1: lowest Spearman rho over K levels')
     ax.set_title('C. Recovery within K level, every measure', loc='left', fontsize=10)
-    ax.legend(fontsize=7, frameon=False, labelcolor=INK2, loc='lower left')
+    ax.legend(fontsize=7, frameon=False, labelcolor=INK2, loc='upper left')
     ax = axs[1, 0]
     style(ax)
     band = c['gates']['g2_band']
@@ -159,7 +159,6 @@ def figure(c, res, gates, ah_rows, grows, path):
                if v[0]['alpha_share'] == sh]
         ax.scatter(*zip(*pts), s=40, color=CAT[j], edgecolor=SURF, linewidth=1.5, label=f'alpha_share = {sh:g}',
                    zorder=3)
-    ax.set_yscale('log')
     ax.set_xlabel('alpha_soft (chance-corrected relevance-weighted share)')
     ax.set_ylabel(f'excess loss at T = {Tm:,} (bits, mean over seeds)')
     ax.set_title('E. Graded arm: final loss vs graded relevance', loc='left', fontsize=10)
@@ -402,6 +401,11 @@ def report(c, res, outdir=EXP):
     eq = gates['eq2_check']
     w(f"- Eq. 2 check: the stratified estimator against exact Eq. 2 over full training mixes (measure c, one seed): "
       f"max abs difference {eq['max_abs_diff']:.4f} (tolerance {eq['tol']:g}) -> {'pass' if eq['passed'] else 'FAIL'}.")
+    for arm, cs in sorted(gates.get('constant_scores', {}).items()):
+        if cs:
+            ms = sorted({x[0] for x in cs})
+            w(f"- Scores constant over a target's pool ({arm}): {len(cs)} (measure, target, probe) cases, measures "
+              f"{', '.join(ms)}; normalized to 0 (Deviation 2), so their alpha-hat is 0 and their Spearman rho undefined.")
     if ver:
         w(f"- verify.py: **{ver['result']}** ({ver['seconds'] / 60:.0f} min).")
         for x in ver['checks']:

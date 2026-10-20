@@ -40,6 +40,19 @@ def minmax(s):
     return (s - lo) / (hi - lo)
 
 
+def minmax_or_zero(s, lo=None, hi=None):
+    """Min-max with the pool's range (lo, hi default to s's own); a score constant over the pool maps to 0, the
+    convention of scikit-learn's MinMaxScaler. Deviation 2 in RESULTS: the protocol is silent on constant scores,
+    and DSL (b1) is constant because every pool input is among the references and (b1) reads inputs only. Gates 1,
+    2, 3 (calibrated) and 4b do not depend on the constant chosen."""
+    s = np.asarray(s, np.float64)
+    lo = float(s.min()) if lo is None else float(lo)
+    hi = float(s.max()) if hi is None else float(hi)
+    if not hi > lo:
+        return np.zeros_like(s)
+    return (s - lo) / (hi - lo)
+
+
 def eq2_exact(t, s):
     """Eq. 2 on an explicit multiset: sum t s / sum t."""
     t = np.asarray(t, np.float64)
