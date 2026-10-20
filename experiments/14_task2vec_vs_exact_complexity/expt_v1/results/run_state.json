@@ -1,5 +1,5 @@
 {
- "wall_seconds": 14121.336863279343,
+ "wall_seconds": 19163.118976831436,
  "invocations": [
   {
    "start": "10-19-2026 07:57:35",
@@ -51,6 +51,16 @@
    "start": "10-19-2026 12:53:56",
    "seconds": 0.9,
    "stages": [],
+   "pending_after": 0
+  },
+  {
+   "start": "10-20-2026 01:23:12",
+   "seconds": 5041.8,
+   "stages": [
+    "probes",
+    "embed",
+    "diversity"
+   ],
    "pending_after": 0
   }
  ]

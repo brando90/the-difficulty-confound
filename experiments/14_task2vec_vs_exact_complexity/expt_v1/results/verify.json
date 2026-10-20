@@ -1,19 +1,19 @@
 {
  "plan": {
-  "task_keys": 3712,
-  "task_keys_sampled": 372,
-  "task_groups": 492,
-  "task_groups_gate_only": 173,
-  "batch_keys": 0,
-  "batch_keys_checked": 0,
-  "jobs": 123
+  "task_keys": 4824,
+  "task_keys_sampled": 483,
+  "task_groups": 618,
+  "task_groups_gate_only": 181,
+  "batch_keys": 10496,
+  "batch_keys_checked": 1675,
+  "jobs": 927
  },
  "probe_max_abs_diff_bits": 0.0,
- "embeddings_checked": 1788,
+ "embeddings_checked": 3634,
  "embedding_max_rel_diff": 0.0,
  "stats": {
-  "n": 142352,
+  "n": 245776,
   "max": 8.326672684688674e-16
  },
- "seconds_this_invocation": 1047.2
+ "seconds_this_invocation": 1136.4
 }

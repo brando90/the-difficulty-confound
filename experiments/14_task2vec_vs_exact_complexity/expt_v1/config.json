@@ -47,7 +47,7 @@
 
   "workers": 4,
   "threads": 1,
-  "max_wall_seconds": 14400,
+  "max_wall_seconds": 57600,
   "fallback_projection_hours": 2.5,
   "fallback_diversity_batches": 8,
   "verify_sample_fraction": 0.10,

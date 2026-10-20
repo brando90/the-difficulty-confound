@@ -174,8 +174,12 @@ def verify_job(job):
                     keys.append(R.div_key(fam, seed, job['mix_id'], job['mix_kind'], i))
                     F_.append(r['f'])
                     hl.append(r['head_loss'])
-        R._atomic_npz(vpath(R._W['out'], job), keys=np.array(keys), f=np.array(F_, np.float32),
-                      head_loss=np.array(hl))
+        # a job can straddle the two families (DFA 1,564 and DSL 1,566 dims): pad rows with NaN, keep each length
+        dims = np.array([len(x) for x in F_])
+        Fa = np.full((len(F_), dims.max()), np.nan, np.float32)
+        for i, x in enumerate(F_):
+            Fa[i, :len(x)] = x
+        R._atomic_npz(vpath(R._W['out'], job), keys=np.array(keys), f=Fa, dims=dims, head_loss=np.array(hl))
         return dict(id=job['id'], wall=time.time() - t0)
     except Exception:
         return dict(id=job['id'], error=traceback.format_exc())
@@ -238,7 +242,9 @@ def compare_recomputed(c, out, jobs, log):
     worst, worst_key, n = 0.0, None, 0
     for j in jobs:
         r = np.load(vpath(out, j), allow_pickle=False)
-        for k, f, h in zip(r['keys'].tolist(), r['f'], r['head_loss']):
+        dims = r['dims'] if 'dims' in r.files else [r['f'].shape[1]] * len(r['keys'])
+        for k, f, h, m in zip(r['keys'].tolist(), r['f'], r['head_loss'], dims):
+            f = f[:m]
             f0, h0 = saved[k] if j['kind'] == 'vembed' else bsaved[k]
             d = max(rel_diff(f, f0), rel_diff([h], [h0]))
             n += 1

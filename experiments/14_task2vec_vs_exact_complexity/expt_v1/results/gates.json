@@ -3,8 +3,8 @@
   "G1": "NOT_ESTABLISHED",
   "G2": "NOT_ESTABLISHED",
   "G3": "NOT_ESTABLISHED",
-  "G4": "NOT_RUN",
-  "G5": "NOT_RUN"
+  "G4": "NOT_ESTABLISHED",
+  "G5": "NOT_ESTABLISHED"
  },
  "families": {
   "dfa": {
@@ -46,11 +46,22 @@
     "pass": false
    },
    "G4": {
-    "not_run": true,
-    "reason": "inputs not computed: the run stopped at the wall cap",
+    "rho_H": 0.23277427889604174,
+    "rho_H_ci": {
+     "lo": -0.018376916754950665,
+     "hi": 0.4517658702258705,
+     "n_undefined_draws": 0
+    },
+    "rho_K": 0.31380973191155415,
+    "gap": -0.0810354530155124,
+    "gap_ci": {
+     "lo": -0.3960114353968094,
+     "hi": 0.2751584734744031,
+     "n_undefined_draws": 0
+    },
     "n_mixes": 40,
-    "n_mixes_available": 0,
-    "pass": null
+    "n_pairs": 28,
+    "pass": false
    },
    "G5": {
     "ratio": 0.5924240979683605,
@@ -107,18 +118,37 @@
     "pass": false
    },
    "G4": {
-    "not_run": true,
-    "reason": "inputs not computed: the run stopped at the wall cap",
+    "rho_H": -0.1283789408781066,
+    "rho_H_ci": {
+     "lo": -0.36847696007761904,
+     "hi": 0.19403839918981,
+     "n_undefined_draws": 0
+    },
+    "rho_K": 0.1009391672553052,
+    "gap": -0.2293181081334118,
+    "gap_ci": {
+     "lo": -0.504695836276526,
+     "hi": 0.11370356194948122,
+     "n_undefined_draws": 0
+    },
     "n_mixes": 50,
-    "n_mixes_available": 0,
-    "pass": null
+    "n_pairs": 28,
+    "pass": false
    },
    "G5": {
-    "not_run": true,
-    "reason": "inputs not computed: the run stopped at the wall cap",
+    "ratio": 0.517080329549982,
+    "ci": {
+     "lo": 0.49606601282163626,
+     "hi": 0.5948454338528975,
+     "n_undefined_draws": 0
+    },
     "n_tasks": 20,
     "rate": 0.25,
-    "pass": null
+    "ratio_at_other_rates": {
+     "0.10": 0.7911638697171391,
+     "0.25": 0.517080329549982
+    },
+    "pass": false
    }
   }
  },
@@ -143,19 +173,18 @@
    "dsl": true
   },
   "rescaled_rho_ok": {
-   "dfa": null,
-   "dsl": null
+   "dfa": true,
+   "dsl": true
   },
   "incremental_nonnegative": {
    "dfa": false,
    "dsl": false
   },
-  "met": false,
-  "note": "rescaled-probe embeddings not computed (wall cap); the rescaling condition is untested"
+  "met": false
  },
  "bootstrap": {
   "draws": 20000,
   "seed": 29101426
  },
- "seconds": 305.0
+ "seconds": 63.2
 }
