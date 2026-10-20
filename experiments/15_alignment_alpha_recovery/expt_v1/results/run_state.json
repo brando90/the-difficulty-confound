@@ -1,0 +1,48 @@
+{
+ "wall_seconds": 11288.920738697052,
+ "invocations": [
+  {
+   "started": "10-19-2026 16:52:47",
+   "stage": "all",
+   "seconds": 3600.0,
+   "status": {
+    "graded_left": 0,
+    "score_jobs_left": 212,
+    "note": "refs and all 160 graded runs done by 17:45:19; 4 scoring jobs had started with 149 s of budget left and the command was stopped at its 60-minute foreground limit (17:52:47) before this file was written; entry added by hand from the command start and stop times"
+   }
+  },
+  {
+   "started": "10-19-2026 18:35:19",
+   "stage": "all",
+   "seconds": 2458.258589029312,
+   "status": {
+    "graded_left": 0,
+    "score_jobs_left": 200
+   }
+  },
+  {
+   "started": "10-19-2026 19:30:26",
+   "stage": "all",
+   "seconds": 2422.1566059589386,
+   "status": {
+    "graded_left": 0,
+    "score_jobs_left": 5
+   }
+  },
+  {
+   "started": "10-19-2026 19:49:38",
+   "stage": "all",
+   "seconds": 1125.3836102485657,
+   "status": {
+    "graded_left": 0,
+    "score_jobs_left": 0
+   }
+  },
+  {
+   "started": "10-19-2026 20:19:23",
+   "stage": "eq2",
+   "seconds": 1683.1219334602356,
+   "status": {}
+  }
+ ]
+}

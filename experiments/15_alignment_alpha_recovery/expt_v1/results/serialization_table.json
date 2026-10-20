@@ -1,0 +1,17 @@
+{
+ "dfa": {
+  "a": "a",
+  "b": "b",
+  "sep": ">",
+  "accept": "Y",
+  "reject": "N"
+ },
+ "dsl": {
+  "in0": "0",
+  "in1": "1",
+  "sep": ">",
+  "out0": "o",
+  "out1": "i"
+ },
+ "task_token_first_byte": 161
+}

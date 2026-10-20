@@ -1,0 +1,18 @@
+{
+ "result": "PASS",
+ "checks": [
+  "mixes dfa: 512 rebuilt, counts equal",
+  "mixes dsl: 640 rebuilt, counts equal",
+  "mixes graded: 160 rebuilt, counts equal",
+  "references and units disjoint; no task-token byte in any stripped serialization",
+  "a, aprime, b2 recomputed for every target: max rel diff {'a': 0.0, 'aprime': 0.0, 'b2': 0.0}",
+  "b1, d (and controls) on a seeded 10% unit sample: max difference relative to the pool range {'b1': 0.0, 'b1_leak': 0.0, 'd': 7.090836282717837e-08, 'd_perm': 7.035310223902441e-08}; also absolute and plain relative: {'b1 (abs)': 0.0, 'b1 (plain relative)': 0.0, 'b1_leak (abs)': 0.0, 'b1_leak (plain relative)': 0.0, 'd (abs)': 1.3969838619232178e-07, 'd (plain relative)': 4.69631551738272e-05, 'd_perm (abs)': 1.387670636177063e-07, 'd_perm (plain relative)': 7.131508383304212e-05}",
+  "e, e2 on a seeded 10% sample of jobs (16): max rel diff 0.0",
+  "every alpha-hat recomputed from saved scores: max abs diff 0.00e+00",
+  "graded agreement: exact DP vs 2^16 and 2^20 Monte Carlo max abs diff 0.0037; every distractor K recomputed (Hopcroft and Moore)",
+  "graded checkpoints replayed (160 runs, 1280 checkpoints): max abs diff 0.00e+00 bits, per-string predictions 0.00e+00",
+  "laws refit with independent_fit.py (Gate 3 true/calibrated/raw, Gate 4a share/soft/agree) within 0.0001; calibrator, Spearman and slopes within 1e-10",
+  "Eq. 2 stratified vs exact on full mixes: max abs diff 0.0024"
+ ],
+ "seconds": 1514.048054933548
+}
