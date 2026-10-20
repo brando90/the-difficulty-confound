@@ -52,7 +52,7 @@ def figure(A, path):
     ax[0].axhline(1, color='#52514e', lw=1)
     ax[0].axhline(0.80, color='#52514e', lw=1, ls='--')
     ax[0].text(len(dss) - 0.5, 1, ' alignment dominates above', va='bottom', ha='right', color='#52514e', fontsize=9)
-    ax[0].text(len(dss) - 0.5, 0.80, ' Exp 13-small: 0.80', va='top', ha='right', color='#52514e', fontsize=9)
+    ax[0].text(-0.45, 0.80, 'Exp 13-small: 0.80', va='top', ha='left', color='#52514e', fontsize=9)
     ax[0].set_xticks(range(len(dss)), [NAMES[d] for d in dss])
     ax[0].set_xlim(-0.5, len(dss) - 0.5)
     ax[0].set_ylabel('elasticity ratio E = e_alpha / e_K')
@@ -72,6 +72,7 @@ def figure(A, path):
     ax[1].set_yscale('log', base=2)
     ax[1].axhline(1, color='#52514e', lw=1)
     ax[1].axhline(1.1, color='#52514e', lw=1, ls=':')
+    ax[1].text(-0.45, 1.1, '1.1 margin', va='top', ha='left', color='#52514e', fontsize=9)
     ax[1].set_xticks(range(len(hd)), [NAMES[d] for d in hd])
     ax[1].set_xlim(-0.5, max(len(hd), 1) - 0.5)
     ax[1].set_ylabel('error ratio over the learning curve (log scale)')
@@ -99,7 +100,7 @@ def figure(A, path):
         ax[2].set_yscale('log')
         ax[2].set_xlabel('training pairs T')
         ax[2].set_ylabel('error / chance error')
-        ax[2].set_title('MNIST, fully aligned: complexity costs data', fontsize=11, loc='left')
+        ax[2].set_title('MNIST, fully aligned: error by level (L2 is XOR-like)', fontsize=11, loc='left')
         ax[2].legend(frameon=False, fontsize=9)
     fig.tight_layout()
     fig.savefig(path, dpi=150, facecolor='#fcfcfb')
@@ -131,6 +132,19 @@ def md(A, notes):
           f"{iv(g1.get('ci95_seed'))} | {g1.get('verdict', 'n/a')} | {f3(100 * g2['reduction'])}% {iv([100 * x for x in g2['ci95']] if g2['ci95'][0] is not None else None)} "
           f"| {g2['verdict']} | {f3(g4['E_bits'])} {iv(g4['ci95_bits'])} | {f3(g4['E_classes'])} | {f3(g4['E_mf'])} "
           f"(at eps {f3(g4['E_mf_eps'])}) | {g4['verdict']} | {g4['replication']} |")
+    w('')
+    w('Error/chance at alpha = 1 and the largest checkpoint, per target (mean of 4 seeds; K in bits):')
+    w('')
+    tk = [t for lv, ts in TK.MAIN_LEVELS for t in ts]
+    w('| Dataset | ' + ' | '.join(f"{t} ({lv}, K {f3(TK.k_bits(t))})" for lv, ts in TK.MAIN_LEVELS for t in ts) + ' |')
+    w('|---|' + '---|' * len(tk))
+    for d in NAMES:
+        if d not in A['main']:
+            continue
+        m = A['main'][d]
+        Tm = max(m['T_checkpoints'])
+        cell = {c['task_id']: c['eps_mean'] for c in m['cells'] if c['alpha'] == 1.0 and c['T'] == Tm}
+        w(f"| {NAMES[d]} | " + ' | '.join(f3(cell.get(t)) for t in tk) + ' |')
     w('')
     w('Elasticities per seed (e_alpha = eta, e_K = d ln T*/d ln K at K_ref), model-free T* censoring, rows dropped by the learning-regime filter (eps > 0.8), and G3 (reported, not gated):')
     w('')
@@ -183,6 +197,27 @@ def md(A, notes):
             continue
         e = h['joint']['S']['eps_mean']
         w(f"- **{NAMES[d]}:** " + '; '.join(f"{k.replace('|', ' on ')} {f3(v)}" for k, v in e.items()))
+    w('')
+    w('## Same K, different learnability: the mod-10 pool and anchor (descriptive)')
+    w('')
+    w('The hard-mod pool trains on four mod-10 targets with the same K (6.64 bits) as the additive hard pool; the mod-10 anchor trains (a+b) mod 10 alone at alpha = 1, beside the L4 target a+b (same K) of the main grid.')
+    w('')
+    w('| Dataset | a+b at alpha=1, eps at T_fit (L4 mean) | (a+b) mod 10 anchor: seeds off the plateau | its eps at T_max per seed | hard-mod / easy-only on easy (joint, S) | hard-mod / hard on easy (joint, S) | probe eps on held-out targets: random init | probe eps: hard-mod pool (S mean) |')
+    w('|---|---|---|---|---|---|---|---|')
+    for d in NAMES:
+        h = A['H'].get(d)
+        if not h or not h.get('mod_anchor'):
+            continue
+        an = h['mod_anchor']['sum10']
+        j = h['joint']['S']
+        ri = h['probe_random_init']
+        pm = h['probe']['S']['eps_mean']
+        w(f"| {NAMES[d]} | {f3(A['main'][d]['eps_star_rule']['L4_eps_alpha1_at_Tfit'])} | "
+          f"{sum(r['plateau_end_T'] is not None for r in an)}/{len(an)} | {', '.join(f3(r['eps_at_Tmax']) for r in an)} | "
+          f"{f3(j['rho_HE_mod']['ratio'])} {iv(j['rho_HE_mod']['ci95'])} | {f3(j['mod_vs_hard_on_easy']['ratio'])} | "
+          f"{', '.join(f3(ri[t]) for t in ri)} | {', '.join(f3(pm['hard_mod|' + t]) for t in ri)} |")
+    w('')
+    w('Held-out targets in the probe columns, in order: ' + ', '.join(next(iter(A['H'].values()))['probe_random_init']) + '.')
     w('')
     for k in ('compute', 'deviations', 'limits', 'files'):
         if notes.get(k):

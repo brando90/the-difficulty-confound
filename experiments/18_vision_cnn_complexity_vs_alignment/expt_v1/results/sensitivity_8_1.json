@@ -1,0 +1,97 @@
+{
+ "kmnist/joint": {
+  "GH1": [
+   "CARRIES",
+   "CARRIES"
+  ],
+  "GH2": [
+   "SUPPORTED",
+   "SUPPORTED"
+  ],
+  "rho_HE_S": [
+   0.8496894562008437,
+   0.8496894562008437
+  ],
+  "rho_EH_S": [
+   1.1621149116839626,
+   1.1621149116839626
+  ],
+  "rho_EH_last": [
+   1.4903639464059724,
+   1.4903639464059724
+  ],
+  "identical": true
+ },
+ "kmnist/probe": {
+  "GH1": [
+   "CARRIES",
+   "CARRIES"
+  ],
+  "GH2": [
+   "SUPPORTED",
+   "SUPPORTED"
+  ],
+  "rho_HE_S": [
+   0.6554489780257681,
+   0.6554489780257681
+  ],
+  "rho_EH_S": [
+   1.4001081694889765,
+   1.4001286726317657
+  ],
+  "rho_EH_last": [
+   4.0717674274058195,
+   4.072423370697343
+  ],
+  "identical": false
+ },
+ "kmnist/control_reproduces_analysis_json": true,
+ "cifar10/joint": {
+  "GH1": [
+   "CARRIES",
+   "CARRIES"
+  ],
+  "GH2": [
+   "NOT_ESTABLISHED",
+   "NOT_ESTABLISHED"
+  ],
+  "rho_HE_S": [
+   0.9074187397846791,
+   0.9074187397846791
+  ],
+  "rho_EH_S": [
+   1.0903248976396058,
+   1.0903248976396058
+  ],
+  "rho_EH_last": [
+   1.3190216364623026,
+   1.3190216364623026
+  ],
+  "identical": true
+ },
+ "cifar10/probe": {
+  "GH1": [
+   "CARRIES",
+   "CARRIES"
+  ],
+  "GH2": [
+   "SUPPORTED",
+   "SUPPORTED"
+  ],
+  "rho_HE_S": [
+   0.8661775685329576,
+   0.8661775685329576
+  ],
+  "rho_EH_S": [
+   1.1233825127837918,
+   1.1233825127837918
+  ],
+  "rho_EH_last": [
+   1.4546077882055164,
+   1.4546077882055164
+  ],
+  "identical": false
+ },
+ "cifar10/control_reproduces_analysis_json": true,
+ "note": "Only H runs carry probe errors; the main and mismatch analyses do not read them."
+}
