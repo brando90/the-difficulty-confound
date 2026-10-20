@@ -1,0 +1,6 @@
+results/checkpoints/
+*.tar
+*.tar.zst
+__pycache__/
+.pytest_cache/
+*.tmp
