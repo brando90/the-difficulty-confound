@@ -1,0 +1,44 @@
+{
+ "experiment": "23_exp13_full_training_8seeds",
+ "sources": {
+  "exp13": "../13_ginc_hmm_complexity_vs_alignment/expt_v1",
+  "exp17": "../17_ginc_disjoint_support_and_hard_to_easy/expt_v1",
+  "exp17b": "../17_ginc_disjoint_support_and_hard_to_easy/expt_v2_coverage"
+ },
+ "e13": {
+  "seeds": [13101, 13202, 13303, 13404, 13505, 13606, 13707, 13808],
+  "alphas": [0.05, 0.15, 0.4, 1.0],
+  "prep_files": ["tasks.json", "acceptance_log.json", "oracle.npz", "mixture.npz", "posterior16.json"],
+  "eps_star_cell": {"K": 32, "alpha": 0.4},
+  "eps_star_comparison": 1.1
+ },
+ "e17b": {
+  "seeds": [17101, 17202, 17303, 17404, 17505, 17606, 17707, 17808],
+  "pools": ["cov32", "cov16", "hard", "easy"],
+  "new_pools": ["cov32", "cov16"],
+  "primary_pool": "cov32",
+  "alpha_H": 0.05,
+  "prep_files": ["tasks.json", "acceptance_log.json", "acceptance_log_v2.json", "oracle.npz", "mixture.npz", "posterior16.json"],
+  "min_consistent_pairs": 14,
+  "pairs": 16
+ },
+ "stages_T": [1048576, 4194304, 16777216, 67108864],
+ "T_checkpoints": [65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, 16777216, 33554432, 67108864],
+ "cooldown_fraction": 0.125,
+ "stop_rule": {"window_doublings": 2, "abs_bits": 0.02, "rel": 0.05},
+ "validation": {"seed_offset": 11, "docs_per_target": 256, "docs_per_pool_concept": 64},
+ "eps_star_ladder": [0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.1],
+ "eps_star_min_share": 0.75,
+ "eps_curve": [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1.1],
+ "runs_per_task": 4,
+ "threads_per_run": 1,
+ "farmshare": {
+  "partition": "normal",
+  "qos_submit_limit": 1024,
+  "qos_running_limit": 128,
+  "throttle": {"e13": 24, "e17b": 16},
+  "mem_per_task": "6G",
+  "time_per_stage": ["02:00:00", "03:00:00", "08:00:00", "1-00:00:00"],
+  "mail_user": "brandojazz@gmail.com,brando.science@gmail.com"
+ }
+}
