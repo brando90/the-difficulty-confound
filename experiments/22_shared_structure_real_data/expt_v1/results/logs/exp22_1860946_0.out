@@ -1,0 +1,116 @@
+NVIDIA L40S, 595.91.07, 46068 MiB
+/home/users/brando9/venvs/exp22/lib/python3.12/site-packages/torch/autograd/graph.py:979: UserWarning: Flash Attention defaults to a non-deterministic algorithm. To explicitly enable determinism call torch.use_deterministic_algorithms(True, warn_only=False). (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/attention_backward.cu:125.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+{"epoch": 10, "train_loss": 1.2592806262629372, "sec": 47.7}
+{"epoch": 20, "train_loss": 0.9947486930355733, "sec": 70.8}
+{"epoch": 30, "train_loss": 0.8113674618759934, "sec": 101.5}
+{"epoch": 40, "train_loss": 0.6491047055745611, "sec": 132.1}
+{"epoch": 50, "train_loss": 0.5531042540559963, "sec": 162.6}
+{"epoch": 60, "train_loss": 0.5290182415319948, "sec": 193.3}
+done: feat_cifar10_vit 203.5 s
+{"epoch": 5, "train_loss": 2.167065917245494, "sec": 11.7, "val_acc": 0.376, "heldout_acc": 0.2315}
+{"epoch": 10, "train_loss": 1.9079274851203765, "sec": 23.4, "val_acc": 0.4925, "heldout_acc": 0.294}
+{"epoch": 15, "train_loss": 1.688654489965247, "sec": 35.0, "val_acc": 0.5385, "heldout_acc": 0.321}
+{"epoch": 20, "train_loss": 1.4962267355630863, "sec": 46.7, "val_acc": 0.5995, "heldout_acc": 0.3275}
+{"epoch": 25, "train_loss": 1.3035562270439711, "sec": 58.2, "val_acc": 0.6005, "heldout_acc": 0.329}
+{"epoch": 30, "train_loss": 1.1264995364534776, "sec": 69.9, "val_acc": 0.644, "heldout_acc": 0.357}
+{"epoch": 35, "train_loss": 0.9646557973535269, "sec": 81.5, "val_acc": 0.647, "heldout_acc": 0.345}
+{"epoch": 40, "train_loss": 0.8437989350133295, "sec": 93.2, "val_acc": 0.6415, "heldout_acc": 0.35}
+{"epoch": 45, "train_loss": 0.766981125677992, "sec": 104.9, "val_acc": 0.6535, "heldout_acc": 0.355}
+{"epoch": 50, "train_loss": 0.7155390737840793, "sec": 116.6, "val_acc": 0.645, "heldout_acc": 0.3475}
+{"epoch": 55, "train_loss": 0.6779528864278089, "sec": 128.3, "val_acc": 0.655, "heldout_acc": 0.349}
+{"epoch": 60, "train_loss": 0.651171187826451, "sec": 139.9, "val_acc": 0.6635, "heldout_acc": 0.347}
+{"epoch": 65, "train_loss": 0.6293566610989154, "sec": 151.6, "val_acc": 0.6625, "heldout_acc": 0.3555}
+{"epoch": 70, "train_loss": 0.6152380436858875, "sec": 163.2, "val_acc": 0.6615, "heldout_acc": 0.3565}
+{"epoch": 75, "train_loss": 0.6062870257652846, "sec": 174.9, "val_acc": 0.6665, "heldout_acc": 0.3535}
+{"epoch": 80, "train_loss": 0.6012124927251931, "sec": 186.6, "val_acc": 0.665, "heldout_acc": 0.3525}
+{"epoch": 85, "train_loss": 0.5987632462642337, "sec": 198.3, "val_acc": 0.6715, "heldout_acc": 0.35}
+{"epoch": 90, "train_loss": 0.5978869939810477, "sec": 209.9, "val_acc": 0.6725, "heldout_acc": 0.351}
+{"epoch": 95, "train_loss": 0.5972598027062896, "sec": 221.3, "val_acc": 0.6725, "heldout_acc": 0.3515}
+{"epoch": 100, "train_loss": 0.597158594019461, "sec": 232.9, "val_acc": 0.672, "heldout_acc": 0.3515}
+done: vis_real_k1_p0_s22202 233.3 s
+{"epoch": 5, "train_loss": 2.6872889723553754, "sec": 11.5, "val_acc": 0.178, "heldout_acc": 0.258}
+{"epoch": 10, "train_loss": 2.4971368008812003, "sec": 23.3, "val_acc": 0.259, "heldout_acc": 0.335}
+{"epoch": 15, "train_loss": 2.311382370507157, "sec": 34.9, "val_acc": 0.296, "heldout_acc": 0.408}
+{"epoch": 20, "train_loss": 2.1156248078250246, "sec": 46.6, "val_acc": 0.3505, "heldout_acc": 0.4395}
+{"epoch": 25, "train_loss": 1.8683139965838234, "sec": 58.0, "val_acc": 0.375, "heldout_acc": 0.4645}
+{"epoch": 30, "train_loss": 1.567994815391182, "sec": 69.6, "val_acc": 0.3975, "heldout_acc": 0.4745}
+{"epoch": 35, "train_loss": 1.2600767380439195, "sec": 78.3, "val_acc": 0.405, "heldout_acc": 0.49}
+{"epoch": 40, "train_loss": 1.0231260977335424, "sec": 88.6, "val_acc": 0.4, "heldout_acc": 0.4825}
+{"epoch": 45, "train_loss": 0.8820128020824202, "sec": 101.8, "val_acc": 0.406, "heldout_acc": 0.47}
+{"epoch": 50, "train_loss": 0.792213309931275, "sec": 114.0, "val_acc": 0.405, "heldout_acc": 0.468}
+{"epoch": 55, "train_loss": 0.730178769402856, "sec": 127.3, "val_acc": 0.3975, "heldout_acc": 0.481}
+{"epoch": 60, "train_loss": 0.6854534897228215, "sec": 138.9, "val_acc": 0.393, "heldout_acc": 0.472}
+{"epoch": 65, "train_loss": 0.6573571446757989, "sec": 152.3, "val_acc": 0.419, "heldout_acc": 0.4765}
+{"epoch": 70, "train_loss": 0.6324121576027583, "sec": 165.3, "val_acc": 0.408, "heldout_acc": 0.482}
+{"epoch": 75, "train_loss": 0.6152553570350544, "sec": 177.3, "val_acc": 0.4005, "heldout_acc": 0.4895}
+{"epoch": 80, "train_loss": 0.6073453478365136, "sec": 190.6, "val_acc": 0.405, "heldout_acc": 0.4905}
+{"epoch": 85, "train_loss": 0.6029166123210984, "sec": 204.0, "val_acc": 0.405, "heldout_acc": 0.4925}
+{"epoch": 90, "train_loss": 0.6008612793563997, "sec": 222.9, "val_acc": 0.4065, "heldout_acc": 0.487}
+{"epoch": 95, "train_loss": 0.5998877570933143, "sec": 236.4, "val_acc": 0.405, "heldout_acc": 0.489}
+{"epoch": 100, "train_loss": 0.599583771404804, "sec": 249.7, "val_acc": 0.4055, "heldout_acc": 0.4885}
+done: vis_shuf_k0_p1_s22202 250.0 s
+/home/users/brando9/venvs/exp22/lib/python3.12/site-packages/torch/autograd/graph.py:979: UserWarning: Memory Efficient attention defaults to a non-deterministic algorithm. To explicitly enable determinism call torch.use_deterministic_algorithms(True, warn_only=False). (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/native/transformers/cuda/attention_backward.cu:833.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+{"epoch": 1, "train_loss": 0.8935968321561814, "sec": 1.8, "val_acc": 0.8302687411598303, "heldout_acc": 0.5881953867028494}
+{"epoch": 2, "train_loss": 0.29765050128102305, "sec": 3.5, "val_acc": 0.8444130127298444, "heldout_acc": 0.5800542740841248}
+{"epoch": 3, "train_loss": 0.1222989273443818, "sec": 5.2, "val_acc": 0.8486562942008486, "heldout_acc": 0.5841248303934871}
+{"epoch": 4, "train_loss": 0.05270204921951518, "sec": 6.9, "val_acc": 0.8330975954738331, "heldout_acc": 0.5970149253731343}
+{"epoch": 5, "train_loss": 0.03580097008147277, "sec": 8.5, "val_acc": 0.8514851485148515, "heldout_acc": 0.5976933514246947}
+{"epoch": 6, "train_loss": 0.012472005004819948, "sec": 10.1, "val_acc": 0.8543140028288543, "heldout_acc": 0.5888738127544098}
+{"epoch": 7, "train_loss": 0.015837513678416144, "sec": 11.7, "val_acc": 0.8557284299858557, "heldout_acc": 0.5997286295793759}
+{"epoch": 8, "train_loss": 0.011260178197553615, "sec": 13.5, "val_acc": 0.8698727015558698, "heldout_acc": 0.6187245590230664}
+{"epoch": 9, "train_loss": 0.006489657072088448, "sec": 16.4, "val_acc": 0.8543140028288543, "heldout_acc": 0.6139755766621439}
+{"epoch": 10, "train_loss": 0.001415195923036663, "sec": 19.3, "val_acc": 0.8642149929278642, "heldout_acc": 0.6146540027137042}
+{"epoch": 11, "train_loss": 0.0001428983671212336, "sec": 22.2, "val_acc": 0.8642149929278642, "heldout_acc": 0.6112618724559024}
+{"epoch": 12, "train_loss": 0.00011199702421436087, "sec": 25.1, "val_acc": 0.8684582743988685, "heldout_acc": 0.6119402985074627}
+{"epoch": 13, "train_loss": 8.821603405522183e-05, "sec": 28.0, "val_acc": 0.867043847241867, "heldout_acc": 0.6126187245590231}
+{"epoch": 14, "train_loss": 8.00572937441757e-05, "sec": 30.5, "val_acc": 0.8656294200848657, "heldout_acc": 0.6105834464043419}
+{"epoch": 15, "train_loss": 7.106723300239538e-05, "sec": 33.4, "val_acc": 0.8628005657708628, "heldout_acc": 0.6112618724559024}
+{"epoch": 16, "train_loss": 6.407633958588121e-05, "sec": 36.3, "val_acc": 0.8628005657708628, "heldout_acc": 0.6112618724559024}
+{"epoch": 17, "train_loss": 6.0189467585587405e-05, "sec": 39.2, "val_acc": 0.8642149929278642, "heldout_acc": 0.6119402985074627}
+{"epoch": 18, "train_loss": 5.8351438892714216e-05, "sec": 42.2, "val_acc": 0.8656294200848657, "heldout_acc": 0.6126187245590231}
+{"epoch": 19, "train_loss": 5.447164148790762e-05, "sec": 45.1, "val_acc": 0.867043847241867, "heldout_acc": 0.6146540027137042}
+{"epoch": 20, "train_loss": 4.996799510990968e-05, "sec": 48.0, "val_acc": 0.8656294200848657, "heldout_acc": 0.6146540027137042}
+{"epoch": 21, "train_loss": 4.84640576178208e-05, "sec": 50.3, "val_acc": 0.8656294200848657, "heldout_acc": 0.6146540027137042}
+{"epoch": 22, "train_loss": 4.6413376840064305e-05, "sec": 53.1, "val_acc": 0.867043847241867, "heldout_acc": 0.6126187245590231}
+{"epoch": 23, "train_loss": 4.48221892293077e-05, "sec": 56.0, "val_acc": 0.8656294200848657, "heldout_acc": 0.6126187245590231}
+{"epoch": 24, "train_loss": 4.432221972820116e-05, "sec": 57.5, "val_acc": 0.8656294200848657, "heldout_acc": 0.6132971506105834}
+{"epoch": 25, "train_loss": 4.324175424699206e-05, "sec": 60.4, "val_acc": 0.867043847241867, "heldout_acc": 0.6126187245590231}
+{"epoch": 26, "train_loss": 4.265422343451064e-05, "sec": 63.4, "val_acc": 0.867043847241867, "heldout_acc": 0.6132971506105834}
+{"epoch": 27, "train_loss": 4.295712406019447e-05, "sec": 66.3, "val_acc": 0.8656294200848657, "heldout_acc": 0.6139755766621439}
+{"epoch": 28, "train_loss": 4.352322193881264e-05, "sec": 69.2, "val_acc": 0.867043847241867, "heldout_acc": 0.6139755766621439}
+{"epoch": 29, "train_loss": 4.177105765847955e-05, "sec": 72.2, "val_acc": 0.867043847241867, "heldout_acc": 0.6146540027137042}
+{"epoch": 30, "train_loss": 4.208815669699106e-05, "sec": 75.1, "val_acc": 0.867043847241867, "heldout_acc": 0.6146540027137042}
+done: txt_real_k0_p0.05_s22202 77.1 s
+{"epoch": 1, "train_loss": 0.9446376022135857, "sec": 1.4, "val_acc": 0.814866760168303, "heldout_acc": 0.658774373259053}
+{"epoch": 2, "train_loss": 0.3694919003265919, "sec": 2.6, "val_acc": 0.8330995792426368, "heldout_acc": 0.7214484679665738}
+{"epoch": 3, "train_loss": 0.1508319328105686, "sec": 3.9, "val_acc": 0.814866760168303, "heldout_acc": 0.7075208913649025}
+{"epoch": 4, "train_loss": 0.07865755020935863, "sec": 5.1, "val_acc": 0.8681626928471248, "heldout_acc": 0.7618384401114207}
+{"epoch": 5, "train_loss": 0.03779261124822873, "sec": 6.3, "val_acc": 0.8611500701262272, "heldout_acc": 0.75}
+{"epoch": 6, "train_loss": 0.011790712375544233, "sec": 7.6, "val_acc": 0.85273492286115, "heldout_acc": 0.7437325905292479}
+{"epoch": 7, "train_loss": 0.014232615519852129, "sec": 8.8, "val_acc": 0.8653576437587658, "heldout_acc": 0.7771587743732591}
+{"epoch": 8, "train_loss": 0.003873527569708986, "sec": 10.0, "val_acc": 0.8569424964936886, "heldout_acc": 0.7583565459610028}
+{"epoch": 9, "train_loss": 0.00034309321891119943, "sec": 11.3, "val_acc": 0.8653576437587658, "heldout_acc": 0.7667130919220055}
+{"epoch": 10, "train_loss": 0.0001634730214580414, "sec": 12.5, "val_acc": 0.8639551192145862, "heldout_acc": 0.7743732590529248}
+{"epoch": 11, "train_loss": 0.0001197912024868892, "sec": 13.8, "val_acc": 0.8653576437587658, "heldout_acc": 0.7750696378830083}
+{"epoch": 12, "train_loss": 0.00010253536901932376, "sec": 15.0, "val_acc": 0.8723702664796634, "heldout_acc": 0.7743732590529248}
+{"epoch": 13, "train_loss": 8.796787085092285e-05, "sec": 16.2, "val_acc": 0.8723702664796634, "heldout_acc": 0.7743732590529248}
+{"epoch": 14, "train_loss": 8.011513935992181e-05, "sec": 17.5, "val_acc": 0.8709677419354839, "heldout_acc": 0.7743732590529248}
+{"epoch": 15, "train_loss": 7.267011482110662e-05, "sec": 18.7, "val_acc": 0.8709677419354839, "heldout_acc": 0.7750696378830083}
+{"epoch": 16, "train_loss": 6.729720585684449e-05, "sec": 19.9, "val_acc": 0.8723702664796634, "heldout_acc": 0.775766016713092}
+{"epoch": 17, "train_loss": 6.272741136692078e-05, "sec": 21.2, "val_acc": 0.8709677419354839, "heldout_acc": 0.7750696378830083}
+{"epoch": 18, "train_loss": 5.97452784463127e-05, "sec": 22.4, "val_acc": 0.8723702664796634, "heldout_acc": 0.775766016713092}
+{"epoch": 19, "train_loss": 5.515931407710085e-05, "sec": 23.7, "val_acc": 0.8723702664796634, "heldout_acc": 0.775766016713092}
+{"epoch": 20, "train_loss": 5.3345793059976344e-05, "sec": 24.9, "val_acc": 0.8709677419354839, "heldout_acc": 0.7764623955431755}
+{"epoch": 21, "train_loss": 5.104688015947404e-05, "sec": 26.1, "val_acc": 0.8709677419354839, "heldout_acc": 0.7771587743732591}
+{"epoch": 22, "train_loss": 4.8748242160499025e-05, "sec": 27.4, "val_acc": 0.8709677419354839, "heldout_acc": 0.7771587743732591}
+{"epoch": 23, "train_loss": 4.7549547378024514e-05, "sec": 28.6, "val_acc": 0.8709677419354839, "heldout_acc": 0.7771587743732591}
+{"epoch": 24, "train_loss": 4.635401309864356e-05, "sec": 29.8, "val_acc": 0.8709677419354839, "heldout_acc": 0.7771587743732591}
+{"epoch": 25, "train_loss": 4.593039532007631e-05, "sec": 31.1, "val_acc": 0.8723702664796634, "heldout_acc": 0.7771587743732591}
+{"epoch": 26, "train_loss": 4.505279787619008e-05, "sec": 32.3, "val_acc": 0.8723702664796634, "heldout_acc": 0.7771587743732591}
+{"epoch": 27, "train_loss": 4.467428231808947e-05, "sec": 33.5, "val_acc": 0.8723702664796634, "heldout_acc": 0.7771587743732591}
+{"epoch": 28, "train_loss": 4.440565417909137e-05, "sec": 34.8, "val_acc": 0.8709677419354839, "heldout_acc": 0.7771587743732591}
+{"epoch": 29, "train_loss": 4.4370735345678036e-05, "sec": 36.1, "val_acc": 0.8709677419354839, "heldout_acc": 0.7778551532033426}
+{"epoch": 30, "train_loss": 4.445314719998693e-05, "sec": 37.3, "val_acc": 0.8709677419354839, "heldout_acc": 0.7771587743732591}
+done: txt_real_k2_p0.2_s22303 38.9 s
