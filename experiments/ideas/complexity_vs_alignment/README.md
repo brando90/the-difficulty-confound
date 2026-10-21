@@ -61,7 +61,7 @@ These follow the [collaborator onboarding](../COLLABORATION_ONBOARDING.md) workf
 | 13 | Hidden Markov model mixtures in the style of GINC (Generative In-Context learning dataset): [`13_ginc_hmm_complexity_vs_alignment`](../../13_ginc_hmm_complexity_vs_alignment/) | target-HMM description length; exact entropy-rate floor | target-concept share | small CPU version; GPU-scale version | assistant (CPU); Laolu (GPU) |
 | 14 | Task2Vec bridge: [`14_task2vec_vs_exact_complexity`](../../14_task2vec_vs_exact_complexity/) | reuses 11 and 12 | reuses 11 and 12 | CPU, about 1–2 h | Brando's assistant |
 | 15 | Recovering $\alpha$: [`15_alignment_alpha_recovery`](../../15_alignment_alpha_recovery/) | reuses 11 and 12 | known true $\alpha$ versus measured $\hat\alpha$ | CPU, about 2 h (scoring plus a 160-run graded-relevance grid) | Brando's assistant |
-| 16 | Addition, crossed: [`16_carry_alignment_crossed_arithmetic`](../../16_carry_alignment_crossed_arithmetic/) | carry-chain length (structural proxy, **not** $K$) | target-carry-type share | CPU pilot; GPU transformer arm | Laolu (SNAP or Sherlock) |
+| 16 | Addition, crossed: [`16_carry_alignment_crossed_arithmetic`](../../archive/16_carry_alignment_crossed_arithmetic/) | carry-chain length (structural proxy, **not** $K$) | target-carry-type share | CPU pilot; GPU transformer arm | Laolu (SNAP or Sherlock) |
 
 ## Run order
 

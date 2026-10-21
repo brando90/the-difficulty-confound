@@ -1,0 +1,51 @@
+[
+ {
+  "task_id": "nocarry",
+  "family": "addition_carry",
+  "role": "target or distractor",
+  "K": 1,
+  "K_bits": null,
+  "definition": {
+   "digits": 3,
+   "cells": [
+    0
+   ],
+   "chain_length": 0
+  },
+  "test_pairs": 720,
+  "train_pool": 17660
+ },
+ {
+  "task_id": "isolated",
+  "family": "addition_carry",
+  "role": "target or distractor",
+  "K": 2,
+  "K_bits": null,
+  "definition": {
+   "digits": 3,
+   "cells": [
+    1,
+    2
+   ],
+   "chain_length": 1
+  },
+  "test_pairs": 1440,
+  "train_pool": 25868
+ },
+ {
+  "task_id": "cascade",
+  "family": "addition_carry",
+  "role": "target or distractor",
+  "K": 3,
+  "K_bits": null,
+  "definition": {
+   "digits": 3,
+   "cells": [
+    3
+   ],
+   "chain_length": 2
+  },
+  "test_pairs": 720,
+  "train_pool": 16335
+ }
+]

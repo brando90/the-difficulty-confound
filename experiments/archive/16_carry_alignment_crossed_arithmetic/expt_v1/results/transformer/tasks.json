@@ -1,0 +1,155 @@
+[
+ {
+  "task_id": "c0",
+  "family": "addition_carry",
+  "role": "target",
+  "K": 1,
+  "K_bits": null,
+  "definition": {
+   "digits": 8,
+   "chain_length": 0
+  },
+  "natural_share": 0.0083733937890625,
+  "covariates": {
+   "input_digit_tv": 0.22615625,
+   "answer_digit_entropy_bits": 3.189790699987432,
+   "mean_carries": 0.0
+  }
+ },
+ {
+  "task_id": "c1",
+  "family": "addition_carry",
+  "role": "target",
+  "K": 2,
+  "K_bits": null,
+  "definition": {
+   "digits": 8,
+   "chain_length": 1
+  },
+  "natural_share": 0.195612260625,
+  "covariates": {
+   "input_digit_tv": 0.103375,
+   "answer_digit_entropy_bits": 3.299385273055041,
+   "mean_carries": 2.1365
+  }
+ },
+ {
+  "task_id": "c2",
+  "family": "addition_carry",
+  "role": "target",
+  "K": 3,
+  "K_bits": null,
+  "definition": {
+   "digits": 8,
+   "chain_length": 2
+  },
+  "natural_share": 0.33411146484375,
+  "covariates": {
+   "input_digit_tv": 0.024624999999999987,
+   "answer_digit_entropy_bits": 3.296713931739557,
+   "mean_carries": 3.5335
+  }
+ },
+ {
+  "task_id": "c3",
+  "family": "addition_carry",
+  "role": "probe",
+  "K": 4,
+  "K_bits": null,
+  "definition": {
+   "digits": 8,
+   "chain_length": 3
+  },
+  "natural_share": 0.2331376716796875,
+  "covariates": {
+   "input_digit_tv": 0.03540624999999999,
+   "answer_digit_entropy_bits": 3.2771014150583944,
+   "mean_carries": 4.4995
+  }
+ },
+ {
+  "task_id": "c4",
+  "family": "addition_carry",
+  "role": "target",
+  "K": 5,
+  "K_bits": null,
+  "definition": {
+   "digits": 8,
+   "chain_length": 4
+  },
+  "natural_share": 0.12353530921875,
+  "covariates": {
+   "input_digit_tv": 0.07471875,
+   "answer_digit_entropy_bits": 3.2431211886954294,
+   "mean_carries": 5.224
+  }
+ },
+ {
+  "task_id": "c5",
+  "family": "addition_carry",
+  "role": "probe",
+  "K": 6,
+  "K_bits": null,
+  "definition": {
+   "digits": 8,
+   "chain_length": 5
+  },
+  "natural_share": 0.058688677265625,
+  "covariates": {
+   "input_digit_tv": 0.10190625,
+   "answer_digit_entropy_bits": 3.215785007538475,
+   "mean_carries": 5.7345
+  }
+ },
+ {
+  "task_id": "c6",
+  "family": "addition_carry",
+  "role": "probe",
+  "K": 7,
+  "K_bits": null,
+  "definition": {
+   "digits": 8,
+   "chain_length": 6
+  },
+  "natural_share": 0.0272339757421875,
+  "covariates": {
+   "input_digit_tv": 0.13421875,
+   "answer_digit_entropy_bits": 3.179897563510317,
+   "mean_carries": 6.317
+  }
+ },
+ {
+  "task_id": "c7",
+  "family": "addition_carry",
+  "role": "target",
+  "K": 8,
+  "K_bits": null,
+  "definition": {
+   "digits": 8,
+   "chain_length": 7
+  },
+  "natural_share": 0.01245628828125,
+  "covariates": {
+   "input_digit_tv": 0.17503125,
+   "answer_digit_entropy_bits": 3.125261007472759,
+   "mean_carries": 7.0
+  }
+ },
+ {
+  "task_id": "c8",
+  "family": "addition_carry",
+  "role": "probe",
+  "K": 9,
+  "K_bits": null,
+  "definition": {
+   "digits": 8,
+   "chain_length": 8
+  },
+  "natural_share": 0.0068509585546875,
+  "covariates": {
+   "input_digit_tv": 0.23465625,
+   "answer_digit_entropy_bits": 2.9903293363264978,
+   "mean_carries": 8.0
+  }
+ }
+]
