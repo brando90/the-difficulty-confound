@@ -63,6 +63,7 @@ The pilot left two open readings: the GSM8K sign of E − H changes with the lea
 ## Tiers
 
 - `<date time>` seed-0 first look / main / scale: submitted (job ids or SNAP host and GPUs), finished, failures and what was done about each.
+- 10-20-2026 19:57 `seeds3`: submitted on Sherlock (array 48737606, report 48737607, H100, from `$SCRATCH/tdc_g1s3`, code `2eb4c447`). Finished 10-21-2026 06:47, 16/16 exit 0, 2.04 H100-hours (sacct). Results: `g1_.../results_3seed/` (README has the as-run tables). **Grader gate FAILED** (new base - pilot base: GSM8K +1.52, CI [0.00, 3.03]; MATH-500 +1.80, CI [-0.60, 4.20]; cap 1.5). Per the pre-registration only the re-graded results (pilot engine, saved weights) are read: re-grade array 48805697, report 48805698, submitted 10-21-2026 07:09 (`seeds3/regrade.sbatch`, `regrade_report.sh`, `submit_regrade.sh`). No as-run number is read as a verdict. Format-only arm F did not work problems out (11 mean tokens, GSM8K 8.4-8.9%).
 
 ## Analysis
 

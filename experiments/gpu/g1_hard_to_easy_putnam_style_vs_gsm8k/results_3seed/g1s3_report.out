@@ -1,0 +1,10 @@
+{
+ "n_done": 16,
+ "verdicts": {
+  "sign_flip": "LR-DEPENDENT, SIGN NOT ESTABLISHED",
+  "P1_E_minus_H_ge_3_at_5e-6": "NOT SUPPORTED",
+  "H_beats_format_only_on_gsm8k_at_5e-6": "YES",
+  "format_share_of_H_gain": -1.676,
+  "F_answers_without_working": true
+ }
+}
