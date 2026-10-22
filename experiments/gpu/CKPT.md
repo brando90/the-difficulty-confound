@@ -70,3 +70,4 @@ The pilot left two open readings: the GSM8K sign of E − H changes with the lea
 - `<date time>` analyze.py and verify.py for g1, g2, g3: verdicts, VERIFY PASS/FAIL.
 
 **TLDR-end:** [tdc: GPU plans CKPT] Log for the GPU plans: CPU smoke and planted-effect tests passed on 10-18-2026; the freeze, pilot disclosure, tiers and verification are filled in as they happen.
+- 10-22-2026 02:50 `seeds3` re-grade: 16/16 re-graded with the pilot engine (arrays 48812674, 48821682, 48901686, report 48901689; 1.63 H100-hours, sacct). Readout (`results_3seed/regrade/`, `README_regrade.md`): E-H GSM8K -0.94 [-2.98, 1.09] at 5e-6 and +1.87 [0.03, 3.69] at 2e-5; interaction +2.81 [0.66, 5.03]. Verdicts: sign flip LR-DEPENDENT, SIGN NOT ESTABLISHED; P1 (E-H >= 3 at 5e-6) NOT SUPPORTED; H beats F YES. Re-graded base vs pilot base: GSM8K -0.61 (pass), MATH-500 +1.6 (cap 1.5, 0.1 over). F collapsed to bare answers, so it is not a clean format control.

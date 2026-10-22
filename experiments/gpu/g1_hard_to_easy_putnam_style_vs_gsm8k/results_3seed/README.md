@@ -62,3 +62,5 @@ As-run verdicts from `seeds3_report.py`: sign flip "LR-DEPENDENT, SIGN NOT ESTAB
 - 16 array tasks (6.5-8.8 min each, base 3.1 min), one H100 (sh04-01n07), `sacct_g1s3.txt`; the array started 10-20 23:52 and ended 10-21 06:47 PDT (queue time, not run time, took most of it).
 - `report_as_run.json/.md` (written by the Sherlock report job; recomputed locally from `runs/` with `seeds3_report.py --out-root runs`, identical), `gate.json`, `gate_check.py`, `runs/runs/*/metrics.jsonl` (per-item correctness), `runs/runs/*/generations/`, `slurm_logs/`, `jobs_g1s3.txt`, `inventory_g1s3.txt`, `submit_g1s3.log`. Weights stay on Sherlock (`$SCRATCH/tdc_g1s3/runs/runs/*/final`).
 - Re-grade code: `../seeds3/regrade.sbatch`, `regrade_report.sh`, `submit_regrade.sh` (new, added after the gate failed; the pre-registered code files are unchanged).
+
+Re-grade with the pilot engine (the pre-registered readout after the failed gate): see `README_regrade.md`.
