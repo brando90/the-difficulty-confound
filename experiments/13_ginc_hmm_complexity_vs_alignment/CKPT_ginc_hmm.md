@@ -37,3 +37,17 @@ The freeze SHA for the GPU pilot is **19a77724** (branch `results/cpu-expts-11-1
 
 Listed in RESULTS_ginc_hmm.md (Deviations): wall cap raised before the freeze; 4 resume-safe chunks with chunk 1 killed by the command timeout (4 runs redone, run_state entry reconstructed); background CPU load; ε_res set at the freeze; report.py E panel changed after the analysis; 13-GPU not run and its code path not written; not pushed.
 - 10-19-2026 review fix: report.py Section 6 rows now state what this run found (η check for the G1/G4 row; G5 as a position split only, not evidence for identification), the takeaway glosses its symbols, and the TLDR matches. Reporting only; no number changed.
+
+## 13-GPU (Laolu Oguneye; branch `exp13-ginc-gpu`)
+
+### 10-20-2026
+
+- 11:50–12:30 13-GPU code path written: `gpu_arm.py`, `analyze_gpu.py`, `verify_gpu.py`, `test_gpu.py`, the full N laws in `laws.py` and `independent_fit.py`, `--arm gpu` dispatch in `run.py`, `analyze.py` and `verify.py`, the GPU keys in `config.json` (optimizer, distractor evaluation documents, pilot α and tie rule, β starts, extension cap; `gpu_torch_version` 2.6.0), `launch/sherlock_prep.sbatch`, and launcher fixes (torch 2.6.0 cu124/cu126, system git module on Sherlock, GPU constraint, one-time prep). 30 of 30 unit tests pass.
+- 11:57 First `run.py --arm gpu --check-only` failed: `levels cannot supply 5 concepts within the candidate cap: {128: 0}` (64: 18 calibration candidates, 128: 0; band widened to ±0.30). A diagnostic on an independent stream gave about 0.07% strongly connected and aperiodic at n = 128, with about 2 in 10 of those at full rank. The fix is the per-level extension stream (PROTOCOL Section 7, 13-GPU implementation notes). The 13-small concepts regenerate identically with the changed `build_concepts`.
+- 12:10–12:15 `run.py --arm gpu --check-only --workers 3` on the laptop (numpy 2.5.4): PASS in 320 s. 25 concepts, all with certified rank = n, $h_{\text{ref}}$ 2.862, band ±0.30. n = 128 extension: 13,799 drawn, 5 passed checks 1–2, 5 accepted (indices 5800, 8256, 8967, 13314, 14798). Entropy rates 2.68–3.07 bits. Parameter counts S/M/L match. Checkpoints: S, M 2^22…2^30; L 2^22…2^28 and 2^29 (FLOP cap). 60 α schedules exact over 8,388,608 documents. 0 of 31,360 evaluation documents among 6,553,600 training documents. 360 shards. ε_id over all positions = log2(1/α)/128 for every target (0.0338 bits at α = 0.05). Receipt: `expt_v1/results_check_gpu.json`.
+- 12:20 Same check with numpy 2.2.6, scipy 1.16.3, torch 2.6.0 (the GPU environment): concepts, evaluation documents, oracle.npz and mixture.npz bit-identical; only the logged entropy rates in tasks.json differ (by at most 4.4e-16).
+- 12:25 Smoke tests, not results: a tiny CPU pilot job (S, T to 2^18) ran end to end. A CPU loss trace of S on the pilot concept: about 243 bits/token at step 1 (model.py's default N(0,1) tied-embedding init), 12 bits at 2^20 tokens, 4.45 bits training loss at 2^22 (the first checkpoint). L may still be in this transient at 2^22; the pilot shows it. Synthetic 13-GPU results through `analyze.py --arm gpu`: the pooled N law recovered the planted κ 0.70, γ1 −0.051, η 0.80, β 0.50; the independent fitter agrees.
+
+### 10-23-2026
+
+- Decisions signed off by Laolu (PROTOCOL Section 7, 13-GPU implementation notes): the n = 128 extension, the gate definitions and every-seed rule, the N-law details, the commit order, the environment, and the branch name. Branch updated to main 6f66bd3f. The "Experiment 13 GPU code" commit follows; the pilot runs at it.

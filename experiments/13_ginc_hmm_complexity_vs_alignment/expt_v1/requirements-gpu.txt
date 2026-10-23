@@ -1,5 +1,5 @@
-# torch is installed first from the CUDA index (gpu_torch_version in config.json)
-numpy==2.5.4
-scipy==1.18.1
-matplotlib==3.11.2
+# torch is installed first from the CUDA index (gpu_torch_version in config.json: 2.6.0, cu124 on Sherlock).
+# Wheels exist for glibc 2.17 (Sherlock's CentOS 7) and for SNAP; install with --only-binary=:all:.
+numpy==2.2.6
+scipy==1.16.3
 pytest==9.1.1

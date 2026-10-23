@@ -45,13 +45,19 @@
   "arm_index": 1,
   "V": 150, "levels": [8, 16, 32, 64, 128], "heldout_level": 32,
   "targets_per_level": 2, "distractors_per_level": 2, "pilot_concepts_per_level": 1,
+  "extension_candidates_per_level": 200000,
   "sizes": {"S": [4, 256, 4], "M": [8, 512, 8], "L": [12, 768, 12]}, "vocab": 151,
   "expected_params": [3230976, 25362944, 85270272], "expected_nonembedding": [3159552, 25220096, 85056000],
-  "lr": [1e-3, 6e-4, 3e-4], "warmup_steps": 200, "batch_docs": 128,
+  "max_positions": 128,
+  "lr": [1e-3, 6e-4, 3e-4], "betas": [0.9, 0.95], "weight_decay": 0.1, "grad_clip": 1.0, "warmup_steps": 200,
+  "batch_docs": 128,
   "T_checkpoints": [4194304, 16777216, 67108864, 268435456, 1073741824], "flop_cap": 3e17,
   "seeds": [13101, 13202, 13303], "pilot_seed": 13919, "pilot_lr_multipliers": [0.5, 1, 2], "pilot_T": 67108864,
-  "eval_docs_per_target": 2048, "epsilon_star": 0.02, "n_shards": 360, "data_workers": 8,
+  "pilot_alpha": 0.4, "pilot_tie_bits": 0.002,
+  "beta_starts": [0.1, 0.5, 2.0],
+  "eval_docs_per_target": 2048, "distractor_eval_docs": 64, "epsilon_star": 0.02, "n_shards": 360,
+  "data_workers": 8, "workers": 4,
   "lr_selected": null
  },
- "gpu_torch_version": "2.14.1"
+ "gpu_torch_version": "2.6.0"
 }

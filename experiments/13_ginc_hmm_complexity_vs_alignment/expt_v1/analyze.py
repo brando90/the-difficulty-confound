@@ -533,7 +533,10 @@ def main():
     c = load_config(a.arm)
     out = Path(a.output) if a.output else HERE / 'results' / a.arm
     tasks = json.loads((out / 'tasks.json').read_text())
-    if a.stage == 1:
+    if a.arm == 'gpu':  # 13-GPU: pooled full N laws, per-size laws and G6 (analyze_gpu.py)
+        import analyze_gpu as AG
+        (AG.stage1 if a.stage == 1 else AG.stage2)(c, out, tasks)
+    elif a.stage == 1:
         stage1(c, out, tasks)
     else:
         stage2(c, out, tasks)

@@ -8,7 +8,12 @@ Usage (venv python, from expt_v1/):
   run.py --arm small --output results/small [--max-seconds S]
                                                   gated grid (128 runs, resume-safe: finished runs are atomic and
                                                   skipped); the cumulative wall cap is tracked in run_state.json
-  run.py --arm gpu ...                            not run on the CPU box (13-GPU is launched from launch/)
+  run.py --arm gpu --check-only                   13-GPU concepts and references into prep/gpu (CPU is fine); trains nothing
+  run.py --arm gpu --pilot --pilot-job J --output DIR   GPU pilot job J (0..8) into DIR/<%05d>/ (GPU node)
+  run.py --arm gpu --pilot-select DIR             applies the frozen pilot rule and prints gpu.lr_selected
+  run.py --arm gpu --shard I --output DIR         13-GPU shard I (0..359) into DIR/shards/<%05d>/ (GPU node)
+  run.py --arm gpu --merge DIR                    collects DIR/shards into results/gpu (no checkpoints)
+13-GPU lives in gpu_arm.py and is launched from launch/; it never runs on the CPU box except --check-only and --merge.
 """
 import argparse
 import concurrent.futures as cf
@@ -91,11 +96,17 @@ def _check12(h):
 def build_concepts(c, log=print):
     """Acceptance procedure: per level, a fixed list of max_candidates_per_level candidates drawn level by level from
     the arm's single PCG64 stream; band calibration on each level's first 64 candidates passing checks 1-2; then
-    acceptance in generation order. Returns (tasks, acceptance log)."""
+    acceptance in generation order. Returns (tasks, acceptance log).
+
+    Extension (13-GPU only, config key extension_candidates_per_level): a level that still cannot supply its concepts
+    within its first max_candidates_per_level candidates at the widened band keeps drawing candidates, in order, from
+    its own PCG64 stream seeded (task_sampling_seed, arm_index, n, 3), with the same checks and band, up to the cap.
+    Every earlier draw, the band calibration and h_ref are those of the procedure without it."""
     rng = np.random.default_rng([c['task_sampling_seed'], c['arm_index']])
     V, q = c['V'], c['q']
     per_level = c['targets_per_level'] + c['distractors_per_level'] + c['pilot_concepts_per_level']
-    cands = {n: [H.sample_candidate(rng, n, V, q) for _ in range(c['max_candidates_per_level'])] for n in c['levels']}
+    cands = {n: dict(enumerate(H.sample_candidate(rng, n, V, q) for _ in range(c['max_candidates_per_level'])))
+             for n in c['levels']}
     status = {n: {} for n in c['levels']}  # index -> (passes 1-2, reason, rank)
     quick = {n: {} for n in c['levels']}
 
@@ -139,6 +150,29 @@ def build_concepts(c, log=print):
         log(f'band widened to +-{band}')
         acc = accept(band)
     short = {n: len(v) for n, v in acc.items() if len(v) < per_level}
+    ext = {}
+    for n in sorted(short) if c.get('extension_candidates_per_level') else []:
+        r_ext = np.random.default_rng([c['task_sampling_seed'], c['arm_index'], n, 3])
+        ext[n] = dict(seed=[c['task_sampling_seed'], c['arm_index'], n, 3], drawn=0, passed_checks_1_2=0)
+        for k in range(c['extension_candidates_per_level']):
+            i = c['max_candidates_per_level'] + k
+            h = H.sample_candidate(r_ext, n, V, q)
+            ext[n]['drawn'] += 1
+            if not H.strongly_connected_aperiodic(h):  # check 1 first; failures are not kept (memory)
+                continue
+            cands[n][i] = h
+            if not chk(n, i)[0]:
+                del cands[n][i]
+                continue
+            ext[n]['passed_checks_1_2'] += 1
+            if abs(qh(n, i) - h_ref) <= band:
+                acc[n].append(i)
+                if len(acc[n]) == per_level:
+                    break
+        ext[n]['accepted'] = [i for i in acc[n] if i >= c['max_candidates_per_level']]
+        log(f'level {n}: extension stream drew {ext[n]["drawn"]} candidates, {ext[n]["passed_checks_1_2"]} passed '
+            f'checks 1-2, {len(ext[n]["accepted"])} accepted')
+    short = {n: len(v) for n, v in acc.items() if len(v) < per_level}
     if short:
         raise RuntimeError(f'levels cannot supply {per_level} concepts within the candidate cap: {short}')
     tasks = []
@@ -174,6 +208,8 @@ def build_concepts(c, log=print):
                      quick_scored=len(quick[n]),
                      in_band=sum(1 for i, v in quick[n].items() if abs(v - h_ref) <= band))
         for n in c['levels']})
+    if ext:
+        acc_log['extension'] = {str(n): v for n, v in ext.items()}
     return tasks, acc_log
 
 
@@ -605,10 +641,16 @@ def main():
     ap.add_argument('--prep', default=None)
     ap.add_argument('--workers', type=int, default=None)
     ap.add_argument('--max-seconds', type=float, default=float('inf'))
+    ap.add_argument('--shard', type=int, default=None)
+    ap.add_argument('--pilot-job', type=int, default=None)
+    ap.add_argument('--pilot-select', default=None)
+    ap.add_argument('--merge', default=None)
+    ap.add_argument('--dest', default=None)
     args = ap.parse_args()
     if args.arm == 'gpu':
-        raise SystemExit('13-GPU is launched on GPU nodes from launch/ and is not run on the CPU box '
-                         '(13-GPU: pending, not run).')
+        import gpu_arm
+        gpu_arm.main(args)
+        return
     c = load_config(args.arm)
     if args.workers:
         c['workers'] = args.workers

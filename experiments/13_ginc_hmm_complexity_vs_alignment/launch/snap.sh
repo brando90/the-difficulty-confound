@@ -120,11 +120,12 @@ if [[ -z ${TORCH_INDEX:-} ]]; then
   DRIVER_CUDA=${DRIVER_CUDA:-0.0}
   CUDA_MAJOR=${DRIVER_CUDA%%.*}
   CUDA_MINOR=${DRIVER_CUDA#*.}
-  if ((CUDA_MAJOR > 12 || (CUDA_MAJOR == 12 && CUDA_MINOR >= 8))); then
-    TORCH_INDEX=https://download.pytorch.org/whl/cu128
-  elif ((CUDA_MAJOR == 12 && CUDA_MINOR >= 6)); then
-    [[ $GPU_NAME != *B200* ]] || die "B200 needs a driver supporting CUDA >= 12.8 (driver reports $DRIVER_CUDA)"
+  # torch 2.6.0 (the pinned GPU version, shared with Sherlock) has cu124 and cu126 wheels, none for B200 (sm_100).
+  [[ $GPU_NAME != *B200* ]] || die "torch $TORCH_VERSION has no B200 support; use skampere1 (A100) or skampere2 (H200)"
+  if ((CUDA_MAJOR > 12 || (CUDA_MAJOR == 12 && CUDA_MINOR >= 6))); then
     TORCH_INDEX=https://download.pytorch.org/whl/cu126
+  elif ((CUDA_MAJOR == 12 && CUDA_MINOR >= 4)); then
+    TORCH_INDEX=https://download.pytorch.org/whl/cu124
   else
     die "driver reports CUDA $DRIVER_CUDA; set TORCH_INDEX to a matching https://download.pytorch.org/whl/cuXXX index"
   fi
@@ -135,7 +136,7 @@ if [[ ! -f $VENV/.ready ]]; then
   "$PYTHON" -m venv "$VENV"
   "$VENV/bin/pip" install --upgrade pip
   "$VENV/bin/pip" install "torch==$TORCH_VERSION" --index-url "$TORCH_INDEX"
-  "$VENV/bin/pip" install -r "$CODE/requirements-gpu.txt"
+  "$VENV/bin/pip" install --only-binary=:all: -r "$CODE/requirements-gpu.txt"
   "$VENV/bin/python" -c 'import torch; assert torch.cuda.is_available(), "CUDA not available"; print("torch", torch.__version__, "cuda", torch.version.cuda)'
   echo "torch==$TORCH_VERSION $TORCH_INDEX $(date +%m-%d-%Y)" >"$VENV/.ready"
 fi
@@ -143,10 +144,14 @@ PY=$VENV/bin/python
 "$PY" -c 'import torch, sys; ok = torch.cuda.is_available() and torch.cuda.get_device_capability(0) >= (8, 0); sys.exit(0 if ok else 1)' ||
   die "CUDA unavailable in $VENV or GPU compute capability < 8.0 (bfloat16 needs >= 8.0)"
 
-# ---- 8. preflight: --check-only ----------------------------------------------------
-say "running run.py --arm $ARM --check-only (up to 30 min)"
-(cd "$REPO" && timeout 1800 "$PY" -u "$CODE/run.py" --arm "$ARM" --check-only) >"$OUT/logs/check_only_$HOST.log" 2>&1 ||
-  die "--check-only failed; see $OUT/logs/check_only_$HOST.log"
+# ---- 8. preflight: --check-only builds expt_v1/prep/gpu once (about 1 h); later calls reuse it ------
+if [[ -f $CODE/prep/gpu/tasks.json && -f $CODE/prep/gpu/mixture.npz ]]; then
+  say "concepts and references present in $CODE/prep/gpu (built by an earlier --check-only); not rebuilding"
+else
+  say "running run.py --arm $ARM --check-only (up to 3 h; builds $CODE/prep/gpu)"
+  (cd "$REPO" && OMP_NUM_THREADS=1 timeout 10800 "$PY" -u "$CODE/run.py" --arm "$ARM" --check-only --workers "$THREADS_PER_GPU") \
+    >"$OUT/logs/check_only_$HOST.log" 2>&1 || die "--check-only failed; see $OUT/logs/check_only_$HOST.log"
+fi
 
 # ---- 9. pending work ----------------------------------------------------------------
 case $MODE in

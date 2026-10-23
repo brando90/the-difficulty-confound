@@ -3,6 +3,8 @@ from a different, seeded starting grid. Held-out RMSEs must agree with laws.py t
 
 Log-space laws: for each start, log2 A is first set by a 1-D bounded search given the exponents, then L-BFGS-B runs
 over all parameters. M_align_add: for fixed gamma, (a, c, d) are a linear least-squares solution; L-BFGS-B over gamma.
+13-GPU N laws: the same two schemes (effective-data forms: log2 A by 1-D search, then L-BFGS-B over everything;
+alignment-scaling forms: (a, b, c0, d) solved linearly inside L-BFGS-B over beta and the exponents).
 """
 import numpy as np
 from scipy.optimize import minimize, minimize_scalar
@@ -16,7 +18,25 @@ def fit(law, X, c):
     rng = np.random.default_rng(c['fit']['independent_seed'])
     lo, hi = L.bounds_for(law, c)
     best = None
-    if law == 'M_align_add':
+    if law in L.AS_LAWS:
+        def full(z):
+            return np.r_[L.linear_as(law, z, X), z]
+        for s in L.exponent_starts(law, X, c, jitter=rng):
+            r = minimize(lambda z: L.objective(law, full(z), X), s, method='L-BFGS-B',
+                         bounds=list(zip(lo[4:], hi[4:])), options=OPTS)
+            if best is None or r.fun < best[1]:
+                best = (full(r.x), float(r.fun))
+    elif law in L.N_BASE:
+        bnds = list(zip(lo, hi))
+        for s in L.starts_for(law, X, c, jitter=rng):
+            s = np.clip(s, lo, hi)
+            la = minimize_scalar(lambda v: L.objective(law, np.r_[v, s[1:]], X), bounds=(lo[0], hi[0]),
+                                 method='bounded', options=dict(xatol=1e-10)).x
+            r = minimize(lambda z: L.objective(law, z, X), np.r_[la, s[1:]], method='L-BFGS-B', bounds=bnds,
+                         options=OPTS)
+            if best is None or r.fun < best[1]:
+                best = (r.x, float(r.fun))
+    elif law == 'M_align_add':
         def obj(z):
             return L.objective(law, np.r_[L.linear_add(z[0], X), z[0]], X)
         for s in L.exponent_starts(law, X, c, jitter=rng):
