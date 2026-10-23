@@ -57,7 +57,7 @@
   "beta_starts": [0.1, 0.5, 2.0],
   "eval_docs_per_target": 2048, "distractor_eval_docs": 64, "epsilon_star": 0.02, "n_shards": 360,
   "data_workers": 8, "workers": 4,
-  "lr_selected": null
+  "lr_selected": {"S": 2, "M": 2, "L": 2}
  },
  "gpu_torch_version": "2.6.0"
 }
