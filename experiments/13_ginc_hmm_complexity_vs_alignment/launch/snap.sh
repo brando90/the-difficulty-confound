@@ -94,7 +94,7 @@ while IFS=',' read -r idx used free util; do
 done < <(nvidia-smi --query-gpu=index,memory.used,memory.free,utilization.gpu --format=csv,noheader,nounits)
 ((${#FREE_GPUS[@]} > 0)) || die "no free GPU on $HOST (thresholds: used <= $MAX_USED_MB MB, util <= $MAX_UTIL%, free >= $MIN_FREE_MB MB)"
 FREE_GPUS=("${FREE_GPUS[@]:0:MAX_GPUS}")
-GPU_NAME=$(nvidia-smi --query-gpu=name --format=csv,noheader | head -n 1)
+GPU_NAME=$(nvidia-smi --query-gpu=name --format=csv,noheader | head -n 1 || true)
 say "using GPUs ${FREE_GPUS[*]} ($GPU_NAME)"
 
 # ---- 5. disk headroom ---------------------------------------------------------
@@ -116,7 +116,7 @@ CONFIG=$CODE/config.json
 TORCH_VERSION=$("$PYTHON" -c 'import json, sys; print(json.load(open(sys.argv[1]))["gpu_torch_version"])' "$CONFIG")
 TORCH_VERSION=${TORCH_VERSION%%+*}
 if [[ -z ${TORCH_INDEX:-} ]]; then
-  DRIVER_CUDA=$(nvidia-smi | grep -o 'CUDA Version: [0-9]*\.[0-9]*' | head -n 1 | awk '{ print $3 }')
+  DRIVER_CUDA=$(nvidia-smi | grep -o 'CUDA Version: [0-9]*\.[0-9]*' | head -n 1 | awk '{ print $3 }' || true)
   DRIVER_CUDA=${DRIVER_CUDA:-0.0}
   CUDA_MAJOR=${DRIVER_CUDA%%.*}
   CUDA_MINOR=${DRIVER_CUDA#*.}
