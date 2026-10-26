@@ -8,6 +8,8 @@
 ## Data
 `gpu_all_slice.csv` = token-weighted "all" slice of Laolu's saved `metrics.csv` (SNAP, Exp 13-GPU, expt_v1/results/gpu). 3 sizes (3.2M/25.4M/85.3M) x 10 targets (2 per complexity n = 8/16/32/64/128 hidden states) x 4 alignment shares alpha (0.05, 0.15, 0.4, 1) x 3 seeds = 360 runs, 5 checkpoints each (T = 4.2M ... 1.07B tokens; L stops at 0.54B) = 1,800 (run, checkpoint) rows. Outcome: learning term = excess bits minus the exact identification floor. Nothing launched, nothing paid, Laolu not contacted. Scripts: `analyze.py` (part A), `lawB.py` (part B); outputs `partA_E.json`, `partB_law.json`.
 
+Caveat: analyze.py also reads ../at1342/gpu_metrics.csv (the K to K_bits map, kept on the SNAP cluster, not in this repo); it is needed only for the "K in bits" column. lawB.py and all other numbers run from gpu_all_slice.csv alone.
+
 ## A. E = e_alpha / e_K per target loss, censoring handled
 Per run, T* = tokens to reach the learning-term target eps*, log-log interpolated between checkpoints. A run that never gets there is **right-censored** (T* >= last checkpoint), one already there at the first checkpoint is left-censored (none occurred). Tobit regression of ln T* on ln alpha, ln n (size fixed effects when pooled), so censored runs stay in with their censored likelihood instead of being dropped or counted at the last checkpoint. e_alpha = -d ln T*/d ln alpha, e_K = d ln T*/d ln n, E = e_alpha/e_K. Denominators: 120 runs per size per eps*, 360 pooled.
 
