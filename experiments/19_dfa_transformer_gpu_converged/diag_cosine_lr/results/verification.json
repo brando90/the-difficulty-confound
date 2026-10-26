@@ -1,0 +1,14 @@
+{
+ "1_sources_match_manifest": true,
+ "4_test_set_identical_to_exp11": true,
+ "4_init_hashes_match": true,
+ "2_metrics_rows_recomputed": "1536/1536",
+ "2_rows_equal_csv": true,
+ "2_max_accuracy_diff": 0.0,
+ "2_lr_rows_off_schedule": 0,
+ "3_checkpoints_replayed": 128,
+ "3_max_abs_diff_mean_bits": 1.2114513214811495e-07,
+ "3_max_abs_diff_string_bits": 5.7220458984375e-05,
+ "5_summary_identical": true,
+ "verdict": "PASS"
+}

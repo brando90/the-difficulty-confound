@@ -1,0 +1,21 @@
+{
+  "vision": {"patch": 4, "dim": 192, "depth": 6, "heads": 3, "mlp": 768, "drop": 0.0,
+             "epochs": 100, "warmup_epochs": 5, "batch": 256, "lr": 0.001, "wd": 0.05, "label_smoothing": 0.1,
+             "eval_every": 5, "val_per_class": 25, "crop_pad": 4},
+  "text": {"vocab": 20000, "min_df": 2, "max_len": 256, "dim": 256, "depth": 4, "heads": 4, "mlp": 1024, "drop": 0.1,
+           "epochs": 30, "warmup_epochs": 1, "batch": 64, "lr": 0.0005, "wd": 0.05, "label_smoothing": 0.0,
+           "eval_every": 1, "val_frac": 0.1},
+  "feat": {"seed": 22777, "epochs": 60},
+  "grid": {
+    "vis_real": {"arm": "vision", "map": "real", "splits": [0, 1, 2, 3, 4], "p": [0.0, 0.01, 0.05, 0.2, 1.0], "seeds": [22101, 22202]},
+    "vis_shuf": {"arm": "vision", "map": "shuffled", "splits": [0, 1, 2, 3, 4], "p": [0.0, 1.0], "seeds": [22101, 22202]},
+    "txt_real": {"arm": "text", "map": "real", "splits": [0, 1, 2, 3], "p": [0.0, 0.01, 0.05, 0.2, 1.0], "seeds": [22101, 22202, 22303]},
+    "txt_shuf": {"arm": "text", "map": "shuffled", "splits": [0, 1, 2, 3], "p": [0.0, 1.0], "seeds": [22101, 22202, 22303]}
+  },
+  "pilot": {"seed": 22909, "vision": {"epochs": 2, "warmup_epochs": 1, "depth": 2, "eval_every": 1, "n_train": 1024, "n_val": 256, "n_test": 1000},
+            "text": {"epochs": 2, "warmup_epochs": 1, "depth": 1, "max_len": 64, "eval_every": 1, "n_train": 400, "n_val": 100, "n_test": 400},
+            "feat": {"epochs": 1, "depth": 1, "n_train": 1024}},
+  "cifar_mean": [0.5071, 0.4865, 0.4409], "cifar_std": [0.2673, 0.2564, 0.2762],
+  "analysis": {"seed": 29102226, "bootstrap": 20000, "primary_p": 0.0,
+               "P1_band": 0.05, "P2_rho": 0.6}
+}

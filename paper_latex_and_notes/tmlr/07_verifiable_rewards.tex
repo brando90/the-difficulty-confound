@@ -1,0 +1,97 @@
+% !TEX root = main.tex
+\section{Verifiable exact-sum rewards}
+\label{sec:rlvr}
+% Provenance: experiments/archive/08_rlvr_verifiable_reward_utility_laws/RESULTS_rlvr_utility.md
+% prediction_summary.json joint RMSE 0.780853350023846 to 0.469560917669474 (39.8657%).
+% rl_utility_summary.json joint utility RMSE 0.1733929149360176 to 0.20075732887109288
+% (17.3393 to 20.0757 percentage points), relative -0.15781737071075153.
+% Width 96: 0.14585694376977995 to 0.07503033003692347 (48.55896%).
+% Width 384: 0.19711914634088015 to 0.2738201230104585 (-38.91097%).
+
+\texttt{experiments/archive/08\_rlvr\_verifiable\_reward\_utility\_laws/} uses the same family of pretrained checkpoints and replaces the balanced supervised stage with a reward.
+The reward is 1 when all four sampled digits equal the integer sum, and 0 otherwise.
+Each prompt draws a group of 16 completions.
+The advantage is the leave-one-out group-relative form in the protocol.
+If every completion in the group is correct, or every completion is incorrect, that advantage is zero.
+Updates therefore concentrate on prompts whose group is mixed.
+The study calls this reinforcement learning with a verifiable reward because the reward is the exact-sum check.
+It is not a language-model reinforcement-learning result.
+
+The post-training loss gate is supported.
+Adding probed starting loss cuts joint held-out RMSE from 0.7809 [0.5484, 1.0435] to 0.4696 [0.2767, 0.6529] bits per answer.
+The relative reduction is 39.87\% [36.20, 50.17], with improvement at both held-out widths and no invalid forecasts.
+Mean bias moves from $-0.1321$ to $-0.0461$ bits, against an observed mean of 0.7212.
+The loss law is the constrained monotone ridge, so the multiplicative form can approach a near-zero loss floor.
+A recorded comparison in the analysis summary, which is not one of the four headline gates, finds this constrained probe worse than the unconstrained difficulty law: relative reduction $-24.73\%$ [$-38.85$, $4.20$].
+That comparison is marked not established in the summary file.
+
+The accuracy-gain reversal is supported.
+Utility is accuracy after 1{,}000 reward updates minus accuracy before them.
+At pretraining mixture 0.1, the compositional stratum gains 29.07 [26.32, 32.33] points more than the isolated-carry stratum.
+At mixture 0.9, the isolated-carry stratum gains 32.70 [30.18, 35.20] points more than the compositional stratum.
+Both lower endpoints clear zero, and the study requires a positive point at all five widths.
+The absolute gains behind the first contrast are $+35.52$ [$+33.76$, $+37.34$] points on the compositional stratum and $+6.45$ [$+4.69$, $+7.91$] points on the isolated stratum.
+
+The remediation gate is supported on its own terms, which do not include an 85\% or 90\% accuracy floor.
+At mixture 0.1, isolated-carry accuracy starts at 77.81\% [75.57, 80.79] and two-carry accuracy starts at 32.44\% [29.45, 35.61], a gap of 45.37 [43.88, 46.91] points.
+After the reward stage, two-carry accuracy is 67.93\% [63.28, 72.89].
+That is a gain of 35.49 [33.27, 37.68] points and recovers 78.23\% [72.58, 84.23] of the gap.
+Isolated-carry accuracy changes by $+6.45$ [$+4.69$, $+7.91$] points, to 84.26\% [82.88, 85.72].
+The frozen rule required a recovery lower endpoint of at least 50\% and a control change of at least $-5$ points.
+Both hold.
+The absolute two-carry accuracy remains 67.93\%.
+
+The additive utility law is not established.
+The prespecified extension adds log signal density, remaining headroom, and log starting loss to a linear law in scale, budget, and stratum.
+Pooled joint RMSE on the accuracy gain goes from 17.34 [15.61, 18.85] to 20.08 [17.27, 22.52] percentage points.
+The relative change is $-15.78\%$ [$-35.91$, $3.15$].
+The gate required at least 10\%, a positive lower endpoint, and improvement at both held-out widths.
+At width 96, 96 targets, RMSE falls from 14.59 [13.08, 16.07] to 7.50 [5.70, 9.21] points, a 48.56\% [41.65, 57.30] reduction.
+At width 384, where pre-reward accuracy is already about 78\% to 99.8\%, RMSE rises from 19.71 to 27.38 points, a change of $-38.91\%$ [$-67.54$, $-12.56$].
+The additive form does not multiply by remaining headroom, and the slopes fit on lower-accuracy widths overshoot that headroom.
+The loss law and the utility law therefore disagree: the multiplicative loss law is supported at both widths, and the pooled additive utility law is not.
+% Provenance: experiments/archive/09_headroom_bounded_rlvr_utility_law/RESULTS_headroom_bounded.md
+% and expt_v1/results/law_metrics.json, gates.json. Intervals not redrawn. bootstrap_draws=20000. p-val=n/a.
+% Joint RMSE is the square root of the mean of eight within-seed mean squared errors.
+% additive_base 0.17618839309547546 [0.15906852572455818, 0.18976131380428224], impossible 128 of 192.
+% bounded_base 0.046300185223877834 [0.03852574096039413, 0.05317634906655619], impossible 0.
+% bounded_signal_difficulty 0.042550811886214825 [0.035102943273782446, 0.04908988159202113].
+% Gate 1: 0.7372120580111765 [0.7042625604099736, 0.7725511008836561], SUPPORTED.
+% Width 96: 0.1396666528827336 to 0.0653470162492859. Width 384: 0.20634419254165012 to 0.004145089968427068.
+% Gate 2: 0.08097966173425564 [0.02517020100878975, 0.1438982595691034], NOT_ESTABLISHED.
+% Gate 3: 0.009592719060730559 [0.004382730985669103, 0.015393106220516706], NOT_ESTABLISHED, 864 targets.
+% Gate 4: 0.2985763888888889 [0.2674652777777778, 0.3258684895833333] and 0.34487847222222223 [0.3168229166666666, 0.37088541666666663].
+% Gate 5: recovery 0.7765612482356081 [0.7293652638921181, 0.8220793548141668]; control 0.05923611111111111 [0.048715277777777774, 0.07013932291666665].
+
+\texttt{experiments/archive/09\_headroom\_bounded\_rlvr\_utility\_law/} is the prespecified repair of that additive failure, on fresh seeds.
+Remaining headroom scales a recovered fraction:
+\begin{equation}
+\label{eq:headroom}
+\widehat{U}=(1-\mathrm{Acc}_0)\,(1-e^{-r_\theta}).
+\end{equation}
+$\mathrm{Acc}_0$ is accuracy before the reward stage.
+The rate $r_\theta$ stays nonnegative, so each forecast lies in $[0, 1-\mathrm{Acc}_0)$.
+Gate 1 compares this bound with the additive law.
+The comparison uses 192 joint targets, eight seeds, and 24 targets per seed.
+Gate 1 is supported.
+Joint root mean squared error falls from 17.62 [15.91, 18.98] to 4.63 [3.85, 5.32] percentage points.
+The relative reduction is 73.72\% [70.43, 77.26].
+Impossible forecasts fall from 128 to 0.
+At width 96 the point estimate falls from 13.97 to 6.53 percentage points.
+At width 384 it falls from 20.63 to 0.41 percentage points.
+The interval is the stored 20{,}000-draw bootstrap of the eight seed blocks, conditional on the fixed test items.
+This draft did not redraw that interval.
+The decision uses the interval rather than a separate test, so p-val=n/a.
+Gate 2 asks whether probe features still help inside the bound.
+Gate 2 is not established.
+On the same 192 targets, error moves from 4.63 [3.85, 5.32] to 4.26 [3.51, 4.91] percentage points.
+The relative reduction is 8.10\% [2.52, 14.39], below the protocol's 10\% line.
+A group-size comparison in the same folder is not established, at 0.96\% [0.44, 1.54] on 864 targets.
+The fresh-seed reversal gate is supported.
+At mixture 0.1, the compositional stratum gains 29.86 [26.75, 32.59] points more than the isolated-carry stratum.
+At mixture 0.9, the isolated-carry stratum gains 34.49 [31.68, 37.09] points more.
+The remediation gate is supported.
+Gap recovery on the fresh seeds is 77.66\% [72.94, 82.21].
+The control accuracy changes by $+5.92$ [$+4.87$, $+7.01$] points.
+The repair remains exact addition on these small networks.
+It is not a language-model result.

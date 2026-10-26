@@ -1,0 +1,4 @@
+lr 5e-06: E on L1 0.1344, H on L3 0.3468, mean 0.2406 bits/byte
+lr 1e-05: E on L1 0.1342, H on L3 0.3473, mean 0.2408 bits/byte
+lr 2e-05: E on L1 0.1364, H on L3 0.3507, mean 0.2436 bits/byte
+selected learning rate for qwen2.5-0.5b: 5e-06 (1.5B rule: 2.5e-06)

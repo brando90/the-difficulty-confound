@@ -1,0 +1,49 @@
+% !TEX root = main.tex
+\section{Related work}
+% Each prior-work sentence carries its own gap. No claim that this paper studies language models.
+
+\paragraph{Description length.}
+\citet{kolmogorov1968three} measure information by the shortest program that produces an object on a fixed machine.
+\citet{grunwald2008algorithmic} separate that description length from the time the program takes to run.
+\citet{rissanen1978modeling} selects models by total description length, charging for the model as well as the data.
+Final cross-entropy under a trained network omits that charge.
+\citet{voita2020information} make the charge operational by coding labels online, before each update of a fixed learning rule.
+Our online code in \texttt{experiments/archive/07\_prequential\_mdl\_and\_length\_transfer/} follows that prequential pattern on the addition stream.
+It is not an estimate of Kolmogorov complexity.
+The conditional complexity of each test pair stays fixed because the input, the answer, the task statement, and the reference machine stay fixed.
+
+\paragraph{What a ranking is attached to.}
+\citet{bengio2009curriculum} train on easier examples before harder ones, using a difficulty signal chosen in advance.
+That design is useful when the order is stable.
+Our measurements ask whether the order stays put after the mixture changes.
+\citet{lake2018generalization} find that sequence models can fit a compositional training set and still miss systematic recombinations.
+\citet{keysers2020measuring} separate a match of primitive distributions from a match of their compositions.
+Those papers study sequence tasks.
+Our carry design is a smaller arithmetic version of the same question, with an exact checker and a frozen test set.
+\citet{zhang2017understanding} show that deep networks can fit random labels of a finite training set.
+Fitting those labels does not predict independent random labels on new items.
+Our shuffled-label control is the addition analogue: exact-sum accuracy stays near zero.
+
+\paragraph{Resource laws and metric artifacts.}
+\citet{kaplan2020scaling} and \citet{hoffmann2022chinchilla} predict language-model loss from scale and from data or training compute.
+Those laws describe average loss.
+They do not identify which evaluated items were in the training mixture.
+We borrow only the idea of a simple law in parameter count and updates, then test extra covariates on addition networks.
+This is not a scaling-law result for language models.
+\citet{power2022grokking} show that, on small algorithmic tasks, generalization can arrive long after the training loss has fallen.
+Their intervention is training time under one data distribution.
+Ours holds the scored budget fixed inside a comparison and changes the mixture.
+\citet{schaeffer2023mirage} show that an aggregate metric can create an apparent jump in capability.
+That paper is about metric discontinuities on language-model benchmarks.
+This paper is about training history on one addition task.
+We cite it only as a neighboring warning against reading a score as a property of the task.
+
+\paragraph{Group-relative updates.}
+\citet{shao2024deepseekmath} introduce group relative policy optimization for language-model mathematics.
+We use the name only for the leave-one-out advantage in our protocol, with group size 16 and a 0/1 exact-sum reward.
+We do not train a language model, and we do not reproduce that paper's experiments.
+The phrase in our last study means the reward is the exact-sum check.
+\citet{lambert2024tulu3} introduce the name reinforcement learning with verifiable rewards for checkable language-model rewards.
+% Stays red: experiments/archive/02_heldout_exposure_difficulty_laws/RESULTS_actual_math.md sources the grid from private repo madanva/alignment-scaling-laws revision 7dfebb15fa4211a4784231e33e4976c6f86e65f6. No cleared bibliographic entry is in this repository. experiments/archive/01_fixed_width_addition_exposure/COMPLEXITY.md does not cite the grid.
+A cleared citation for a companion mathematics grid used in the second study is also unresolved \todocite{companion mathematics grid; private source and no cleared bibliographic entry}.
+That grid is described from the project report, not cited as a peer-reviewed law.

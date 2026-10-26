@@ -1,0 +1,91 @@
+== Mon Oct 19 01:01:38 PDT 2026 sh03-ln08.stanford.edu
+== sh_part
+ partition           || nodes         | CPU cores             | GPUs                 || job runtime     | mem/core        | per-node
+ name         public ||   idle  total |   idle  total  queued |   idle  total queued || default maximum | default maximum |    cores   mem(GB)  gpus
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+ normal*      yes    ||      0    268 |    254   7048   76418 |      0      0      0 ||      2h      7d |     6GB     8GB |    20-64   128-384     0
+ bigmem       yes    ||      0     13 |    589   1080     305 |      0      0      0 ||      2h      1d |     6GB    64GB |   24-256  384-4096     0
+ gpu          yes    ||      0     49 |    317   1508    6294 |     30    200    772 ||      1h      2d |     8GB    32GB |    20-64  191-2048   4-8
+ dev          yes    ||      1      4 |    103    112       2 |     63     64      0 ||      1h      2h |     6GB     8GB |    24-32   192-256  0-32
+ service      yes    ||      0      2 |     27     64      50 |      0      0      0 ||      1h      2d |     1GB     8GB |       32       256     0
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+== sacctmgr assoc
+sanmi||long,normal
+== sh_quota
++---------------------------------------------------------------------------+
+| Disk usage for [1mbrando9[m (group: sanmi)                                     |
++---------------------------------------------------------------------------+
+|    Directory |  volume /   limit [          use%] | inodes /  limit (use%)|
++---------------------------------------------------------------------------+
+          HOME |   9.6GB /  15.0GB [[1m[38;5;2m||||||[m     64%] |      - /      - ([m  -%[m)
+    GROUP_HOME | 204.7GB /   1.0TB [[1m[38;5;2m|[m          19%] |      - /      - ([m  -%[m)
+       SCRATCH |  62.7GB / 100.0TB [[1m[38;5;2m[m            0%] |  60.3K /  20.0M ([m  0%[m)
+ GROUP_SCRATCH |   4.0KB / 100.0TB [[1m[38;5;2m[m            0%] |    1.0 /  20.0M ([m  0%[m)
++---------------------------------------------------------------------------+
+ WARNING: files on SCRATCH and GROUP_SCRATCH are automatically purged 90
+ days after their last content modification. Any attempt to work around or
+ circumvent the purge policy will result in immediate account termination.
++---------------------------------------------------------------------------+
+== sshare
+Account                    User  RawShares  NormShares    RawUsage  EffectvUsage  FairShare 
+-------------------- ---------- ---------- ----------- ----------- ------------- ---------- 
+sanmi                   brando9        100    0.035714      416015      0.557063   0.707285 
+== GPU features (gpu partition)
+GPU_CC:6.0
+GPU_CC:6.1
+GPU_CC:7.0
+GPU_CC:7.5
+GPU_CC:8.6
+GPU_CC:8.9
+GPU_CC:9.0
+GPU_MEM:11GB
+GPU_MEM:12GB
+GPU_MEM:16GB
+GPU_MEM:24GB
+GPU_MEM:32GB
+GPU_MEM:48GB
+GPU_MEM:80GB
+GPU_SKU:H100_SXM5
+GPU_SKU:L40S
+GPU_SKU:P100_PCIE
+GPU_SKU:RTX_2080Ti
+GPU_SKU:RTX_3090
+GPU_SKU:TITAN_Xp
+GPU_SKU:V100_PCIE
+GPU_SKU:V100S_PCIE
+GPU_SKU:V100_SXM2
+== gpu partition idle/alloc by GPU type
+IB:EDR,CPU_MNF:INTEL allocated  1 gpu:4(S:0-1)
+IB:EDR,CPU_MNF:INTEL allocated* 5 gpu:4(S:0-1)
+IB:EDR,CPU_MNF:INTEL mixed      1 gpu:4(S:0)
+IB:EDR,CPU_MNF:INTEL mixed*     1 gpu:4(S:0)
+IB:EDR,CPU_MNF:INTEL mixed*     1 gpu:4(S:0)
+IB:EDR,CPU_MNF:INTEL mixed*     1 gpu:4(S:0-1)
+IB:EDR,CPU_MNF:INTEL mixed      2 gpu:4(S:0)
+IB:EDR,CPU_MNF:INTEL mixed      2 gpu:4(S:0-1)
+IB:HDR,CPU_MNF:AMD,C allocated  1 gpu:4(S:0-1)
+IB:HDR,CPU_MNF:AMD,C allocated  1 gpu:4(S:0-1)
+IB:HDR,CPU_MNF:AMD,C completing 1 gpu:4(S:0-1)
+IB:HDR,CPU_MNF:AMD,C drained    4 gpu:4(S:0-1)
+IB:HDR,CPU_MNF:AMD,C draining   4 gpu:4(S:0-1)
+IB:HDR,CPU_MNF:AMD,C mixed      2 gpu:4(S:0-1)
+IB:HDR,CPU_MNF:AMD,C mixed      3 gpu:4(S:0-1)
+IB:HDR,CPU_MNF:AMD,C mixed      8 gpu:4(S:0-1)
+IB:NDR,CPU_MNF:INTEL allocated  2 gpu:4(S:0-3)
+IB:NDR,CPU_MNF:INTEL draining   1 gpu:4(S:0-3)
+IB:NDR,CPU_MNF:INTEL mixed-     1 gpu:8(S:0-3)
+IB:NDR,CPU_MNF:INTEL mixed      2 gpu:4(S:0-3)
+IB:NDR,CPU_MNF:INTEL mixed-     2 gpu:4(S:0-3)
+IB:NDR,CPU_MNF:INTEL mixed-     3 gpu:4(S:0-3)
+== queue ahead in gpu
+380
+== python modules
+py-ipython/8.22.2_py312
+python/2.7.13
+python/3.6.1
+python/3.9.0
+python/3.12.1
+python/3.14.2
+/share/software/modules/math:
+py-nvmath-python/0.2.1_py312

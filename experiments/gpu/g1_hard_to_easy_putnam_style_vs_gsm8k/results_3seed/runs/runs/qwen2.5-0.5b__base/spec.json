@@ -1,0 +1,36 @@
+{
+  "run_id": "qwen2.5-0.5b__base",
+  "kind": "base",
+  "tier": "any",
+  "model": "qwen2.5-0.5b",
+  "hf": "Qwen/Qwen2.5-0.5B",
+  "micro_batch": 8,
+  "seed": 0,
+  "seq_len": 2048,
+  "ckpt_steps": [
+    0
+  ],
+  "gen_steps": [
+    0
+  ],
+  "gen_max_new_tokens": 768,
+  "eval_limit": null,
+  "device": "cuda",
+  "format": {
+    "math_doc": "Problem: {problem}\nSolution: {solution}",
+    "math_prompt": "Problem: {problem}\nSolution:",
+    "stop_strings": [
+      "\nProblem:"
+    ]
+  },
+  "gen": {
+    "engine": "fast",
+    "batch_size": 512,
+    "chunk_tokens": 256,
+    "max_batch_tokens": 262144,
+    "est_hours_per_ckpt": 0.05
+  },
+  "used_by": [
+    "g1:base"
+  ]
+}

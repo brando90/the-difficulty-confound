@@ -1,0 +1,16 @@
+{
+  "plan": "g2",
+  "title": "Cross-domain: does training only on Putnam-style maths buy poetry?",
+  "arms": {
+    "E": {"mixture": {"L1_gradeschool": 1.0}, "gen": true, "about": "easy maths only (shared with g1)"},
+    "H": {"mixture": {"L3_olympiad": 1.0}, "gen": true, "about": "hard maths only (shared with g1)"},
+    "N": {"mixture": {"web": 1.0}, "gen": true, "about": "general web text (shared with g1)"},
+    "P": {"mixture": {"poetry": 1.0}, "gen": true, "about": "poetry only: the in-domain reference that defines full transfer"}
+  },
+  "tiers": {
+    "smoke": {"arms": ["E", "H", "N", "P"]},
+    "pilot": {"arms": ["P"]},
+    "main": {"arms": ["E", "H", "N", "P"]},
+    "scale": {"arms": ["E", "H", "N", "P"]}
+  }
+}

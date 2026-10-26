@@ -1,0 +1,5 @@
+results/checkpoints/
+results/predictions/
+__pycache__/
+.pytest_cache/
+*.tgz

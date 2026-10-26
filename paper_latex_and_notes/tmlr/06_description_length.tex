@@ -1,0 +1,52 @@
+% !TEX root = main.tex
+\section{Online description length}
+\label{sec:mdl}
+% Provenance: experiments/archive/07_prequential_mdl_and_length_transfer/RESULTS_mdl_history.md
+% Joint loss RMSE from prediction_metrics.csv: 0.1470121124499479 to 0.09376244183884104 (36.2213%).
+% By-width (1,1) accuracies recomputed in this draft from cell_test_metrics.csv, cell_id 3, mixture 0.1, step 1000, eight seeds, 720 items: 0.27795138888888893, 0.8225694444444445, 0.9690972222222222, 0.990451388888889, 0.9942708333333334.
+
+\texttt{experiments/archive/07\_prequential\_mdl\_and\_length\_transfer/} keeps the 50\%/50\% column-carry match and gives each checkpoint its own pretraining mixture.
+The mixtures are 0.1, 0.2, 0.5, 0.8, and 0.9.
+Balanced adaptation then runs for 1{,}000 updates.
+During that stream the study records the online code length of each stratum before the weight update, over 256{,}000 online examples.
+Final cross-entropy is reported separately.
+It still does not charge for the whole training set.
+
+The conditional-loss gate is supported.
+Joint held-out RMSE falls from 0.1470 [0.1312, 0.1626] to 0.0938 [0.0803, 0.1062] bits per answer, a 36.22\% [32.45, 40.51] reduction.
+Mean bias is $-0.0234$ bits for the base law and $-0.0200$ bits for the probe law, against an observed mean of 0.2952.
+The probe also beats the oracle history law by 21.26\% [16.50, 25.17].
+The shared-warmup studies in Section~\ref{sec:forecasts} are the contrast: the same probe was worth 3.48\% and 1.94\% when histories did not differ.
+
+The online code reverses with history, and that gate is supported.
+After mixture 0.1, the pure two-carry cell costs 0.4423 [0.4043, 0.4824] extra bits per item relative to the single-carry cells.
+After mixture 0.9, the single-carry cells cost 0.1773 [0.1525, 0.2016] extra bits per item relative to the two-carry cell.
+Both lower endpoints are positive, and the study reports a positive point at all five widths.
+Predicting that online code, the probe cuts joint RMSE from 0.1823 [0.1629, 0.2016] to 0.0785 [0.0689, 0.0888] bits per item, a 56.93\% [55.01, 58.67] reduction.
+That predictive gate is supported.
+
+The remediation gate is not established.
+At mixture 0.1, before adaptation, single-carry accuracy is 79.11\% [77.53, 80.76] and two-carry accuracy is 33.05\% [32.05, 33.94], a gap of 46.06 [44.04, 48.26] points.
+After 1{,}000 balanced updates, two-carry accuracy is 81.09\% [79.51, 82.88].
+The gain recovers 104.29\% [101.45, 107.53] of the initial gap, which puts two-carry accuracy above its own pre-adaptation control level.
+It remains below the post-adaptation single-carry accuracy.
+Single-carry accuracy changes by $+5.13$ [$+4.13$, $+6.38$] points, to 84.24\% [82.64, 85.83].
+Recovery and the control change meet their bars.
+The frozen rule also requires pooled two-carry accuracy of at least 85\%.
+The estimate 81.09\% and its upper endpoint 82.88\% are both below that line.
+The strict retention gate is not established.
+The pool is carried down by the narrow networks.
+Eight-seed means of the pure two-carry cell at step 1{,}000 and mixture 0.1, with 720 items per seed and no new bootstrap, are 27.80\% at width 32, 82.26\% at width 64, 96.91\% at width 96, 99.05\% at width 128, and 99.43\% at width 384.
+We do not describe this study as having passed the strict retention gate.
+
+\subsection{Online description length on calibrated causal transformers}
+\label{sec:exp11_mdl}
+% Provenance: experiments/archive/11_transformer_calibrated_pretraining_horizon/RESULTS_transformer_calibrated.md
+In \texttt{experiments/archive/11\_transformer\_calibrated\_pretraining\_horizon/}, causal autoregressive transformers are pretrained for $T_{\text{pre}}=300$ updates before 1{,}000 updates of balanced adaptation, measuring online prequential description length along the stream.
+Adding probed starting difficulty (\texttt{stable\_difficulty} versus \texttt{stable\_base}) cuts joint held-out prequential adaptation MDL root mean squared error from 0.1626 to 0.1320 bits per item across held-out widths and mixtures.
+The relative reduction is 18.84\% [5.88, 34.16], which exceeds the prespecified 10\% threshold with a strictly positive lower bound; the predictive online MDL gate is supported.
+The online-code reversal gate is not established on these transformers: after mixture 0.1 the pure two-carry cell costs 0.0666 [0.0606, 0.0715] extra bits per item, but after mixture 0.9 the reverse gap is $-0.0006$ [$-0.0075$, $0.0056$] bits per item.
+By contrast, final conditional loss error reduction is 0.99\% [$-11.40$, $5.66$] (not established) because 1{,}000 updates of balanced post-training compress final test loss down to 0.02 bits across all widths, whereas the online prequential code integrates over the active learning trajectory.
+Balanced adaptation raises cascading two-carry accuracy from 68.32\% to 99.90\% (a $+31.58$ point gain, recovering 201.55\% of the initial gap) while control single-carry accuracy improves from 83.99\% to 99.93\% ($+15.94$ [$+14.18$, $+17.80$] points).
+Recovery, target accuracy, and the control change all pass their lines (50\%, 85\%, and at least $-5$ points).
+The remediation gate is still not established: the frozen rule also requires the lower bound of the initial gap to reach 15 points, and that bound is 12.13 (gap 15.67 [12.13, 19.10] points).

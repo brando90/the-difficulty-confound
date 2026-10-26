@@ -15,6 +15,8 @@
 #SBATCH --array=0-359%16
 #SBATCH --output=slurm_logs/%x_%A_%a.out
 #SBATCH --error=slurm_logs/%x_%A_%a.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=brandojazz@gmail.com,brando.science@gmail.com
 # Optional: only 80 GB GPUs (list features with: sh_node_feat -p gpu | grep GPU_SKU)
 ##SBATCH -C GPU_MEM:80GB
 set -euo pipefail

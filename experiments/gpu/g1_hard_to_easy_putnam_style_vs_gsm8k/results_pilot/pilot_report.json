@@ -1,0 +1,171 @@
+{
+ "runs": {
+  "qwen2.5-0.5b__L1_gradeschool1__T152x32x2048__lr5e-06__s0": {
+   "gsm8k": 41.85,
+   "math500": 26.0,
+   "math500_L45": 11.07,
+   "n_L45": 262,
+   "L1_heldout_bpb": 0.1344,
+   "L3_heldout_bpb": 0.3794,
+   "web_heldout_bpb": 0.806,
+   "hellaswag": 49.2,
+   "tokens_per_second": 43191,
+   "train_seconds": 230.6,
+   "wall_seconds": 1782.9,
+   "peak_gpu_gb": 39.72
+  },
+  "qwen2.5-0.5b__L1_gradeschool1__T152x32x2048__lr1e-05__s0": {
+   "gsm8k": 42.61,
+   "math500": 26.8,
+   "math500_L45": 13.74,
+   "n_L45": 262,
+   "L1_heldout_bpb": 0.1342,
+   "L3_heldout_bpb": 0.3881,
+   "web_heldout_bpb": 0.811,
+   "hellaswag": 49.45,
+   "tokens_per_second": 43093,
+   "train_seconds": 231.2,
+   "wall_seconds": 1789.5,
+   "peak_gpu_gb": 39.72
+  },
+  "qwen2.5-0.5b__L1_gradeschool1__T152x32x2048__lr2e-05__s0": {
+   "gsm8k": 44.2,
+   "math500": 21.2,
+   "math500_L45": 8.02,
+   "n_L45": 262,
+   "L1_heldout_bpb": 0.1364,
+   "L3_heldout_bpb": 0.398,
+   "web_heldout_bpb": 0.8222,
+   "hellaswag": 48.7,
+   "tokens_per_second": 43088,
+   "train_seconds": 231.2,
+   "wall_seconds": 1774.6,
+   "peak_gpu_gb": 39.72
+  },
+  "qwen2.5-0.5b__L3_olympiad1__T152x32x2048__lr5e-06__s0": {
+   "gsm8k": 44.43,
+   "math500": 25.6,
+   "math500_L45": 12.98,
+   "n_L45": 262,
+   "L1_heldout_bpb": 0.2125,
+   "L3_heldout_bpb": 0.3468,
+   "web_heldout_bpb": 0.8065,
+   "hellaswag": 48.95,
+   "tokens_per_second": 43426,
+   "train_seconds": 229.4,
+   "wall_seconds": 1866.0,
+   "peak_gpu_gb": 39.72
+  },
+  "qwen2.5-0.5b__L3_olympiad1__T152x32x2048__lr1e-05__s0": {
+   "gsm8k": 42.38,
+   "math500": 26.2,
+   "math500_L45": 13.36,
+   "n_L45": 262,
+   "L1_heldout_bpb": 0.2172,
+   "L3_heldout_bpb": 0.3473,
+   "web_heldout_bpb": 0.8117,
+   "hellaswag": 48.9,
+   "tokens_per_second": 43338,
+   "train_seconds": 229.9,
+   "wall_seconds": 1872.8,
+   "peak_gpu_gb": 39.72
+  },
+  "qwen2.5-0.5b__L3_olympiad1__T152x32x2048__lr2e-05__s0": {
+   "gsm8k": 39.5,
+   "math500": 20.2,
+   "math500_L45": 10.31,
+   "n_L45": 262,
+   "L1_heldout_bpb": 0.2274,
+   "L3_heldout_bpb": 0.3507,
+   "web_heldout_bpb": 0.8225,
+   "hellaswag": 47.7,
+   "tokens_per_second": 43390,
+   "train_seconds": 229.6,
+   "wall_seconds": 1990.2,
+   "peak_gpu_gb": 39.72
+  },
+  "qwen2.5-0.5b__base": {
+   "gsm8k": 29.34,
+   "math500": 18.4,
+   "math500_L45": 5.73,
+   "n_L45": 262,
+   "L1_heldout_bpb": 0.1948,
+   "L3_heldout_bpb": 0.3659,
+   "web_heldout_bpb": 0.8021,
+   "hellaswag": 48.4,
+   "tokens_per_second": null,
+   "train_seconds": null,
+   "wall_seconds": 1623.8,
+   "peak_gpu_gb": null
+  }
+ },
+ "done": {
+  "qwen2.5-0.5b__L1_gradeschool1__T152x32x2048__lr5e-06__s0": true,
+  "qwen2.5-0.5b__L1_gradeschool1__T152x32x2048__lr1e-05__s0": true,
+  "qwen2.5-0.5b__L1_gradeschool1__T152x32x2048__lr2e-05__s0": true,
+  "qwen2.5-0.5b__L3_olympiad1__T152x32x2048__lr5e-06__s0": true,
+  "qwen2.5-0.5b__L3_olympiad1__T152x32x2048__lr1e-05__s0": true,
+  "qwen2.5-0.5b__L3_olympiad1__T152x32x2048__lr2e-05__s0": true,
+  "qwen2.5-0.5b__base": true
+ },
+ "selected_lr": "5e-06",
+ "lr_scores": {
+  "5e-06": 0.24061900301768818,
+  "1e-05": 0.2407554563015592,
+  "2e-05": 0.24357321824698777
+ },
+ "readout": {
+  "5e-06": {
+   "gsm8k_E_minus_H": [
+    -2.58,
+    -5.38,
+    0.3
+   ],
+   "math500L45_H_minus_E": [
+    1.91,
+    -3.05,
+    6.87
+   ],
+   "gsm8k_H_minus_base": [
+    15.09,
+    12.13,
+    17.97
+   ]
+  },
+  "1e-05": {
+   "gsm8k_E_minus_H": [
+    0.23,
+    -2.5,
+    3.03
+   ],
+   "math500L45_H_minus_E": [
+    -0.38,
+    -5.34,
+    4.58
+   ],
+   "gsm8k_H_minus_base": [
+    13.04,
+    10.08,
+    15.85
+   ]
+  },
+  "2e-05": {
+   "gsm8k_E_minus_H": [
+    4.7,
+    1.67,
+    7.58
+   ],
+   "math500L45_H_minus_E": [
+    2.29,
+    -1.53,
+    6.49
+   ],
+   "gsm8k_H_minus_base": [
+    10.16,
+    7.28,
+    13.04
+   ]
+  }
+ },
+ "sacct": "               JobID        JobName  Partition      State    Elapsed        NodeList                                                    AllocTRES \n-------------------- -------------- ---------- ---------- ---------- --------------- ------------------------------------------------------------ \n            48435216   tdc_gpu_prep     normal  COMPLETED   00:10:20      sh02-01n47                 billing=20,cpu=8,energy=89577,mem=48G,node=1 \n          48440728_0        tdc_gpu        gpu  COMPLETED   00:30:21      sh04-01n05    billing=39,cpu=8,energy=4853843,gres/gpu=1,mem=64G,node=1 \n          48440728_1        tdc_gpu        gpu  COMPLETED   00:30:02      sh04-01n05    billing=39,cpu=8,energy=4752951,gres/gpu=1,mem=64G,node=1 \n          48440728_2        tdc_gpu        gpu  COMPLETED   00:30:11      sh04-01n05    billing=39,cpu=8,energy=4789141,gres/gpu=1,mem=64G,node=1 \n          48440728_3        tdc_gpu        gpu  COMPLETED   00:31:41      sh04-01n05    billing=39,cpu=8,energy=5008832,gres/gpu=1,mem=64G,node=1 \n          48440728_4        tdc_gpu        gpu  COMPLETED   00:33:38      sh04-01n05    billing=39,cpu=8,energy=5361860,gres/gpu=1,mem=64G,node=1 \n          48440728_5        tdc_gpu        gpu  COMPLETED   00:31:32      sh04-01n05    billing=39,cpu=8,energy=5029127,gres/gpu=1,mem=64G,node=1 \n          48440728_6        tdc_gpu        gpu  COMPLETED   00:27:34      sh04-01n05    billing=39,cpu=8,energy=4287296,gres/gpu=1,mem=64G,node=1 \n"
+}
