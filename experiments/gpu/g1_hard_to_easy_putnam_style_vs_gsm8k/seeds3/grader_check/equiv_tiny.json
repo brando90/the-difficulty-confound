@@ -1,0 +1,103 @@
+[
+ {
+  "stop": [
+   "\nProblem:"
+  ],
+  "cap": 40,
+  "chunk": 16,
+  "max_batch_tokens": null,
+  "n": 170,
+  "same_generation": 170,
+  "same_correct": 170,
+  "stopped_rate": 0.0,
+  "mean_tokens": 40.0,
+  "engine": {
+   "name": "fast",
+   "batch_size": 32,
+   "chunk_tokens": 16,
+   "max_batch_tokens": null,
+   "max_new_tokens": 40,
+   "rounds": 3,
+   "batches": 18
+  },
+  "sec_old": 215.6,
+  "sec_new": 136.8,
+  "first_diff": null
+ },
+ {
+  "stop": [
+   " $\\"
+  ],
+  "cap": 40,
+  "chunk": 16,
+  "max_batch_tokens": null,
+  "n": 170,
+  "same_generation": 170,
+  "same_correct": 170,
+  "stopped_rate": 0.0,
+  "mean_tokens": 40.0,
+  "engine": {
+   "name": "fast",
+   "batch_size": 32,
+   "chunk_tokens": 16,
+   "max_batch_tokens": null,
+   "max_new_tokens": 40,
+   "rounds": 3,
+   "batches": 18
+  },
+  "sec_old": 233.5,
+  "sec_new": 135.4,
+  "first_diff": null
+ },
+ {
+  "stop": [
+   "{"
+  ],
+  "cap": 48,
+  "chunk": 12,
+  "max_batch_tokens": 4000,
+  "n": 170,
+  "same_generation": 170,
+  "same_correct": 170,
+  "stopped_rate": 0.029,
+  "mean_tokens": 47.3,
+  "engine": {
+   "name": "fast",
+   "batch_size": 32,
+   "chunk_tokens": 12,
+   "max_batch_tokens": 4000,
+   "max_new_tokens": 48,
+   "rounds": 4,
+   "batches": 25
+  },
+  "sec_old": 133.1,
+  "sec_new": 140.6,
+  "first_diff": null
+ },
+ {
+  "stop": [
+   "\nProblem:",
+   "The"
+  ],
+  "cap": 33,
+  "chunk": 10,
+  "max_batch_tokens": 3000,
+  "n": 170,
+  "same_generation": 170,
+  "same_correct": 170,
+  "stopped_rate": 0.0,
+  "mean_tokens": 33.0,
+  "engine": {
+   "name": "fast",
+   "batch_size": 32,
+   "chunk_tokens": 10,
+   "max_batch_tokens": 3000,
+   "max_new_tokens": 33,
+   "rounds": 4,
+   "batches": 28
+  },
+  "sec_old": 224.4,
+  "sec_new": 185.0,
+  "first_diff": null
+ }
+]

@@ -1,0 +1,54 @@
+{
+  "run_id": "qwen2.5-0.5b__L1_gradeschool1__T152x32x2048__lr2e-05__s0",
+  "kind": "train",
+  "tier": "seeds3",
+  "model": "qwen2.5-0.5b",
+  "hf": "Qwen/Qwen2.5-0.5B",
+  "micro_batch": 8,
+  "mixture": {
+    "L1_gradeschool": 1.0
+  },
+  "caps": {},
+  "transform": null,
+  "lr": 2e-05,
+  "seed": 0,
+  "seq_len": 2048,
+  "seqs_per_step": 32,
+  "max_steps": 152,
+  "ckpt_steps": [
+    152
+  ],
+  "gen_steps": [
+    152
+  ],
+  "gen_max_new_tokens": 768,
+  "eval_limit": null,
+  "device": "cuda",
+  "optim": {
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "weight_decay": 0.0,
+    "grad_clip": 1.0,
+    "warmup_steps": 10,
+    "schedule": "linear warmup, then constant (so every checkpoint is a comparable stopping point)"
+  },
+  "format": {
+    "math_doc": "Problem: {problem}\nSolution: {solution}",
+    "math_prompt": "Problem: {problem}\nSolution:",
+    "stop_strings": [
+      "\nProblem:"
+    ]
+  },
+  "gen": {
+    "engine": "fast",
+    "batch_size": 512,
+    "chunk_tokens": 256,
+    "max_batch_tokens": 262144,
+    "est_hours_per_ckpt": 0.05
+  },
+  "used_by": [
+    "g1:E"
+  ]
+}

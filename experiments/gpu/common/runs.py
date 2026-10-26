@@ -51,11 +51,13 @@ def parse_seeds(text: str | None) -> list[int] | None:
     return None if not text or text == "all" else [int(x) for x in text.split(",")]
 
 
-def mix_tag(mixture: dict, caps: dict | None) -> str:
+def mix_tag(mixture: dict, caps: dict | None, transform: str | None = None) -> str:
     parts = [f"{pool}{frac:g}" for pool, frac in sorted(mixture.items()) if frac > 0]
     tag = "+".join(parts)
     for pool, cap in sorted((caps or {}).items()):
         tag += f"[cap-{pool}-{cap / 1e6:g}M]"
+    if transform:  # documents rewritten at load time (train.py TRANSFORMS), e.g. answer_only for the format-only arm
+        tag += f"[{transform}]"
     return tag
 
 
@@ -80,7 +82,7 @@ def expand(tier: str, plans: list[str], secondary: bool = False, allow_unset_lr:
     runs: dict[str, dict] = {}
 
     def add(model: str, arm_name: str, arm: dict, plan: str, lr: float, seed: int) -> None:
-        tag = mix_tag(arm["mixture"], arm.get("caps"))
+        tag = mix_tag(arm["mixture"], arm.get("caps"), arm.get("transform"))
         budget = f"T{t['max_steps']}x{t['seqs_per_step']}x{t['seq_len']}"
         rid = f"{model}__{tag}__{budget}__lr{lr:g}__s{seed}"
         spec = runs.get(rid)
@@ -89,12 +91,12 @@ def expand(tier: str, plans: list[str], secondary: bool = False, allow_unset_lr:
                 "run_id": rid, "kind": "train", "tier": tier, "model": model,
                 "hf": suite["models"][model]["hf"], "micro_batch": suite["models"][model]["micro_batch"],
                 "mixture": {k: float(v) for k, v in arm["mixture"].items() if v > 0},
-                "caps": {k: int(v) for k, v in (arm.get("caps") or {}).items()},
+                "caps": {k: int(v) for k, v in (arm.get("caps") or {}).items()}, "transform": arm.get("transform"),
                 "lr": lr, "seed": seed, "seq_len": t["seq_len"], "seqs_per_step": t["seqs_per_step"],
                 "max_steps": t["max_steps"], "ckpt_steps": t["ckpt_steps"], "gen_steps": [],
                 "gen_max_new_tokens": t.get("gen_max_new_tokens", 768), "eval_limit": t.get("eval_limit"),
                 "device": t.get("device", "cuda"), "optim": suite["optim"], "format": suite["format"],
-                "used_by": [],
+                "gen": t.get("gen"), "used_by": [],
             }
         spec["used_by"].append(f"{plan}:{arm_name}")
         if arm.get("gen"):
@@ -107,7 +109,7 @@ def expand(tier: str, plans: list[str], secondary: bool = False, allow_unset_lr:
             "micro_batch": suite["models"][model]["micro_batch"], "seed": 0, "seq_len": t["seq_len"],
             "ckpt_steps": [0], "gen_steps": [0], "gen_max_new_tokens": t.get("gen_max_new_tokens", 768),
             "eval_limit": t.get("eval_limit"), "device": t.get("device", "cuda"), "format": suite["format"],
-            "used_by": [f"{p}:base" for p in plans],
+            "gen": t.get("gen"), "used_by": [f"{p}:base" for p in plans],
         }
         for plan in plans:
             cfg = load_plan(plan)
@@ -145,7 +147,8 @@ def is_done(out_root: str | Path, rid: str) -> bool:
 def a100_hours(spec: dict, suite: dict, mfu: float = 0.35) -> dict:
     """Rough A100-80GB cost. Training: 6 * params * tokens FLOPs at `mfu` of 312 TFLOP/s bf16.
     Generation: GSM8K + MATH-500 (1,819 prompts) per generation checkpoint, measured rule of thumb
-    of 0.10 h per 0.5B model per checkpoint with HF generate, scaled linearly in parameters.
+    of 0.10 h per 0.5B model per checkpoint with HF generate (pilot: 0.33 h measured on H100), or the tier's
+    gen.est_hours_per_ckpt for the fast engine, scaled linearly in parameters.
     Bits-per-byte evaluations: 7 sets of about 1,000 items per checkpoint, forward only (small)."""
     p = suite["models"][spec["model"]]["params"]
     if spec["kind"] == "base":
@@ -153,7 +156,7 @@ def a100_hours(spec: dict, suite: dict, mfu: float = 0.35) -> dict:
     else:
         tokens = spec["max_steps"] * spec["seqs_per_step"] * spec["seq_len"]
     train_h = 6 * p * tokens / (312e12 * mfu) / 3600
-    gen_h = len(spec["gen_steps"]) * 0.10 * (p / 0.494e9)
+    gen_h = len(spec["gen_steps"]) * (spec.get("gen") or {}).get("est_hours_per_ckpt", 0.10) * (p / 0.494e9)
     bpb_h = len(spec["ckpt_steps"]) * 0.004 * (p / 0.494e9)
     return {"train": train_h, "gen": gen_h, "bpb": bpb_h, "total": train_h + gen_h + bpb_h + 0.05}
 

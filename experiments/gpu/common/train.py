@@ -44,16 +44,35 @@ def read_jsonl(path: Path) -> list[dict]:
         return [json.loads(x) for x in f if x.strip()]
 
 
-class MixtureStream:
-    """Deterministic token stream over several pools with exact token shares."""
+def answer_only(text: str) -> str | None:
+    """Format-only document: the same problem, with its worked solution replaced by the bare final answer in the
+    answer convention the evaluations grade ("The answer is $\\boxed{...}$."). None when the solution has no \\boxed{}."""
+    problem, sep, solution = text.partition("\nSolution:")
+    ans = evals.last_boxed(solution) if sep else None
+    if not problem.startswith("Problem:") or ans is None or not ans.strip():
+        return None
+    return f"{problem}\nSolution: The answer is $\\boxed{{{ans.strip()}}}$."
 
-    def __init__(self, data_root: Path, mixture: dict, caps: dict, tok, seed: int, seq_len: int):
+
+TRANSFORMS = {"answer_only": answer_only}
+
+
+class MixtureStream:
+    """Deterministic token stream over several pools with exact token shares. `transform` (optional, a TRANSFORMS
+    name) rewrites every document of every pool when the pools are loaded; documents it returns None for are dropped."""
+
+    def __init__(self, data_root: Path, mixture: dict, caps: dict, tok, seed: int, seq_len: int, transform: str | None = None):
         self.tok, self.seq_len, self.eos = tok, seq_len, tok.eos_token_id
         self.pools, self.frac, self.order, self.pos, self.epochs = {}, {}, {}, {}, {}
         self.drawn = {p: 0 for p in mixture}
         self.rng = random.Random(seed)
+        self.dropped = {}
         for p, f in mixture.items():
             docs = read_jsonl(data_root / "pools" / f"{p}.jsonl")
+            if transform:
+                fn, n0 = TRANSFORMS[transform], len(docs)
+                docs = [{**d, "text": t} for d in docs if (t := fn(d["text"])) is not None]
+                self.dropped[p] = n0 - len(docs)
             order = list(range(len(docs)))
             random.Random(f"{seed}:{p}").shuffle(order)
             if p in caps:  # keep a fixed prefix of the shuffled pool worth `cap` tokens; it is then repeated
@@ -111,10 +130,17 @@ def evaluate(model, tok, ev: dict, spec: dict, step: int, tokens: int, gen: bool
         r = evals.bits_per_byte(model, tok, ev[name], spec["seq_len"], bt, device, amp)
         rows.append({"step": step, "tokens": tokens, "set": name, "kind": "bpb", "seconds": round(time.time() - t0, 1), **r})
     if gen:
-        mb = 4 if device.type == "cpu" else 8 * spec["micro_batch"]  # 64 prompts at 0.5B, 32 at 1.5B
+        g = spec.get("gen") or {"engine": "pilot"}
         for name in GEN_SETS:
             t0 = time.time()
-            r = evals.generate_math(model, tok, ev[name], spec["gen_max_new_tokens"], mb, device, amp, spec["format"]["stop_strings"])
+            if g["engine"] == "fast":  # common/evals.py generate_math_fast; same prompts, cap, stop string and graders
+                mb = 4 if device.type == "cpu" else g["batch_size"]
+                r = evals.generate_math_fast(model, tok, ev[name], spec["gen_max_new_tokens"], mb, device, amp,
+                                             spec["format"]["stop_strings"], chunk_tokens=g["chunk_tokens"],
+                                             max_batch_tokens=None if device.type == "cpu" else g.get("max_batch_tokens"))
+            else:  # the pilot's grader: rounds of 64 prompts (0.5B), each run to the cap when one row rambles
+                mb = 4 if device.type == "cpu" else 8 * spec["micro_batch"]  # 64 prompts at 0.5B, 32 at 1.5B
+                r = evals.generate_math(model, tok, ev[name], spec["gen_max_new_tokens"], mb, device, amp, spec["format"]["stop_strings"])
             gdir = out_dir / "generations"
             gdir.mkdir(exist_ok=True)
             with (gdir / f"step{step:05d}_{name}.jsonl").open("w") as f:
@@ -127,7 +153,7 @@ def evaluate(model, tok, ev: dict, spec: dict, step: int, tokens: int, gen: bool
     model.train()
     for r in rows:
         msg = {k: r[k] for k in ("step", "set", "kind") if k in r}
-        msg.update({k: round(r[k], 4) for k in ("bpb", "acc", "acc_fallback", "acc_norm") if k in r})
+        msg.update({k: round(r[k], 4) for k in ("bpb", "acc", "acc_fallback", "acc_norm", "stopped_rate", "boxed_rate", "mean_tokens") if k in r})
         print(json.dumps(msg), flush=True)
     return rows
 
@@ -237,7 +263,7 @@ def main() -> None:
         mb = min(spec["micro_batch"], spec["seqs_per_step"])
         accum = spec["seqs_per_step"] // mb
         assert accum * mb == spec["seqs_per_step"], "seqs_per_step must be a multiple of micro_batch"
-        stream = MixtureStream(data_root, spec["mixture"], spec["caps"], tok, seed, spec["seq_len"])
+        stream = MixtureStream(data_root, spec["mixture"], spec["caps"], tok, seed, spec["seq_len"], spec.get("transform"))
         o = spec["optim"]
         opt = torch.optim.AdamW(model.parameters(), lr=spec["lr"], betas=tuple(o["betas"]), weight_decay=o["weight_decay"],
                                 fused=device.type == "cuda")
@@ -278,6 +304,7 @@ def main() -> None:
         summary.update({"train_seconds": round(t_train, 1), "tokens": max_steps * tokens_per_step,
                         "tokens_per_second": round(max_steps * tokens_per_step / max(t_train, 1e-9)),
                         "realized_shares": stream.shares(), "epochs_completed": stream.epochs, "unique_docs": stream.unique_docs,
+                        "transform": spec.get("transform"), "dropped_by_transform": stream.dropped,
                         "peak_gpu_gb": round(torch.cuda.max_memory_allocated() / 1e9, 2) if device.type == "cuda" else None})
         if a.save_final and not a.check_only:
             model.to(torch.bfloat16).save_pretrained(out_dir / "final", safe_serialization=True)
