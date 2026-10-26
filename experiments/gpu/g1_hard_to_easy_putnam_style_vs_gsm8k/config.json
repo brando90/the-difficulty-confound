@@ -1,0 +1,19 @@
+{
+  "plan": "g1",
+  "title": "Hard-to-easy: does training only on Putnam-style maths buy grade-school maths?",
+  "arms": {
+    "E": {"mixture": {"L1_gradeschool": 1.0}, "gen": true, "about": "easy-only: grade-school word problems"},
+    "H": {"mixture": {"L3_olympiad": 1.0}, "gen": true, "about": "hard-only: olympiad / AoPS / AMC-AIME problems (Putnam-style)"},
+    "M": {"mixture": {"L1_gradeschool": 0.5, "L3_olympiad": 0.5}, "gen": true, "about": "mixed 50/50 by tokens"},
+    "N": {"mixture": {"web": 1.0}, "gen": true, "about": "off-topic control: educational web text (separates content from 'any fine-tuning' and answer-format effects)"},
+    "Hrep": {"mixture": {"L3_olympiad": 1.0}, "caps": {"L3_olympiad": 2500000}, "gen": true, "about": "literal overtraining: a fixed 2.5M-token slice of the hard pool repeated about 16 times"},
+    "F": {"mixture": {"L1_gradeschool": 0.5, "L3_olympiad": 0.5}, "transform": "answer_only", "gen": true, "about": "format-only baseline: the E and H pools' problems (50/50 by tokens), each solution replaced by 'The answer is $\\boxed{<gold>}$.'; teaches the Problem/Solution layout, the boxed answer and stopping, with no worked reasoning; same token budget as E and H"}
+  },
+  "tiers": {
+    "smoke": {"arms": ["E", "H", "M", "N", "Hrep", "F"]},
+    "pilot": {"sweep": ["E", "H"], "arms": []},
+    "main": {"arms": ["E", "H", "M", "N", "Hrep"]},
+    "scale": {"arms": ["E", "H", "M", "N", "Hrep"]},
+    "seeds3": {"sweep": ["E", "H"], "arms": ["F"]}
+  }
+}

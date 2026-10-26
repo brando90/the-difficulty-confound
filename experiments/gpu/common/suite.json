@@ -1,0 +1,87 @@
+{
+  "_doc": "Shared settings for the three GPU plans (g1, g2, g3). Data pools, evaluation sets, models and budget tiers live here so that the same run (same model, mixture, budget, learning rate and seed) has the same id in every plan and is trained once. Nothing in 'pools', 'evals', 'format' or 'tiers' changes after the freeze commit; 'selected_lr' is filled in by the pilot disclosure commit (runs.py select-lr).",
+  "data_version": "v1",
+  "split_seed": 20261018,
+  "heldout_per_pool": 1000,
+  "decontam_ngram": 13,
+  "format": {
+    "math_doc": "Problem: {problem}\nSolution: {solution}",
+    "math_prompt": "Problem: {problem}\nSolution:",
+    "stop_strings": ["\nProblem:"]
+  },
+  "pools": {
+    "L1_gradeschool": {
+      "hf": "AI-MO/NuminaMath-CoT", "split": "train", "sources": ["gsm8k", "orca_math"],
+      "about": "grade-school word problems (GSM8K train, Orca-Math), about 160k problems with step-by-step solutions",
+      "licence": "NuminaMath-CoT Apache-2.0; underlying GSM8K MIT, Orca-Math MIT"
+    },
+    "L2_competition": {
+      "hf": "AI-MO/NuminaMath-CoT", "split": "train", "sources": ["math", "synthetic_math"],
+      "about": "high-school competition problems in the style of the MATH dataset (MATH train plus synthetic rewrites), about 175k",
+      "licence": "NuminaMath-CoT Apache-2.0; underlying MATH MIT"
+    },
+    "L3_olympiad": {
+      "hf": "AI-MO/NuminaMath-CoT", "split": "train", "sources": ["olympiads", "aops_forum", "amc_aime"],
+      "about": "olympiad, AoPS-forum and AMC/AIME problems: the open, licensable stand-in for 'Putnam-style' hard maths (real Putnam problems number about 1,500 in total, too few to train on), about 185k",
+      "licence": "NuminaMath-CoT Apache-2.0 (solutions rewritten by the NuminaMath team)"
+    },
+    "web": {
+      "hf": "HuggingFaceFW/fineweb-edu", "data_files": "sample/10BT/000_00000.parquet", "max_docs": 150000,
+      "about": "educational web text, the off-topic control and the distractor in g3",
+      "licence": "ODC-By 1.0"
+    },
+    "poetry": {
+      "hf": "biglam/gutenberg-poetry-corpus", "split": "train", "lines_per_doc": 32,
+      "about": "public-domain poetry from Project Gutenberg, 3.1M lines grouped into 32-line documents; held-out documents come from books never trained on",
+      "licence": "CC0-1.0 (texts public domain)"
+    }
+  },
+  "evals": {
+    "gsm8k": {"hf": "openai/gsm8k", "config": "main", "split": "test", "kinds": ["gen", "bpb"], "licence": "MIT", "n": 1319},
+    "math500": {"hf": "HuggingFaceH4/MATH-500", "split": "test", "kinds": ["gen", "bpb"], "licence": "MIT (from MATH)", "n": 500},
+    "L1_heldout": {"pool": "L1_gradeschool", "kinds": ["bpb"]},
+    "L2_heldout": {"pool": "L2_competition", "kinds": ["bpb"]},
+    "L3_heldout": {"pool": "L3_olympiad", "kinds": ["bpb"]},
+    "poetry_heldout": {"pool": "poetry", "kinds": ["bpb"]},
+    "web_heldout": {"pool": "web", "kinds": ["bpb"]},
+    "hellaswag": {"hf": "Rowan/hellaswag", "split": "validation", "limit": 2000, "kinds": ["mc"], "licence": "MIT"}
+  },
+  "models": {
+    "qwen2.5-0.5b": {"hf": "Qwen/Qwen2.5-0.5B", "params": 494000000, "micro_batch": 8, "licence": "Apache-2.0"},
+    "qwen2.5-1.5b": {"hf": "Qwen/Qwen2.5-1.5B", "params": 1540000000, "micro_batch": 4, "licence": "Apache-2.0"},
+    "smollm2-1.7b": {"hf": "HuggingFaceTB/SmolLM2-1.7B", "params": 1710000000, "micro_batch": 4, "licence": "Apache-2.0"},
+    "tiny-random": {"hf": "trl-internal-testing/tiny-Qwen2ForCausalLM-2.5", "params": 1000000, "micro_batch": 2, "licence": "Apache-2.0", "smoke_only": true}
+  },
+  "selected_lr": {"qwen2.5-0.5b": 5e-06, "qwen2.5-1.5b": null, "smollm2-1.7b": null},
+  "lr_scale_rule": "qwen2.5-1.5b and smollm2-1.7b use half the learning rate the 0.5B pilot selects, unless a pilot at that size is run and disclosed",
+  "optim": {"betas": [0.9, 0.95], "weight_decay": 0.0, "grad_clip": 1.0, "warmup_steps": 10, "schedule": "linear warmup, then constant (so every checkpoint is a comparable stopping point)"},
+  "tiers": {
+    "smoke": {
+      "models": ["tiny-random"], "seeds": [0, 1], "seq_len": 64, "seqs_per_step": 4, "max_steps": 8,
+      "ckpt_steps": [2, 4, 8], "gen_steps": [8], "lr": 0.001, "eval_limit": 12, "gen_max_new_tokens": 12, "device": "cpu",
+      "about": "CPU check of the whole pipeline on toy data (common/smoke_test.sh); never a result"
+    },
+    "pilot": {
+      "models": ["qwen2.5-0.5b"], "seeds": [0], "seq_len": 2048, "seqs_per_step": 32, "max_steps": 152,
+      "ckpt_steps": [5, 10, 20, 40, 80, 152], "gen_steps": [152], "lr_sweep": [5e-06, 1e-05, 2e-05], "lr_default": 1e-05,
+      "gen_max_new_tokens": 768,
+      "about": "about 10M tokens per run; selects the learning rate and checks throughput and every evaluation before anything is gated"
+    },
+    "main": {
+      "models": ["qwen2.5-0.5b"], "seeds": [0, 1, 2], "seq_len": 2048, "seqs_per_step": 32, "max_steps": 610,
+      "ckpt_steps": [5, 10, 20, 40, 80, 160, 320, 610], "gen_steps": [40, 160, 610], "gen_max_new_tokens": 768,
+      "about": "about 40M tokens per run (65,536 tokens per step); the gated tier"
+    },
+    "scale": {
+      "models": ["qwen2.5-1.5b"], "seeds": [0, 1, 2], "seq_len": 2048, "seqs_per_step": 32, "max_steps": 610,
+      "ckpt_steps": [5, 10, 20, 40, 80, 160, 320, 610], "gen_steps": [40, 160, 610], "gen_max_new_tokens": 768,
+      "about": "same grid at 1.5B, run only after main; tests whether the gate verdicts hold at 3x the parameters"
+    },
+    "seeds3": {
+      "models": ["qwen2.5-0.5b"], "seeds": [0, 1, 2], "seq_len": 2048, "seqs_per_step": 32, "max_steps": 152,
+      "ckpt_steps": [152], "gen_steps": [152], "lr_sweep": [5e-06, 2e-05], "gen_max_new_tokens": 768,
+      "gen": {"engine": "fast", "batch_size": 512, "chunk_tokens": 256, "max_batch_tokens": 262144, "est_hours_per_ckpt": 0.05},
+      "about": "added 10-20-2026 after the pilot: 3-seed check of the pilot's g1 contrasts at the pilot's budget (about 10M tokens), with the fast grader (common/evals.py generate_math_fast) and g1's format-only arm F; pre-registered in CKPT.md"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+== Tue Oct 20 19:57:22 PDT 2026 sh03-ln02.stanford.edu
+== H100 nodes in gpu
+sh04-01n01 IB:NDR,CPU_MNF:INTEL,CPU_GEN:SPR,CPU_SKU:8462Y+,CPU_FRQ:2.80GHz,GPU_GEN:HPR,GPU_BRD:TESLA,GPU_SKU:H100_SXM5,GPU_MEM:80GB,GPU_CC:9.0,CLASS:SH4_G8TF64 mixed- gpu:8(S:0-3)
+sh04-01n05 IB:NDR,CPU_MNF:INTEL,CPU_GEN:SPR,CPU_SKU:8462Y+,CPU_FRQ:2.80GHz,GPU_GEN:HPR,GPU_BRD:TESLA,GPU_SKU:H100_SXM5,GPU_MEM:80GB,GPU_CC:9.0,CLASS:SH4_G4TF64 mixed- gpu:4(S:0-3)
+sh04-01n07 IB:NDR,CPU_MNF:INTEL,CPU_GEN:SPR,CPU_SKU:8462Y+,CPU_FRQ:2.80GHz,GPU_GEN:HPR,GPU_BRD:TESLA,GPU_SKU:H100_SXM5,GPU_MEM:80GB,GPU_CC:9.0,CLASS:SH4_G4TF64 mixed- gpu:4(S:0-3)
+== jobs waiting in gpu
+669
+== sshare
+Account                    User  RawShares  NormShares    RawUsage  EffectvUsage  FairShare
+-------------------- ---------- ---------- ----------- ----------- ------------- ----------
+sanmi                   brando9        100    0.035714     7037743      0.326457   0.569490

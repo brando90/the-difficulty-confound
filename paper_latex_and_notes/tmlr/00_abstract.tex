@@ -1,0 +1,27 @@
+% !TEX root = main.tex
+\begin{abstract}
+% CS197 move 1: problem motivation (failure mode) -- a score confounds task demand with practice.
+A measured score confounds what a task demands with what a learner has practiced.
+% CS197 move 2: assumption (setup bit) -- the ranking is treated as a property of the item.
+Accounts of difficulty often treat the resulting ranking as a property of the item.
+% CS197 move 3: contribution (bit flip) -- changing the training mixture reverses the ranking.
+On exact addition of two three-digit integers, changing only the training mixture reverses which items look harder.
+% CS197 move 4a: instantiation (fixed skill) -- items, checker, and algorithm stay fixed.
+The test items, the exact-sum checker, and the addition algorithm stay fixed.
+% CS197 move 4b: instantiation (learners and probe) -- small networks plus a starting-loss probe.
+The learners are small two-hidden-layer networks, and an independent starting-loss probe forecasts later loss.
+% CS197 move 5a: evaluation (ranking) -- answer-matched reversal, eight seeds, fixed items. Source: experiments/archive/03_answer_matched_alignment/RESULTS_matched_alignment.md.
+Answer-matched training gives a 25.30-point no-carry lead [23.14, 27.26] and a 24.58-point two-carry lead [22.88, 26.19].
+% CS197 move 5b: evaluation (probe needs heterogeneous history) -- 05 and 07 supported; 04 below the 10% line. Sources: RESULTS_history_retention.md, RESULTS_mdl_history.md, RESULTS_stable.md.
+That probe cuts joint held-out loss error by 47.20\% [42.88, 53.08] after heterogeneous pretraining, and by 36.22\% [32.45, 40.51] when carry rates are also matched.
+Under one shared warmup the same probe adds 3.48\% [1.12, 6.24], below a prespecified 10\% line.
+% CS197 move 5c: evaluation (failed gates, equal prominence) -- 01 retention, 07 accuracy line, 08 utility law.
+In the feedforward studies, online code length and verifiable-reward gains reverse with history as well.
+Frozen gates still fail: the first study drops control accuracy by 6.08 points, a later two-carry pool reaches 81.09\% [79.51, 82.88] against an 85\% line, and an additive utility law changes pooled error by $-15.78\%$ [$-35.91$, $3.15$].
+% CS197 move 5d: evaluation (headroom repair supported; probe inside the bound not established) -- experiments/archive/09_headroom_bounded_rlvr_utility_law/RESULTS_headroom_bounded.md and expt_v1/results/gates.json. Relative reductions 0.7372120580111765 [0.7042625604099736, 0.7725511008836561] and 0.08097966173425564 [0.02517020100878975, 0.1438982595691034]. Stored intervals, not redrawn. p-val=n/a.
+The headroom bound in \texttt{experiments/archive/09\_headroom\_bounded\_rlvr\_utility\_law/} is supported, with a 73.72\% [70.43, 77.26] relative reduction in joint root mean squared error, but probe features inside that bound are not established, at 8.10\% [2.52, 14.39].
+On causal autoregressive transformers with a calibrated 300-step pretraining horizon, pure compositional difficulty reversal replicates across all widths (15.7-point leads), and probed difficulty reduces joint held-out prequential adaptation description length error by 18.84\% [5.88, 34.16], but the online-code reversal and the remediation gate are not established there.
+% CS197 move 6: implication (scope) -- this task and these networks, not language models.
+The measurements cover this addition task and these networks.
+They do not show that difficulty is mostly data for language models or public benchmarks.
+\end{abstract}

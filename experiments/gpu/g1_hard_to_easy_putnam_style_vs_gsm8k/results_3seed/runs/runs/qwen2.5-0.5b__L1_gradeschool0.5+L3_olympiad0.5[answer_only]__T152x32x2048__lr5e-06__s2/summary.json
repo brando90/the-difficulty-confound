@@ -1,0 +1,29 @@
+{
+  "run_id": "qwen2.5-0.5b__L1_gradeschool0.5+L3_olympiad0.5[answer_only]__T152x32x2048__lr5e-06__s2",
+  "host": "sh04-01n07.int",
+  "torch": "2.6.0+cu124",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "data_manifest_sha256": "168634321ec11542e615975b5d570683709a57d87e707a7af82e4929103ed997",
+  "train_seconds": 286.6,
+  "tokens": 9961472,
+  "tokens_per_second": 34763,
+  "realized_shares": {
+    "L1_gradeschool": 0.49999703859473993,
+    "L3_olympiad": 0.5000029614052601
+  },
+  "epochs_completed": {
+    "L1_gradeschool": 0,
+    "L3_olympiad": 0
+  },
+  "unique_docs": {
+    "L1_gradeschool": 134422,
+    "L3_olympiad": 142164
+  },
+  "transform": "answer_only",
+  "dropped_by_transform": {
+    "L1_gradeschool": 0,
+    "L3_olympiad": 31264
+  },
+  "peak_gpu_gb": 39.72,
+  "wall_seconds": 367.7
+}

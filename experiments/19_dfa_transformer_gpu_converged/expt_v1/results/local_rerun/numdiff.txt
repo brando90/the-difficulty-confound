@@ -1,0 +1,6 @@
+analysis.json max_abs 5.55e-08 at /E/levels/0.03/e_K_bits | max_rel 0.0534 at /fitter_agreement/max_rel_forecast_diff | non-numeric diffs: ["/forecasts_frozen_sha256 '3ce67f8e474cc6fa69959c9e396bdbd5c89193c87ed565cb989343213efe42ee'!='c442b6746cc7bf08cc0e2754cf549b75a1205fd10c9e65ee41547e1db1dde23a'"]
+summary.json max_abs 5.55e-08 at /E_by_level/0.03/e_K_bits | max_rel 1.01e-08 at /E_by_level/0.3/ci_bits[0] | non-numeric diffs: []
+fits.json max_abs 4.26e-06 at /fits/K_bits/11808/M_align_add/theta[1] | max_rel 6.32 at /fitter_agreement[1]/max_rel_forecast_diff | non-numeric diffs: ["/forecasts_frozen_sha256 '3ce67f8e474cc6fa69959c9e396bdbd5c89193c87ed565cb989343213efe42ee'!='c442b6746cc7bf08cc0e2754cf549b75a1205fd10c9e65ee41547e1db1dde23a'"]
+forecasts_frozen.json max_abs 1.75e-08 at /forecasts/K_bits/11808/M_align_add[14] | max_rel 2.96e-08 at /forecasts/K_bits/11808/M_align_add[14] | non-numeric diffs: []
+convergence_runs.json max_abs 0 at  | max_rel 0 at  | non-numeric diffs: []
+tstar.csv rows 2049 2049 max_rel 2.46e-15 string diffs 0

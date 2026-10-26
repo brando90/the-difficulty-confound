@@ -1,0 +1,161 @@
+{
+ "experiment": "19_dfa_transformer_gpu_converged",
+ "device": "cuda",
+ "budget_minutes": 105.0,
+ "seeds_planned": [
+  11101,
+  11202,
+  11303,
+  11404,
+  11505,
+  11606,
+  11707,
+  11808
+ ],
+ "seeds_dropped": [],
+ "T_planned": [
+  512,
+  1024,
+  2048,
+  4096,
+  8192,
+  16384,
+  32768,
+  65536,
+  131072,
+  262144,
+  524288,
+  1048576,
+  2097152,
+  4194304
+ ],
+ "T_done": [
+  512,
+  1024,
+  2048,
+  4096,
+  8192,
+  16384,
+  32768,
+  65536,
+  131072,
+  262144,
+  524288,
+  1048576
+ ],
+ "stop_reason": "budget: next octave to 2097152 projected past the deadline",
+ "prep_seconds": 21.7,
+ "octaves": [
+  {
+   "T": 512,
+   "steps": 8,
+   "train_seconds": 3.42,
+   "eval_seconds": 8.26,
+   "groups": 8,
+   "seconds_per_step": 0.42783,
+   "elapsed": 42.6
+  },
+  {
+   "T": 1024,
+   "steps": 8,
+   "train_seconds": 1.83,
+   "eval_seconds": 5.19,
+   "groups": 8,
+   "seconds_per_step": 0.22889,
+   "elapsed": 49.6
+  },
+  {
+   "T": 2048,
+   "steps": 16,
+   "train_seconds": 3.57,
+   "eval_seconds": 5.24,
+   "groups": 8,
+   "seconds_per_step": 0.22306,
+   "elapsed": 58.5
+  },
+  {
+   "T": 4096,
+   "steps": 32,
+   "train_seconds": 6.97,
+   "eval_seconds": 4.94,
+   "groups": 8,
+   "seconds_per_step": 0.21786,
+   "elapsed": 70.4
+  },
+  {
+   "T": 8192,
+   "steps": 64,
+   "train_seconds": 14.38,
+   "eval_seconds": 4.93,
+   "groups": 8,
+   "seconds_per_step": 0.22462,
+   "elapsed": 89.7
+  },
+  {
+   "T": 16384,
+   "steps": 128,
+   "train_seconds": 28.99,
+   "eval_seconds": 7.17,
+   "groups": 8,
+   "seconds_per_step": 0.22648,
+   "elapsed": 125.8
+  },
+  {
+   "T": 32768,
+   "steps": 256,
+   "train_seconds": 57.76,
+   "eval_seconds": 6.49,
+   "groups": 8,
+   "seconds_per_step": 0.22564,
+   "elapsed": 190.1
+  },
+  {
+   "T": 65536,
+   "steps": 512,
+   "train_seconds": 115.69,
+   "eval_seconds": 7.76,
+   "groups": 8,
+   "seconds_per_step": 0.22596,
+   "elapsed": 313.6
+  },
+  {
+   "T": 131072,
+   "steps": 1024,
+   "train_seconds": 231.45,
+   "eval_seconds": 5.19,
+   "groups": 8,
+   "seconds_per_step": 0.22602,
+   "elapsed": 550.2
+  },
+  {
+   "T": 262144,
+   "steps": 2048,
+   "train_seconds": 460.98,
+   "eval_seconds": 5.09,
+   "groups": 8,
+   "seconds_per_step": 0.22509,
+   "elapsed": 1016.3
+  },
+  {
+   "T": 524288,
+   "steps": 4096,
+   "train_seconds": 925.42,
+   "eval_seconds": 5.21,
+   "groups": 8,
+   "seconds_per_step": 0.22593,
+   "elapsed": 1946.9
+  },
+  {
+   "T": 1048576,
+   "steps": 8192,
+   "train_seconds": 1852.45,
+   "eval_seconds": 5.17,
+   "groups": 8,
+   "seconds_per_step": 0.22613,
+   "elapsed": 3804.5
+  }
+ ],
+ "gpu": "NVIDIA GeForce RTX 2080 Ti",
+ "wall_seconds": 3804.5,
+ "T_top": 1048576
+}

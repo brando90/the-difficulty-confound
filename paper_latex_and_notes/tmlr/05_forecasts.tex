@@ -1,0 +1,86 @@
+% !TEX root = main.tex
+\section{When starting loss improves a forecast}
+\label{sec:forecasts}
+
+\subsection{Shared warmups}
+% Provenance: experiments/archive/02_heldout_exposure_difficulty_laws/RESULTS_heldout_laws.md
+% experiments/archive/03_answer_matched_alignment/RESULTS_matched_alignment.md
+% experiments/archive/04_monotone_ridge_heldout_addition/RESULTS_stable.md
+% experiments/archive/06_compositional_carry_marginal_matched/results.md
+% experiments/archive/06_compositional_carry_marginal_matched/expt_v1/results/prediction_comparisons.csv
+\texttt{experiments/archive/02\_heldout\_exposure\_difficulty\_laws/} fits an additive resource law on widths 32, 64, and 128 and on three training fractions, then scores widths 96 and 256 and two held-out fractions.
+There are 384 joint targets, 48 per seed.
+Adding log exposure and probed starting loss reduces joint RMSE by 6.80\% [$-3.52$, $14.80$], from 1.2969 [1.2015, 1.3780] to 1.2087 [1.0941, 1.3590] bits per answer.
+The primary gate required 10\%, a positive lower endpoint, and improvement at both held-out widths.
+It is not established.
+The difficulty-only ablation, which was secondary, reduces error by 15.80\% [10.27, 20.52].
+Adding log exposure on top of that ablation worsens held-out error by 10.69\% (relative reduction $-10.69\%$ [$-20.54$, $-2.54$]).
+The difficulty-only law produces 52/384 negative loss forecasts, and the combined law produces 64/384.
+Mean bias for the combined law is $-0.1597$ bits (forecast 2.9539, outcome 3.1135).
+A companion grid of 24 mathematics observations, four model sizes at a fixed token budget, tests a training-breadth proxy rather than measured exposure or starting loss.
+Adding the proxy changes joint error by $-1.14\%$ [$-9.58$, $0.57$], a descriptive interval over four size blocks.
+That companion does not validate the addition result on language models, and the addition result does not replace it.
+
+\texttt{experiments/archive/03\_answer\_matched\_alignment/} changes the functional form to Equation~\eqref{eq:legacy} and the forecast fails.
+Joint RMSE rises from 0.4727 [0.3212, 0.5990] to 292.7941 [0.3588, 507.0797] bits per answer, a relative reduction of $-61835.64\%$ [$-140226.76$, $27.71$].
+The feature-value gate is not established.
+One seed, whose starting-loss exponent is $-7.1966$, contributes 99.9677\% of the joint squared error.
+Its worst forecast is 2737.3272 bits against an observed 0.0932.
+The fit saw starting losses only from 2.5316 to 3.9151 bits, while a held-out network reached 0.5135.
+A negative exponent treats a better starting point as a reason to predict a worse outcome once the probe leaves the fitting range.
+This diagnosis was written after the failure.
+It does not drop the seed or change the gate.
+
+\texttt{experiments/archive/04\_monotone\_ridge\_heldout\_addition/} freezes the slope constraints before collecting 200 fresh trajectories.
+The unconstrained difficulty law still diverges: joint RMSE is 1935297769746.72 bits per answer, with interval [619.43, 3352033360529.69].
+The constrained difficulty law brings that RMSE to 0.4835 [0.3760, 0.5780], a 100.00\% [99.90, 100.00] reduction, with 0/192 invalid forecasts.
+The repair gate is supported.
+Against an equally constrained law without the probe, whose RMSE is 0.5010 [0.3894, 0.5972], the probe reduces error by only 3.48\% [1.12, 6.24].
+The lower endpoint is positive, and the practical 10\% line is missed.
+The feature-value gate is not established.
+Every starting checkpoint in that study shares one balanced 500-update warmup, so starting loss is nearly redundant with width and carry group.
+Mean bias remains about $-0.16$ bits for both constrained laws (forecasts near 0.39 against an observed mean of 0.5537).
+
+\texttt{experiments/archive/06\_compositional\_carry\_marginal\_matched/} returns to a shared warmup after the carry-rate control.
+The probe reduces joint RMSE from 0.4881 [0.4408, 0.5454] to 0.4786 [0.4417, 0.5292], a 1.94\% [$-3.10$, $6.50$] change.
+The feature-value gate is not established.
+The committed comparison file also records the repair contrast against the unconstrained difficulty law as 24.19\% [$-1.83$, $40.28$].
+The point estimate clears 10\%, and the lower endpoint does not.
+The repair gate is not established.
+At held-out width 384 the same probe comparison is $-107.14\%$ [$-145.48$, $-73.61$].
+The joint 1.94\% figure hides a large deterioration at that width.
+
+\subsection{Heterogeneous histories}
+\label{sec:exp05}
+% Provenance: experiments/archive/05_pretraining_history_and_retention/RESULTS_history_retention.md
+% Unrounded joint RMSE from expt_v1/results/prediction_metrics.csv:
+% stable_base 0.1902375174189841, stable_difficulty 0.10044724309544169, relative reduction 47.1990%.
+% legacy_difficulty to stable_difficulty is -0.8171%.
+\texttt{experiments/archive/05\_pretraining\_history\_and\_retention/} pretrains each checkpoint for 1{,}500 updates on its own carry mixture, then continues for up to 1{,}000 balanced updates.
+Fit mixtures are 0.1, 0.5, and 0.9 at widths 32, 64, and 128.
+Held-out mixtures are 0.2 and 0.8 at widths 96 and 384.
+The joint score has 192 targets.
+Starting loss is the probe loss on 936 separate items, measured before the balanced stage.
+The constrained base, which sees scale, updates, and carry stratum, has joint RMSE 0.1902 [0.1425, 0.2323].
+Adding the probe lowers it to 0.1004 [0.0688, 0.1268], a 47.20\% [42.88, 53.08] reduction.
+The feature-value gate is supported, with improvement at both held-out widths and no invalid forecasts.
+Mean bias moves from $-0.0387$ to $-0.0181$ bits (forecast means 0.0878 and 0.1084, against an observed mean of 0.1265).
+An oracle law that receives the true log pretraining fraction, instead of the probe, has RMSE 0.1580 [0.1083, 0.1991].
+The probe beats that oracle by 36.43\% [32.50, 39.58].
+The behavioral probe can record how much of the mixture a given width actually absorbed.
+The same constrained probe does not beat the unconstrained difficulty law.
+That comparison is $-0.82\%$ [$-1.11$, $-0.57$], from 0.0996 [0.0682, 0.1259] to 0.1004 [0.0688, 0.1268].
+The extrapolation-repair gate is not established.
+We do not describe this study as having passed every gate.
+
+The retention gate in the same study is supported.
+Checkpoints pretrained at mixture 0.1 start at 95.55\% [93.93, 96.89] on no-carry items and 56.54\% [54.54, 58.38] on two-carry items, a gap of 39.01 [36.31, 41.57] points.
+After 1{,}000 balanced updates, two-carry accuracy is 90.70\% [88.79, 92.43].
+That recovers 87.55\% [83.60, 90.72] of the gap.
+No-carry accuracy changes by $+1.09$ [$+0.33$, $+1.89$] points, to 96.64\% [95.64, 97.57].
+The frozen rule required a gap whose lower endpoint is at least 20 points, at least 50\% recovery, post-target accuracy of at least 90\%, and a control change whose estimate and lower endpoint stay above $-5$ points.
+The pooled numbers meet that rule.
+Width 32 does not reach 90\% on the target cell: its eight-seed post-target accuracy is 61.26\%, while widths 64, 96, 128, and 384 reach 93.71\%, 99.04\%, 99.51\%, and 99.97\%.
+Those by-width figures are the study's reported point estimates, not a new interval.
+The pre-intervention ranking gate is also supported, with endpoint leads 39.01 [36.31, 41.57] and 39.27 [37.02, 41.54] points.
+The structure contrast at that checkpoint is $-0.13$ [$-1.57$, $1.36$] points.
