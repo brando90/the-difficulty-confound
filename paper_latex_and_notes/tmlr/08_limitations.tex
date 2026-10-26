@@ -28,7 +28,8 @@ Supported replications in that folder leave those two gates not established.
 Near-ceiling widths shrink the accuracy reversal to a fraction of a point in one answer-matched replication.
 A supported pooled gate can coexist with a small effect at large width.
 \texttt{experiments/archive/10\_autoregressive\_transformer\_replication/} evaluates causal autoregressive transformers (2 layers, 4 attention heads, generating sum digits token-by-token).
-At width 32, the compositional ranking reversal and remediation replicate (11.77 points initial gap; 94.52\% recovery; $+0.23$ points retention).
+No pooled gate is established there: the pure compositional reversal is 2.84 [2.01, 3.86] and 0.87 [0.62, 1.17] points against a 10-point line.
+Eight-seed means at width 32 show a reversal, 11.76 points after mixture 0.1 but only 2.38 points after mixture 0.9, and remediation (93.19\% recovery; $+0.23$ points retention); these are not gate decisions.
 However, transformers exhibit far greater sample-efficiency on arithmetic than feedforward MLPs: after 1,500 pretraining steps, widths 64, 96, 128, and 384 completely saturate at ceiling accuracy (>99.8\% to 100.0%, loss $<0.005$ bits) across both carry strata, leaving virtually zero residual error to predict.
 Pooled held-out loss reduction (0.05\% [0.03, 2.84]) and prequential MDL reduction (3.77\% [1.21, 6.93]) remain below the 10\% gate, leaving all five prospective gates not established under the frozen criteria.
 Transformers shift the saturation boundary, demonstrating that difficulty scaling laws require earlier checkpointing horizons or longer digit sequences to measure sub-ceiling dynamics.
@@ -36,8 +37,10 @@ Transformers shift the saturation boundary, demonstrating that difficulty scalin
 Active headroom is restored across all five model widths ($d_{\text{model}} \in \{32, 64, 96, 128, 384\}$).
 Pure compositional difficulty reversal is supported across all five widths (15.67 [12.13, 19.10] points at $q_{\text{pre}}=0.10$ vs 15.70 [12.89, 18.17] points at $q_{\text{pre}}=0.90$).
 Prequential online MDL prediction is supported: probed starting difficulty cuts held-out online adaptation MDL root mean squared error by 18.84\% [5.88, 34.16].
+The online-code reversal itself is not established: the pure two-carry cell costs 0.0666 [0.0606, 0.0715] extra bits per item after mixture 0.1, but the reverse gap after mixture 0.9 is $-0.0006$ [$-0.0075$, $0.0056$].
+The online-code reversal therefore holds for the feedforward networks of Section~\ref{sec:mdl} but not for these transformers.
 However, final conditional loss prediction is not established (0.99\% [$-11.40$, $5.66$]), because 1{,}000 updates of balanced post-training compress final test loss to 0.02 bits across all widths, whereas the online prequential code integrates over the active trajectory.
-Additionally, while balanced remediation raises cascading two-carry accuracy from 68.32\% to 99.90\% (+31.58 points gain) and improves control accuracy by $+15.94$ points, the control confidence lower bound (12.13 points) falls just short of the protocol's 15.0-point gate line.
+Additionally, while balanced remediation raises cascading two-carry accuracy from 68.32\% to 99.90\% (+31.58 points gain) and improves control accuracy by $+15.94$ [$+14.18$, $+17.80$] points, which passes the no-harm line, the remediation gate is not established because the lower bound of the initial gap (12.13 points) falls short of the protocol's 15-point minimum gap.
 
 Conditional bits are not Kolmogorov complexity and, outside the online-code study, not a full minimum description length.
 The online code charges for labels along one adaptation stream.
