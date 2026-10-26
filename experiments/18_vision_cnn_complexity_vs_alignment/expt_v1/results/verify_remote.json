@@ -1,0 +1,71 @@
+{
+ "runs": {
+  "mnist_main": {
+   "expected": 128,
+   "present": 128
+  },
+  "mnist_H": {
+   "expected": 100,
+   "present": 100
+  },
+  "fashion_main": {
+   "expected": 128,
+   "present": 128
+  },
+  "kmnist_main": {
+   "expected": 128,
+   "present": 128
+  },
+  "fashion_H": {
+   "expected": 100,
+   "present": 100
+  },
+  "kmnist_H": {
+   "expected": 100,
+   "present": 100
+  },
+  "mis": {
+   "expected": 160,
+   "present": 160
+  },
+  "cifar10_main": {
+   "expected": 128,
+   "present": 128
+  },
+  "cifar10_H": {
+   "expected": 100,
+   "present": 100
+  }
+ },
+ "recomputed_last_checkpoint": {
+  "runs": 1072,
+  "mismatched": 3,
+  "exact_same_cpu": 792,
+  "cross_cpu_tolerance": 280,
+  "cpu": "Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz"
+ },
+ "retrained": [
+  {
+   "run": "main__mnist__rot90__par_a__a0.05__s18101",
+   "identical": true
+  },
+  {
+   "run": "main__fashion__rot90__par_a__a0.05__s18101",
+   "identical": true
+  },
+  {
+   "run": "main__kmnist__rot90__par_a__a0.05__s18101",
+   "identical": true
+  },
+  {
+   "run": "main__cifar10__rot90__par_a__a0.05__s18101",
+   "identical": true
+  }
+ ],
+ "fails": [
+  "H__kmnist__pool_only__easy__none__s18202 recompute [('probe_err__a7b', 0.75732421875, 0.75830078125)]",
+  "H__kmnist__pool_only__hard_mod__none__s18303 recompute [('probe_err__a7b', 0.97998046875, 0.985595703125)]",
+  "H__cifar10__pool_only__hard_mod__none__s18202 recompute [('probe_err__a7b', 0.976806640625, 0.980712890625)]"
+ ],
+ "verdict": "FAIL"
+}

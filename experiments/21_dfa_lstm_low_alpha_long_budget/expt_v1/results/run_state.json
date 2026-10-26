@@ -1,0 +1,35 @@
+{
+ "chunks": [
+  {
+   "start_utc": "2026-10-20T11:17:40.314309+00:00",
+   "seconds": 3472.7,
+   "cells_completed": 28
+  },
+  {
+   "start_utc": "2026-10-20T12:15:51.561148+00:00",
+   "seconds": 3479.1,
+   "cells_completed": 36
+  },
+  {
+   "start_utc": "2026-10-20T13:36:09.789120+00:00",
+   "seconds": 3387.1,
+   "cells_completed": 72
+  },
+  {
+   "start_utc": "2026-10-20T14:32:48.721808+00:00",
+   "seconds": 3566.0,
+   "cells_completed": 64
+  },
+  {
+   "start_utc": "2026-10-20T15:32:27.932271+00:00",
+   "seconds": 3619.7,
+   "cells_completed": 20
+  },
+  {
+   "start_utc": "2026-10-20T16:57:56.356496+00:00",
+   "seconds": 3048.7,
+   "cells_completed": 12
+  }
+ ],
+ "elapsed_seconds": 20573.290754795074
+}

@@ -6,4 +6,6 @@ This experiment reruns [Experiment 11](../11_dfa_exact_complexity_vs_alignment/R
 
 Status: RUN, 10-20-2026. The protocol was frozen at commit d3ab980b, 512 of 512 gated runs completed, and replay verification passed. G1 (seen data), G3b and G6 are SUPPORTED; G2, G3a, G4, G5 and G7 are NOT_ESTABLISHED: see [RESULTS_dfa_complexity_alignment.md](RESULTS_dfa_complexity_alignment.md). Design and disclosure: [PROTOCOL.md](PROTOCOL.md). Dated log: [CKPT_dfa_lstm_complexity_alignment.md](CKPT_dfa_lstm_complexity_alignment.md).
 
+Later: [Experiment 21](../21_dfa_lstm_low_alpha_long_budget/README.md) ran the α ∈ {0.05, 0.15} runs to 2^18 examples. At α = 0.15 the n = 4 and n = 8 runs learn late (0.09 and 0.27 bits at 2^18), so G6's floor holds only within the 2^16 budget.
+
 **TLDR-end:** [tdc: Expt 20 README] Experiment 20 reruns Experiment 11's exact-DFA complexity-versus-alignment grid with an LSTM that can learn these languages. Everything else, the gates included, is held fixed, and the α = 1 slice was already seen in Experiment 11's exploratory arm.
