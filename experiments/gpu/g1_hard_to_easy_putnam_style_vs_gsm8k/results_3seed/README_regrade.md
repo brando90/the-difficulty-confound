@@ -34,3 +34,5 @@ The pilot's sign flip with lr is LR-dependent but not established over seeds (in
 
 ## Compute (sacct, Sherlock H100)
 Re-grade jobs 48812674 (0-6), 48821682 (7-9), 48901686 (10-15), report 48901689: 1.63 H100-hours. As-run training+grading array 48737606: 2.04 H100-hours. Total 3.67.
+
+Note on `g1s3_regrade_report.json`: its verdict `F_answers_without_working` is `false` only because `seeds3_report.py` requires token counts, which the pilot engine does not record (null); read it as unknown. The prose above (F collapsed to bare answers) is the finding.

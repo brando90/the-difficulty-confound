@@ -6,6 +6,6 @@ sh04-01n07 IB:NDR,CPU_MNF:INTEL,CPU_GEN:SPR,CPU_SKU:8462Y+,CPU_FRQ:2.80GHz,GPU_G
 == jobs waiting in gpu
 669
 == sshare
-Account                    User  RawShares  NormShares    RawUsage  EffectvUsage  FairShare 
--------------------- ---------- ---------- ----------- ----------- ------------- ---------- 
-sanmi                   brando9        100    0.035714     7037743      0.326457   0.569490 
+Account                    User  RawShares  NormShares    RawUsage  EffectvUsage  FairShare
+-------------------- ---------- ---------- ----------- ----------- ------------- ----------
+sanmi                   brando9        100    0.035714     7037743      0.326457   0.569490
