@@ -55,4 +55,4 @@ CPU, tiny models, seed 22909 (`run.py --pilot`): the feature extractor and visio
 
 ## 9. Deviations
 
-None yet.
+- 10-25-2026: 6 of the 81 runs (feature extractor + real-map shard 0/8) were run on a mercury1 RTX A4000 instead of the FarmShare L40S because the FarmShare sign-in was blocked; see results_shard0of8_mercury1.md. Settings unchanged.
