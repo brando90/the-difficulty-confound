@@ -1,0 +1,13 @@
+torch 2.13.0+cu130 cuda build 13.0 numpy 2.3.5 scipy 1.18.1 sklearn 1.9.1
+total 293280
+drwxr-xr-x 2 brando9 operator         7 Oct 20 12:51 .
+drwxr-xr-x 5 brando9 operator        13 Oct 21 06:27 ..
+-rw-r--r-- 1 brando9 operator  14464277 Oct 20 12:51 20news-bydate.tar.gz
+-rw-r--r-- 1 brando9 operator  23772751 Oct 20 12:51 cifar100_test.parquet
+-rw-r--r-- 1 brando9 operator 118518617 Oct 20 12:51 cifar100_train.parquet
+-rw-r--r-- 1 brando9 operator  23940850 Oct 20 12:51 cifar10_test.parquet
+-rw-r--r-- 1 brando9 operator 119705255 Oct 20 12:51 cifar10_train.parquet
+raw files OK
+data check: OK {'20ng_train': 9283, '20ng_test': 6171, '20ng_dropped': {'test': 254, 'train': 367}}
+test_splits OK
+EXP22B PREP DONE
