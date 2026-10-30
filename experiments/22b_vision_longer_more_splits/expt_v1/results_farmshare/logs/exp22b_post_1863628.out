@@ -1,0 +1,70 @@
+{"epoch": 135, "train_loss": 0.6290809556141795, "sec": 714.5, "val_acc": 0.646, "heldout_acc": 0.3435}
+{"epoch": 140, "train_loss": 0.6281130813912257, "sec": 740.5, "val_acc": 0.655, "heldout_acc": 0.3375}
+{"epoch": 145, "train_loss": 0.6234298712455186, "sec": 767.8, "val_acc": 0.6605, "heldout_acc": 0.344}
+{"epoch": 150, "train_loss": 0.6225913415019144, "sec": 793.4, "val_acc": 0.6445, "heldout_acc": 0.3425}
+{"epoch": 155, "train_loss": 0.618626645347416, "sec": 820.9, "val_acc": 0.659, "heldout_acc": 0.3375}
+{"epoch": 160, "train_loss": 0.6167648414637419, "sec": 844.7, "val_acc": 0.664, "heldout_acc": 0.3335}
+{"epoch": 165, "train_loss": 0.611631349029157, "sec": 870.9, "val_acc": 0.661, "heldout_acc": 0.3265}
+{"epoch": 170, "train_loss": 0.6136976764506141, "sec": 894.8, "val_acc": 0.6675, "heldout_acc": 0.332}
+{"epoch": 175, "train_loss": 0.606336316806358, "sec": 919.9, "val_acc": 0.6565, "heldout_acc": 0.331}
+{"epoch": 180, "train_loss": 0.6050253986512255, "sec": 947.1, "val_acc": 0.675, "heldout_acc": 0.3345}
+{"epoch": 185, "train_loss": 0.6054131336660193, "sec": 976.5, "val_acc": 0.665, "heldout_acc": 0.336}
+{"epoch": 190, "train_loss": 0.6042118876572423, "sec": 1001.2, "val_acc": 0.674, "heldout_acc": 0.332}
+{"epoch": 195, "train_loss": 0.6044458042855231, "sec": 1027.7, "val_acc": 0.6685, "heldout_acc": 0.3565}
+{"epoch": 200, "train_loss": 0.6010857160459429, "sec": 1054.7, "val_acc": 0.659, "heldout_acc": 0.343}
+{"epoch": 205, "train_loss": 0.5992647729464026, "sec": 1077.4, "val_acc": 0.662, "heldout_acc": 0.3525}
+{"epoch": 210, "train_loss": 0.6001931140886857, "sec": 1105.7, "val_acc": 0.665, "heldout_acc": 0.3355}
+{"epoch": 215, "train_loss": 0.5969230344631528, "sec": 1132.5, "val_acc": 0.6715, "heldout_acc": 0.3405}
+{"epoch": 220, "train_loss": 0.5984871451486677, "sec": 1158.1, "val_acc": 0.6635, "heldout_acc": 0.338}
+{"epoch": 225, "train_loss": 0.5968041936023123, "sec": 1185.1, "val_acc": 0.6585, "heldout_acc": 0.3325}
+{"epoch": 230, "train_loss": 0.5954730038674886, "sec": 1209.0, "val_acc": 0.66, "heldout_acc": 0.336}
+{"epoch": 235, "train_loss": 0.59554712164322, "sec": 1235.7, "val_acc": 0.665, "heldout_acc": 0.345}
+{"epoch": 240, "train_loss": 0.5946274999804144, "sec": 1259.8, "val_acc": 0.672, "heldout_acc": 0.3355}
+{"epoch": 245, "train_loss": 0.5948360162293351, "sec": 1285.6, "val_acc": 0.675, "heldout_acc": 0.3435}
+{"epoch": 250, "train_loss": 0.5948073683969126, "sec": 1311.1, "val_acc": 0.6785, "heldout_acc": 0.331}
+{"epoch": 255, "train_loss": 0.594716503316124, "sec": 1338.9, "val_acc": 0.675, "heldout_acc": 0.333}
+{"epoch": 260, "train_loss": 0.5943363332908426, "sec": 1363.5, "val_acc": 0.669, "heldout_acc": 0.337}
+{"epoch": 265, "train_loss": 0.59423943053956, "sec": 1390.5, "val_acc": 0.677, "heldout_acc": 0.3325}
+{"epoch": 270, "train_loss": 0.5941406840446012, "sec": 1416.7, "val_acc": 0.6725, "heldout_acc": 0.331}
+{"epoch": 275, "train_loss": 0.5941361804936556, "sec": 1443.7, "val_acc": 0.674, "heldout_acc": 0.3315}
+{"epoch": 280, "train_loss": 0.5941549295547025, "sec": 1468.2, "val_acc": 0.671, "heldout_acc": 0.3325}
+{"epoch": 285, "train_loss": 0.5940832495689392, "sec": 1494.1, "val_acc": 0.6765, "heldout_acc": 0.336}
+{"epoch": 290, "train_loss": 0.5940476867976605, "sec": 1519.0, "val_acc": 0.6765, "heldout_acc": 0.336}
+{"epoch": 295, "train_loss": 0.5940580304037004, "sec": 1543.6, "val_acc": 0.6775, "heldout_acc": 0.335}
+{"epoch": 300, "train_loss": 0.5940608062200098, "sec": 1568.9, "val_acc": 0.678, "heldout_acc": 0.3365}
+done: vis_real_k0_p0_s23101 1573.4 s
+PASS replay vis_real_k0_p0_s23101: in-dist 0.6854 vs 0.6854, held-out 0.3310 vs 0.3310, best epoch 250 vs 250, same preds True
+PASS structure computed: 400 units
+PASS analysis computed: {'vis_real': 40, 'vis_shuf': 40}
+PASS manifest written: 89 files
+VERIFY PASS
+Runs: 80 (vis_real 40, vis_shuf 40); structure measures present: True
+
+| phase | mean in-dist test acc | min | share best epoch = last | median train s |
+|---|---|---|---|---|
+| vis_real | 0.662 | 0.626 | 0.03 | 1482 |
+| vis_shuf | 0.517 | 0.456 | 0.05 | 1453 |
+
+Budget check: share of real-map vision runs whose best epoch is the last evaluation = 0.025 (limit 0.05): long enough
+
+## Pre-registered predictions (p = 0; 95% intervals resample whole splits)
+
+| arm | P1 shuffled-map transfer | real-map transfer | P2 Spearman rho (margin) | R² structure | R² complexity | R² diff [CI] | verdicts |
+|---|---|---|---|---|---|---|---|
+| vision | -0.002 [-0.015, 0.010] (n=200) | 0.491 [0.472, 0.509] (n=200) | 0.488 split-level [0.377, 0.595], unit-level [0.365, 0.595] (n=200, 10 splits) | 0.223 | 0.010 | 0.214 [0.141, 0.294] | P1 SUPPORTED, P2 NOT_SUPPORTED, P3 SUPPORTED |
+
+## Secondary structure measures (real map, p = 0): Spearman rho with transfer
+
+| arm | measure | rho [95% CI] | n |
+|---|---|---|---|
+| vision | gzip_bits | 0.060 [-0.005, 0.124] | 200 |
+| vision | margin | 0.488 [0.376, 0.594] | 200 |
+| vision | nc_share | 0.525 [0.446, 0.596] | 200 |
+| vision | pad | -0.288 [-0.393, -0.192] | 200 |
+| vision | pixel_margin | 0.481 [0.382, 0.573] | 200 |
+| vision | margin, real + shuffled units pooled | 0.804 [0.776, 0.829] | 400 |
+
+## Descriptive (no threshold)
+
+- vision rho_splits_0_4: rho 0.484 (n=100)
+- vision rho_splits_5_9: rho 0.487 (n=100)

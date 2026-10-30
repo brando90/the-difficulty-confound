@@ -1,0 +1,57 @@
+{
+ "amp": "torch.bfloat16",
+ "cifar10_test_acc": 0.8279,
+ "curve": [
+  {
+   "epoch": 10,
+   "sec": 25.1,
+   "train_loss": 1.2592806262629372
+  },
+  {
+   "epoch": 20,
+   "sec": 46.5,
+   "train_loss": 0.9947486930355733
+  },
+  {
+   "epoch": 30,
+   "sec": 67.9,
+   "train_loss": 0.8113674618759934
+  },
+  {
+   "epoch": 40,
+   "sec": 89.2,
+   "train_loss": 0.6491047055745611
+  },
+  {
+   "epoch": 50,
+   "sec": 110.7,
+   "train_loss": 0.5531042540559963
+  },
+  {
+   "epoch": 60,
+   "sec": 132.0,
+   "train_loss": 0.5290182415319948
+  }
+ ],
+ "device": "cuda",
+ "features_file": "cifar100_features_from_cifar10_vit.npz",
+ "features_sha256": {
+  "test": "c9cf20c860403402df3809691093c014ac7b23f2a77d31ce0e0a9627d0a7f487",
+  "train": "7cf586c0722c78d8ff955d6404a97ed35a0f7dda15dcb7ff13814f39f598726e"
+ },
+ "gpu": "NVIDIA L40S",
+ "host": "oat-06",
+ "n_params": 2693578,
+ "numpy": "2.3.5",
+ "pilot": false,
+ "run_id": "feat_cifar10_vit",
+ "slurm_job": "1875784",
+ "spec": {
+  "arm": "feat",
+  "phase": "feat",
+  "seed": 22777
+ },
+ "torch": "2.13.0+cu130",
+ "train_sec": 132.0,
+ "wall_sec": 142.4
+}
