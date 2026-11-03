@@ -1,0 +1,9 @@
+expt_v1/prep/
+expt_v1/prep.tmp-*/
+expt_v1/results/oracle.npz
+expt_v1/results/mixture.npz
+checkpoints/
+__pycache__/
+.pytest_cache/
+*.tmp
+expt_v1/check24.log

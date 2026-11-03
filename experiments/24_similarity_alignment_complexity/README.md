@@ -1,0 +1,11 @@
+# Experiment 24: does the similarity of the non-target data decide whether alignment or complexity dominates?
+
+**Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/24_similarity_alignment_complexity/README.md>
+
+The complexity-versus-alignment series disagrees with itself. Fitted laws on synthetic HMM languages say complexity moves the data bill more than the target's share of the data does (E < 1). Crossing times and some vision datasets say the opposite or a tie, and Experiment 18's sweep suggests why: alignment matters little when the non-target data is similar to the target, and a lot when it is not. This experiment turns that into one controlled dial. Each target gets its own distractor pool at four similarity levels: copies of the target with 20% or 50% of its states re-drawn, independent same-family concepts, and concepts on a disjoint vocabulary. The pools are crossed with complexity (8, 32, 64 hidden states) and target share (0.01–1) on two transformer sizes (3M and 25M non-embedding parameters), 918 runs, each trained to 2^28 tokens. Gates G1–G5 test whether similarity sets alignment's price, whether E crosses 1, whether similarity improves held-out prediction, whether complexity costs data at every similarity, and whether bigger models exploit similar data specifically.
+
+Status: protocol frozen before any run (11-03-2026). Queued on SNAP skampere2, behind other work (it starts only on GPUs with ≥ 24 GB free and ≤ 30% utilization). Design: [PROTOCOL.md](PROTOCOL.md). Run log: [CKPT_exp24.md](CKPT_exp24.md). Code: [`expt_v1/`](expt_v1/) (reuses Experiment 13-GPU's model, data stream and evaluation unchanged). Launch: [`launch/`](launch/).
+
+Reproduce: `python -m pytest -q expt_v1`; `python expt_v1/run24.py --check-only`; on skampere2, `bash launch/setup24.sh <sha>` (starts `launch/autopilot24.sh` in tmux session `tdc_exp24`); afterwards `analyze24.py`, `task2vec24.py`, `verify24.py` on the merged `expt_v1/results/`.
+
+**TLDR-end:** [tdc: Expt 24 readme] A controlled similarity dial for the non-target data, crossed with exact HMM complexity and target share on two transformer sizes, tests whether similarity decides whether alignment or complexity dominates; 918 runs, censoring-aware data bills, gates G1–G5.
