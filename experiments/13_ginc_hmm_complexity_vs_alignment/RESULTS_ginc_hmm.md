@@ -1,6 +1,6 @@
 # Results: Experiment 13-small, GINC-style HMM mixtures, complexity versus alignment
 
-Arm 13-small (CPU, 354,240-parameter transformer). **13-GPU: pending, not run.** Protocol: [PROTOCOL.md](PROTOCOL.md) as frozen; run log: [CKPT_ginc_hmm.md](CKPT_ginc_hmm.md).
+Arm 13-small (CPU, 354,240-parameter transformer). **13-GPU: run 10-23/24-2026; results in [RESULTS_ginc_hmm_gpu.md](RESULTS_ginc_hmm_gpu.md)** (this page is 13-small only). Protocol: [PROTOCOL.md](PROTOCOL.md) as frozen; run log: [CKPT_ginc_hmm.md](CKPT_ginc_hmm.md).
 
 ## Plain-language takeaway
 
@@ -30,7 +30,7 @@ Symbols: ε is the model's excess loss over the true HMM in bits/token; ε* is t
 3. **Background CPU load** of about 3 from other jobs on the 4-core box during pilot and grid (lower throughput, no effect on results).
 4. **ε_res = 0.015 bits** set at the freeze (this protocol had no value; Exp 11's censored residual needs one). No cell came near it (smallest cell mean 0.042).
 5. **report.py** E panel changed after the analysis (linear axis plus the gated ε* point); reporting only, no number changed.
-6. **13-GPU not run** (no GPU on this box). Its code path is not implemented in this commit: `run.py --arm gpu` exits with "pending, not run", and the `--pilot-job`, `--pilot-select`, `--merge` and verify modes that launch/README.md describes still have to be written (and the GPU `--check-only` run) before any GPU launch. Diversity coefficient: follow-up (Exp 14 code did not exist at run time).
+6. **13-GPU not run** (no GPU on this box). Its code path is not implemented in this commit: `run.py --arm gpu` exits with "pending, not run", and the `--pilot-job`, `--pilot-select`, `--merge` and verify modes that launch/README.md describes still have to be written (and the GPU `--check-only` run) before any GPU launch. Diversity coefficient: follow-up (Exp 14 code did not exist at run time). *(Update 10-24-2026: 13-GPU has since been written (commit 2c625111) and run; see [RESULTS_ginc_hmm_gpu.md](RESULTS_ginc_hmm_gpu.md).)*
 7. **Not pushed**: committed locally on results/cpu-expts-11-15; the parent task pushes.
 
 ## Gates (all at equal prominence)
@@ -45,7 +45,7 @@ Symbols: ε is the model's excess loss over the true HMM in bits/token; ε* is t
 | G3b exponent picture | γ1 = -0.174; exp vs coef -68.1% | γ1 [-0.185, -0.164]; [-78.6%, -53.8%] | γ1 upper < 0, reduction ≥ 5% with lower > 0 | **NOT_ESTABLISHED** |
 | G4 alignment dominates (E = e_α/e_K) | E_bits 0.802, E_states 0.751, E_mf 0.73 (at ε = 1.1) | bits [0.786, 0.83]; states [0.736, 0.778] | all > 1, lower bounds > 1 | **NOT_ESTABLISHED** |
 | G5 alignment early, complexity late | r_α early 0.623, late 0.366 | early [0.613, 0.637]; late [0.36, 0.374] | early lower > 0.5, late upper < 0.5 | **SUPPORTED** |
-| G6 (13-GPU only) | — | — | — | pending, not run |
+| G6 (13-GPU only) | see [RESULTS_ginc_hmm_gpu.md](RESULTS_ginc_hmm_gpu.md) | — | — | SUPPORTED in 13-GPU |
 
 C3 (coefficient or exponent): **unresolved**.
 

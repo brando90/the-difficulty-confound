@@ -6,6 +6,9 @@
 # MODE=run (default) trains shard $SLURM_ARRAY_TASK_ID (0..359) unless it is DONE.
 # MODE=verify replays a DONE shard with verify.py and writes VERIFIED.
 # MODE=pilot runs GPU pilot job $SLURM_ARRAY_TASK_ID; submit with --array=0-8.
+# First, once: sbatch launch/sherlock_prep.sbatch (CPU job) builds the concepts and references into expt_v1/prep/gpu;
+# every task here refuses to start without them. The gpu QOS allows at most 100 submitted jobs per user, so submit
+# the shards in chunks of <= 100 array indices (for example --array=0-95%16, then 96-191%16, ...).
 #SBATCH --job-name=tdc_exp13
 #SBATCH --partition=gpu
 #SBATCH --gpus=1
@@ -16,9 +19,10 @@
 #SBATCH --output=slurm_logs/%x_%A_%a.out
 #SBATCH --error=slurm_logs/%x_%A_%a.err
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=brandojazz@gmail.com,brando.science@gmail.com
-# Optional: only 80 GB GPUs (list features with: sh_node_feat -p gpu | grep GPU_SKU)
-##SBATCH -C GPU_MEM:80GB
+#SBATCH --mail-user=brandojazz@gmail.com,brando.science@gmail.com,laoluoguneye@gmail.com
+# bfloat16 needs compute capability >= 8.0; on Sherlock's public gpu partition that is H100, L40S and RTX 3090
+# (10-19-2026; list features with: sh_node_feat -p gpu | grep GPU_SKU). Every listed GPU has >= 24 GB.
+#SBATCH --constraint=GPU_SKU:H100_SXM5|GPU_SKU:L40S|GPU_SKU:RTX_3090
 set -euo pipefail
 
 die() { echo "sherlock.sbatch: ERROR: $*" >&2; exit 2; }
@@ -48,11 +52,26 @@ esac
 PADDED=$(printf '%05d' "$ID")
 mkdir -p "$OUT/logs" "$MARK" "$CLAIMS"
 
+# ---- modules: Sherlock's system git (1.8) has no -C ------------------------------------
+if ! type module >/dev/null 2>&1; then
+  set +u
+  for init in /etc/profile.d/lmod.sh /usr/share/lmod/lmod/init/bash; do
+    if [[ -f $init ]]; then source "$init"; break; fi
+  done
+  set -u
+fi
+set +u
+module load system git 2>/dev/null || echo "note: 'module load system git' failed; using $(git --version)"
+set -u
+
 # ---- repository at the frozen commit -----------------------------------------
 : "${TDC_COMMIT:?pass TDC_COMMIT=<sha> with --export=ALL,TDC_COMMIT=<sha>}"
 WANT=$(git -C "$REPO" rev-parse --verify "${TDC_COMMIT}^{commit}") || die "TDC_COMMIT not found in $REPO"
 [[ $(git -C "$REPO" rev-parse HEAD) == "$WANT" ]] || die "HEAD of $REPO is not $WANT; check out the frozen commit first"
 [[ -z $(git -C "$REPO" status --porcelain --untracked-files=no) ]] || die "tracked files are modified in $REPO"
+
+[[ -f $CODE/prep/gpu/tasks.json && -f $CODE/prep/gpu/mixture.npz ]] ||
+  die "$CODE/prep/gpu is missing: run launch/sherlock_prep.sbatch (CPU job) at this commit first"
 
 # ---- skip finished work (resumable) --------------------------------------------
 if [[ $MODE == verify ]]; then
@@ -72,13 +91,6 @@ AVAIL_GB=$(df -P -BG "$OUT" | awk 'NR == 2 { gsub("G", "", $4); print $4 }')
 ((AVAIL_GB >= JOB_MIN_GB)) || die "only ${AVAIL_GB} GB free under $OUT (need $JOB_MIN_GB GB for one shard)"
 
 # ---- Python module and virtual environment ----------------------------------------
-if ! type module >/dev/null 2>&1; then
-  set +u
-  for init in /etc/profile.d/lmod.sh /usr/share/lmod/lmod/init/bash; do
-    if [[ -f $init ]]; then source "$init"; break; fi
-  done
-  set -u
-fi
 set +u
 module load "${PY_MODULE:-python/3.12}" || die "module load ${PY_MODULE:-python/3.12} failed; check 'module avail python' and set PY_MODULE"
 set -u
@@ -86,7 +98,7 @@ if [[ -n ${GROUP_HOME:-} ]]; then VENV_ROOT=$GROUP_HOME/$USER/venvs; else VENV_R
 VENV=${VENV:-$VENV_ROOT/tdc_$EXP_NAME}
 TORCH_VERSION=$(python3 -c 'import json, sys; print(json.load(open(sys.argv[1]))["gpu_torch_version"])' "$CODE/config.json")
 TORCH_VERSION=${TORCH_VERSION%%+*}
-TORCH_INDEX=${TORCH_INDEX:-https://download.pytorch.org/whl/cu128}
+TORCH_INDEX=${TORCH_INDEX:-https://download.pytorch.org/whl/cu124}  # torch 2.6.0+cu124 ran on Sherlock GPUs in Experiments 16 and 19
 if [[ ! -f $VENV/.ready ]]; then
   mkdir -p "$VENV_ROOT"
   if mkdir "$VENV.lock" 2>/dev/null; then
@@ -94,7 +106,7 @@ if [[ ! -f $VENV/.ready ]]; then
     if python3 -m venv "$VENV" &&
       "$VENV/bin/pip" install --upgrade pip &&
       "$VENV/bin/pip" install "torch==$TORCH_VERSION" --index-url "$TORCH_INDEX" &&
-      "$VENV/bin/pip" install -r "$CODE/requirements-gpu.txt" &&
+      "$VENV/bin/pip" install --only-binary=:all: -r "$CODE/requirements-gpu.txt" &&
       "$VENV/bin/python" -c 'import torch; assert torch.cuda.is_available(), "CUDA not available"'; then
       echo "torch==$TORCH_VERSION $TORCH_INDEX $(date +%m-%d-%Y)" >"$VENV/.ready"
       rmdir "$VENV.lock"
