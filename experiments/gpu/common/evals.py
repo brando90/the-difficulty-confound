@@ -169,6 +169,85 @@ def generate_math(model, tok, items: list[dict], max_new_tokens: int, batch_size
 
 
 @torch.no_grad()
+def generate_math_fast(model, tok, items: list[dict], max_new_tokens: int, batch_size: int, device, amp, stop_strings,
+                       chunk_tokens: int = 256, max_batch_tokens: int | None = None) -> dict:
+    """generate_math at a fraction of the cost, with the same prompts, greedy decoding, stop string, token cap and
+    graders. The pilot's cost was rounds of 64 prompts that each ran to the full cap whenever one row rambled. Here
+    batches are large, and decoding goes in rounds of `chunk_tokens`: a row that emitted EOS, hit the stop string or
+    reached the cap leaves; the rest continue in the next round from their own prompt + generated token ids (re-encoded
+    as the prompt, never re-tokenised text), regrouped by length. Greedy continuation of the same token ids is the same
+    computation, so outputs match generate_math up to floating-point differences from batch composition.
+    `max_batch_tokens` caps rows x (prompt + generated + budget) per batch, so later rounds of longer rows use
+    smaller batches.
+    Also records per item: generated tokens, whether it stopped by itself (EOS or stop string) and whether it gave a
+    \\boxed{} answer."""
+    tok.padding_side = "left"
+    if tok.pad_token_id is None:
+        tok.pad_token = tok.eos_token
+    pad, eos = tok.pad_token_id, tok.eos_token_id
+    end_ids = {pad, eos}
+    prompt_ids = [tok(it["prompt"], add_special_tokens=False)["input_ids"] for it in items]
+    gen_ids: list[list[int]] = [[] for _ in items]
+    stopped = [False] * len(items)
+    active, rounds, batches = list(range(len(items))), 0, 0
+    while active:
+        rounds += 1
+        budget = min(chunk_tokens, max_new_tokens - len(gen_ids[active[0]]))  # every active row has the same length
+        active.sort(key=lambda i: -(len(prompt_ids[i]) + len(gen_ids[i])))
+        nxt, b = [], 0
+        while b < len(active):
+            width = len(prompt_ids[active[b]]) + len(gen_ids[active[b]]) + budget  # the longest row of this batch
+            rows_ = batch_size if not max_batch_tokens else max(1, min(batch_size, max_batch_tokens // width))
+            idx = active[b : b + rows_]
+            b += rows_
+            batches += 1
+            seqs = [prompt_ids[i] + gen_ids[i] for i in idx]
+            width = max(len(s) for s in seqs)
+            ids = torch.full((len(idx), width), pad, dtype=torch.long)
+            mask = torch.zeros((len(idx), width), dtype=torch.long)
+            for row, s in enumerate(seqs):
+                ids[row, width - len(s):] = torch.tensor(s)
+                mask[row, width - len(s):] = 1
+            with amp():
+                out = model.generate(input_ids=ids.to(device), attention_mask=mask.to(device), max_new_tokens=budget,
+                                     do_sample=False, temperature=None, top_p=None, top_k=None, pad_token_id=pad,
+                                     eos_token_id=eos, stop_strings=list(stop_strings), tokenizer=tok)
+            new = out[:, width:].tolist()
+            for row, i in enumerate(idx):
+                toks = new[row]
+                cut = next((k for k, t in enumerate(toks) if t in end_ids), None)
+                gen_ids[i] += toks if cut is None else toks[:cut]
+                if cut is not None or any(s in tok.decode(gen_ids[i], skip_special_tokens=True) for s in stop_strings):
+                    stopped[i] = True
+                elif len(gen_ids[i]) < max_new_tokens:
+                    nxt.append(i)
+        active = nxt
+    gens = []
+    for g in gen_ids:
+        text = tok.decode(g, skip_special_tokens=True)
+        for s in stop_strings:
+            text = text.split(s)[0]
+        gens.append(text)
+    correct, correct_fb, rows = [], [], []
+    for it, g, ids_, st in zip(items, gens, gen_ids, stopped):
+        mv = mv_grade(g, it["answer"])
+        fb = fallback_grade(g, it["answer"])
+        c = fb if mv is None else mv
+        correct.append(int(c))
+        correct_fb.append(int(fb))
+        rows.append({"id": it["id"], "answer": it["answer"], "level": it.get("level"), "correct": int(c), "correct_fallback": int(fb),
+                     "n_tokens": len(ids_), "stopped": int(st), "boxed": int(last_boxed(g) is not None), "generation": g})
+    n = len(items)
+    agree = sum(int(x == y) for x, y in zip(correct, correct_fb)) / max(n, 1)
+    return {"acc": sum(correct) / max(n, 1), "acc_fallback": sum(correct_fb) / max(n, 1), "grader_agreement": agree,
+            "n": n, "correct": correct, "levels": [it.get("level") for it in items],
+            "stopped_rate": sum(stopped) / max(n, 1), "boxed_rate": sum(r["boxed"] for r in rows) / max(n, 1),
+            "mean_tokens": sum(len(g) for g in gen_ids) / max(n, 1), "engine": {"name": "fast", "batch_size": batch_size,
+            "chunk_tokens": chunk_tokens, "max_batch_tokens": max_batch_tokens, "max_new_tokens": max_new_tokens,
+            "rounds": rounds, "batches": batches}, "rows": rows}
+
+
+@torch.no_grad()
 def hellaswag(model, tok, items: list[dict], batch_size: int, device, amp) -> dict:
     eos = tok.eos_token_id
 

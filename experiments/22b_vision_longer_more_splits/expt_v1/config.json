@@ -1,0 +1,19 @@
+{
+  "vision": {"patch": 4, "dim": 192, "depth": 6, "heads": 3, "mlp": 768, "drop": 0.0,
+             "epochs": 300, "warmup_epochs": 15, "batch": 256, "lr": 0.001, "wd": 0.05, "label_smoothing": 0.1,
+             "eval_every": 5, "val_per_class": 25, "crop_pad": 4},
+  "text": {"vocab": 20000, "min_df": 2, "max_len": 256, "dim": 256, "depth": 4, "heads": 4, "mlp": 1024, "drop": 0.1,
+           "epochs": 30, "warmup_epochs": 1, "batch": 64, "lr": 0.0005, "wd": 0.05, "label_smoothing": 0.0,
+           "eval_every": 1, "val_frac": 0.1},
+  "feat": {"seed": 22777, "epochs": 60, "warmup_epochs": 5},
+  "grid": {
+    "vis_real": {"arm": "vision", "map": "real", "splits": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], "p": [0.0, 1.0], "seeds": [23101, 23202]},
+    "vis_shuf": {"arm": "vision", "map": "shuffled", "splits": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], "p": [0.0, 1.0], "seeds": [23101, 23202]}
+  },
+  "pilot": {"seed": 22909, "vision": {"epochs": 2, "warmup_epochs": 1, "depth": 2, "eval_every": 1, "n_train": 1024, "n_val": 256, "n_test": 1000},
+            "text": {"epochs": 2, "warmup_epochs": 1, "depth": 1, "max_len": 64, "eval_every": 1, "n_train": 400, "n_val": 100, "n_test": 400},
+            "feat": {"epochs": 1, "depth": 1, "n_train": 1024}},
+  "cifar_mean": [0.5071, 0.4865, 0.4409], "cifar_std": [0.2673, 0.2564, 0.2762],
+  "analysis": {"seed": 29102227, "bootstrap": 20000, "primary_p": 0.0,
+               "P1_band": 0.05, "P2_rho": 0.6, "qc_best_epoch_last_max": 0.05}
+}

@@ -1,0 +1,4 @@
+GPU: NVIDIA H100 80GB HBM3
+task 0 -> /scratch/users/brando9/tdc_g1s3/runs/runs/qwen2.5-0.5b__base
+gsm8k 0.2873
+math500 0.2

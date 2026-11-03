@@ -1,0 +1,57 @@
+{
+ "amp": "torch.bfloat16",
+ "cifar10_test_acc": 0.8285,
+ "curve": [
+  {
+   "epoch": 10,
+   "sec": 182.3,
+   "train_loss": 1.2641834209159928
+  },
+  {
+   "epoch": 20,
+   "sec": 346.8,
+   "train_loss": 0.9929699666646062
+  },
+  {
+   "epoch": 30,
+   "sec": 510.0,
+   "train_loss": 0.8118701765731889
+  },
+  {
+   "epoch": 40,
+   "sec": 692.5,
+   "train_loss": 0.651120234813009
+  },
+  {
+   "epoch": 50,
+   "sec": 955.7,
+   "train_loss": 0.5541393355447419
+  },
+  {
+   "epoch": 60,
+   "sec": 1218.2,
+   "train_loss": 0.5312128349834558
+  }
+ ],
+ "device": "cuda",
+ "features_file": "cifar100_features_from_cifar10_vit.npz",
+ "features_sha256": {
+  "test": "642685bdd67daa5d81172372985e307438f65798d6194047509c06a41f4acc5b",
+  "train": "05a84b29fde53ec0dd65ce0940f6cc3d45713a98ac945aaf27ea971c574dd6f9"
+ },
+ "gpu": "NVIDIA RTX A4000",
+ "host": "mercury1.stanford.edu",
+ "n_params": 2693578,
+ "numpy": "2.2.6",
+ "pilot": false,
+ "run_id": "feat_cifar10_vit",
+ "slurm_job": null,
+ "spec": {
+  "arm": "feat",
+  "phase": "feat",
+  "seed": 22777
+ },
+ "torch": "2.8.0+cu128",
+ "train_sec": 1218.2,
+ "wall_sec": 1230.6
+}

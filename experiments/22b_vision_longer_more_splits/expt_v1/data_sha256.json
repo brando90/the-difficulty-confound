@@ -1,0 +1,31 @@
+{
+ "counts": {
+  "20ng_dropped": {
+   "test": 254,
+   "train": 367
+  },
+  "20ng_test": 6171,
+  "20ng_train": 9283
+ },
+ "prepared": {
+  "20ng/test": "dd7460ea8bc64320d2defdf4e3d4060183be0f8204fb4b11a0cd6cc8b6588a9e",
+  "20ng/train": "ff31e5553a83eddde49bd84b51a239b9f11fe3bf1bbf9e16bbb42214e80bfd2b",
+  "cifar10/x_test": "f9b1e2130bab680db56eb06d886f7f1ad0f1183907ceff4659d1735c890f5b04",
+  "cifar10/x_train": "c5b8e1d062f7373a5bc758689b1b9c2a7caf093109b95ceb98cecaf2bd266807",
+  "cifar10/y_test": "cbb7365de8ed11f05cc4c3a1e7f78144127c5e851efd83762fb18202461230bb",
+  "cifar10/y_train": "d6d2fe5c7528f766adb2e13bf983d1e4707936c06b4ccf240ef3d2dcd72c986d",
+  "cifar100/coarse_test": "e2f01c218d5f70ed60e3d80cb12337f835005bcae62b64fefcaa2b647612af83",
+  "cifar100/coarse_train": "9f99c2cdae93cf09da2fc6497c96ab042c6dc02c456a2e86dcffd2305df5a2e9",
+  "cifar100/fine_test": "80031c23f8300724c6fbc588e4bccbe41c6392041782148727bb497b0132c4ad",
+  "cifar100/fine_train": "8bf4935e7c77a3096270043c6f3b221b6ecb9c63d1a08608e9af66cff17e977a",
+  "cifar100/x_test": "4cb8e5d9309da489bf6b19cc10cd96c3ae6f8daf225380b605aaee4c0d6aee19",
+  "cifar100/x_train": "4e457917601a66aed021f5fa37957b56c6319557c0a8ed5484de3c390af45430"
+ },
+ "raw": {
+  "20news-bydate.tar.gz": "8f1b2514ca22a5ade8fbb9cfa5727df95fa587f4c87b786e15c759fa66d95610",
+  "cifar100_test.parquet": "98776c529bb146a9c791229df74a5cf076be9b43d82dbbd334b6a7788d73dc68",
+  "cifar100_train.parquet": "694865d6b990e234804f01268586c41e88bcbbb75e20858432c05ad4081aca23",
+  "cifar10_test.parquet": "841389e6f2d64f28bf17310e430aebac20ec3ba611a3c5e231dc93c645ce84de",
+  "cifar10_train.parquet": "8428b53a88a11ac374111006708df51469e315a22ac6d66470afd9c78d2ae883"
+ }
+}

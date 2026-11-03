@@ -2,7 +2,7 @@
 
 **Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/ideas/COLLABORATION_ONBOARDING.md>
 
-Welcome to the project, Laolu (`Laolu24`)! This guide summarizes what we have already established across Experiments 01–08 and how the reproducible experiment pipeline works. Pull requests #1–#7 are already merged. A second look is open in [issue #8](https://github.com/brando90/the-difficulty-confound/issues/8).
+Welcome to the project, Laolu (`Laolu24`)! This guide summarizes what we have already established across Experiments 01–11 and how the reproducible experiment pipeline works. Pull requests #1–#7 and #9–#18 are merged. A second look is open in [issue #8](https://github.com/brando90/the-difficulty-confound/issues/8).
 
 ---
 
@@ -13,7 +13,7 @@ When we evaluate a model on a fixed skill (here, exact 3-digit integer addition 
 
 ---
 
-## 2. Summary of Completed Experiments (01–08)
+## 2. Summary of Completed Experiments (01–11)
 
 All completed experiments live in [`experiments/archive/`](../archive/README.md) with every per-item prediction, saved weight `.pt`, manifest, SHA-256 receipt, and independent replay verifier committed:
 
@@ -53,7 +53,7 @@ Every experiment follows a strict 5-step workflow so that neither human nor agen
 
 ## 4. Next Experimental Directions
 
-Eleven controlled experiments are complete and archived (PRs #1–#7, #9, #10, #11, #13, and #14 merged). Key open avenues for subsequent investigation:
+Eleven controlled addition experiments (01–11) are complete and archived (PRs #1–#7 and #9–#18 merged); the complexity-versus-alignment series (Experiments 12–22) lives under experiments/ and is tracked in experiments/README.md. Key open avenues for subsequent investigation:
 
 1. **Reverse vs Forward Generation Order (Inductive Bias Study):**
    - In standard digit addition, computing sum digits from LSB to MSB matches the directional flow of carries (right-to-left), whereas MSB-first requires multi-step lookahead. Does generation order interact with pretraining exposure, compositional carry transfer, and sample-efficiency in causal transformers?

@@ -1,0 +1,69 @@
+{
+ "grader_check": {
+  "gsm8k": {
+   "pilot": 29.34,
+   "new": 30.86,
+   "delta": 1.52,
+   "ci95_items": [
+    0.0,
+    3.03
+   ],
+   "item_agreement": 92.27,
+   "pass": false
+  },
+  "math500": {
+   "pilot": 18.4,
+   "new": 20.2,
+   "delta": 1.8,
+   "ci95_items": [
+    -0.6,
+    4.2
+   ],
+   "item_agreement": 92.2,
+   "pass": false
+  },
+  "pass": false
+ },
+ "seed0_vs_pilot": {
+  "qwen2.5-0.5b__L1_gradeschool1__T152x32x2048__lr5e-06__s0": {
+   "gsm8k": [
+    41.85,
+    42.38
+   ],
+   "math500": [
+    26.0,
+    27.6
+   ]
+  },
+  "qwen2.5-0.5b__L1_gradeschool1__T152x32x2048__lr2e-05__s0": {
+   "gsm8k": [
+    44.2,
+    43.52
+   ],
+   "math500": [
+    21.2,
+    21.8
+   ]
+  },
+  "qwen2.5-0.5b__L3_olympiad1__T152x32x2048__lr5e-06__s0": {
+   "gsm8k": [
+    44.43,
+    44.5
+   ],
+   "math500": [
+    25.6,
+    27.2
+   ]
+  },
+  "qwen2.5-0.5b__L3_olympiad1__T152x32x2048__lr2e-05__s0": {
+   "gsm8k": [
+    39.5,
+    38.82
+   ],
+   "math500": [
+    20.2,
+    20.6
+   ]
+  }
+ }
+}

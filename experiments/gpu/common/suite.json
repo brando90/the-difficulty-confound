@@ -76,6 +76,12 @@
       "models": ["qwen2.5-1.5b"], "seeds": [0, 1, 2], "seq_len": 2048, "seqs_per_step": 32, "max_steps": 610,
       "ckpt_steps": [5, 10, 20, 40, 80, 160, 320, 610], "gen_steps": [40, 160, 610], "gen_max_new_tokens": 768,
       "about": "same grid at 1.5B, run only after main; tests whether the gate verdicts hold at 3x the parameters"
+    },
+    "seeds3": {
+      "models": ["qwen2.5-0.5b"], "seeds": [0, 1, 2], "seq_len": 2048, "seqs_per_step": 32, "max_steps": 152,
+      "ckpt_steps": [152], "gen_steps": [152], "lr_sweep": [5e-06, 2e-05], "gen_max_new_tokens": 768,
+      "gen": {"engine": "fast", "batch_size": 512, "chunk_tokens": 256, "max_batch_tokens": 262144, "est_hours_per_ckpt": 0.05},
+      "about": "added 10-20-2026 after the pilot: 3-seed check of the pilot's g1 contrasts at the pilot's budget (about 10M tokens), with the fast grader (common/evals.py generate_math_fast) and g1's format-only arm F; pre-registered in CKPT.md"
     }
   }
 }

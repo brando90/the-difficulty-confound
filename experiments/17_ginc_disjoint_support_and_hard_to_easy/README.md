@@ -9,6 +9,8 @@ Experiment 17 asks two questions Brando raised on 10-18-2026 about the complexit
 
 Design and gates: [PROTOCOL.md](PROTOCOL.md). Results: [RESULTS_exp17.md](RESULTS_exp17.md). Run log: [CKPT_exp17.md](CKPT_exp17.md). Code: [expt_v1/](expt_v1/).
 
+**Experiment 17b (follow-up):** arm H rerun with coverage-matched easy pools. Design: [PROTOCOL_exp17b.md](PROTOCOL_exp17b.md). Results: [RESULTS_exp17b.md](RESULTS_exp17b.md). Code: [expt_v2_coverage/](expt_v2_coverage/) (`python run_v2.py --output results && python analyze_v2.py && python report_v2.py && python verify_v2.py`). Answer: once coverage is matched, hard-only no longer beats easy-only zero-shot on easy targets (gap closed ≈ 100%).
+
 Reproduce (from `expt_v1/`, with torch 2.x CPU, numpy, scipy, matplotlib, pytest):
 
 ```

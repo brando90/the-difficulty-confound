@@ -1,0 +1,29 @@
+{
+ "1_training_sources_match_manifest": true,
+ "analysis_source_sha256": {
+  "analyze.py": "6b908ce8132834c6d346ee7ff63c167f98089d5bc5b15a281f1302eb32099c60",
+  "verify.py": "901d45a57aeeff7765b1da0e9b199b550c3fec632ab209209b3f9506782e0017"
+ },
+ "2_tasks_regenerated_identical": true,
+ "2_hopcroft_moore_n_match": "32/32",
+ "2_data_files": 65,
+ "2_data_regenerated_identical": true,
+ "2_data_identical_to_exp20": true,
+ "3_mixes_regenerated_identical": "256/256",
+ "3_no_pool_reuse": "256/256",
+ "3_task_slots_through_2^16_equal_exp20": "256/256",
+ "4_checkpoints_replayed": 2560,
+ "4_max_abs_diff_excess_bits": 0.0,
+ "4_max_abs_diff_accuracy": 0.0,
+ "4_max_abs_diff_predictions": 0.0,
+ "5_retrained_cell": "11101_dfa_n04_t1_0.15",
+ "5_retrain_max_abs_diff_excess_bits": 0.0,
+ "6_metrics_rows": 2560,
+ "6_metrics_rows_equal_cells": true,
+ "7_analysis_identical": true,
+ "7_independent_cell_numbers_agree": true,
+ "8_distractor_cells": 256,
+ "8_distractor_replay_max_abs_diff": 0.0,
+ "status": "PASS",
+ "seconds": 1965.8
+}

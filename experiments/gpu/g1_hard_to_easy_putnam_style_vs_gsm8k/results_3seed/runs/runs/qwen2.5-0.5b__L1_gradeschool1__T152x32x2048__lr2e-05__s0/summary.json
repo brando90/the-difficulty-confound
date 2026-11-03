@@ -1,0 +1,23 @@
+{
+  "run_id": "qwen2.5-0.5b__L1_gradeschool1__T152x32x2048__lr2e-05__s0",
+  "host": "sh04-01n07.int",
+  "torch": "2.6.0+cu124",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "data_manifest_sha256": "168634321ec11542e615975b5d570683709a57d87e707a7af82e4929103ed997",
+  "train_seconds": 283.2,
+  "tokens": 9961472,
+  "tokens_per_second": 35172,
+  "realized_shares": {
+    "L1_gradeschool": 1.0
+  },
+  "epochs_completed": {
+    "L1_gradeschool": 0
+  },
+  "unique_docs": {
+    "L1_gradeschool": 134422
+  },
+  "transform": null,
+  "dropped_by_transform": {},
+  "peak_gpu_gb": 39.72,
+  "wall_seconds": 444.7
+}

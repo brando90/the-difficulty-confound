@@ -1,0 +1,186 @@
+{
+ "e13": {
+  "run": "13101_hmm_n032_t1_0.40",
+  "tokens_per_second_train": 1028.624561440774,
+  "train_seconds": 1019.396,
+  "cooldown_seconds": 79.705,
+  "eval_seconds": 707.107,
+  "wall_seconds": 1991.971,
+  "eval_seconds_per_target_checkpoint": 117.85116666666666,
+  "excess_at_T_end": {
+   "hmm_n032_t1": 0.8295198541033146
+  },
+  "excess_after_cooldown": {
+   "hmm_n032_t1": 0.7378257996029087
+  },
+  "monitor": [
+   [
+    65536,
+    "const",
+    2.9189
+   ],
+   [
+    131072,
+    "const",
+    1.9143
+   ],
+   [
+    262144,
+    "const",
+    1.404
+   ],
+   [
+    524288,
+    "const",
+    1.0441
+   ],
+   [
+    1048576,
+    "const",
+    0.8489
+   ],
+   [
+    1048576,
+    "cooldown",
+    0.7562
+   ]
+  ],
+  "host": "agent-bf1193c2cobsq4.us-west1-b.c.ae-pool01.internal"
+ },
+ "e17b": {
+  "run": "17101_cov32_-_a0.00",
+  "tokens_per_second_train": 1633.7025467010396,
+  "train_seconds": 641.84,
+  "cooldown_seconds": 46.869,
+  "eval_seconds": 1588.183,
+  "wall_seconds": 2429.68,
+  "eval_seconds_per_target_checkpoint": 66.17429166666666,
+  "excess_at_T_end": {
+   "hmm_n004_t1": 2.349292416241449,
+   "hmm_n004_t2": 2.913484580223408,
+   "hmm_n032_t1": 2.6153462549792,
+   "hmm_n032_t2": 2.8849297673757714
+  },
+  "excess_after_cooldown": {
+   "hmm_n004_t1": 2.1604276038583703,
+   "hmm_n004_t2": 2.8103928658817403,
+   "hmm_n032_t1": 2.5371863447230156,
+   "hmm_n032_t2": 2.827971416378098
+  },
+  "monitor": [
+   [
+    65536,
+    "const",
+    1.2582
+   ],
+   [
+    131072,
+    "const",
+    0.6376
+   ],
+   [
+    262144,
+    "const",
+    0.4386
+   ],
+   [
+    524288,
+    "const",
+    0.2806
+   ],
+   [
+    1048576,
+    "const",
+    0.188
+   ],
+   [
+    1048576,
+    "cooldown",
+    0.1436
+   ]
+  ],
+  "host": "agent-bf1193c2cobsq4.us-west1-b.c.ae-pool01.internal"
+ },
+ "estimate": {
+  "assumed_train_tokens_per_second": 1331.1635540709067,
+  "assumed_eval_seconds": 92.01272916666666,
+  "per_stage": {
+   "stage_0_to_T_1048576": {
+    "e13": {
+     "core_hours": 114.87929634088637,
+     "task_hours": 0.4487472513315874,
+     "array_tasks": 64,
+     "wall_hours": 1.3462417539947622
+    },
+    "e17b": {
+     "core_hours": 86.52159687972065,
+     "task_hours": 0.9088108971649207,
+     "array_tasks": 40,
+     "wall_hours": 2.726432691494762
+    },
+    "wall_hours_both": 2.726432691494762,
+    "core_hours_both": 201.40089322060703
+   },
+   "stage_1_to_T_4194304": {
+    "e13": {
+     "core_hours": 246.490977911548,
+     "task_hours": 0.9628553824669843,
+     "array_tasks": 64,
+     "wall_hours": 2.888566147400953
+    },
+    "e17b": {
+     "core_hours": 161.4178795280508,
+     "task_hours": 1.192887205383651,
+     "array_tasks": 40,
+     "wall_hours": 3.578661616150953
+    },
+    "wall_hours_both": 3.578661616150953,
+    "core_hours_both": 407.9088574395988
+   },
+   "stage_2_to_T_16777216": {
+    "e13": {
+     "core_hours": 927.0757649795253,
+     "task_hours": 3.6213897069512706,
+     "array_tasks": 64,
+     "wall_hours": 10.864169120853811
+    },
+    "e17b": {
+     "core_hours": 586.7833714455367,
+     "task_hours": 3.8514215298679373,
+     "array_tasks": 40,
+     "wall_hours": 11.554264589603813
+    },
+    "wall_hours_both": 11.554264589603813,
+    "core_hours_both": 1513.859136425062
+   },
+   "stage_3_to_T_67108864": {
+    "e13": {
+     "core_hours": 3649.414913251435,
+     "task_hours": 14.255527004888418,
+     "array_tasks": 64,
+     "wall_hours": 42.76658101466525
+    },
+    "e17b": {
+     "core_hours": 2288.24533911548,
+     "task_hours": 14.485558827805082,
+     "array_tasks": 40,
+     "wall_hours": 43.456676483415244
+    },
+    "wall_hours_both": 43.456676483415244,
+    "core_hours_both": 5937.660252366915
+   }
+  },
+  "cumulative_core_hours_if_stop_after_stage": [
+   201.40089322060703,
+   609.3097506602059,
+   2123.1688870852677,
+   8060.829139452183
+  ],
+  "cumulative_wall_hours_if_stop_after_stage": [
+   2.726432691494762,
+   6.305094307645715,
+   17.85935889724953,
+   61.31603538066477
+  ]
+ }
+}

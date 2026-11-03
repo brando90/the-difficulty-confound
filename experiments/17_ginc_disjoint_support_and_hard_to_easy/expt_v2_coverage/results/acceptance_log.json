@@ -1,0 +1,103 @@
+{
+ "h_ref": 2.809098040975505,
+ "band_bits": 0.15,
+ "n_calibration": 256,
+ "levels": {
+  "4": {
+   "accepted_indices": [
+    2,
+    8,
+    10,
+    14,
+    15,
+    17,
+    18,
+    19,
+    21,
+    22,
+    23,
+    25,
+    26
+   ],
+   "roles": [
+    "target",
+    "target",
+    "near",
+    "near",
+    "easy",
+    "easy",
+    "easy",
+    "easy",
+    "easy",
+    "easy",
+    "easy",
+    "easy",
+    "pilot"
+   ],
+   "checked": 67,
+   "passed_checks_1_2": 64,
+   "quick_scored": 64
+  },
+  "8": {
+   "accepted_indices": [
+    0,
+    1
+   ],
+   "roles": [
+    "near",
+    "near"
+   ],
+   "checked": 92,
+   "passed_checks_1_2": 64,
+   "quick_scored": 64
+  },
+  "16": {
+   "accepted_indices": [
+    0,
+    3
+   ],
+   "roles": [
+    "near",
+    "near"
+   ],
+   "checked": 132,
+   "passed_checks_1_2": 64,
+   "quick_scored": 64
+  },
+  "32": {
+   "accepted_indices": [
+    2,
+    8,
+    13,
+    14,
+    27,
+    36,
+    38,
+    42,
+    48,
+    49,
+    50,
+    59,
+    65
+   ],
+   "roles": [
+    "target",
+    "target",
+    "near",
+    "near",
+    "hard",
+    "hard",
+    "hard",
+    "hard",
+    "hard",
+    "hard",
+    "hard",
+    "hard",
+    "pilot"
+   ],
+   "checked": 363,
+   "passed_checks_1_2": 64,
+   "quick_scored": 64
+  }
+ }
+}
