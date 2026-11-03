@@ -139,6 +139,8 @@ Laolu records his predictions for G1–G5 (verdict plus a number each) in `CKPT_
 
 (Recorded here, with dates, by the pilot disclosure commit and any later deviation.)
 
+**Pilot disclosure (11-03-2026, SNAP skampere2, NVIDIA H200).** Seed `24919`, the n = 32 pilot concept with its family pool, alpha = 0.2, T to 2^26, 6 runs. Excess at 2^26 (bits/token, all positions): S 1x 0.0740, 2x 0.0702, 4x 0.0671; M 1x 0.0729, 2x 0.0748, 4x 0.0727. Rule of Section 2.5: **S 4x, M 4x** of the 13-GPU table rate (`lr_selected`). Seed `24919` is never used again. This commit changes only `lr_selected` and adds this paragraph; every shard runs at it.
+
 ## 9. Limits
 
 - Synthetic languages only, two model sizes, three seeds, nine targets.
