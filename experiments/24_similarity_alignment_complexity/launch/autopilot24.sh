@@ -9,7 +9,8 @@
 #   3 the 918 shards, M first; each verified on its GPU right after training
 #   4 merge, analyze24, task2vec24, verify24 (CPU); ALL_DONE
 # A failure writes $STATE/HALT and stops at the end of the stage. No automatic reruns. touch $STATE/STOP to stop
-# launching new jobs (running ones finish).
+# launching new jobs (running ones finish). $STATE/SKIP_GPUS (space-separated indices, read every cycle) keeps the
+# queue off those GPUs.
 set -uo pipefail
 U=laoluog1
 B=/dfs/scratch1/$U/tdc_exp24
@@ -46,8 +47,8 @@ gpu_free() {  # prints a qualifying GPU index not used by our running jobs, or n
   s1=$(nvidia-smi --query-gpu=index,memory.free,utilization.gpu --format=csv,noheader,nounits); sleep 20
   s2=$(nvidia-smi --query-gpu=index,memory.free,utilization.gpu --format=csv,noheader,nounits); sleep 20
   s3=$(nvidia-smi --query-gpu=index,memory.free,utilization.gpu --format=csv,noheader,nounits)
-  used=" ${PID_GPU[*]-} "
-  printf '%s\n%s\n%s\n' "$s1" "$s2" "$s3" | awk -F', ' '{ g=$1; if (!(g in mf) || $2 < mf[g]) mf[g]=$2; if ($3 > mu[g]) mu[g]=$3 }
+  used=" ${PID_GPU[*]-} $(cat "$STATE/SKIP_GPUS" 2>/dev/null) "  # SKIP_GPUS: indices held for other work
+  printf '%s\n%s\n%s\n' "$s1" "$s2" "$s3" | awk -F', ' '{ g=$1; if (!(g in mf) || $2 < mf[g]) mf[g]=$2; if (!(g in mu) || $3 > mu[g]) mu[g]=$3 }
     END { for (g in mf) print mu[g], mf[g], g }' | sort -n | while read -r u f g; do
     if ((f >= MIN_FREE_MB && u <= MAX_UTIL)) && [[ $used != *" $g "* ]]; then echo "$g"; break; fi
   done
