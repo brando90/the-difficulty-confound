@@ -1,0 +1,193 @@
+{
+ "sources": {
+  "config.json": "b4092fa713865c5c88b6dab5e468e110ae08cae0d6b05f5ef09ca0236c72f42d",
+  "hmm.py": "a5f6eca7a4b80b2fa9698c1004693a5d11147b99daafd4acac192a68c88931ba",
+  "model.py": "9c982afa9c8c2284987c915da7bfb6035c0bed66517274cf90cec6550247ad1e",
+  "run.py": "c0eac66b8e941e381b7c79c43f2bf87db2ae302d70813bff8e1c48c3161eb111",
+  "gpu_arm.py": "9acf9a8458f69e9d49e230ee47633c9b898dc19703054529f5324d0324934fa2"
+ },
+ "prep_sha256": {
+  "tasks.json": "b9a3942ace2f125d2b61c04fa39905d76b80a01eee5ee7422cc347801ffc3a6e",
+  "acceptance_log.json": "adbcb8fdb2c039475a8eb69a9a05112025585bb7233e6acd48a104a2e3b7452d",
+  "oracle.npz": "75e204230cd806bd24339ea0a175bd4c04c4def3de378774dfc6d49d606fa02d",
+  "mixture.npz": "5e3c1fe4b6f7ea048a02b06ec671fd59ccb9eb225f0fb756695a3f94bab3fec9",
+  "posterior16.json": "f94f2db3c798aeb4ad31284633c42faa7140c2634a042f6ca03a72d13334c60b",
+  "data/hmm_n008_d1_test.npz": "07abee8a17b55fc72044a0bb90dd3a8c48c52dea4faba439db0aa723cf52db29",
+  "data/hmm_n008_d2_test.npz": "f70583f990855dda505b8e744de6d494a7881ab3fff0909bb96f01cef2da6546",
+  "data/hmm_n008_p1_test.npz": "99e303c9021268e5d951e51a8334753f5459a52dec011dc234c3ebf80c732af9",
+  "data/hmm_n008_t1_test.npz": "8e4d21692d57a156dd46ca3467fd8d549e6c33ac25f17e5085f123167684db24",
+  "data/hmm_n008_t2_test.npz": "28297b5007ecc53bdfda1ee33a2802720384439a5a327f3319000f6b7566049e",
+  "data/hmm_n016_d1_test.npz": "92592553865625ecb73b8eb6f105b349281a90ed251abdf3d3706b018eff527f",
+  "data/hmm_n016_d2_test.npz": "8e899fa9bb637ac4aba4137fcc9f3d5f35e0e0fe7d6b44ac3c2cb442decfcbe6",
+  "data/hmm_n016_p1_test.npz": "9a0fdcad9cf47060087aecadf43b5ea422e16564b8536c2ea464e27dead89327",
+  "data/hmm_n016_t1_test.npz": "77f233a0a657bd54302e8421faed5cef1b1e281c38f58ed123924a6df1509b45",
+  "data/hmm_n016_t2_test.npz": "300d78ce7bff1dc725273108874aa76f5519fdef6c9d2f9df673e8675e5590b5",
+  "data/hmm_n032_d1_test.npz": "10299b71c447083a9a9c145221a32b483633ebf976b2b3173a84e07fc51617c8",
+  "data/hmm_n032_d2_test.npz": "c4e9672896084d7399ca5f073ec59295d26697cb26339086918ea18b7ce83f0e",
+  "data/hmm_n032_p1_test.npz": "517a18a4217d87e5f459c6e83db97264507f39c7d4d2683e1d7390a7ea01e89d",
+  "data/hmm_n032_t1_test.npz": "a2b2b6e380248d2b84d086c5a8df74ca950322be60cadea9121c36fb23d9d387",
+  "data/hmm_n032_t2_test.npz": "59b49fb6bb53be66f1fe40b94cba213541027067ce0276b7558c5bb30b097be9",
+  "data/hmm_n064_d1_test.npz": "3249a63a925aa1493bcd6373e087341e59e8744a0b9ed7f9b9f61ea27a4374ae",
+  "data/hmm_n064_d2_test.npz": "f8cc03c340eeeadd9ac3506fd21673eb87db05179481c88599c30892a59fd3c1",
+  "data/hmm_n064_p1_test.npz": "0f9211de2170728712f6e87c36b36d8f62251b9493528e74cae7a7c5099d5f6b",
+  "data/hmm_n064_t1_test.npz": "4c179625b8b1baaa49dc2a939fc6d230b678a2d88dc1eef948f9e27ab3abef11",
+  "data/hmm_n064_t2_test.npz": "3212e2cd1df6c189b80b0384bc586de354291b2bb0428dc48b09e55438d70b6c",
+  "data/hmm_n128_d1_test.npz": "d20e5b4dc05086c82d9fdf57fa0753d611f188dd3d16767e0744aaca6503457b",
+  "data/hmm_n128_d2_test.npz": "ef910602fb1bd1156bf1eb5c04e364fdf79704a3e70d70083e421e05197b1a71",
+  "data/hmm_n128_p1_test.npz": "0a4682efcc53ff9712eed133846e73dd8994e933317f1de0d04d92c588f36106",
+  "data/hmm_n128_t1_test.npz": "a609cb4c337db121892b1d4bee739b342ad4bbdbc48482058373d0379d8fc9fd",
+  "data/hmm_n128_t2_test.npz": "5884d3440a0e1dd00bb0d1c4a642522e02ce603f2db1f24ed24fe244a239cdd7"
+ },
+ "checkpoint_root": "/dfs/scratch1/laoluog1/tdc_exp13/runs/gpu_v1/shards",
+ "grid": {
+  "runs": 360,
+  "diverged": [],
+  "verified": 360,
+  "gpu_hours": 178.51,
+  "gpus": [
+   "NVIDIA A100-SXM4-80GB",
+   "NVIDIA H200"
+  ]
+ },
+ "lr_selected": {
+  "S": 2,
+  "M": 2,
+  "L": 2
+ },
+ "pilot_selection": {
+  "lr_selected": {
+   "S": 2,
+   "M": 2,
+   "L": 2
+  },
+  "rule": "lowest excess at T=67108864, ties within 0.002 bits go to 1x",
+  "results": [
+   {
+    "job": 0,
+    "size": "S",
+    "lr_multiplier": 0.5,
+    "lr": 0.0005,
+    "excess_bits": 0.06242933866695788,
+    "learn_bits": 0.05210177542565031,
+    "ident_bits": 0.010327563241307569,
+    "excess_se": 0.0007310770594766444,
+    "finite": true,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "wall_seconds": 56.369,
+    "tokens_per_second_train": 1278560.042388992
+   },
+   {
+    "job": 1,
+    "size": "S",
+    "lr_multiplier": 1,
+    "lr": 0.001,
+    "excess_bits": 0.05236581272817986,
+    "learn_bits": 0.04203824948687229,
+    "ident_bits": 0.010327563241307569,
+    "excess_se": 0.0006476563625441291,
+    "finite": true,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "wall_seconds": 62.582,
+    "tokens_per_second_train": 1149676.7252989633
+   },
+   {
+    "job": 2,
+    "size": "S",
+    "lr_multiplier": 2,
+    "lr": 0.002,
+    "excess_bits": 0.049125299366782116,
+    "learn_bits": 0.03879773612547455,
+    "ident_bits": 0.010327563241307569,
+    "excess_se": 0.0006366350553267707,
+    "finite": true,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "wall_seconds": 55.466,
+    "tokens_per_second_train": 1302482.1413622403
+   },
+   {
+    "job": 3,
+    "size": "M",
+    "lr_multiplier": 0.5,
+    "lr": 0.0003,
+    "excess_bits": 0.420718840953735,
+    "learn_bits": 0.41039127771242745,
+    "ident_bits": 0.010327563241307569,
+    "excess_se": 0.0022315020569485026,
+    "finite": true,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "wall_seconds": 138.463,
+    "tokens_per_second_train": 525553.7084037224
+   },
+   {
+    "job": 4,
+    "size": "M",
+    "lr_multiplier": 1,
+    "lr": 0.0006,
+    "excess_bits": 0.05773971239821751,
+    "learn_bits": 0.047412149156909944,
+    "ident_bits": 0.010327563241307569,
+    "excess_se": 0.0006902682867287522,
+    "finite": true,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "wall_seconds": 175.978,
+    "tokens_per_second_train": 409825.63026459684
+   },
+   {
+    "job": 5,
+    "size": "M",
+    "lr_multiplier": 2,
+    "lr": 0.0012,
+    "excess_bits": 0.05335541186332904,
+    "learn_bits": 0.04302784862202147,
+    "ident_bits": 0.010327563241307569,
+    "excess_se": 0.000652815004736202,
+    "finite": true,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "wall_seconds": 138.869,
+    "tokens_per_second_train": 524124.5939137912
+   },
+   {
+    "job": 6,
+    "size": "L",
+    "lr_multiplier": 0.5,
+    "lr": 0.00015,
+    "excess_bits": 0.09624770160401841,
+    "learn_bits": 0.08592013836271084,
+    "ident_bits": 0.010327563241307569,
+    "excess_se": 0.0009631659808323743,
+    "finite": true,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "wall_seconds": 345.94,
+    "tokens_per_second_train": 212693.30370444097
+   },
+   {
+    "job": 7,
+    "size": "L",
+    "lr_multiplier": 1,
+    "lr": 0.0003,
+    "excess_bits": 0.07587776069197405,
+    "learn_bits": 0.06555019745066648,
+    "ident_bits": 0.010327563241307569,
+    "excess_se": 0.0008040904273907475,
+    "finite": true,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "wall_seconds": 437.821,
+    "tokens_per_second_train": 166991.11854312397
+   },
+   {
+    "job": 8,
+    "size": "L",
+    "lr_multiplier": 2,
+    "lr": 0.0006,
+    "excess_bits": 0.05594157768694519,
+    "learn_bits": 0.04561401444563762,
+    "ident_bits": 0.010327563241307569,
+    "excess_se": 0.0006675175720845942,
+    "finite": true,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "wall_seconds": 521.128,
+    "tokens_per_second_train": 139003.05974595316
+   }
+  ]
+ }
+}

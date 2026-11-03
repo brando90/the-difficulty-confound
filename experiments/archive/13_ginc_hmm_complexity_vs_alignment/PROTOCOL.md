@@ -4,7 +4,7 @@
 
 Status: DRAFT design, 10-18-2026, from Brando Miranda's complexity-versus-alignment idea. The running agent may revise it, then must freeze it in its own commit before any gated run; after the freeze nothing in Sections 2–5 changes.
 
-Program overview: [complexity versus alignment, Experiments 11–16](../ideas/complexity_vs_alignment/README.md). Notation follows it: $\varepsilon$ excess loss in bits, $T$ training tokens seen, $\alpha$ target share, $K$ exact complexity in a stated description language, and the law family `M0_scale`, `M_align_eff`, `M_align_add`, `M_K_coef`, `M_K_exp`, `M_K_both` with parameters $A, \eta, \kappa, \gamma_0, \gamma_1$.
+Program overview: [complexity versus alignment, Experiments 11–16](../../ideas/complexity_vs_alignment/README.md). Notation follows it: $\varepsilon$ excess loss in bits, $T$ training tokens seen, $\alpha$ target share, $K$ exact complexity in a stated description language, and the law family `M0_scale`, `M_align_eff`, `M_align_add`, `M_K_coef`, `M_K_exp`, `M_K_both` with parameters $A, \eta, \kappa, \gamma_0, \gamma_1$.
 
 The experiment has two arms under one protocol: **13-small** (CPU, central processing unit; run by Brando's assistant, fixed model size) and **13-GPU** (Laolu or Brando on the SNAP (Stanford Network Analysis Project) graphics processing unit (GPU) nodes or Sherlock, three model sizes $N$).
 

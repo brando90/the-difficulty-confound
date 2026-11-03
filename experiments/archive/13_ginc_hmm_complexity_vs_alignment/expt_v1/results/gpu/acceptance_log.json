@@ -1,0 +1,121 @@
+{
+ "h_ref": 2.862014257253619,
+ "band_bits": 0.3,
+ "n_calibration": 210,
+ "levels": {
+  "8": {
+   "candidates_tried": 6,
+   "accepted_indices": [
+    0,
+    1,
+    3,
+    4,
+    5
+   ],
+   "checked": 88,
+   "passed_checks_1_2": 64,
+   "reasons": {
+    "ok": 64,
+    "not strongly": 24,
+    "process rank": 0
+   },
+   "quick_scored": 64,
+   "in_band": 62
+  },
+  "16": {
+   "candidates_tried": 13,
+   "accepted_indices": [
+    0,
+    2,
+    7,
+    9,
+    12
+   ],
+   "checked": 165,
+   "passed_checks_1_2": 64,
+   "reasons": {
+    "ok": 64,
+    "not strongly": 101,
+    "process rank": 0
+   },
+   "quick_scored": 64,
+   "in_band": 64
+  },
+  "32": {
+   "candidates_tried": 18,
+   "accepted_indices": [
+    0,
+    6,
+    8,
+    12,
+    17
+   ],
+   "checked": 329,
+   "passed_checks_1_2": 64,
+   "reasons": {
+    "ok": 64,
+    "not strongly": 262,
+    "process rank": 3
+   },
+   "quick_scored": 64,
+   "in_band": 64
+  },
+  "64": {
+   "candidates_tried": 303,
+   "accepted_indices": [
+    141,
+    180,
+    198,
+    300,
+    302
+   ],
+   "checked": 1000,
+   "passed_checks_1_2": 18,
+   "reasons": {
+    "ok": 18,
+    "not strongly": 974,
+    "process rank": 8
+   },
+   "quick_scored": 18,
+   "in_band": 18
+  },
+  "128": {
+   "candidates_tried": 14799,
+   "accepted_indices": [
+    5800,
+    8256,
+    8967,
+    13314,
+    14798
+   ],
+   "checked": 1010,
+   "passed_checks_1_2": 5,
+   "reasons": {
+    "ok": 5,
+    "not strongly": 1000,
+    "process rank": 5
+   },
+   "quick_scored": 5,
+   "in_band": 5
+  }
+ },
+ "extension": {
+  "128": {
+   "seed": [
+    20261013,
+    1,
+    128,
+    3
+   ],
+   "drawn": 13799,
+   "passed_checks_1_2": 5,
+   "accepted": [
+    5800,
+    8256,
+    8967,
+    13314,
+    14798
+   ]
+  }
+ }
+}
