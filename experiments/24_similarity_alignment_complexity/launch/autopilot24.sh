@@ -9,8 +9,9 @@
 #   3 the 918 shards, M first; each verified on its GPU right after training
 #   4 merge, analyze24, task2vec24, verify24 (CPU); ALL_DONE
 # A failure writes $STATE/HALT and stops at the end of the stage. No automatic reruns. touch $STATE/STOP to stop
-# launching new jobs (running ones finish). $STATE/SKIP_GPUS (space-separated indices, read every cycle) keeps the
-# queue off those GPUs.
+# launching new jobs (running ones finish). $STATE/SKIP_GPUS (space-separated indices) keeps the
+# queue off those GPUs; $STATE/MAX_JOBS, JOBS_PER_GPU, MIN_FREE_MB and MAX_UTIL (integers) override the defaults. All are re-read every
+# cycle, so they change without a restart (a restart kills running jobs and strands their claims).
 set -uo pipefail
 U=laoluog1
 B=/dfs/scratch1/$U/tdc_exp24
@@ -42,15 +43,25 @@ reap() {
     kill -0 "$p" 2>/dev/null || unset "PID_GPU[$p]"
   done
 }
-gpu_free() {  # prints a qualifying GPU index not used by our running jobs, or nothing
-  local s1 s2 s3 g used
+knob() {  # knob <name> <default>: an integer from $STATE/<name> if set there (re-read every cycle), else the default
+  local v
+  v=$(tr -d ' \n' 2>/dev/null <"$STATE/$1")
+  [[ $v =~ ^[0-9]+$ ]] && echo "$v" || echo "$2"
+}
+gpu_free() {  # prints a qualifying GPU index, or nothing. A GPU without our jobs must pass the memory and utilization
+  # rules; one already running ours (its utilization is then partly ours) needs the memory rule and < JOBS_PER_GPU of ours
+  local s1 s2 s3 skip per ours x minf maxu
   s1=$(nvidia-smi --query-gpu=index,memory.free,utilization.gpu --format=csv,noheader,nounits); sleep 20
   s2=$(nvidia-smi --query-gpu=index,memory.free,utilization.gpu --format=csv,noheader,nounits); sleep 20
   s3=$(nvidia-smi --query-gpu=index,memory.free,utilization.gpu --format=csv,noheader,nounits)
-  used=" ${PID_GPU[*]-} $(cat "$STATE/SKIP_GPUS" 2>/dev/null) "  # SKIP_GPUS: indices held for other work
+  skip=" $(tr '\n' ' ' 2>/dev/null <"$STATE/SKIP_GPUS") "  # SKIP_GPUS: indices held for other work
+  per=$(knob JOBS_PER_GPU 1); minf=$(knob MIN_FREE_MB "$MIN_FREE_MB"); maxu=$(knob MAX_UTIL "$MAX_UTIL")
   printf '%s\n%s\n%s\n' "$s1" "$s2" "$s3" | awk -F', ' '{ g=$1; if (!(g in mf) || $2 < mf[g]) mf[g]=$2; if (!(g in mu) || $3 > mu[g]) mu[g]=$3 }
     END { for (g in mf) print mu[g], mf[g], g }' | sort -n | while read -r u f g; do
-    if ((f >= MIN_FREE_MB && u <= MAX_UTIL)) && [[ $used != *" $g "* ]]; then echo "$g"; break; fi
+    [[ $skip == *" $g "* ]] && continue
+    ours=0
+    for x in ${PID_GPU[@]+"${PID_GPU[@]}"}; do [[ $x == "$g" ]] && ours=$((ours + 1)); done
+    if ((f >= minf && ours < per && (ours > 0 || u <= maxu))); then echo "$g"; break; fi
   done
 }
 launch() {  # launch <gpu> <log> <command...>: runs in the background on that GPU
@@ -64,7 +75,7 @@ wait_slot() {  # blocks until we have < MAX_JOBS jobs and a GPU qualifies; print
   while true; do
     reap
     [[ -f $STATE/STOP ]] && { echo STOP; return; }
-    if ((${#PID_GPU[@]} < MAX_JOBS)); then
+    if ((${#PID_GPU[@]} < $(knob MAX_JOBS "$MAX_JOBS"))); then
       g=$(gpu_free)
       [[ -n $g ]] && { echo "$g"; return; }
     fi
