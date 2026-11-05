@@ -39,7 +39,7 @@
   "lr_multipliers": [1, 2, 4], "tie_multiplier": 2, "tie_bits": 0.002,
   "T_checkpoints": [1048576, 4194304, 16777216, 67108864]
  },
- "lr_selected": null,
+ "lr_selected": {"S": 4, "M": 4},
  "analysis": {
   "eps_star": 0.1, "eps_secondary": [0.05, 0.2],
   "analysis_seed": 24110326, "bootstrap_draws": 20000,
