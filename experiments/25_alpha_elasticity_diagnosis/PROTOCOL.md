@@ -145,6 +145,8 @@ Laolu records predictions for G1–G5 (verdict, and $e_\alpha$ for each arm, tun
 
 (Recorded here, with dates, by any later deviation.)
 
+- **11-08-2026, pre-run amendment to the independent fitter (before any run).** The first launch at the freeze commit (`c0db133d`) halted at stage 0 on skampere2 at 03:17. The unit test `test_gates_on_planted_data` failed: the independent check's refit of the planted hinge fit for the `iid` arm disagreed with the main fit by a relative 1.16 × 10⁻⁴, above the 10⁻⁴ tolerance (scipy 1.16.3 on skampere2; the laptop's scipy 1.18.1 passed). The cause is scipy's default L-BFGS-B stopping rule (ftol 2.2 × 10⁻⁹), which can stop before the 10⁻⁴ agreement is reached. The fix runs the independent L-BFGS-B refit from zero to a tight tolerance (ftol 10⁻¹⁵, gtol 10⁻¹⁰, at most 20,000 iterations). With it, the worst disagreement on the planted tables is 4.4 × 10⁻⁶ and 2.4 × 10⁻⁵, and 8 of 8 tests pass. Only `independent_check` in `analyze25.py` changes. The main fit, the estimates, the gates, the tolerance, the config and the training code do not, and no shard, smoke run or prep had run. The freeze moves to the commit that adds this paragraph.
+
 ## 9. Limits
 
 - Synthetic languages only, two model sizes, six targets, three seeds.

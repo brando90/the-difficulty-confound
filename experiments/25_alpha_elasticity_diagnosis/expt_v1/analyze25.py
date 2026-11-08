@@ -247,7 +247,9 @@ def full_analysis(cfg, tab, draws, workers, rng_seed):
 # ---------------------------------------------------------------- reported, not gated
 
 def independent_check(cfg, tab, fits, choice, tol):
-    """Refit every point-estimate Tobit with L-BFGS-B from zero."""
+    """Refit every point-estimate Tobit with L-BFGS-B from zero, run to a tight tolerance (ftol 1e-15, gtol 1e-10):
+    scipy's default L-BFGS-B stopping rule (ftol 2.2e-9) can stop above the 1e-4 agreement tolerance on its own."""
+    from scipy.optimize import minimize
     worst, bad = 0.0, []
     for key, b in fits.items():
         kind = key[0]
@@ -260,7 +262,8 @@ def independent_check(cfg, tab, fits, choice, tol):
         else:
             rows, dk = rows_for(tab, key[1], 'tuned', choice), 'pooled'
         X, y, st = design(rows, dk, cfg['analysis']['hinge_alpha'])
-        b2 = tobit(X, y, st, start=np.r_[np.zeros(X.shape[1]), 0.0], method='L-BFGS-B')
+        b2 = minimize(A24._nll, np.r_[np.zeros(X.shape[1]), 0.0], args=(X, y, st, np.ones(len(y))),
+                      method='L-BFGS-B', options=dict(ftol=1e-15, gtol=1e-10, maxiter=20000)).x
         rel = float(np.max(np.abs(b2[:-1] - b[:-1]) / np.maximum(np.abs(b[:-1]), 1e-3)))
         worst = max(worst, rel)
         if rel > tol:
