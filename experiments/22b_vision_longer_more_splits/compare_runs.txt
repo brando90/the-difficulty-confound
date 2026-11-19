@@ -1,0 +1,8 @@
+FarmShare vs mercury (200 units) n=200 spearman 0.981 mean shift 0.0063 CI [-0.0033, 0.0158]
+FarmShare vs Exp22 (splits 0-4, 100 units) n=100 spearman 0.978 mean shift 0.0001 CI [-0.0108, 0.0091]
+mercury vs Exp22 (splits 0-4, 100 units) n=100 spearman 0.980 mean shift -0.0094 CI [-0.0128, -0.0064]
+FarmShare P2 rho ['P1_shuffled_p0_transfer', 'P2_P3_real_p0', 'descriptive', 'p_dial', 'pooled_real_shuffled_p0', 'real_minus_shuffled_p0', 'real_p0_transfer', 'secondary_real_p0', 'verdicts']
+mercury P2 rho ['P1_shuffled_p0_transfer', 'P2_P3_real_p0', 'descriptive', 'p_dial', 'pooled_real_shuffled_p0', 'real_minus_shuffled_p0', 'real_p0_transfer', 'secondary_real_p0', 'verdicts']
+margin FarmShare vs mercury Spearman across 200 real units 0.970 mean 0.6592 vs 0.6476
+nc_share FarmShare vs mercury Spearman across 200 real units 0.953 mean 0.1907 vs 0.1875
+pixel_margin FarmShare vs mercury Spearman across 200 real units 1.000 mean 0.5829 vs 0.5829

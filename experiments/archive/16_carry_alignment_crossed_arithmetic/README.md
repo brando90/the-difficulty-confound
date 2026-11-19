@@ -1,0 +1,14 @@
+# Experiment 16: Addition crossed, carry-chain length versus alignment
+
+**Doc link:** <https://github.com/brando90/the-difficulty-confound/blob/main/experiments/archive/16_carry_alignment_crossed_arithmetic/README.md>
+
+Experiment 16 brings the complexity-versus-alignment program back to addition. It crosses carry-chain length with the target stratum's training share $\alpha$ and fits the program's law family. Carry-chain length is a structural demand, not Kolmogorov complexity; the law variable is $s = c + 1$. The experiment tests whether chain length costs data (C1), whether alignment dominates it (C2), and whether it moves the coefficient or the exponent the way exact complexity does in Experiments 11 and 12 (C3). There are two arms:
+
+- **16b (primary, GPU = graphics processing unit):** fresh 8-digit problems, three transformer sizes, plus a reversed-output control. The control tests whether the cost exists only when the output format makes the chain sequential. About 90 A100-hours, launched from [`launch/`](launch/README.md).
+- **16a (secondary, CPU = central processing unit):** the answer-matched 3-digit multilayer perceptron (MLP) setup of Experiments 06 and 08. About 25 min.
+
+Status: COMPLETE (10-20-2026), both arms run and verified on Sherlock (`verify.py` PASS: all 1,536 16a checkpoints and all 240 16b shards replay at 0.0 bits). 16b: G3a SUPPORTED (chain length moves the coefficient: law-based multiplier 1.97 [1.64, 2.32] from c = 0 to 7); G1, G2, G4 (E 1.06 [0.90, 1.44]), G5, G6, G7 NOT_ESTABLISHED. 16a: G4 SUPPORTED (E 22.4 at the pilot-rule eps* of 4.95 bits); G1, G2, G3, G5 NOT_ESTABLISHED. Results: [RESULTS_carry_crossed.md](RESULTS_carry_crossed.md). Dated log: [CKPT_carry_crossed.md](CKPT_carry_crossed.md). Design: [PROTOCOL.md](PROTOCOL.md). Coding-agent prompt: [PROMPT.md](PROMPT.md). Program overview: [complexity versus alignment](../../ideas/complexity_vs_alignment/README.md).
+
+This folder moved to `experiments/archive/` after both arms completed. `PROTOCOL.md` and `PROMPT.md` were frozen before the move, so their relative links point at the old location (for example `../ideas/...` is now `../../ideas/...`, and `../archive/06_...` is now `../06_...`); `launch/` scripts keep `EXP_DIR=experiments/16_carry_alignment_crossed_arithmetic` and would need that path updated to relaunch from this location. 16b checkpoints (about 47 GB) stay on Sherlock under `$SCRATCH/tdc_exp16`; their SHA-256s are in `expt_v1/results/transformer/checkpoint_sha256.json`.
+
+**TLDR-end:** [tdc: Expt 16 readme] Cross carry-chain length (a structural demand, not $K$) with target share on 8-digit transformer addition and 3-digit MLP addition, and test with numeric gates whether chain length costs data, whether alignment dominates, and whether it enters the law like exact complexity; GPU primary arm plus a short CPU arm.

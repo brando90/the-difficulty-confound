@@ -1,0 +1,38 @@
+{
+ "0": {
+  "excess_bits": 0.01613,
+  "standard_error": 0.00483
+ },
+ "1": {
+  "excess_bits": 0.03378,
+  "standard_error": 0.00392
+ },
+ "2": {
+  "excess_bits": 2.30762,
+  "standard_error": 0.09278
+ },
+ "3": {
+  "excess_bits": 0.09605,
+  "standard_error": 0.01621
+ },
+ "4": {
+  "excess_bits": 0.10486,
+  "standard_error": 0.01758
+ },
+ "5": {
+  "excess_bits": 1.09642,
+  "standard_error": 0.05272
+ },
+ "6": {
+  "excess_bits": 0.01481,
+  "standard_error": 0.0025
+ },
+ "7": {
+  "excess_bits": 0.15038,
+  "standard_error": 0.02085
+ },
+ "8": {
+  "excess_bits": 0.47568,
+  "standard_error": 0.02952
+ }
+}

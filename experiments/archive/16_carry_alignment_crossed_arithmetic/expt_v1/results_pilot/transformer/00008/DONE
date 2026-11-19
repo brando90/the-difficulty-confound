@@ -1,0 +1,17 @@
+{
+ "files": {
+  "checkpoints/T_4194304.npz": "758fbdd31cc3ffb1735f7c3a2de39b20808735b46634e169eb89ed4b5738d09a",
+  "metrics.csv": "d4c6a257113532749c25985d598c703575ee3f2bc1edf0537910050af7cd403d",
+  "run.json": "d922e9df10ea99c69bbbf3bc4fde0c389a4e863318c306fa5d60070918ba6f21"
+ },
+ "job": {
+  "job": 8,
+  "size": "25M",
+  "lr_multiplier": 2.0,
+  "lr": 0.001,
+  "c": 3,
+  "alpha": 0.4,
+  "seed": 16919,
+  "format": "plain"
+ }
+}

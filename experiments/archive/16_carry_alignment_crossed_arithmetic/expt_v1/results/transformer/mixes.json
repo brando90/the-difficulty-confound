@@ -1,0 +1,7202 @@
+[
+ {
+  "shard": 0,
+  "job": {
+   "shard": 0,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 583.2809244079981,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 1,
+  "job": {
+   "shard": 1,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 585.9574474738911,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 2,
+  "job": {
+   "shard": 2,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 581.8251597434282,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 3,
+  "job": {
+   "shard": 3,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 582.8587225461379,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 4,
+  "job": {
+   "shard": 4,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 584.9008869109675,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 5,
+  "job": {
+   "shard": 5,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 583.3485308538657,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 6,
+  "job": {
+   "shard": 6,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1465.955901134992,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 7,
+  "job": {
+   "shard": 7,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 617.2922190967947,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 8,
+  "job": {
+   "shard": 8,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 578.4061157440301,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 9,
+  "job": {
+   "shard": 9,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 583.930213896092,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 10,
+  "job": {
+   "shard": 10,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 578.6699809869751,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 11,
+  "job": {
+   "shard": 11,
+   "size": "1M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 581.3021431509405,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 12,
+  "job": {
+   "shard": 12,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 577.9722826099023,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 13,
+  "job": {
+   "shard": 13,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 581.097595567815,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 14,
+  "job": {
+   "shard": 14,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 578.3538334141485,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 15,
+  "job": {
+   "shard": 15,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 577.600005867891,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 16,
+  "job": {
+   "shard": 16,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 579.8199811279774,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 17,
+  "job": {
+   "shard": 17,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 578.5216494598426,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 18,
+  "job": {
+   "shard": 18,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 582.4778902619146,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 19,
+  "job": {
+   "shard": 19,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 578.6357590320986,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 20,
+  "job": {
+   "shard": 20,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 579.4556692810729,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 21,
+  "job": {
+   "shard": 21,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 579.6627963231876,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 22,
+  "job": {
+   "shard": 22,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 578.9883490400389,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 23,
+  "job": {
+   "shard": 23,
+   "size": "1M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 581.4048444880173,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 24,
+  "job": {
+   "shard": 24,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 578.8249162680004,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 25,
+  "job": {
+   "shard": 25,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 584.2648950312287,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 26,
+  "job": {
+   "shard": 26,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 581.6452959142625,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 27,
+  "job": {
+   "shard": 27,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 2516582,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 583.5214050579816,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 28,
+  "job": {
+   "shard": 28,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 2516582,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 583.1773259695619,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 29,
+  "job": {
+   "shard": 29,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 2516582,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1466.1956451560254,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 30,
+  "job": {
+   "shard": 30,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 6710886,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 581.8724200958386,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 31,
+  "job": {
+   "shard": 31,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 6710886,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 583.2323491110001,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 32,
+  "job": {
+   "shard": 32,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 6710886,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 579.1781506149564,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 33,
+  "job": {
+   "shard": 33,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 580.075011418201,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 34,
+  "job": {
+   "shard": 34,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 579.6671293247491,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 35,
+  "job": {
+   "shard": 35,
+   "size": "1M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 577.9520565718412,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 36,
+  "job": {
+   "shard": 36,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 581.1078747818246,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 37,
+  "job": {
+   "shard": 37,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 581.1919743819162,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 38,
+  "job": {
+   "shard": 38,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 582.7121033379808,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 39,
+  "job": {
+   "shard": 39,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565159,
+   "4": 2516582,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 577.5544493393973,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 40,
+  "job": {
+   "shard": 40,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 2516582,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 580.6876715067774,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 41,
+  "job": {
+   "shard": 41,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565158,
+   "4": 2516582,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 577.7045733258128,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 42,
+  "job": {
+   "shard": 42,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516583,
+   "4": 6710886,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 581.8561644526199,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 43,
+  "job": {
+   "shard": 43,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 6710886,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 581.6856123767793,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 44,
+  "job": {
+   "shard": 44,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516582,
+   "4": 6710886,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 583.689954106696,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 45,
+  "job": {
+   "shard": 45,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 584.6176523449831,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 46,
+  "job": {
+   "shard": 46,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 581.4512827729341,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 47,
+  "job": {
+   "shard": 47,
+   "size": "1M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 579.5902997751255,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 48,
+  "job": {
+   "shard": 48,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 583.4075598020572,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 49,
+  "job": {
+   "shard": 49,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 578.5666172578931,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 50,
+  "job": {
+   "shard": 50,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 610.2459647348151,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 51,
+  "job": {
+   "shard": 51,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 581.9777078377083,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 52,
+  "job": {
+   "shard": 52,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 582.4656912265345,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 53,
+  "job": {
+   "shard": 53,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 579.9269634122029,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 54,
+  "job": {
+   "shard": 54,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 578.6766214258969,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 55,
+  "job": {
+   "shard": 55,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 586.3368023075163,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 56,
+  "job": {
+   "shard": 56,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 583.064783125883,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 57,
+  "job": {
+   "shard": 57,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 580.8424397089984,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 58,
+  "job": {
+   "shard": 58,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 578.1188874070067,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 59,
+  "job": {
+   "shard": 59,
+   "size": "1M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 583.1182525318582,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 60,
+  "job": {
+   "shard": 60,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1007.8349425208289,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 61,
+  "job": {
+   "shard": 61,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1008.544285049662,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 62,
+  "job": {
+   "shard": 62,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1006.7209225120023,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 63,
+  "job": {
+   "shard": 63,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 2205.9778726449586,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 64,
+  "job": {
+   "shard": 64,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1005.5198819702491,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 65,
+  "job": {
+   "shard": 65,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1014.1376260891557,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 66,
+  "job": {
+   "shard": 66,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1004.8235695064068,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 67,
+  "job": {
+   "shard": 67,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1009.9766059936956,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 68,
+  "job": {
+   "shard": 68,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 2040.2139188700821,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 69,
+  "job": {
+   "shard": 69,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1005.8727032858878,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 70,
+  "job": {
+   "shard": 70,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1010.1387187326327,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 71,
+  "job": {
+   "shard": 71,
+   "size": "6M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1007.4105533098336,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 72,
+  "job": {
+   "shard": 72,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1005.9413708911743,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 73,
+  "job": {
+   "shard": 73,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1004.6568497270346,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 74,
+  "job": {
+   "shard": 74,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1012.706872032024,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 75,
+  "job": {
+   "shard": 75,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 1007.254198323004,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 76,
+  "job": {
+   "shard": 76,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1009.9082813360728,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 77,
+  "job": {
+   "shard": 77,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1011.5099530080333,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 78,
+  "job": {
+   "shard": 78,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1006.6191099118441,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 79,
+  "job": {
+   "shard": 79,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1004.4336669705808,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 80,
+  "job": {
+   "shard": 80,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1011.3442142028362,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 81,
+  "job": {
+   "shard": 81,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1004.3967755585909,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 82,
+  "job": {
+   "shard": 82,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1005.712105399929,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 83,
+  "job": {
+   "shard": 83,
+   "size": "6M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 764.7356440268923,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 84,
+  "job": {
+   "shard": 84,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 757.8480502630118,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 85,
+  "job": {
+   "shard": 85,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1026.8056558361277,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 86,
+  "job": {
+   "shard": 86,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1014.1361053260043,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 87,
+  "job": {
+   "shard": 87,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 2516582,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 761.6001624281053,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 88,
+  "job": {
+   "shard": 88,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 2516582,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 2021.662319795927,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 89,
+  "job": {
+   "shard": 89,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 2516582,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 2044.7976891321596,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 90,
+  "job": {
+   "shard": 90,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 6710886,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1005.971981982,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 91,
+  "job": {
+   "shard": 91,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 6710886,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1012.3272214849999,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 92,
+  "job": {
+   "shard": 92,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 6710886,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1004.8911419859999,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 93,
+  "job": {
+   "shard": 93,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1027.9568818500265,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 94,
+  "job": {
+   "shard": 94,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2174.723772546975,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 95,
+  "job": {
+   "shard": 95,
+   "size": "6M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 757.1696702949703,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 96,
+  "job": {
+   "shard": 96,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1013.3652332732454,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 97,
+  "job": {
+   "shard": 97,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1013.5738450540002,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 98,
+  "job": {
+   "shard": 98,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1009.6638879849997,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 99,
+  "job": {
+   "shard": 99,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565159,
+   "4": 2516582,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 1008.331916150637,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 100,
+  "job": {
+   "shard": 100,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 2516582,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1009.7417524065822,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 101,
+  "job": {
+   "shard": 101,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565158,
+   "4": 2516582,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1013.2753837238997,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 102,
+  "job": {
+   "shard": 102,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516583,
+   "4": 6710886,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1008.3692809960003,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 103,
+  "job": {
+   "shard": 103,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 6710886,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1012.0095104400534,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 104,
+  "job": {
+   "shard": 104,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516582,
+   "4": 6710886,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1009.2729691695422,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 105,
+  "job": {
+   "shard": 105,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1016.0847034426406,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 106,
+  "job": {
+   "shard": 106,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 766.5036766761914,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 107,
+  "job": {
+   "shard": 107,
+   "size": "6M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1014.7656327000004,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 108,
+  "job": {
+   "shard": 108,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 1006.4112680349499,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 109,
+  "job": {
+   "shard": 109,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 1008.9063820075244,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 110,
+  "job": {
+   "shard": 110,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 2070.0061806701124,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 111,
+  "job": {
+   "shard": 111,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1008.2681402689777,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 112,
+  "job": {
+   "shard": 112,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1009.7606861172244,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 113,
+  "job": {
+   "shard": 113,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1008.8996360022575,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 114,
+  "job": {
+   "shard": 114,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 1005.7650059778243,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 115,
+  "job": {
+   "shard": 115,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 1010.8837697622366,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 116,
+  "job": {
+   "shard": 116,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 758.6302072349936,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 117,
+  "job": {
+   "shard": 117,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 1008.0775548219999,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 118,
+  "job": {
+   "shard": 118,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 1011.8441973188892,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 119,
+  "job": {
+   "shard": 119,
+   "size": "6M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 1005.920578985475,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 120,
+  "job": {
+   "shard": 120,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2297.535688055679,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 121,
+  "job": {
+   "shard": 121,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2288.8086894279995,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 122,
+  "job": {
+   "shard": 122,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2309.626844272949,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 123,
+  "job": {
+   "shard": 123,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 2307.9903718456626,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 124,
+  "job": {
+   "shard": 124,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 2295.1865367707796,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 125,
+  "job": {
+   "shard": 125,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 968.3629007900599,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 126,
+  "job": {
+   "shard": 126,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 2285.8845102859195,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 127,
+  "job": {
+   "shard": 127,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 2296.964503005147,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 128,
+  "job": {
+   "shard": 128,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 2284.8249786151573,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 129,
+  "job": {
+   "shard": 129,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2251.393054328999,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 130,
+  "job": {
+   "shard": 130,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2260.4020609166473,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 131,
+  "job": {
+   "shard": 131,
+   "size": "25M",
+   "format": "plain",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2266.7450591372326,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 132,
+  "job": {
+   "shard": 132,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2296.6657037050463,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 133,
+  "job": {
+   "shard": 133,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2301.6145761189982,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 134,
+  "job": {
+   "shard": 134,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2302.2133568439986,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 135,
+  "job": {
+   "shard": 135,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 5086.437507748837,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 136,
+  "job": {
+   "shard": 136,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 950.9655753697734,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 137,
+  "job": {
+   "shard": 137,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 2294.7048674020916,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 138,
+  "job": {
+   "shard": 138,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 2284.092339924,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 139,
+  "job": {
+   "shard": 139,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 2299.567468706984,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 140,
+  "job": {
+   "shard": 140,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 2298.299295404926,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 141,
+  "job": {
+   "shard": 141,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 936.0543829819653,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 142,
+  "job": {
+   "shard": 142,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2271.5417471872643,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 143,
+  "job": {
+   "shard": 143,
+   "size": "25M",
+   "format": "plain",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2264.3961814239156,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 144,
+  "job": {
+   "shard": 144,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2305.6600008010864,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 145,
+  "job": {
+   "shard": 145,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2290.8107007611543,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 146,
+  "job": {
+   "shard": 146,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2281.4540205920002,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 147,
+  "job": {
+   "shard": 147,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 2516582,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 7355.131178591051,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 148,
+  "job": {
+   "shard": 148,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 2516582,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 2289.5319856135175,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 149,
+  "job": {
+   "shard": 149,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 2516582,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 2300.7575161679997,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 150,
+  "job": {
+   "shard": 150,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 6710886,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 2289.390137196984,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 151,
+  "job": {
+   "shard": 151,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 6710886,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 2294.2035252219066,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 152,
+  "job": {
+   "shard": 152,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 6710886,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 945.0928788760211,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 153,
+  "job": {
+   "shard": 153,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2269.6303512956947,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 154,
+  "job": {
+   "shard": 154,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 928.249182122061,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 155,
+  "job": {
+   "shard": 155,
+   "size": "25M",
+   "format": "plain",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2264.6294734659987,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 156,
+  "job": {
+   "shard": 156,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2306.0940779652447,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 157,
+  "job": {
+   "shard": 157,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2306.2600807142444,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 158,
+  "job": {
+   "shard": 158,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 2298.1975047388114,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 159,
+  "job": {
+   "shard": 159,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565159,
+   "4": 2516582,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 2291.2614141467493,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 160,
+  "job": {
+   "shard": 160,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 2516582,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 2300.4133222159,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 161,
+  "job": {
+   "shard": 161,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565158,
+   "4": 2516582,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 2289.3790560141206,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 162,
+  "job": {
+   "shard": 162,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516583,
+   "4": 6710886,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 2271.9804673530016,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 163,
+  "job": {
+   "shard": 163,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 6710886,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 2283.6037081275135,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 164,
+  "job": {
+   "shard": 164,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516582,
+   "4": 6710886,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 5588.42308181501,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 165,
+  "job": {
+   "shard": 165,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2276.7510161579994,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 166,
+  "job": {
+   "shard": 166,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2266.504815688124,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 167,
+  "job": {
+   "shard": 167,
+   "size": "25M",
+   "format": "plain",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 2269.930549589917,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 168,
+  "job": {
+   "shard": 168,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 5096.369256333914,
+  "hardware": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "capability": [
+    8,
+    6
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 169,
+  "job": {
+   "shard": 169,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 2299.053302318789,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 170,
+  "job": {
+   "shard": 170,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 2293.1070448169994,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 171,
+  "job": {
+   "shard": 171,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 2302.200383350253,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 172,
+  "job": {
+   "shard": 172,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 2304.448180566076,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 173,
+  "job": {
+   "shard": 173,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 2303.7992428871803,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 174,
+  "job": {
+   "shard": 174,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 2288.9946259786375,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 175,
+  "job": {
+   "shard": 175,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 2296.6164701757953,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 176,
+  "job": {
+   "shard": 176,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 2285.9211017405614,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 177,
+  "job": {
+   "shard": 177,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 2251.227928254999,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 178,
+  "job": {
+   "shard": 178,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 2258.0875365724787,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 179,
+  "job": {
+   "shard": 179,
+   "size": "25M",
+   "format": "plain",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 2271.422180806001,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 180,
+  "job": {
+   "shard": 180,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1008.719617895782,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 181,
+  "job": {
+   "shard": 181,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1007.529940970242,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 182,
+  "job": {
+   "shard": 182,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 838860,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 738.88077462418,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 183,
+  "job": {
+   "shard": 183,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 836.2667755894363,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 184,
+  "job": {
+   "shard": 184,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1006.5884488676675,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 185,
+  "job": {
+   "shard": 185,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1010.6220139781944,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 186,
+  "job": {
+   "shard": 186,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1010.7570697925985,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 187,
+  "job": {
+   "shard": 187,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1007.1438489072025,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 188,
+  "job": {
+   "shard": 188,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 6710886,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1007.5958538539999,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 189,
+  "job": {
+   "shard": 189,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1009.8553766645491,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 190,
+  "job": {
+   "shard": 190,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1010.7921820770025,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 191,
+  "job": {
+   "shard": 191,
+   "size": "6M",
+   "format": "reversed",
+   "c": 0,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 16777216,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 735.232902477961,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 192,
+  "job": {
+   "shard": 192,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1005.6570437671617,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 193,
+  "job": {
+   "shard": 193,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1012.5841010259464,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 194,
+  "job": {
+   "shard": 194,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 838860,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1005.3157334355637,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 195,
+  "job": {
+   "shard": 195,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 1012.1401589550078,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 196,
+  "job": {
+   "shard": 196,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1010.5642927659974,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 197,
+  "job": {
+   "shard": 197,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 2516582,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1016.6765220682137,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 198,
+  "job": {
+   "shard": 198,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1007.3704524296336,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 199,
+  "job": {
+   "shard": 199,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1013.1951064262539,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 200,
+  "job": {
+   "shard": 200,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 6710886,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1010.7662501912564,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 201,
+  "job": {
+   "shard": 201,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1006.9792707785964,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 202,
+  "job": {
+   "shard": 202,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1009.6394925545901,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 203,
+  "job": {
+   "shard": 203,
+   "size": "6M",
+   "format": "reversed",
+   "c": 1,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 16777216,
+   "2": 0,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 755.8243646011688,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 204,
+  "job": {
+   "shard": 204,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1008.0710936477408,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 205,
+  "job": {
+   "shard": 205,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1019.5123571865261,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 206,
+  "job": {
+   "shard": 206,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 838860,
+   "4": 3984589,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1011.9371825503185,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 207,
+  "job": {
+   "shard": 207,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 2516582,
+   "4": 3565159,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 1007.2883651209995,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 208,
+  "job": {
+   "shard": 208,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 2516582,
+   "4": 3565159,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1013.4328427830005,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 209,
+  "job": {
+   "shard": 209,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 2516582,
+   "4": 3565158,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1014.4789131400175,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 210,
+  "job": {
+   "shard": 210,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 6710886,
+   "4": 2516583,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1027.617900401001,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 211,
+  "job": {
+   "shard": 211,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 6710886,
+   "4": 2516583,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1008.1996343662031,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 212,
+  "job": {
+   "shard": 212,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 6710886,
+   "4": 2516582,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1010.9478290260013,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 213,
+  "job": {
+   "shard": 213,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1016.7732751560397,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 214,
+  "job": {
+   "shard": 214,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1008.7548378780484,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 215,
+  "job": {
+   "shard": 215,
+   "size": "6M",
+   "format": "reversed",
+   "c": 2,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 16777216,
+   "4": 0,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1010.3365821354091,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 216,
+  "job": {
+   "shard": 216,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1008.5421149510003,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 217,
+  "job": {
+   "shard": 217,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 758.0809771930799,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 218,
+  "job": {
+   "shard": 218,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 838860,
+   "7": 3984589
+  },
+  "rejections": 0,
+  "seconds": 1006.6034674150869,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 219,
+  "job": {
+   "shard": 219,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565159,
+   "4": 2516582,
+   "7": 3565158
+  },
+  "rejections": 0,
+  "seconds": 1011.8056050050072,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 220,
+  "job": {
+   "shard": 220,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 2516582,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1012.2072462933138,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 221,
+  "job": {
+   "shard": 221,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565158,
+   "4": 2516582,
+   "7": 3565159
+  },
+  "rejections": 0,
+  "seconds": 1010.8056722506881,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 222,
+  "job": {
+   "shard": 222,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516583,
+   "4": 6710886,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1016.2629651511088,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 223,
+  "job": {
+   "shard": 223,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 6710886,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 753.6190775239374,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 224,
+  "job": {
+   "shard": 224,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516582,
+   "4": 6710886,
+   "7": 2516583
+  },
+  "rejections": 0,
+  "seconds": 1007.7369174109772,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 225,
+  "job": {
+   "shard": 225,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1006.6545090847649,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 226,
+  "job": {
+   "shard": 226,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 1010.3713556248695,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 227,
+  "job": {
+   "shard": 227,
+   "size": "6M",
+   "format": "reversed",
+   "c": 4,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 16777216,
+   "7": 0
+  },
+  "rejections": 0,
+  "seconds": 743.6711124349385,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 228,
+  "job": {
+   "shard": 228,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 750.5408826537896,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 229,
+  "job": {
+   "shard": 229,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 750.3269836190157,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 230,
+  "job": {
+   "shard": 230,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 0.05,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3984589,
+   "1": 3984589,
+   "2": 3984589,
+   "4": 3984589,
+   "7": 838860
+  },
+  "rejections": 0,
+  "seconds": 1004.4936932311393,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 231,
+  "job": {
+   "shard": 231,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16101
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565159,
+   "4": 3565158,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1005.2461597081274,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 232,
+  "job": {
+   "shard": 232,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16202
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565158,
+   "2": 3565159,
+   "4": 3565159,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1013.47745999787,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 233,
+  "job": {
+   "shard": 233,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 0.15,
+   "seed": 16303
+  },
+  "used": {
+   "0": 3565158,
+   "1": 3565159,
+   "2": 3565158,
+   "4": 3565159,
+   "7": 2516582
+  },
+  "rejections": 0,
+  "seconds": 1005.5068642338738,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 234,
+  "job": {
+   "shard": 234,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16101
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516583,
+   "4": 2516582,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 1010.76151416637,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 235,
+  "job": {
+   "shard": 235,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16202
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516582,
+   "2": 2516583,
+   "4": 2516583,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 1009.6537930965424,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 236,
+  "job": {
+   "shard": 236,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 0.4,
+   "seed": 16303
+  },
+  "used": {
+   "0": 2516582,
+   "1": 2516583,
+   "2": 2516582,
+   "4": 2516583,
+   "7": 6710886
+  },
+  "rejections": 0,
+  "seconds": 742.5031505008228,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 237,
+  "job": {
+   "shard": 237,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16101
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 1005.6515875598416,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 238,
+  "job": {
+   "shard": 238,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16202
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 1010.8038936518133,
+  "hardware": {
+   "gpu": "NVIDIA L40S",
+   "capability": [
+    8,
+    9
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ },
+ {
+  "shard": 239,
+  "job": {
+   "shard": 239,
+   "size": "6M",
+   "format": "reversed",
+   "c": 7,
+   "alpha": 1.0,
+   "seed": 16303
+  },
+  "used": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "4": 0,
+   "7": 16777216
+  },
+  "rejections": 0,
+  "seconds": 748.4669733820483,
+  "hardware": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "capability": [
+    9,
+    0
+   ],
+   "cuda": "12.4",
+   "driver": "550.163.01"
+  },
+  "verified": true
+ }
+]
