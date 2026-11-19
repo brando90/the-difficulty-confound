@@ -1,0 +1,60 @@
+{
+ "seconds": 237.24332873150706,
+ "examples": 4194304,
+ "used": {
+  "0": 503316,
+  "1": 503317,
+  "2": 503317,
+  "4": 503317,
+  "7": 503316
+ },
+ "rejections": 0,
+ "job": {
+  "job": 5,
+  "size": "6M",
+  "lr_multiplier": 2.0,
+  "lr": 0.002,
+  "c": 3,
+  "alpha": 0.4,
+  "seed": 16919,
+  "format": "plain"
+ },
+ "lr": 0.002,
+ "hardware": {
+  "gpu": "NVIDIA L40S",
+  "capability": [
+   8,
+   9
+  ],
+  "cuda": "12.4",
+  "driver": "550.163.01"
+ },
+ "runtime": {
+  "host": "sh04-01n11.int",
+  "slurm_job_id": "48520669",
+  "python": "3.12.1",
+  "torch": "2.6.0+cu124",
+  "numpy": "2.2.6",
+  "git_revision": "6a7266cff107b151bbcfdd2e147951d525fb14df",
+  "config_sha256": "350a676f26c7f143e790c50db2c485112a75e5d2b6c44c505b44a767991ba627",
+  "source_sha256": {
+   "analyze.py": "c8ab3abfc183f164e83a6361b837ba4f3f6969185b77c20873c4b5a8733a65c6",
+   "carry.py": "356d41934ba21675884d1bd00a61008de8dfff85e3090b431cf6be5c5e47075d",
+   "independent_fit.py": "306f3dac05e79f981de666209d568eaa6a36fe0aca48000cb97027a06fc0b594",
+   "laws.py": "c90ec3fed44937877f70afe43e863738a0a25d471e822cb86d9bd9d3e524a1d6",
+   "mlp_arm.py": "941356cc63d637c945349e6aa32865802234e6d345e2c2f516ffb7525d88b305",
+   "report.py": "7468dfb5205b672698b2448da312b74a528b2c1679bf86daf119a526decb74f2",
+   "run.py": "0d86545bcf8b312be79982bdf5191a65aa4e361c6ffb5f1706e1ce17e7519303",
+   "test_arms.py": "4476308018f0fc164436cf5c5b140245f63625a64b67c74251d0e7cf937ac4d7",
+   "test_carry.py": "d8a59a9347926e9be8669039fc7f97babf47919769111f47e90e688dd0d0a3c6",
+   "test_laws.py": "0d3bd90272452d8fec8438ad7cc2c0fead80e4e2da974599cdd163037938ebda",
+   "transformer_arm.py": "cbb5888060d1a782da35f0386daebba9fca0a12303f2dd481fd445e0ebe8b0e2",
+   "verify.py": "b6329fae5bb0d804df281b3b4899c16c469d1259d45f36f5701d2da62e3b29ac"
+  },
+  "imports_sha256": {
+   "exp06_addition.py": "766123242a12da2ee6973f03ade252880983720ed9c65db88932c01decef2289",
+   "exp08_run.py": "097e1e1c7f438fca6d55e100356be57611dc40442436c3b7e0360fb32127c8e7"
+  },
+  "started_utc": "2026-10-19T21:02:48Z"
+ }
+}

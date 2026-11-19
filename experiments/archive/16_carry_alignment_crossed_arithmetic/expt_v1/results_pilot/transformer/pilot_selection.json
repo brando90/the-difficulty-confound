@@ -1,0 +1,70 @@
+{
+ "lr_multiplier": {
+  "1M": 0.5,
+  "6M": 1.0,
+  "25M": 0.5
+ },
+ "lr_selected": {
+  "1M": 0.001,
+  "6M": 0.001,
+  "25M": 0.00025
+ },
+ "best_6M_excess": 0.09604967954279943,
+ "primary_format_final": "plain",
+ "pilot_results": [
+  {
+   "job": 0,
+   "size": "1M",
+   "lr_multiplier": 0.5,
+   "excess_bits": 0.016127886622149527
+  },
+  {
+   "job": 1,
+   "size": "1M",
+   "lr_multiplier": 1.0,
+   "excess_bits": 0.03377779215155342
+  },
+  {
+   "job": 2,
+   "size": "1M",
+   "lr_multiplier": 2.0,
+   "excess_bits": 2.307617052724663
+  },
+  {
+   "job": 3,
+   "size": "6M",
+   "lr_multiplier": 0.5,
+   "excess_bits": 0.09604967954279943
+  },
+  {
+   "job": 4,
+   "size": "6M",
+   "lr_multiplier": 1.0,
+   "excess_bits": 0.10486327612698022
+  },
+  {
+   "job": 5,
+   "size": "6M",
+   "lr_multiplier": 2.0,
+   "excess_bits": 1.0964232422001785
+  },
+  {
+   "job": 6,
+   "size": "25M",
+   "lr_multiplier": 0.5,
+   "excess_bits": 0.014811617169941073
+  },
+  {
+   "job": 7,
+   "size": "25M",
+   "lr_multiplier": 1.0,
+   "excess_bits": 0.15037528562366037
+  },
+  {
+   "job": 8,
+   "size": "25M",
+   "lr_multiplier": 2.0,
+   "excess_bits": 0.4756815752813761
+  }
+ ]
+}
