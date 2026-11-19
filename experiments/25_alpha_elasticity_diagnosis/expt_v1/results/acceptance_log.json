@@ -1,0 +1,10 @@
+{
+ "h_ref": 2.8630147521772207,
+ "band_bits": 0.15,
+ "exp24_concepts": 160,
+ "kept": {
+  "targets": 6,
+  "disjoint": 24,
+  "iid": 24
+ }
+}
