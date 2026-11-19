@@ -1,0 +1,51 @@
+{
+ "concepts": {
+  "comment": "GINC-style sparse HMMs, the language L_HMM of Experiment 13 (PROTOCOL Section 2.1 there); arm_index 2 is a new stream",
+  "q": 6, "successors_per_state": 3, "emissions_per_state": 4, "doc_len": 128,
+  "V_concepts": 150,
+  "levels": [8, 32, 64],
+  "targets_per_level": 3, "distractors_per_level": 0, "pilot_concepts_per_level": 1,
+  "task_sampling_seed": 20261013, "arm_index": 2,
+  "entropy_band_bits": 0.15, "entropy_band_fallback": 0.30,
+  "band_calibration_candidates": 64, "max_candidates_per_level": 1000, "extension_candidates_per_level": 200000,
+  "quick_entropy_seqs": 10, "entropy_seqs": 100, "entropy_seq_len": 10000, "entropy_burn_in": 100,
+  "similarity_levels": ["copy20", "copy50", "family", "disjoint"],
+  "redraw_fraction": {"copy20": 0.2, "copy50": 0.5, "family": 1.0, "disjoint": 1.0},
+  "pool_size": 4, "pool_seed_tag": 24, "max_pool_attempts": 200000,
+  "disjoint_token_offset": 150, "V_model_tokens": 300
+ },
+ "eval": {
+  "eval_seed": 20261020, "eval_docs_per_target": 1024, "distractor_eval_docs": 64,
+  "slices": {"early": [1, 16], "middle": [17, 64], "late": [65, 128], "all": [1, 128]}
+ },
+ "grid": {
+  "alphas": [0.01, 0.05, 0.2, 0.5, 1.0],
+  "seeds": [24101, 24202, 24303],
+  "sizes": ["S", "M"],
+  "T_checkpoints": [1048576, 2097152, 4194304, 8388608, 16777216, 33554432, 67108864, 134217728, 268435456],
+  "keep_checkpoints": [1048576, 4194304, 16777216, 67108864, 268435456]
+ },
+ "model": {
+  "sizes": {"S": [4, 256, 4], "M": [8, 512, 8]}, "max_positions": 128,
+  "vocab": 301,
+  "expected_params": {"S": 3269376, "M": 25439744},
+  "expected_nonembedding": {"S": 3159552, "M": 25220096},
+  "lr_table": {"S": 1e-3, "M": 6e-4},
+  "betas": [0.9, 0.95], "weight_decay": 0.1, "grad_clip": 1.0, "warmup_steps": 200, "batch_docs": 128,
+  "data_workers": 8
+ },
+ "pilot": {
+  "seed": 24919, "alpha": 0.2, "similarity": "family", "level": 32, "T": 67108864,
+  "lr_multipliers": [1, 2, 4], "tie_multiplier": 2, "tie_bits": 0.002,
+  "T_checkpoints": [1048576, 4194304, 16777216, 67108864]
+ },
+ "lr_selected": {"S": 4, "M": 4},
+ "analysis": {
+  "eps_star": 0.1, "eps_secondary": [0.05, 0.2],
+  "analysis_seed": 24110326, "bootstrap_draws": 20000,
+  "g3_heldout_similarity": "copy50", "g3_reduction": 0.10,
+  "eps_res": 0.015, "independent_fit_tol": 1e-4, "verify_tol_bits": 1e-9,
+  "convergence_rule": {"min_drop_bits": 0.02, "rel_drop": 0.05}
+ },
+ "gpu_torch_version": "2.6.0"
+}
