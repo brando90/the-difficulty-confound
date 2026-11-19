@@ -31,3 +31,28 @@ Dated log (US Pacific). Owner: Laolu Oguneye. Branch `exp25-alpha-elasticity-dia
 - **Freeze commit, "Freeze Experiment 25 protocol"** (the commit that adds this line), approved by Laolu after reviewing the design. No run of this experiment exists before it. From here on PROTOCOL Sections 1–7, `config.json` and the code are read-only.
 - 03:16 First launch on skampere2 (`setup25.sh c0db133d`). 03:17 the autopilot halted at stage 0: `test_gates_on_planted_data` failed (1 failed, 7 passed). The independent check's refit disagreed by a relative 1.16 × 10⁻⁴ (tolerance 10⁻⁴), because scipy 1.16.3's default L-BFGS-B stopping rule can stop early. No prep, smoke or shard ran.
 - About 14:45 **Pre-run amendment** (PROTOCOL Section 8): the independent L-BFGS-B refit now runs to a tight tolerance (ftol 10⁻¹⁵, gtol 10⁻¹⁰). Worst disagreement on the planted tables: 4.4 × 10⁻⁶ and 2.4 × 10⁻⁵. Unit tests 8 of 8 on the laptop. Only `independent_check` in `analyze25.py` changes. Approved by Laolu. The commit that adds this line is the new freeze.
+- 14:45 Relaunch on skampere2 at `d6e6114c` (the halted launch's logs are in `runs/logs/first_launch_c0db133d/`). 14:47 unit tests pass (8 of 8). 14:52 prep (check-only) PASS. 14:54 GPU smoke: shards 0 and 2817 trained and VERIFIED. 14:55 the queue of 2,880 shards starts, M first.
+
+## 11-11-2026
+
+- 10:40 Shards finished: 2,880 of 2,880 VERIFIED. 10:41 merged into `expt_v1/results/`. The autopilot waits for `state/PREDICTIONS_SHA` before the analysis (PROTOCOL Section 5). No analysis has run, and no result has been looked at.
+
+## 11-19-2026
+
+- **Laolu's predictions** (PROTOCOL Section 5), recorded before any analysis. Gates use the tuned learning rate, pooled over S and M (PROTOCOL Section 4.4). For reference, Experiment 24's disjoint $e_\alpha$ at the fixed 4× rate was 0.52.
+
+  | Gate | Claim | Predicted verdict |
+  |---|---|---|
+  | G1 | $e_\alpha$(hmm, tuned) − $e_\alpha$(hmm, 4×) > 0: one rate for all α biases the slope down | NOT_ESTABLISHED |
+  | G2 | $e_\alpha$(masked) < 1: target-only learning is not purely token-limited (opposite: "> 1") | SUPPORTED |
+  | G3 | $e_\alpha$(masked) − $e_\alpha$(hmm) > 0: disjoint HMMs substitute for target data (opposite: "interference") | SUPPORTED |
+  | G4 | $e_\alpha$(iid) − $e_\alpha$(hmm) > 0: the substitution needs sequential structure | SUPPORTED |
+  | G5 | $e_\alpha^{\text{low}}$ − $e_\alpha^{\text{high}}$ > 0 (hmm, hinge at α = 0.2): part of the bill is share-independent | SUPPORTED |
+
+  | Arm (tuned learning rate) | Predicted $e_\alpha$ |
+  |---|---|
+  | hmm (disjoint HMM distractors) | 0.5 |
+  | iid (unigram-only distractors) | 0.65 |
+  | masked (distractors give no gradient) | 0.8 |
+
+  Laolu made these picks after a briefing from the assistant that explained each gate and gave prior ranges for the three slopes from Experiment 24's results and the Section 1.2 clues (hmm about 0.5–0.75, masked about 0.5–0.9, iid about hmm to hmm + 0.15). Neither had seen any Experiment 25 analysis or result. Laolu first wrote "above 1" for G2, then chose G2 SUPPORTED (masked < 1) to match the masked slope of 0.8.
