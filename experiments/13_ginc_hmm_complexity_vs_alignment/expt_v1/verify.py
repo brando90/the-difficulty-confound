@@ -1,6 +1,8 @@
 """Experiment 13 verification (PROTOCOL Section 8). Prints PASS or the first failure.
 
 Usage (from expt_v1/): verify.py --arm small [--output results/small] [--workers 4]
+13-GPU: verify.py --arm gpu --shard I --output OUT (one shard, GPU node) or verify.py --arm gpu (merged results/gpu);
+see verify_gpu.py.
 Checks:
   0. training sources match manifest.json;
   1. every concept regenerates identically from the task seed; every process rank is recertified (= n) and every
@@ -76,7 +78,13 @@ def main():
     ap.add_argument('--output', default=None)
     ap.add_argument('--workers', type=int, default=4)
     ap.add_argument('--skip-checkpoints', action='store_true', help='debug only; never for the PASS of record')
+    ap.add_argument('--shard', type=int, default=None)
+    ap.add_argument('--prep', default=None)
     a = ap.parse_args()
+    if a.arm == 'gpu':
+        import verify_gpu
+        verify_gpu.main(a)
+        return
     c = R.load_config(a.arm)
     out = Path(a.output) if a.output else HERE / 'results' / a.arm
     t0 = time.time()
