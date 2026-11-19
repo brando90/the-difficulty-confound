@@ -1,0 +1,151 @@
+{
+ "eps_star": 0.1,
+ "verdicts": {
+  "G1": "NOT_ESTABLISHED",
+  "G2": "SUPPORTED",
+  "G3": "SUPPORTED",
+  "G4": "SUPPORTED",
+  "G5": "SUPPORTED"
+ },
+ "detail": {
+  "G1": {
+   "claim": "one learning rate for every alpha biases e_alpha down: tuned minus reference > 0",
+   "value": -0.018710823407813104,
+   "ci95": [
+    -0.05006142973557415,
+    0.015090229123515098
+   ],
+   "per_seed": [
+    -0.03108569964444602,
+    -0.03303975124523367,
+    -0.0049425339872096186
+   ],
+   "every_seed": false,
+   "verdict": "NOT_ESTABLISHED"
+  },
+  "G2": {
+   "claim": "target-only learning is not purely token-limited: e_alpha(masked) < 1",
+   "value": 0.4379507100091895,
+   "ci95": [
+    0.3906627658544415,
+    0.45781924738278174
+   ],
+   "per_seed": [
+    0.44664366063980515,
+    0.4303170684643406,
+    0.4338091719569588
+   ],
+   "every_seed": true,
+   "verdict": "SUPPORTED",
+   "named": null
+  },
+  "G3": {
+   "claim": "disjoint HMM distractors substitute for target data: e_alpha(masked) - e_alpha(hmm) > 0",
+   "value": 0.07310334232813687,
+   "ci95": [
+    0.02445909669499352,
+    0.1043134567542911
+   ],
+   "per_seed": [
+    0.09177951297339859,
+    0.084250346031288,
+    0.05276182670617591
+   ],
+   "every_seed": true,
+   "verdict": "SUPPORTED",
+   "named": null
+  },
+  "G4": {
+   "claim": "the substitution is sequential structure: e_alpha(iid) - e_alpha(hmm) > 0",
+   "value": 0.08821600132004703,
+   "ci95": [
+    0.04271741928679823,
+    0.13075905029732582
+   ],
+   "per_seed": [
+    0.09109660679780535,
+    0.10981836194009803,
+    0.054730036687733186
+   ],
+   "every_seed": true,
+   "verdict": "SUPPORTED"
+  },
+  "G5": {
+   "claim": "the bill has a share-independent part: e_alpha below alpha 0.2 exceeds e_alpha above",
+   "value": 0.43816145371934,
+   "ci95": [
+    0.370399778271951,
+    0.5654087145420681
+   ],
+   "per_seed": [
+    0.5103998535725082,
+    0.47863847772478857,
+    0.4443353652012084
+   ],
+   "every_seed": true,
+   "verdict": "SUPPORTED"
+  },
+  "intervals": {
+   "e_alpha|hmm|tuned": [
+    0.3294156905996176,
+    0.4019095655373992
+   ],
+   "e_K|hmm|tuned": [
+    0.5129285460213546,
+    0.7557250980874285
+   ],
+   "E|hmm|tuned": [
+    0.49778750507734776,
+    0.7014545822176234
+   ],
+   "e_alpha|iid|tuned": [
+    0.4270620253189635,
+    0.47262184884437025
+   ],
+   "e_K|iid|tuned": [
+    0.46205722223032086,
+    0.9029082252431873
+   ],
+   "E|iid|tuned": [
+    0.4966558147388618,
+    1.0196910298497102
+   ],
+   "e_alpha|masked|tuned": [
+    0.3906627658544415,
+    0.45781924738278174
+   ],
+   "e_K|masked|tuned": [
+    0.23118523290709098,
+    0.6301805431795531
+   ],
+   "E|masked|tuned": [
+    0.6802566923231435,
+    1.9115679383228188
+   ],
+   "e_alpha|hmm|x4": [
+    0.36961494566478265,
+    0.3988464713759987
+   ],
+   "e_K|hmm|x4": [
+    0.5170897839168705,
+    0.6287832224802551
+   ],
+   "E|hmm|x4": [
+    0.6093759511781591,
+    0.7414163387204606
+   ],
+   "e_alpha_high|hmm|tuned": [
+    0.010094788052524981,
+    0.16483427554682753
+   ],
+   "e_alpha_low|hmm|tuned": [
+    0.510543807179548,
+    0.5922731330035645
+   ]
+  },
+  "bootstrap": {
+   "draws": 20000,
+   "degenerate": 0
+  }
+ }
+}
